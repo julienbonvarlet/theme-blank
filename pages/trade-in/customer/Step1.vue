@@ -1,0 +1,45 @@
+<template>
+  <FTTradeIn>
+    <FMTradeInStep
+      v-if="!agree"
+      :title="$t('trade_in.criteria.title')"
+      :subtitle="$t('trade_in.criteria.text')"
+    >
+      <FAButton
+        :label="$t('trade_in.criteria.button')"
+        @click.prevent="tradeInModule.setAgree(true)"
+      />
+    </FMTradeInStep>
+
+    <FMTradeInProductForm v-else @next="next" />
+  </FTTradeIn>
+</template>
+
+<script lang="ts" setup>
+import { computed, onMounted } from "vue";
+import { useRouter } from "vue-router";
+import { useTradeInModule } from "../../../stores/tradeInModule";
+
+const router = useRouter();
+const tradeInModule = useTradeInModule();
+
+const agree = computed(() => tradeInModule.agree);
+const cart = computed(() => tradeInModule.cart);
+const { $trackingPlan } = useNuxtApp();
+
+const next = () => {
+  router.push({ name: "trade-in-customer-step-2" });
+};
+
+onMounted(() => {
+  if (cart.value?.validatedAt) {
+    tradeInModule.reset();
+  }
+});
+
+// Tracking Plan //
+if (process.client) {
+  $trackingPlan?.tradeinViewCondition();
+}
+// Tracking Plan //
+</script>
