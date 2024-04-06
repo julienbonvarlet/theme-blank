@@ -24,21 +24,23 @@
 </template>
 
 <script lang="ts" setup>
+import type TitleSizes from '@/types/ui';
+
 const props = withDefaults(
   defineProps<{
     title: string;
     content?: string;
     isTitle?: boolean;
-    titleSize?: (typeof TitleSizes)[string];
-    textSize?: (typeof TextSizes)[string];
-    titleTag?: (typeof TitleTags)[string];
+    titleSize?: TitleSizes;
+    textSize?: string;
+    titleTag?: string;
     open: boolean;
   }>(),
   {
     titleSize: "s",
     titleTag: "p",
     isTitle: false,
-  },
+  }
 );
 
 const isOpen = ref(props.open || false);
@@ -114,3 +116,4 @@ onUnmounted(() => {
   }
 }
 </style>
+~/types/ui

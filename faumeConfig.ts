@@ -3,7 +3,6 @@ import header from "~/configs/header";
 import menu from "~/configs/menu";
 import sellOnline from "~/configs/sellOnline";
 import cookies from "./configs/cookies";
-import ui from "./configs/ui";
 
 const faumeConfig = {
   collections,
@@ -11,7 +10,6 @@ const faumeConfig = {
   header,
   menu,
   sellOnline,
-  ui,
 };
 
 export default faumeConfig;
