@@ -5,7 +5,7 @@ type Collections = {
   slugName: String;
 };
 
-export const useCollectionsStore = defineStore("collectionsStore", () => {
+export const useCollectionsStore = defineStore("collection", () => {
   const { $getCollection } = useNuxtApp();
 
   const collections = ref<Collections[]>([]);
@@ -26,7 +26,9 @@ export const useCollectionsStore = defineStore("collectionsStore", () => {
           },
         };
         const config = faumeConfig.collections.find((x) => x.slugName === collection.slugName);
-        if (config) collectionData = { ...collectionData, ...config };
+        if (config) {
+          collectionData = { ...collectionData, ...config };
+        }
 
         return collectionData;
       });

@@ -1,10 +1,12 @@
 <template>
-  <nuxt-icon v-if="icon?.length" class="f-icon" :name="icon" :filled="filled || !!icon.includes('sso')" />
+  <nuxt-icon class="f-icon" :name="icon" :filled="filled" />
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-  icon?: IconNames;
+import type { IconNames } from "~/types/enums";
+
+defineProps<{
+  icon: IconNames;
   filled?: boolean;
 }>();
 </script>

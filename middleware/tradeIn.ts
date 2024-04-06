@@ -2,7 +2,7 @@ export default defineNuxtRouteMiddleware((to) => {
   const tradeInStore = useTradeInModule();
   const { cart, cartAgree } = tradeInStore;
 
-  if (to.name === "trade-in" || to.path === "/pages/trade-in") {
+  if (to.name === "trade-in" || to.path === "/trade-in") {
     return navigateTo({ name: "trade-in-customer-step-1" });
   }
 

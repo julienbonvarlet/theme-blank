@@ -51,7 +51,7 @@ const submitStripe = async () => {
       elements,
       clientSecret: clientSecret.value,
       confirmParams: {
-        return_url: `${config.clientUrlSecondHand}/pages/order-success`,
+        return_url: `${config.clientUrlSecondHand}/order-success`,
         payment_method_data: {
           billing_details: {
             address: {

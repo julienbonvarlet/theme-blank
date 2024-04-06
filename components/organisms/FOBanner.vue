@@ -17,6 +17,8 @@
 </template>
 
 <script setup lang="ts">
+import { BannerSizes, TitleSizes, TitleTags } from "~/types/enums";
+
 const props = withDefaults(
   defineProps<{
     title?: string;
@@ -31,9 +33,9 @@ const props = withDefaults(
     align?: "left" | "center" | "right";
   }>(),
   {
-    titleSize: "xl",
-    titleTag: "h1",
-    size: "l",
+    titleSize: TitleSizes.XL,
+    titleTag: TitleTags.H1,
+    size: BannerSizes.L,
   },
 );
 

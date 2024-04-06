@@ -13,6 +13,8 @@
 </template>
 
 <script setup lang="ts">
+import { TitleSizes } from "~/types/enums";
+
 const props = withDefaults(
   defineProps<{
     title?: string;
@@ -26,7 +28,7 @@ const props = withDefaults(
     align?: "left" | "center" | "right";
   }>(),
   {
-    titleSize: "m",
+    titleSize: TitleSizes.M,
     marginY: true,
   },
 );

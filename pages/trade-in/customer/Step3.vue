@@ -2,7 +2,7 @@
   <FTTradeIn>
     <FMTradeInStep class="f-ti-customer-auth" class-child="f-ti-customer-auth__inner" max-width="l">
       <div class="f-ti-customer-auth__col">
-        <FABack to="/pages/trade-in/customer/2" />
+        <FABack to="/trade-in/customer/2" />
 
         <div>
           <FATradeInTitle :title="$t('trade_in.identification.title')" size="s" />

@@ -11,6 +11,8 @@
 </template>
 
 <script lang="ts" setup>
+import { TitleSizes } from "~/types/enums";
+
 const { getCollectionBySlug } = useCollectionsStore();
 
 const props = withDefaults(
@@ -20,7 +22,7 @@ const props = withDefaults(
     titleSize?: TitleSizes;
   }>(),
   {
-    titleSize: "m",
+    titleSize: TitleSizes.M,
   },
 );
 

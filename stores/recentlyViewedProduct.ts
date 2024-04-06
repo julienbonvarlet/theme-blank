@@ -3,7 +3,7 @@ interface Product {
   [key: string]: any;
 }
 
-export const useRecentlyViewedProductsStore = defineStore("recentlyViewedProducts", () => {
+export const useRecentlyViewedProductsStore = defineStore("recentlyViewedProduct", () => {
   let productsInit: Product[] = [];
   if (process.client) {
     productsInit = useLocalStorage<Product[]>("recentlyViewedProducts", []).value;

@@ -1,4 +1,4 @@
-export const useShippingMethodsStore = defineStore("shippingMethods", () => {
+export const useShippingMethodsStore = defineStore("shippingMethod", () => {
   const { $API } = useNuxtApp();
   const shippingMethods = ref(null);
 

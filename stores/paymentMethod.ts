@@ -1,4 +1,4 @@
-export const usePaymentMethodsStore = defineStore("paymentMethods", () => {
+export const usePaymentMethodsStore = defineStore("paymentMethod", () => {
   const { $API } = useNuxtApp();
   const paymentMethods = ref(null);
 

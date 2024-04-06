@@ -1,13 +1,14 @@
 <template>
   <NuxtLink class="f-header-link" :to="to">
-    <slot>{{ text }}</slot>
+    <slot></slot>
   </NuxtLink>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-  to?: string;
-  text?: string;
+import type { RouteLocationRaw } from "vue-router";
+
+defineProps<{
+  to: RouteLocationRaw;
 }>();
 </script>
 

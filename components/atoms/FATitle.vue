@@ -5,6 +5,8 @@
 </template>
 
 <script setup lang="ts">
+import { TitleSizes, TitleTags } from "~/types/enums";
+
 const props = withDefaults(
   defineProps<{
     title?: string;
@@ -12,8 +14,8 @@ const props = withDefaults(
     tag?: TitleTags;
   }>(),
   {
-    size: "m",
-    tag: "h2",
+    size: TitleSizes.M,
+    tag: TitleTags.H2,
   },
 );
 

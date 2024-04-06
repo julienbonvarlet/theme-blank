@@ -1,11 +1,13 @@
 <template>
   <component :is="tag" :to="to" class="f-back">
-    <FAIcon icon="left" />
+    <FAIcon :icon="IconNames.Left" />
     <FAText>{{ text || $t("global.back") }}</FAText>
   </component>
 </template>
 
 <script lang="ts" setup>
+import { IconNames } from "~/types/enums";
+
 const props = defineProps<{
   to?: string | object;
   text?: string;

@@ -1,67 +1,58 @@
 import faumeConfig from "~/faumeConfig";
+import type { MenuConfig } from "~/types/types";
+import type { LinkTo, MenuItem, MenuLink, MenuVisual } from "~/types/types";
 
-const getLinkTo = (link) => {
+const getLinkTo = (link: MenuConfig) => {
   const { pageSlug, collectionSlug } = link;
-  if (pageSlug) return { name: pageSlug };
-  if (collectionSlug) return { name: "collection", params: { id: collectionSlug } };
+  if (pageSlug) {
+    return { name: pageSlug };
+  }
+  if (collectionSlug) {
+    return { name: "collections", params: { id: collectionSlug } };
+  }
   return null;
 };
 
-const getLinks = (link) => {
-  if (!link?.columns?.length) return null;
-  const links = [];
+const getLinks = (link: MenuConfig) => {
+  if (!link?.columns?.length) {
+    return null;
+  }
+  const links: MenuLink[] = [];
   link.columns.forEach((column) => {
     links.push({
       title: column.title,
       links: column.collectionSlugs.map((slug) => ({
-        slug: slug,
-        to: { name: "collection", params: { id: slug } },
+        slug,
+        to: { name: "collections", params: { id: slug } },
       })),
     });
   });
   return links;
 };
 
-const getVisuals = (link) => {
-  if (!link?.visuals?.length) return null;
-  const visuals = [];
+const getVisuals = (link: MenuConfig) => {
+  if (!link?.visuals?.length) {
+    return null;
+  }
+  const visuals: MenuVisual[] = [];
   link.visuals.forEach((visual) => {
     visuals.push({
-      slug: visual.pageSlug,
+      pageSlug: visual.pageSlug,
       image: visual.image,
     });
   });
+
   return visuals;
 };
 
 export const useMenuStore = defineStore("menu", () => {
-  const { getCollectionTitle } = useCollectionsStore();
-  const { t } = useI18n();
-
-  const getMenu = () => {
-    if (!faumeConfig.menu.length) return [];
-    const menu = [];
-    faumeConfig.menu.forEach((link) => {
-      menu.push({
-        slug: link.collectionSlug || link.pageSlug,
-        to: getLinkTo(link),
-        links: getLinks(link),
-        visuals: getVisuals(link),
-      });
-    });
-    return menu;
-  };
-
-  const menu = getMenu();
-
-  const getLinkTitle = (link) => {
-    const { title, slug } = link;
-    if (title) return t(title);
-    return (getCollectionTitle(slug) || t(slug))?.split(" - ").pop();
-  };
-
   return {
-    menu,
-    getLinkTitle,
+    menu: () => {
+      if (!faumeConfig.menu.length) {
+        return [];
+      }
+      
+      return faumeConfig.menu;
+    },
   };
 });

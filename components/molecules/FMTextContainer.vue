@@ -17,6 +17,8 @@
 </template>
 
 <script setup lang="ts">
+import { TitleSizes, TitleTags } from "~/types/enums";
+
 const props = withDefaults(
   defineProps<{
     title?: string;
@@ -30,9 +32,9 @@ const props = withDefaults(
     link2?: Record<string, any>;
   }>(),
   {
-    titleSize: "m",
+    titleSize: TitleSizes.M,
     ctaAppearance: "button",
-    titleTag: "h2",
+    titleTag: TitleTags.H2,
   },
 );
 

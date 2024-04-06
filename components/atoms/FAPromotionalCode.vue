@@ -2,11 +2,13 @@
   <div class="f-promotional-code" :class="{ 'is-copy': isCopied }" @click.prevent="copyCode">
     <FAText weight="bold" size="xs">{{ code }}</FAText>
     <FAText class="f-promotional-code__confirm" size="xs" weight="bold">{{ $t("account.gift_cards.copied") }}</FAText>
-    <FAIcon icon="copy" />
+    <FAIcon :icon="IconNames.Copy" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { IconNames } from "~/types/enums";
+
 const props = defineProps<{
   code: string;
 }>();

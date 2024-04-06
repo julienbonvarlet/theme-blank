@@ -32,7 +32,7 @@ const submitOrderFollow = async () => {
     const response = await auth.guestLogin(formData.value.orderNumber);
     localStorage.setItem("orderIdGuest", response.order.split("/").pop());
     localStorage.setItem("authGuest", JSON.stringify(response));
-    router.push("/pages/order-details-follow");
+    router.push("/order-details-follow");
   } catch (error) {
     console.error("Erreur lors du suivi d'une commande:", error);
   }

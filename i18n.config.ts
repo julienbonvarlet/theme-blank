@@ -552,10 +552,8 @@ export default defineI18nConfig(() => ({
           },
           payment: {
             title: "Paiement",
-            error_payments:
-              "Une erreur est survenue, aucun moyen de paiement n'est disponible pour le moment. Merci de bien vouloir essayer ultérieurement en rafraichissant cette page.",
-            error_payment:
-              "Une erreur est survenue, ce moyen de paiement n'est disponible pour le moment. Merci de bien vouloir en choisir un autre.",
+            error_payments: "Une erreur est survenue, aucun moyen de paiement n'est disponible pour le moment. Merci de bien vouloir essayer ultérieurement en rafraichissant cette page.",
+            error_payment: "Une erreur est survenue, ce moyen de paiement n'est disponible pour le moment. Merci de bien vouloir en choisir un autre.",
             bank_card: {
               button: "Procéder au paiement",
               error: "Une erreur est survenue, merci d'essayer à nouveau.",
@@ -563,7 +561,7 @@ export default defineI18nConfig(() => ({
           },
           confirmation: {
             title: "Votre commande a bien été enregistrée",
-            text: "Vous recevrez un email de confirmation dans quelques instants.<br><br>Vous pouvez suivre dès maintenant votre commande en vous connectant à votre <a href='/account'>compte Faume seconde main</a>.<br>Si vous avez effectuez cette commande en tant qu'invité, le suivi de votre commande est accessible via la page <a href='/pages/order-follow'>Suivi de commande</a>",
+            text: "Vous recevrez un email de confirmation dans quelques instants.<br><br>Vous pouvez suivre dès maintenant votre commande en vous connectant à votre <a href='/account'>compte Faume seconde main</a>.<br>Si vous avez effectuez cette commande en tant qu'invité, le suivi de votre commande est accessible via la page <a href='/order-follow'>Suivi de commande</a>",
             button: "Voir mon compte",
           },
         },
@@ -591,8 +589,7 @@ export default defineI18nConfig(() => ({
           confirmation: {
             title: "Prendre rendez-vous",
             confirm_message: "Votre rendez-vous est presque confirmé",
-            success_message:
-              "Nos équipes vous contacteront dès que possible par email ou téléphone afin de confirmer votre rendez-vous",
+            success_message: "Nos équipes vous contacteront dès que possible par email ou téléphone afin de confirmer votre rendez-vous",
             step1: "Rendez-vous demandé",
             step2: "Rendez-vous confirmé",
           },
@@ -744,8 +741,7 @@ export default defineI18nConfig(() => ({
           detail: {
             title: "Votre bon a bien été créé",
             text: "Vous pouvez retrouver cette carte cadeau dans la rubrique mes crédits de votre compte\n\nAttention, le code ne peut-être utilisé qu'une seule fois: pas de remboursement ou réutilisation possible du code même si son montant exède le montant de la commande",
-            not_sync_message:
-              "Le bon d'achat boutique peut prendre jusqu'à 48h pour être généré. Il sera utilisable dès lors que vous recevrez un e-mail de confirmation.",
+            not_sync_message: "Le bon d'achat boutique peut prendre jusqu'à 48h pour être généré. Il sera utilisable dès lors que vous recevrez un e-mail de confirmation.",
             button: "Générer un nouveau bon",
             not_found: {
               text: "Cette page est momentanément indisponible. Retrouver votre bon d'achat dans la section Mes crédits de votre compte",
@@ -785,8 +781,7 @@ export default defineI18nConfig(() => ({
             confirmation: {
               title: "Votre bon a bien été créé",
               text: "Vous pouvez retrouver cette carte cadeau dans la rubrique mes crédits de votre compte\n\nAttention, le code ne peut-être utilisé qu'une seule fois: pas de remboursement ou réutilisation possible du code même si son montant exède le montant de la commande",
-              not_sync_message:
-                "Le bon d'achat boutique peut prendre jusqu'à 48h pour être généré. Il sera utilisable dès lors que vous recevrez un e-mail de confirmation.",
+              not_sync_message: "Le bon d'achat boutique peut prendre jusqu'à 48h pour être généré. Il sera utilisable dès lors que vous recevrez un e-mail de confirmation.",
               button: "Générer un nouveau bon",
             },
           },
@@ -1024,7 +1019,7 @@ export default defineI18nConfig(() => ({
         },
       },
       sections: {
-        top_bar: "<p>Retour vers <a href='/faume.co'>faume.co</a></p>",
+        top_bar: 'Retour vers <a href="https://faume.co">faume.co</a>',
         header: {},
         mobile_menu: {
           account: "Mon compte",
@@ -1070,8 +1065,7 @@ export default defineI18nConfig(() => ({
           help: "En vous inscrivant, vous acceptez notre politique de confidentialité.",
           button: "S’abonner",
           success_message: "Félicitations ! Vous êtes désormais inscrit(e) à notre newsletter",
-          error_message:
-            "Une erreur est survenue, nous ne parvenons pas à vous inscrire. Merci d'essayer ultérieurement.",
+          error_message: "Une erreur est survenue, nous ne parvenons pas à vous inscrire. Merci d'essayer ultérieurement.",
         },
         footer: {
           subtitle_1: "Service client",
@@ -1083,18 +1077,20 @@ export default defineI18nConfig(() => ({
           shipping_return: "Politique de livraison & retour",
           concept: "Notre démarche",
           stores: "Boutiques participantes",
+          cgv: "Conditions générales de vente",
+          cgu: "Conditions générales d'utilisation",
           term_of_use: "Conditions générales d'utilisation",
           term_of_sell: "Conditions générales de ventes",
           legal_term: "Mentions légales",
           confidentiality: "Politique de confidentialité",
-          copyright: "© FAUME 2023",
+          copyright: "© FAUME 2024",
           faume: "Generated by Faume",
           social_network: {
-            facebook: "https://facebook/faume.com",
-            instagram: "https://instagram/faume.com",
-            pinterest: "www.pinterest/faume.com",
-            twitter: "https://twitter/faume.com",
-            youtube: "https://youtube/faume.com",
+            facebook: "https://facebook.com/faume.co",
+            instagram: "https://instagram.com/faume.co",
+            pinterest: "https://www.pinterest/faume.co",
+            twitter: "https://twitter.com/faume.co",
+            youtube: "https://youtube.com/faume.co",
           },
         },
       },
@@ -1167,20 +1163,17 @@ export default defineI18nConfig(() => ({
           },
           excellent: {
             title: "Excellent état",
-            subtitle:
-              "Très peu porté/utilisé, sans trace d'usure ni defaut<br><br>Il est comme neuf, sauf qu'il n'a plus l'étiquette de vente",
+            subtitle: "Très peu porté/utilisé, sans trace d'usure ni defaut<br><br>Il est comme neuf, sauf qu'il n'a plus l'étiquette de vente",
             text: "Lorem ipsum",
           },
           very_good: {
             title: "Très bon état",
-            subtitle:
-              "Peu porté, qui peut avoir de légères imperfections mais qui reste en très bon état (traces d'usure mineures invisibles à 20cm, plis d’usure mineurs, talon en très bon état)",
+            subtitle: "Peu porté, qui peut avoir de légères imperfections mais qui reste en très bon état (traces d'usure mineures invisibles à 20cm, plis d’usure mineurs, talon en très bon état)",
             text: "Lorem ipsum",
           },
           good: {
             title: "Bon état",
-            subtitle:
-              "Peu porté, qui peut avoir de légères imperfections mais qui reste en très bon état (traces d'usure mineures invisibles à 20cm, plis d’usure mineurs, talon en très bon état)",
+            subtitle: "Peu porté, qui peut avoir de légères imperfections mais qui reste en très bon état (traces d'usure mineures invisibles à 20cm, plis d’usure mineurs, talon en très bon état)",
             text: "Lorem ipsum",
           },
           bad: {
@@ -1217,6 +1210,42 @@ export default defineI18nConfig(() => ({
         sizes: "Shopper par taille",
         selections: "Nos sélections",
         categories: "Les catégories",
+        femme: {
+          femme: "Femme",
+          xxs: "XXS",
+          xs: "XS",
+          s: "S",
+          m: "M",
+          l: "L",
+          xl: "XL",
+          robes: "Robes",
+          mailles: "Mailles",
+          "vestes-manteaux": "Vestes & MAnteaaux",
+          sweatshirts: "Sweatshirts",
+          "chemises-blouses": "Chemises & Blouses",
+          "top-t-shirts": "Tops & T-shirts",
+          "jeans-pantalons": "Jeans & Pantalons",
+          jupes: "Jupes",
+          chaussures: "Chaussures",
+          news: "Nouveautés",
+        },
+        homme: {
+          homme: "Homme",
+          xs: "XS",
+          s: "S",
+          m: "M",
+          l: "L",
+          xl: "XL",
+          "t-shirts-polos": "T-shirts & Polos",
+          mailles: "Mailles",
+          "vestes-manteaux": "Vestes & Manteaux",
+          sweatshirts: "Sweatshirts",
+          chemises: "Chemises",
+          "jeans-pantalons": "Jeans & Pantalons",
+          shorts: "Shorts",
+          chaussures: "Chaussures",
+          news: "Nouveautés",
+        },
       },
       promotional_offers: {
         20: "- 20% supplémentaire",

@@ -3,9 +3,9 @@
     <FMSectionContainer :padding-x="true" max-width="l" :padding-y="true">
       <div class="f-footer__content">
         <div class="f-footer__nav">
-          <FMNavigationList v-for="link in data.menu" :key="link" :title="link.title" :links="link.links" />
+          <FMNavigationList v-for="link in menu" :key="link.label" :column="link" />
         </div>
-        <FMSocialNetworkList class="f-footer__network-list" :items="data.socialNetworks" />
+        <FMSocialNetworkList class="f-footer__network-list" :items="socialNetworks" />
         <div class="f-footer__bottom">
           <FAText size="s">{{ $t("sections.footer.copyright") }}</FAText>
           <FAText weight="bold" size="s">
@@ -18,72 +18,59 @@
 </template>
 
 <script setup lang="ts">
+import type { MenuColumn } from "~/types/types";
+
 const { t } = useI18n();
 const config = useRuntimeConfig();
 
-const data = computed(() => {
-  return {
-    menu: [
-      {
-        title: t("sections.footer.subtitle_1"),
-        links: [
-          { title: t("sections.footer.faq"), url: "/pages/faq" },
-          { title: t("sections.footer.contact"), url: "/pages/contact" },
-          {
-            title: t("sections.footer.track_order"),
-            url: "/pages/order-follow",
-          },
-        ],
-      },
-      {
-        title: t("sections.footer.subtitle_2"),
-        links: [
-          {
-            title: t("sections.footer.shipping_return"),
-            url: "/pages/shipping-return",
-          },
-          { title: t("sections.footer.concept"), url: "/pages/concept" },
-          { title: t("sections.footer.stores"), url: "/pages/sell" },
-          // {title: 'Conditions générales de ventes', url: '/pages/cgv'},
-          // {title: "Conditions générales d'utilisation", url: '/pages/cgu'},
-        ],
-      },
-      {
-        title: t("sections.footer.subtitle_3"),
-        links: [
-          { title: t("sections.footer.term_of_sell"), url: "/pages/cgv" },
-          {
-            title: t("sections.footer.term_of_use"),
-            url: `${config.clientUrlFirstHand}`,
-            target: "_blank",
-          },
-        ],
-      },
+const menu: MenuColumn[] = [
+  {
+    label: "sections.footer.subtitle_1",
+    items: [
+      { label: "sections.footer.faq", to: "/faq" },
+      { label: "sections.footer.contact", to: "/contact" },
+      { label: "sections.footer.track_order", to: "/order-follow" },
     ],
-    socialNetworks: [
-      {
-        url: t("sections.footer.social_network.facebook"),
-        icon: "facebook",
-      },
-      {
-        url: t("sections.footer.social_network.youtube"),
-        icon: "youtube",
-      },
-      {
-        url: t("sections.footer.social_network.instagram"),
-        icon: "instagram",
-      },
-      {
-        url: t("sections.footer.social_network.pinterest"),
-        icon: "pinterest",
-      },
-      {
-        url: t("sections.footer.social_network.twitter"),
-        icon: "twitter",
-      },
+  },
+  {
+    label: "sections.footer.subtitle_2",
+    items: [
+      { label: "sections.footer.shipping_return", to: "/shipping-return" },
+      { label: "sections.footer.concept", to: "/concept" },
+      { label: "sections.footer.stores", to: "/sell" },
     ],
-  };
-});
+  },
+  {
+    label: "sections.footer.subtitle_3",
+    items: [
+      { label: "sections.footer.term_of_sell", to: "/cgv" },
+      { label: "sections.footer.term_of_use", to: `${config.clientUrlFirstHand}` },
+    ],
+  },
+];
+
+const socialNetworks = [
+  {
+    url: "sections.footer.social_network.facebook",
+    icon: "facebook",
+  },
+  {
+    url: "sections.footer.social_network.youtube",
+    icon: "youtube",
+  },
+  {
+    url: "sections.footer.social_network.instagram",
+    icon: "instagram",
+  },
+  {
+    url: "sections.footer.social_network.pinterest",
+    icon: "pinterest",
+  },
+  {
+    url: "sections.footer.social_network.twitter",
+    icon: "twitter",
+  },
+];
 </script>
 
 <style lang="scss">

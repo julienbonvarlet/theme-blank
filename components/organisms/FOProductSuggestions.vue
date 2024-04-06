@@ -9,6 +9,8 @@
 </template>
 
 <script lang="ts" setup>
+import type { TitleSizes } from "~/types/enums";
+
 const { t } = useI18n();
 const recentlyViewedProductsStore = useRecentlyViewedProductsStore();
 const { getSuggestions, products: suggestionsProducts, unsetProducts } = useProductsSuggestions();

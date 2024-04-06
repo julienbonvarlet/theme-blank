@@ -6,17 +6,27 @@
 </template>
 
 <script lang="ts" setup>
-const props = withDefaults(
-  defineProps<{
-    title: string;
-    url?: string;
-    icon?: IconNames;
-    displayIcon?: boolean;
-  }>(),
-  {
-    displayIcon: true,
-  },
-);
+import type { IconNames } from "~/types/enums";
+
+defineProps<{
+  title: {
+    type: String;
+    required: true;
+  };
+  url: {
+    type: String;
+    required: false;
+  };
+  icon: {
+    type: IconNames;
+    required: false;
+  };
+  displayIcon: {
+    type: boolean;
+    required: false;
+    default: true;
+  };
+}>();
 </script>
 
 <style lang="scss">

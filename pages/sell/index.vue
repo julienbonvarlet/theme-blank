@@ -25,7 +25,7 @@ const data = {
         src: "https://demo.faume.co/cdn/shop/files/model-in-neutral-colors-by-window_1276x948_crop_center.jpg?v=1693927200",
         alt: t("pages.sell_choice.online"),
         title: t("pages.sell_choice.online"),
-        to: "/pages/sell/online",
+        to: "/sell/online",
         titleSize: "m",
       },
       {
@@ -33,7 +33,7 @@ const data = {
         src: "https://demo.faume.co/cdn/shop/files/man-in-white-and-light-tan-outfit_1276x948_crop_center.jpg?v=1693927324",
         alt: t("pages.sell_choice.store"),
         title: t("pages.sell_choice.store"),
-        to: "/pages/sell/store",
+        to: "/sell/store",
         titleSize: "m",
       },
     ],

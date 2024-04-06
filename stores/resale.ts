@@ -1,4 +1,4 @@
-export const useResalesStore = defineStore("resales", () => {
+export const useResalesStore = defineStore("resale", () => {
   const { $API } = useNuxtApp();
 
   const page = ref(1);

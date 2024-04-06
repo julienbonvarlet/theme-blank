@@ -1,10 +1,10 @@
 export interface AnnouncementBar {
-  text: string;
-  icon: string;
+  text: String;
+  icon: String;
 }
 
 export interface TopBar {
-  text: string;
+  text: String;
 }
 
 export interface HeaderConfig {
@@ -16,38 +16,38 @@ export interface HeaderConfig {
 }
 
 export interface Link {
-  title: string;
-  url: string;
+  title: String;
+  url: String;
   type: "primary" | "secondary";
 }
 
 export interface Icon {
-  title?: string;
-  text: string;
-  image: string;
+  title?: String;
+  text: String;
+  image: String;
 }
 
 export interface BannerConfig {
-  title: string;
-  text: string;
-  backgroundImage: string;
+  title: String;
+  text: String;
+  backgroundImage: String;
   link1: Link;
   align: "left" | "center" | "right";
   size: "sm" | "md" | "lg" | "xl";
 }
 
 export interface SectionIconsConfig {
-  title: string;
+  title: String;
   icons: Icon[];
   align: "left" | "center" | "right";
 }
 
 export interface Column {
   type: "icons" | "image" | "text";
-  title?: string;
-  text?: string;
-  src?: string;
-  alt?: string;
+  title?: String;
+  text?: String;
+  src?: String;
+  alt?: String;
   link1?: Link;
   icons?: Icon[];
 }

@@ -1,46 +1,25 @@
 <template>
   <div class="f-header-submenu">
     <FMSectionContainer :padding-x="true" max-width="xl" class-child="f-header-submenu__inner">
-      <nav v-if="navigationListData" class="f-header-submenu__menu">
-        <FMNavigationList v-for="link in navigationListData" :key="link" v-bind="link" />
+      <nav v-if="colums" class="f-header-submenu__menu">
+        <FMNavigationList v-for="link in colums" :key="link.label" :column="link" />
       </nav>
-      <div v-if="visualsData" class="f-header-submenu__visuals">
-        <FMThumbnail v-for="visual in visualsData" :key="visual" v-bind="visual" title-size="s" />
+      <div v-if="visuals" class="f-header-submenu__visuals">
+        <FMThumbnail v-for="link in visuals" :key="link.label" :visual="link" :title-size="TitleSizes.S" />
       </div>
     </FMSectionContainer>
   </div>
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n();
-const { getLinkTitle } = useMenuStore();
+import { TitleSizes } from "~/types/enums";
+import type { MenuColumn, MenuVisual } from "~/types/types";
 
-const props = defineProps<{
-  menu?: Array;
-  visuals?: Array;
+defineProps<{
+  label: string;
+  colums?: MenuColumn[];
+  visuals?: MenuVisual[];
 }>();
-
-const navigationListData = computed(() =>
-  !props.menu?.length
-    ? null
-    : [...props.menu].map((link) => ({
-        title: t(link.title),
-        links: [...link.links].map((x) => ({
-          title: getLinkTitle(x),
-          to: x.to,
-        })),
-      })),
-);
-
-const visualsData = computed(() =>
-  !props.visuals?.length
-    ? null
-    : [...props.visuals].map((visual) => ({
-        title: t(`menu.${visual.slug.replaceAll("-", "_")}`),
-        src: visual.image,
-        to: { name: visual.slug },
-      })),
-);
 </script>
 
 <style lang="scss">

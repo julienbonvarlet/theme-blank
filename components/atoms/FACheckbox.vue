@@ -1,10 +1,12 @@
 <template>
   <span class="f-checkbox" :class="[checkedClass, radioClass]">
-    <FAIcon v-if="checked" icon="check" />
+    <FAIcon v-if="checked" :icon="IconNames.Check" />
   </span>
 </template>
 
 <script setup lang="ts">
+import { IconNames } from "~/types/enums";
+
 const props = defineProps<{
   checked?: Boolean;
   radio?: Boolean;

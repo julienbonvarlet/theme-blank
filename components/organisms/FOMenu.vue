@@ -12,11 +12,11 @@
             <ul>
               <li v-for="(link, i) in menu">
                 <p v-if="link.links?.length" class="f-menu__link-primary" @click.prevent="active = i + 1">
-                  <span>{{ getLinkTitle(link) }}</span>
+                  <span>{{ $t(link.label) }}</span>
                   <FAIcon icon="right" />
                 </p>
-                <FAButton v-else-if="link.to?.name === 'sell'" :to="link.to" :label="getLinkTitle(link)" size="l" />
-                <NuxtLink v-else class="f-menu__link-primary" :to="link.to">{{ getLinkTitle(link) }}</NuxtLink>
+                <FAButton v-else-if="link.to?.name === 'sell'" :to="link.to" :label="t(link)" size="l" />
+                <NuxtLink v-else class="f-menu__link-primary" :to="link.to">{{ $t(link) }}</NuxtLink>
               </li>
             </ul>
             <ul class="f-menu__grid">
@@ -29,7 +29,7 @@
         <template v-for="(link, i) in menu">
           <Transition name="slide-fade">
             <div v-if="link.links && active === i + 1" class="f-menu__list is-second">
-              <FMCollapse v-for="sub_link in link.links" :title="getLinkTitle(sub_link)" :open="true" text-size="s">
+              <FMCollapse v-for="sub_link in link.links" :title="t(sub_link)" :open="true" text-size="s">
                 <ul>
                   <li v-for="sub_sub_link in sub_link.links">
                     <NuxtLink
@@ -39,7 +39,7 @@
                         params: { id: sub_sub_link.slug },
                       }"
                     >
-                      {{ getLinkTitle(sub_sub_link) }}
+                      {{ $t(sub_sub_link) }}
                     </NuxtLink>
                   </li>
                 </ul>
@@ -54,7 +54,7 @@
 
 <script lang="ts" setup>
 const { t } = useI18n();
-const { menu, getLinkTitle } = useMenuStore();
+const { menu } = useMenuStore();
 
 const route = useRoute();
 const emit = defineEmits(["onClose"]);

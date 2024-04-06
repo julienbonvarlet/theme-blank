@@ -1,4 +1,4 @@
-export const useTradeInCartItem = defineStore("tradeInCartItem", () => {
+export const useTradeInCartItem = defineStore("tradeIn", () => {
   const { $API } = useNuxtApp();
 
   const getCartItemControlledPhoto = async (id: number | string) => {

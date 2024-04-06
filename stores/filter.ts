@@ -1,4 +1,4 @@
-export const useFiltersStore = defineStore("filters", () => {
+export const useFiltersStore = defineStore("filter", () => {
   const { $API } = useNuxtApp();
 
   // States

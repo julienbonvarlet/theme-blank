@@ -45,8 +45,11 @@ const cardInlineData = computed(() => {
 const tag = computed(() => {
   const state = props.voucher.state;
   let date = null;
-  if (state === "burned") date = formatDate(props.voucher.burnedAt);
-  else if (state === "expired") date = formatDate(props.voucher.expiredAt);
+  if (state === "burned") {
+    date = formatDate(props.voucher.burnedAt);
+  } else if (state === "expired") {
+    date = formatDate(props.voucher.expiredAt);
+  }
   const statesColors = {
     available: "success",
     burned: "light",

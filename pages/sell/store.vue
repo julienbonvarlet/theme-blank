@@ -17,7 +17,7 @@ const data = {
     backgroundImage: "https://faume.imgix.net/10/home-baner.webp",
     link1: {
       title: t("pages.sell_in_store.banner.button"),
-      url: "/pages/sell/store-locator",
+      url: "/sell/store-locator",
       type: "secondary",
     },
     align: "left",
@@ -49,7 +49,7 @@ const data = {
     ],
     link: {
       title: t("pages.sell_in_store.section_icons.button"),
-      url: "/pages/sell",
+      url: "/sell",
     },
   },
   gridRow: {
@@ -69,7 +69,7 @@ const data = {
         text: t("pages.sell_in_store.section_advantages.text"),
         link1: {
           title: t("pages.sell_in_store.section_advantages.button"),
-          url: "/pages/sell",
+          url: "/sell",
           type: "primary",
         },
       },
@@ -94,7 +94,7 @@ const data = {
         text: t("pages.sell_in_store.section_conditions.text"),
         link1: {
           title: t("pages.sell_in_store.section_conditions.button"),
-          url: "/pages/sell",
+          url: "/sell",
           type: "primary",
         },
       },

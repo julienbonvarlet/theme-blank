@@ -3,14 +3,14 @@
     <FMSectionContainer :padding-x="true" max-width="xl" class-child="f-header__container">
       <div class="f-header__mobile">
         <button class="f-header__burger" @click.prevent="isMobileMenuOpen = true">
-          <FAIcon icon="menu" />
+          <FAIcon :icon="IconNames.Menu" />
         </button>
       </div>
 
       <ul class="f-header__nav">
-        <li v-for="link in menu" :key="link" class="f-header__link">
-          <FAHeaderLink :to="link.to">{{ getLinkTitle(link) }}</FAHeaderLink>
-          <FMHeaderSubmenu v-if="link.links || link.visuals" :menu="link.links" :visuals="link.visuals" />
+        <li v-for="link in menu" :key="link.label" class="f-header__link">
+          <FAHeaderLink :to="link.to">{{ $t(link.label) }}</FAHeaderLink>
+          <FMHeaderSubmenu v-if="link.columns || link.visuals" :label="link.label" :colums="link.columns" :visuals="link.visuals" />
         </li>
       </ul>
 
@@ -20,39 +20,42 @@
 
       <div class="f-header__icons">
         <NuxtLink to="/account" class="f-header__account">
-          <FAIcon icon="user" />
+          <FAIcon :icon="IconNames.User" />
         </NuxtLink>
         <button class="f-header__search" @click="isSearchOpen = !isSearchOpen">
-          <FAIcon icon="search" />
+          <FAIcon :icon="IconNames.Search" />
         </button>
         <NuxtLink v-if="wishlistIcon" to="/whislist" class="f-header__whislist">
-          <FAIcon icon="heart-empty" />
+          <FAIcon :icon="IconNames.HeartEmpty" />
         </NuxtLink>
         <NuxtLink v-if="storeIcon" to="/store" class="f-header__store">
-          <FAIcon icon="house" />
+          <FAIcon :icon="IconNames.House" />
         </NuxtLink>
         <button class="f-header__cart" @click="toggleMiniCart">
-          <FAIcon class="f-header__cart-icon" icon="cart" />
+          <FAIcon class="f-header__cart-icon" :icon="IconNames.Cart" />
           <span v-if="cartCount > 0" class="f-header__cart__count">{{ cartCount }}</span>
         </button>
       </div>
     </FMSectionContainer>
   </header>
 
-  <FOMinicart />
+  <!-- <FOMinicart />
 
   <FOSearchProducts v-if="isSearchOpen" @update:is-search-open="isSearchOpen = $event" />
 
-  <FOMenu :open="isMobileMenuOpen" @on-close="isMobileMenuOpen = false" />
+  <FOMenu :open="isMobileMenuOpen" @on-close="isMobileMenuOpen = false" /> -->
 </template>
 
 <script setup lang="ts">
 import faumeConfig from "~/faumeConfig";
 
+import { IconNames } from "~/types/enums";
+
+const menu = faumeConfig.menu;
+
 const wishlistIcon = faumeConfig.header.wishlistIcon;
 const storeIcon = faumeConfig.header.storeIcon;
 
-const { menu, getLinkTitle } = useMenuStore();
 const cartStore = useCartStore();
 const { setHeaderHeight } = useHeaderHeight();
 const header = ref(null);
@@ -60,7 +63,7 @@ const isSearchOpen = ref(false);
 const isMobileMenuOpen = ref(false);
 
 const toggleMiniCart = () => {
-  cartStore.toggleMiniCart();
+  cartStore.toggleMiniCart(true);
 };
 
 const cartCount = computed(() => cartStore.cartItems?.length);

@@ -1,30 +1,18 @@
 <template>
-  <div v-if="links?.length" class="f-navigation-list">
-    <FATitle v-if="title" size="xs">{{ title.includes(".") ? $t(title) : title }}</FATitle>
-    <FALink
-      v-for="link in links"
-      :key="link"
-      size="s"
-      :target="link.target"
-      :text="link.title"
-      :to="link.url || link.to"
-      :is-active="false"
-      @click="handleClick"
-    />
+  <div class="f-navigation-list">
+    <FATitle :size="TitleSizes.XS">{{ $t(column.label) }}</FATitle>
+    <FALink v-for="link in column.items" :key="link.label" size="s" :to="link.to" :is-active="false">{{ $t(link.label) }}</FALink>
   </div>
 </template>
 
 <script setup lang="ts">
+import { TitleSizes } from "~/types/enums";
+import type { MenuColumn } from "~/types/types";
+import FALink from "../atoms/FALink.vue";
+
 const props = defineProps<{
-  links?: Array;
-  title?: string;
+  column: MenuColumn;
 }>();
-
-const emit = defineEmits(["list-click"]);
-
-function handleClick() {
-  emit("list-click");
-}
 </script>
 
 <style lang="scss">

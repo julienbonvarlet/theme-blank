@@ -20,7 +20,7 @@ const data = {
     text: t("pages.concept.section_text.text"),
     link1: {
       title: t("pages.concept.section_text.button"),
-      url: "/pages/sell",
+      url: "/sell",
       type: "primary",
     },
     align: "center",
@@ -57,7 +57,7 @@ const data = {
         text: t("pages.concept.section_row_2.text"),
         link1: {
           title: t("pages.concept.section_row_2.button"),
-          url: "/pages/sell",
+          url: "/sell",
           type: "primary",
         },
       },
@@ -67,7 +67,7 @@ const data = {
         text: t("pages.concept.section_row_3.text"),
         link1: {
           title: t("pages.concept.section_row_3.button"),
-          url: "/pages/sell",
+          url: "/sell",
           type: "primary",
         },
       },

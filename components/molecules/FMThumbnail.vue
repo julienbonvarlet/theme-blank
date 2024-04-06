@@ -1,20 +1,23 @@
 <template>
-  <NuxtLink :to="to" class="f-thumbnail">
-    <FAImage class="f-thumbnail__img" :src="src" :alt="title" />
-    <FATitle v-if="title" :size="titleSize" class="f-thumbnail__title">{{ title }}</FATitle>
+  <NuxtLink :to="visual.to" class="f-thumbnail">
+    <FAImage class="f-thumbnail__img" :src="visual.image" :alt="t(visual.label)" />
+    <FATitle :size="titleSize" class="f-thumbnail__title">{{ $t(visual.label) }}</FATitle>
   </NuxtLink>
 </template>
 
 <script setup lang="ts">
+import { TitleSizes } from "~/types/enums";
+import type { MenuVisual } from "~/types/types";
+
+const { t } = useI18n();
+
 const props = withDefaults(
   defineProps<{
-    src: string;
-    title?: string;
+    visual: MenuVisual;
     titleSize?: TitleSizes;
-    to?: string | object;
   }>(),
   {
-    titleSize: "xs",
+    titleSize: TitleSizes.XS,
   },
 );
 </script>

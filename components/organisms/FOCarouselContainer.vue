@@ -26,6 +26,8 @@
 </template>
 
 <script setup lang="ts">
+import type { TitleSizes } from "~/types/enums";
+
 const props = defineProps<{
   title?: string;
   subtitle?: string;

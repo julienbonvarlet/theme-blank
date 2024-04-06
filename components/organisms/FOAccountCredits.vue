@@ -1,11 +1,11 @@
 <template>
   <div class="f-account-credits">
     <FMAccountHeading :title="$t('account.gift_cards.title')">
-      <FAButton to="/pages/sell" :label="$t('account.gift_cards.button_new_trade_in')" icon="plus" />
+      <FAButton to="/sell" :label="$t('account.gift_cards.button_new_trade_in')" icon="plus" />
     </FMAccountHeading>
     <div class="f-account-credits__wallet">
       <FAText>{{ $t("account.gift_cards.text") }}</FAText>
-      <FALink to="/pages/faq">{{ $t("account.gift_cards.how_it_works") }}</FALink>
+      <FALink to="/faq">{{ $t("account.gift_cards.how_it_works") }}</FALink>
       <FMWalletCard :wallet-amount="walletAmount" />
     </div>
     <FMAccountHeading :title="$t('account.gift_cards.subtitle')" size="s" />

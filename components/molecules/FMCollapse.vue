@@ -3,7 +3,7 @@
     <div class="f-collapse__heading" @click.prevent="toggleCollapse">
       <FAText v-if="!isTitle" :tag="titleTag" :size="textSize">{{ title }}</FAText>
       <FATitle v-else :size="titleSize" :tag="titleTag">{{ title }}</FATitle>
-      <FAIcon :key="isOpen" :icon="isOpen ? 'up' : 'down'" />
+      <FAIcon :icon="isOpen ? IconNames.Up : IconNames.Down" />
     </div>
     <div class="f-collapse__content" :style="{ maxHeight: isOpen ? maxContentHeight + 'px' : '0' }">
       <div ref="textContent" class="f-collapse__text">
@@ -16,6 +16,8 @@
 </template>
 
 <script lang="ts" setup>
+import { IconNames, TitleSizes, TitleTags, type TextSizes } from "~/types/enums";
+
 const props = withDefaults(
   defineProps<{
     title: string;
@@ -27,8 +29,8 @@ const props = withDefaults(
     open: boolean;
   }>(),
   {
-    titleSize: "s",
-    titleTag: "p",
+    titleSize: TitleSizes.S,
+    titleTag: TitleTags.P,
     isTitle: false,
   },
 );
@@ -106,4 +108,4 @@ onUnmounted(() => {
   }
 }
 </style>
-~/types/ui
+~/types/uiTextSizes, , TitleTagsTextSizes, , TitleTags

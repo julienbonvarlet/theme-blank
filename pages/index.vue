@@ -12,7 +12,7 @@
       }"
       :link2="{
         title: $t('pages.index.banner.button2'),
-        url: '/pages/sell',
+        url: '/sell',
         type: 'secondary',
       }"
     />
@@ -22,7 +22,7 @@
       :text="$t('pages.index.section_text.text')"
       :link1="{
         title: $t('pages.index.section_text.button'),
-        url: '/pages/concept',
+        url: '/concept',
         type: 'primary',
       }"
       align="center"
@@ -100,7 +100,7 @@ const gridColumns = computed(() => [
     title: t("pages.index.grid.2.title"),
     link1: {
       title: t("pages.index.grid.2.button"),
-      url: "/pages/sell",
+      url: "/sell",
       type: "primary",
     },
     icons: [
@@ -154,7 +154,7 @@ const gridColumns = computed(() => [
     src: "https://demo.faume.co/cdn/shop/files/man-in-white-and-light-tan-outfit_1276x948_crop_center.jpg?v=1693927324",
     alt: t("pages.index.grid.4.title"),
     title: t("pages.index.grid.4.title"),
-    to: "/pages/sell",
+    to: "/sell",
     titleSize: "xl",
   },
 ]);
