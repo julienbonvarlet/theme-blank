@@ -39,19 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch } from "vue";
-import {
-  useCartStore,
-  useCartData,
-  usePriceFormatter,
-  useCartSuggestions,
-  useNuxtApp,
-} from "#imports";
-import { useI18n } from "vue-i18n";
-
 const { t } = useI18n();
-const { formatPrice } = usePriceFormatter();
-const cartStore = useCartStore();
 const { selectedFiltersForSuggestions } = useCartSuggestions();
 const { $trackingPlan } = useNuxtApp();
 
@@ -67,7 +55,6 @@ const {
   totalFormatted,
   amountForFreeShipping,
   cartCount,
-  cartOrder,
 } = useCartData();
 
 const data = computed(() => {

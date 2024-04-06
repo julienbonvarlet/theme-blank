@@ -1,0 +1,21 @@
+body {
+  font-family: var(--f-font-family-text);
+  font-size: var(--f-text-m-font-size);
+  line-height: var(--f-text-line-height);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0;
+}

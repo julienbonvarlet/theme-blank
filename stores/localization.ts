@@ -1,5 +1,3 @@
-import { defineStore } from "pinia";
-
 interface LocalizationState {
   locale: string;
   country: string;

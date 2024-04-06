@@ -43,8 +43,6 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "#imports";
-
 const percent = ref(0);
 onMounted(() => (percent.value = 60));
 </script>

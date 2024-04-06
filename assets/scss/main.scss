@@ -1,0 +1,56 @@
+// All mixins, function, sass variables (no direct css code here, only function/ utils/ vars), because it will be included in each component
+@import "./imports/include-media";
+@import "./imports/mixins";
+@import "./imports/breakpoints";
+@import "./imports/easing";
+
+// Eric meyer reset css
+@import "./modules/reset.css";
+
+// All Layouts
+@import "./theme/layout";
+
+// Formkit base
+@import "./modules/formkit";
+
+// CookieConsent base
+@import "./modules/cookieconsent";
+
+// All typography
+@import "./theme/length";
+
+// All typography
+@import "./theme/typos";
+
+// All colors
+@import "./theme/colors";
+
+// All colors
+@import "./theme/margin";
+
+// All radius
+@import "./theme/radius";
+
+// All widths
+@import "./theme/width";
+
+// All images ratio
+@import "./theme/ratio";
+
+// Fontfaces declaration
+@import "./theme/fontface";
+
+// Z index
+@import "./theme/zindex";
+
+// formkit
+@import "./theme/formkit";
+
+// vue transitions
+@import "./theme/vue-transition";
+
+// All CSS variables
+@import "./theme/atomic-design-variables";
+
+// All more global styles
+@import "./theme/global";

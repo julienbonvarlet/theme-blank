@@ -17,10 +17,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useRoute } from "vue-router";
-import { ref, onMounted } from "vue";
-import { useVouchersStore } from "../../../stores/vouchers";
-
 const route = useRoute();
 const voucherStore = useVouchersStore();
 

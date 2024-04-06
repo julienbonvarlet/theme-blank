@@ -1,10 +1,3 @@
-import { useNuxtApp, ref, useCookie, watch } from "#imports";
-import { useRuntimeConfig } from "#app";
-import { defineStore } from "pinia";
-import { useUserStore } from "./userStore";
-import axios from "axios";
-import { useRoute } from "vue-router";
-
 export const useAuthStore = defineStore("auth", () => {
   const route = useRoute();
   const userStore = useUserStore();

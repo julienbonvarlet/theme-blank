@@ -1,6 +1,3 @@
-import { ref } from "#imports";
-import { defineStore } from "pinia";
-
 export const useHeaderHeight = defineStore("headerHeight", () => {
   // States
   const headerHeight = ref(null);

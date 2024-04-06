@@ -1,0 +1,28 @@
+:root {
+  --f-field-box-border-radius: var(--f-length-4);
+  --f-field-box-text-transform: none;
+  --f-field-box-color: var(--f-color-text-dark);
+  --f-field-box-background: var(--f-color-background-very-light);
+  --f-field-box-border-color: var(--f-color-border);
+  --f-field-box-hover-border-color: var(--f-color-background-dark);
+  --f-field-box-selected-color: var(--f-color-text-dark);
+  --f-field-box-selected-background: var(--f-color-background-very-light);
+  --f-field-box-selected-border-color: var(--f-color-background-dark);
+
+  --f-field-box-m-width: var(--f-length-5);
+  --f-field-box-s-width: var(--f-length-3);
+
+  --f-field-box-m-font-size: var(--f-text-s-font-size);
+  --f-field-box-s-font-size: var(--f-text-xs-font-size);
+
+  --f-field-box-m-font-weight: 400;
+  --f-field-box-s-font-weight: 400;
+
+  --f-field-box-m-padding-x: calc(
+    (var(--f-field-box-m-width) - var(--f-field-box-m-font-size)) / 2
+  );
+  --f-field-box-s-padding-x: calc(var(--f-length-1) / 2);
+
+  --f-field-box-m-border-width: 2px;
+  --f-field-box-s-border-width: 1px;
+}

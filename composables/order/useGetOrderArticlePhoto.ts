@@ -1,5 +1,3 @@
-import { useNuxtApp } from "#imports";
-
 export function useGetOrderPhoto() {
   const { $API } = useNuxtApp();
 

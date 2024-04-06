@@ -1,0 +1,47 @@
+:root {
+  --f-collection-suggestion-menu-items-visible-lg: 10;
+  --f-collection-suggestion-menu-items-visible-md: 7;
+  --f-collection-suggestion-menu-items-visible-sm: 4;
+
+  --f-collection-suggestion-menu-items-visible: var(
+    --f-collection-suggestion-menu-items-visible-sm
+  );
+
+  --f-collection-suggestion-menu-margin-top-lg: var(--f-length-1);
+  --f-collection-suggestion-menu-margin-top-md: var(--f-length-1);
+  --f-collection-suggestion-menu-margin-top-sm: var(--f-length-1);
+  --f-collection-suggestion-menu-margin-bottom-lg: var(--f-length-6);
+  --f-collection-suggestion-menu-margin-bottom-md: var(--f-length-1);
+  --f-collection-suggestion-menu-margin-bottom-sm: var(--f-length-1);
+
+  --f-collection-suggestion-menu-margin-top: var(
+    --f-collection-suggestion-menu-margin-top-sm
+  );
+  --f-collection-suggestion-menu-margin-bottom: var(
+    --f-collection-suggestion-menu-margin-bottom-sm
+  );
+
+  @include media(">=tablet", "<desktop") {
+    --f-collection-suggestion-menu-items-visible: var(
+      --f-collection-suggestion-menu-items-visible-md
+    );
+    --f-collection-suggestion-menu-margin-top: var(
+      --f-collection-suggestion-menu-margin-top-md
+    );
+    --f-collection-suggestion-menu-margin-bottom: var(
+      --f-collection-suggestion-menu-margin-bottom-md
+    );
+  }
+
+  @include media(">=desktop") {
+    --f-collection-suggestion-menu-items-visible: var(
+      --f-collection-suggestion-menu-items-visible-lg
+    );
+    --f-collection-suggestion-menu-margin-top: var(
+      --f-collection-suggestion-menu-margin-top-lg
+    );
+    --f-collection-suggestion-menu-margin-bottom: var(
+      --f-collection-suggestion-menu-margin-bottom-lg
+    );
+  }
+}

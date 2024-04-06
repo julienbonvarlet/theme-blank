@@ -1,0 +1,14 @@
+:root {
+  --f-header-background: var(--f-color-background-very-light);
+  --f-header-color: var(--f-color-text-dark);
+  --f-header-icons-gap: var(--f-length-1);
+  --f-header-icons-size: calc(var(--f-header-link-font-size) * 1.2);
+  --f-header-links-gap: var(--f-length-3);
+  --f-header-height-lg: var(--f-length-8);
+  --f-header-height-md: var(--f-length-6);
+  --f-header-height: var(--f-header-height-md);
+
+  @include media(">=desktop") {
+    --f-header-height: var(--f-header-height-lg);
+  }
+}

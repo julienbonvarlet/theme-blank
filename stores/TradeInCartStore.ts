@@ -1,8 +1,3 @@
-import { defineStore } from "pinia";
-
-import axios from "axios";
-import { getAxiosConfig } from "../composables/useApiConfig";
-
 export const useTradeInCartStore = defineStore("tradeInCart", () => {
   const { $API } = useNuxtApp();
   const tradeInCart = ref(null);

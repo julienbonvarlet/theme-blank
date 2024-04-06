@@ -6,11 +6,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from "vue";
-import { useAsyncData } from "nuxt/app";
-import { useOrdersStore } from "#imports";
-import { useRoute } from "vue-router";
-
 const route = useRoute();
 const ordersStore = useOrdersStore();
 
@@ -34,7 +29,7 @@ watch(
       order.value = await loadOrderData(newId);
     }
   },
-  { immediate: true },
+  { immediate: true }
 );
 
 watch(orderData, (newOrderData) => {

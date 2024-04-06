@@ -1,0 +1,40 @@
+:root {
+  /* theme name */
+  --formkit-theme: genesis;
+
+  /* Border radius */
+  --fk-border-radius: var(--f-radius-sm);
+
+  /* typography */
+  --fk-font-family: var(--f-font-family-text);
+  --fk-font-size: var(--f-font-size);
+
+  /* label */
+  --fk-font-family-label: var(--f-field-title-font-family);
+  --fk-font-size-label: var(--f-field-title-font-size);
+  --fk-font-weight-label: var(--f-field-title-font-weight);
+
+  /* colors */
+  --fk-color-primary: var(--f-color-background-dark);
+  --fk-color-checked: var(--fk-color-primary);
+  --fk-color-input: var(--f-color-text-dark);
+  --fk-color-input-selection: var(--f-color-background-dark);
+  --fk-color-border: var(--f-color-border);
+  --fk-color-border-focus: var(--f-color-background-dark);
+  --fk-color-placeholder: var(--f-color-text-grey);
+  --fk-color-disabled: rgba(0 0 0 / 10%);
+  --fk-color-help: var(--f-color-text-grey);
+
+  /* --fk-color-message: inherit; */
+  --fk-color-icon: rgba(0 0 0 / 80%);
+  --fk-color-icon-minor: rgba(0 0 0 / 55%);
+  --fk-color-range-track: var(--fk-color-border);
+  --fk-color-range-thumb: var(--fk-color-primary);
+  --fk-focus-ring-color: var(--f-color-background-dark);
+
+  /* Margins */
+  --fk-margin-outer: var(--f-length-3) 0;
+
+  /* Max width */
+  --fk-max-width-input: 375px;
+}

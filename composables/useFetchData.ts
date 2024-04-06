@@ -1,6 +1,3 @@
-import axios from "axios";
-import { getAxiosConfig } from "./useApiConfig";
-
 export async function fetchData(url: string, apiConfig: object = {}) {
   if (!url) {
     return null;

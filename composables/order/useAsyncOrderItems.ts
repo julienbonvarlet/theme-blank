@@ -1,5 +1,3 @@
-import { fetchAllData } from "../useFetchData";
-
 export function useAsyncOrderItems(apiConfig: any = {}, order: any) {
   const items = ref<null | array>(null);
 

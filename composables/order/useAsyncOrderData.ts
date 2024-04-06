@@ -1,5 +1,3 @@
-import { fetchData } from "../useFetchData";
-
 export function useAsyncOrderData(apiConfig: any = {}, order: any) {
   const billingAddress = ref<null | object>(null);
   const shippingAddress = ref<null | object>(null);

@@ -1,7 +1,3 @@
-import { defineStore } from "pinia";
-
-import { useUserStore } from "./userStore";
-
 export const useVouchersStore = defineStore("vouchers", () => {
   const { $API } = useNuxtApp();
   const userStore = useUserStore();

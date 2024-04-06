@@ -6,11 +6,6 @@
 </template>
 
 <script lang="ts" setup>
-import { watch, ref } from "vue";
-import { useAsyncData } from "nuxt/app";
-import { useAddressesStore } from "../../../stores/addresses";
-import { useRoute } from "vue-router";
-
 const route = useRoute();
 const addressesStore = useAddressesStore();
 const address = ref<null | object>(null);

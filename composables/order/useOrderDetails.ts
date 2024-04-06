@@ -1,6 +1,3 @@
-import { computed } from "vue";
-import { useDateFormatter } from "../useDateFormatter";
-
 const { formatDate, toUnixTimestamp } = useDateFormatter();
 
 export function useOrderDetails(order: any, wording: any) {

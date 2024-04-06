@@ -1,0 +1,58 @@
+#cc-main {
+  /** Change font **/
+  --cc-font-family: var(--f-font-family-text);
+
+  --cc-bg: var(--f-color-background-light);
+  --cc-primary-color: var(--button-primary-background);
+  --cc-secondary-color: var(--button-primary-background);
+
+  --cc-btn-primary-bg: var(--button-primary-background);
+  --cc-btn-primary-color: var(--button-primary-color);
+  --cc-btn-primary-border-color: var(--button-primary-background);
+  --cc-btn-primary-hover-bg: var(--button-secondary-background);
+  --cc-btn-primary-hover-color: var(--button-primary-background);
+  --cc-btn-primary-hover-border-color: var(--button-primary-background);
+
+  --cc-btn-secondary-bg: var(--button-secondary-background);
+  --cc-btn-secondary-color: var(--button-secondary-color);
+  --cc-btn-secondary-border-color: var(--f-color-border);
+  --cc-btn-secondary-hover-bg: var(--button-secondary-hover-background);
+  --cc-btn-secondary-hover-color: var(--button-secondary-hover-color);
+  --cc-btn-secondary-hover-border-color: var(--f-color-border);
+
+  --cc-separator-border-color: var(--f-color-border);
+
+  --cc-toggle-on-bg: var(--button-secondary-background);
+  --cc-toggle-off-bg: var(--button-primary-background);
+  --cc-toggle-on-knob-bg: var(--button-secondary-color);
+  --cc-toggle-off-knob-bg: var(--button-secondary-background);
+
+  --cc-toggle-enabled-icon-color: var(--cc-btn-primary-color); // yes (v tick)
+  --cc-toggle-disabled-icon-color: var(--cc-btn-primary-color); // no (x tick)
+
+  --cc-toggle-readonly-bg: var(--button-secondary-background);
+  --cc-toggle-readonly-knob-bg: var(--button-primary-background);
+  --cc-toggle-readonly-knob-icon-color: var(--button-secondary-background);
+
+  --cc-section-category-border: var(--button-secondary-background);
+
+  --cc-cookie-category-block-bg: var(--button-secondary-background);
+  --cc-cookie-category-block-border: var(--f-color-border);
+  --cc-cookie-category-block-hover-bg: var(--button-secondary-background);
+  --cc-cookie-category-block-hover-border: var(--f-color-border);
+  --cc-cookie-category-expanded-block-bg: var(--button-secondary-background);
+  --cc-cookie-category-expanded-block-hover-bg: var(--f-color-border);
+
+  --cc-overlay-bg: rgba(0, 0, 0, 0.65);
+  --cc-webkit-scrollbar-bg: var(--cc-section-category-border);
+  --cc-webkit-scrollbar-hover-bg: var(--cc-btn-primary-hover-bg);
+
+  --cc-footer-bg: var(--f-color-background-light);
+  --cc-footer-color: var(--button-secondary-color);
+  --cc-footer-border-color: var(--f-color-border);
+
+  --cc-link-color: var(--button-secondary-color);
+
+  /** Make the buttons a bit rounder **/
+  --cc-btn-border-radius: 10px;
+}

@@ -1,0 +1,73 @@
+// Use as: var(--f-color-primary) in CSS
+$theme-colors: (
+  "primary": (
+    "base": #6a87f9,
+    "light": lighten(#fff, 50%),
+    "dark": darken(#6a87f9, 5%),
+  ),
+  "secondary": (
+    "base": #078f44,
+    "light": lighten(#078f44, 50%),
+    "dark": darken(#078f44, 5%),
+  ),
+  "tertiary": (
+    "base": #f6f6f6,
+    "light": lighten(#f6f6f6, 10%),
+    "dark": darken(#f6f6f6, 5%),
+  ),
+  "error": (
+    "base": #bf2121,
+    "light": lighten(#bf2121, 50%),
+    "dark": darken(#bf2121, 5%),
+  ),
+  "success": (
+    "base": #398639,
+    "light": lighten(#398639, 50%),
+    "dark": darken(#398639, 5%),
+  ),
+  "text": (
+    "base": #000000,
+    "light": lighten(#000000, 50%),
+    "white": darken(#000000, 100%),
+  ),
+  "white": #ffffff,
+  "grey": #a5a5a5,
+  "black": #000000,
+);
+
+// Generate CSS variables corresponding to the theme colors
+:root {
+  @each $color-name, $color-values in $theme-colors {
+    @if type-of($color-values) == map {
+      @each $color-key, $color-value in $color-values {
+        --f-color-#{$color-name}-#{$color-key}: #{$color-value};
+      }
+      --f-color-#{$color-name}: var(--f-color-#{$color-name}-base);
+    } @else {
+      --f-color-#{$color-name}: #{$color-values};
+    }
+  }
+}
+
+:root {
+  --f-color-text-dark: #000;
+  --f-color-text-light: #fff;
+  --f-color-text-primary: var(--f-color-primary);
+  --f-color-text-secondary: var(--f-color-secondary);
+  --f-color-text-grey: #a5a5a5;
+  --f-color-text-success: #398639;
+  --f-color-text-error: #bf2121;
+
+  --f-color-background-very-light: #fff;
+  --f-color-background-light: #f7f7f7;
+  --f-color-background-medium: #eee;
+  --f-color-background-dark: #000;
+  --f-color-background-primary: var(--f-color-text-primary);
+  --f-color-background-secondary: var(--f-color-text-secondary);
+  --f-color-background-error: #ffeded;
+  --f-color-background-success: #f5ffed;
+
+  --f-color-border: #ddd;
+
+  --f-color-promotion: var(--f-color-text-error);
+}

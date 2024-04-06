@@ -1,5 +1,3 @@
-import { useRuntimeConfig } from "#app";
-
 export const useProductsSuggestions = () => {
   const config = useRuntimeConfig();
   const clientId = config.public.faume.clientId;

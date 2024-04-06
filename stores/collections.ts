@@ -1,8 +1,3 @@
-import { ref, onMounted } from "vue";
-import { useNuxtApp } from "nuxt/app";
-import { defineStore } from "pinia";
-import { useRuntimeConfig } from "#app";
-
 export const useCollectionsStore = defineStore("collectionsStore", () => {
   const { $API } = useNuxtApp();
   const config = useRuntimeConfig();

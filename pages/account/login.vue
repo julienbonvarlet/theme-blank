@@ -25,9 +25,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from "vue-router";
-import { ref, computed } from "vue";
-
 const router = useRouter();
 
 const email = ref<null | string>(null);
@@ -43,7 +40,7 @@ const image = computed(() =>
     ? image_email
     : emailExists.value
       ? image_login
-      : image_register,
+      : image_register
 );
 
 const handleEmailSubmit = (data) => {

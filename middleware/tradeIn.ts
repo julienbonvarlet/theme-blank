@@ -1,6 +1,3 @@
-import { defineNuxtRouteMiddleware, navigateTo } from "#app";
-import { useTradeInModule } from "../stores/tradeInModule";
-
 export default defineNuxtRouteMiddleware((to) => {
   const tradeInStore = useTradeInModule();
   const { cart, cartAgree } = tradeInStore;

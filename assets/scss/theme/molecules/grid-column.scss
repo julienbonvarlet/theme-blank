@@ -1,0 +1,17 @@
+:root {
+  --grid-column-lg-height: 650px;
+  --grid-column-md-height: 50vw;
+  --grid-column-sm-height: 100vw;
+  --grid-column-column-gap: 0;
+  --grid-column-row-gap: 0;
+
+  --grid-column-height: var(--grid-column-sm-height);
+
+  @include media(">=tablet", "<desktop") {
+    --grid-column-height: var(--grid-column-md-height);
+  }
+
+  @include media(">=desktop") {
+    --grid-column-height: var(--grid-column-lg-height);
+  }
+}

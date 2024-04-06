@@ -14,9 +14,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useAuthStore, useRouter } from "#imports";
-import { useI18n } from "vue-i18n";
-
 const { t } = useI18n();
 const { enableAccount } = useAuthStore();
 const router = useRouter();

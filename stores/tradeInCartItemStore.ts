@@ -1,7 +1,3 @@
-import { defineStore } from "pinia";
-import { ref, useNuxtApp } from "#imports";
-import type { TradeInCartItem } from "../types/tradeInCartItem"; // Assurez-vous d'avoir une définition de type pour TradeInCartItem
-
 export const useTradeInCartItemStore = defineStore("tradeInCartItem", () => {
   const { $API } = useNuxtApp();
   const items = ref<TradeInCartItem[]>([]);
@@ -16,7 +12,7 @@ export const useTradeInCartItemStore = defineStore("tradeInCartItem", () => {
     } catch (error) {
       console.error(
         "Erreur lors de la récupération des articles du panier:",
-        error,
+        error
       );
     }
   };
@@ -30,7 +26,7 @@ export const useTradeInCartItemStore = defineStore("tradeInCartItem", () => {
     } catch (error) {
       console.error(
         "Erreur lors de la création d'un article du panier:",
-        error,
+        error
       );
     }
   };
@@ -41,7 +37,7 @@ export const useTradeInCartItemStore = defineStore("tradeInCartItem", () => {
     } catch (error) {
       console.error(
         "Erreur lors de la récupération d'un article du panier:",
-        error,
+        error
       );
     }
   };
@@ -53,7 +49,7 @@ export const useTradeInCartItemStore = defineStore("tradeInCartItem", () => {
     } catch (error) {
       console.error(
         "Erreur lors de la suppression d'un article du panier:",
-        error,
+        error
       );
     }
   };

@@ -1,7 +1,4 @@
-import { useCartData } from "#imports";
-import { computed } from "vue";
-
-export function useCartSuggestions() {
+export const useCartSuggestions = () => {
   const { cartItems } = useCartData();
 
   const selectedFiltersForSuggestions = computed(() => {
@@ -17,4 +14,4 @@ export function useCartSuggestions() {
   return {
     selectedFiltersForSuggestions,
   };
-}
+};

@@ -24,10 +24,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useTradeInModule } from "../../../stores/tradeInModule";
-import { useI18n } from "vue-i18n";
-
 const { t } = useI18n();
 const tradeInModule = useTradeInModule();
 const { $trackingPlan } = useNuxtApp();
@@ -54,7 +50,7 @@ const total = computed(() => {
       tradeInModule.cart.total ||
       tradeInModule.cart.items.reduce(
         (total, item) => total + item.priceResale,
-        0,
+        0
       )
     );
   }

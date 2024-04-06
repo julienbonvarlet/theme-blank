@@ -1,0 +1,9 @@
+:root {
+  --f-header-link-font-family: var(--f-font-family-text);
+  --f-header-link-font-weight: 600;
+  --f-header-link-letter-spacing: normal;
+  --f-header-link-font-size: #{px-rem(14px)};
+  --f-header-link-text-transform: uppercase;
+  --f-header-link-text-decoration: none;
+  --f-header-link-hover-text-decoration: underline;
+}

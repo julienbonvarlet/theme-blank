@@ -1,0 +1,12 @@
+:root {
+  /******************* Fields *******************/
+  --input-border: solid 1px var(--f-color-border);
+  --input-hover-border-color: solid 1px var(--f-color-background-dark);
+  --input-padding-x: var(--f-length-2);
+  --input-min-height: var(--f-length-4);
+  --input-font-size: #{px-rem(14px)};
+  --input-font-weight: 400;
+  --input-background-color: var(--f-color-background-very-light);
+  --input-border-radius: 0;
+  --input-color: var(--f-color-text-dark);
+}

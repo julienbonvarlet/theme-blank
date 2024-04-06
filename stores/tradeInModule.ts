@@ -1,9 +1,3 @@
-import { useCookie, useNuxtApp } from "#imports";
-import { debounce, sortBy } from "lodash-es";
-import { defineStore } from "pinia";
-
-import { useSort } from "../composables/useSort";
-
 const { sortSizes } = useSort();
 
 const cookieOptions = {
@@ -43,7 +37,7 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
   });
   const selectedAddress = useCookie(
     "tradeInModuleSelectedAddress",
-    cookieOptions,
+    cookieOptions
   );
 
   const setAgree = (value) => {
@@ -79,7 +73,7 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
     const { $API } = useNuxtApp();
     const response =
       await $API.tradeIn.apiCustomerTradeInsgetAvailableSizesAndColorsSkuGet(
-        article.value.sku,
+        article.value.sku
       );
     colors.value = sortBy(response.color) || [];
     sizes.value = sortSizes(response.size) || [];
@@ -162,7 +156,7 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
       cart.value.id,
       {
         shippingAddress: selectedAddress.value,
-      },
+      }
     );
     setCart(response);
   };
@@ -172,7 +166,7 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
     const response =
       await $API.tradeInCart.apiCustomerTradeInCartsIdvalidatePatch(
         cart.value.id,
-        {},
+        {}
       );
     setCart(response);
   };

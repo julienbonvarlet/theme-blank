@@ -1,0 +1,46 @@
+// Conver px to rem (assume base fontsize at 16
+@function px-rem($size) {
+  $remSize: calc($size / 16px);
+  @return $remSize * 1rem;
+}
+
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin content-grid($type) {
+  // Définir des variables pour la grille
+  $gap: clamp(1rem, 2rem, 3rem);
+  $full: minmax($gap, 1fr);
+  $content: min(1400px, 100% - $gap * 2);
+  $popout: minmax(0, 2rem);
+  $feature: minmax(0, 5rem);
+
+  // Style de base pour .content
+  display: grid;
+  grid-template-columns:
+    [full-start] $full
+    [feature-start] $feature
+    [popout-start] $popout
+    [content-start] $content [content-end]
+    $popout [popout-end]
+    $feature [feature-end]
+    $full [full-end];
+
+  // Appliquer des styles basés sur le type
+  & > * {
+    @if $type == "full" {
+      grid-column: full;
+    } @else if $type == "popout" {
+      grid-column: popout;
+    } @else if $type == "feature" {
+      grid-column: feature;
+    } @else if $type == "content" {
+      grid-column: content;
+    }
+  }
+}

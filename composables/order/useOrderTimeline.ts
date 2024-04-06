@@ -1,7 +1,3 @@
-import { computed } from "vue";
-import { usePriceFormatter } from "../usePriceFormatter";
-import { useOrderDetails } from "./useOrderDetails";
-
 const pushInTimeline = (
   icon: string,
   title: string,

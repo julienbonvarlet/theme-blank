@@ -1,9 +1,3 @@
-import { useCookie, useOrdersStore, useShippingMethodsStore } from "#imports";
-import { useNuxtApp } from "nuxt/app";
-import { defineStore } from "pinia";
-import { onMounted, ref } from "vue";
-import { cookiesConfig } from "../constants/cookies";
-
 export const useCartStore = defineStore("cart", () => {
   const { $API } = useNuxtApp();
 

@@ -1,0 +1,11 @@
+:root {
+  --tabs-active-background: var(--f-color-background-dark);
+  --tabs-inactive-background: var(--f-color-background-very-light);
+  --tabs-border: 1px solid var(--f-color-border);
+  --tabs-border-radius: var(--f-length-3);
+  --tabs-font-size: #{px-rem(13px)};
+  --tabs-font-weight: 400;
+  --tabs-text-color-active: var(--f-color-text-light);
+  --tabs-text-color-inactive: var(--f-color-text-dark);
+  --tabs-padding: var(--f-length-1) var(--f-length-3);
+}

@@ -1,13 +1,3 @@
-import { useRoute } from "vue-router";
-import {
-  useSeoMeta,
-  useAsyncData,
-  useNuxtApp,
-  useRecentlyViewedProductsStore,
-} from "#imports";
-import { useCartStore } from "../../../stores/cart";
-import { ref, watch } from "vue";
-
 export const usePagesProductId = async () => {
   const { $API } = useNuxtApp();
   const route = useRoute();
@@ -24,7 +14,7 @@ export const usePagesProductId = async () => {
   } = await useAsyncData<ArticleChoice_jsonld_article_choice_read>(
     "product",
     // TODO: temporary test, will use SDK to fetch product
-    () => $API.article.apiCustomerArticlesIdGet(productId.toString()),
+    () => $API.article.apiCustomerArticlesIdGet(productId.toString())
   );
 
   recentlyViewedProductsStore.addProduct(product.value);
@@ -55,7 +45,7 @@ export const usePagesProductId = async () => {
     (data) => {
       choice.value = data?.choices?.[0];
     },
-    { immediate: true },
+    { immediate: true }
   );
 
   return {

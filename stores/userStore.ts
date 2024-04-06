@@ -1,8 +1,3 @@
-import { useRuntimeConfig } from "#app";
-import { defineStore } from "pinia";
-import { computed, ref } from "vue";
-import { useRouter } from "vue-router";
-
 export const useUserStore = defineStore("user", () => {
   const { $API } = useNuxtApp();
   const router = useRouter();
@@ -12,7 +7,7 @@ export const useUserStore = defineStore("user", () => {
   const clientId = config?.public?.faume?.clientId;
 
   const userIsGuest = computed(
-    () => user.value && user.value?.["@type"] !== "Customer",
+    () => user.value && user.value?.["@type"] !== "Customer"
   );
 
   const fetchCurrentUser = async () => {
@@ -23,7 +18,7 @@ export const useUserStore = defineStore("user", () => {
     } catch (error) {
       console.error(
         "Erreur lors de la récupération des données utilisateur:",
-        error,
+        error
       );
     }
   };
@@ -32,7 +27,7 @@ export const useUserStore = defineStore("user", () => {
     try {
       const data = await $API.customer.apiCustomerCustomersIdPatch(
         userId,
-        updatedData,
+        updatedData
       );
       user.value = {
         ...user.value,
@@ -42,7 +37,7 @@ export const useUserStore = defineStore("user", () => {
     } catch (error) {
       console.error(
         "Erreur lors de la mise à jour des informations utilisateur:",
-        error,
+        error
       );
       throw error;
     }
@@ -51,14 +46,14 @@ export const useUserStore = defineStore("user", () => {
   const changePassword = async (userId, passwordData) => {
     return await $API.customer.apiCustomerCustomersIdchangePasswordPatch(
       userId,
-      passwordData,
+      passwordData
     );
   };
 
   const resetPassword = async (hashedToken, passwordData) => {
     const data = await $API.auth.apiCustomerAuthresetPasswordHashedTokenPatch(
       hashedToken,
-      passwordData,
+      passwordData
     );
     if (typeof data === "object" && data.email) {
       user.value = data;

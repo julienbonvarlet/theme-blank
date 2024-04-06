@@ -1,0 +1,19 @@
+//LAYOUT LIGHT TRADE IN
+.fl-light {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-index-header);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--f-header-height);
+    background-color: var(--f-color-background-very-light);
+  }
+}
+////////////////////////////

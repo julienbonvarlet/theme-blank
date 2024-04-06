@@ -9,9 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import { useOrdersStore, useAuthStore, computed } from "#imports";
-
 const authStore = useAuthStore();
 const isAuthenticated = computed(() => authStore.authGuestToken);
 

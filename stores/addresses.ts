@@ -1,5 +1,3 @@
-import { defineStore } from "pinia";
-
 export const useAddressesStore = defineStore("addresses", () => {
   const { $API } = useNuxtApp();
   const addresses = ref(null);

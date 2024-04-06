@@ -1,7 +1,3 @@
-import { defineStore } from "pinia";
-import { useRuntimeConfig } from "#app";
-import { useCollectionsStore, useI18n } from "#imports";
-
 const getLinkTo = (link) => {
   const { pageSlug, collectionSlug } = link;
   if (pageSlug) return { name: pageSlug };

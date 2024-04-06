@@ -1,0 +1,23 @@
+:root {
+  --f-margin-section-lg: var(--f-length-9);
+  --f-margin-section-md: var(--f-length-6);
+  --f-margin-section-sm: var(--f-length-5);
+
+  --f-margin-page-lg: var(--f-length-4);
+  --f-margin-page-md: var(--f-length-3);
+  --f-margin-page-sm: var(--f-length-2);
+
+  /* On appelle que ces deux variables */
+  --f-margin-section: var(--f-margin-section-sm);
+  --f-margin-page: var(--f-margin-page-sm);
+
+  @include media(">=tablet", "<desktop") {
+    --f-margin-section: var(--f-margin-section-md);
+    --f-margin-page: var(--f-margin-page-md);
+  }
+
+  @include media(">=desktop") {
+    --f-margin-section: var(--f-margin-section-lg);
+    --f-margin-page: var(--f-margin-page-lg);
+  }
+}

@@ -16,10 +16,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onMounted } from "vue";
-import { useRouter } from "vue-router";
-import { useTradeInModule } from "../../../stores/tradeInModule";
-
 const router = useRouter();
 const tradeInModule = useTradeInModule();
 

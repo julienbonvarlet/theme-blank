@@ -1,0 +1,63 @@
+@mixin responsive-title($size) {
+  --f-title-#{$size}-font-size: var(--f-title-#{$size}-sm-font-size);
+
+  @include media(">=tablet", "<desktop") {
+    --f-title-#{$size}-font-size: var(--f-title-#{$size}-md-font-size);
+  }
+
+  @include media(">=desktop") {
+    --f-title-#{$size}-font-size: var(--f-title-#{$size}-lg-font-size);
+  }
+}
+
+:root {
+  /******************* Title *******************/
+  /* XL */
+  --f-title-xl-font-weight: bold;
+  --f-title-xl-text-transform: none;
+  --f-title-xl-letter-spacing: 0;
+  --f-title-xl-line-height: 1;
+  --f-title-xl-lg-font-size: calc(var(--f-title-xl-sm-font-size) * 1.4);
+  --f-title-xl-md-font-size: calc(var(--f-title-xl-sm-font-size) * 1.2);
+  --f-title-xl-sm-font-size: #{px-rem(50px)};
+  @include responsive-title('xl');
+
+  /* L */
+  --f-title-l-font-weight: bold;
+  --f-title-l-text-transform: none;
+  --f-title-l-letter-spacing: 0;
+  --f-title-l-line-height: 1;
+  --f-title-l-lg-font-size: calc(var(--f-title-l-sm-font-size) * 1.4);
+  --f-title-l-md-font-size: calc(var(--f-title-l-sm-font-size) * 1.2);
+  --f-title-l-sm-font-size: #{px-rem(35px)};
+  @include responsive-title('l');
+
+  /* M */
+  --f-title-m-font-weight: bold;
+  --f-title-m-text-transform: none;
+  --f-title-m-letter-spacing: 0;
+  --f-title-m-line-height: 1;
+  --f-title-m-lg-font-size: calc(var(--f-title-m-sm-font-size) * 1.4);
+  --f-title-m-md-font-size: calc(var(--f-title-m-sm-font-size) * 1.2);
+  --f-title-m-sm-font-size: #{px-rem(20px)};
+  @include responsive-title('m');
+
+  /* S */
+  --f-title-s-font-weight: bold;
+  --f-title-s-text-transform: none;
+  --f-title-s-letter-spacing: 0;
+  --f-title-s-line-height: 1;
+  --f-title-s-lg-font-size: calc(var(--f-title-s-sm-font-size) * 1.4);
+  --f-title-s-md-font-size: calc(var(--f-title-s-sm-font-size) * 1.2);
+  --f-title-s-sm-font-size: #{px-rem(17px)};
+  @include responsive-title('s');
+
+  /* XS */
+  --f-title-xs-font-weight: 600;
+  --f-title-xs-text-transform: uppercase;
+  --f-title-xs-line-height: 1;
+  --f-title-xs-lg-font-size: var(--f-title-xs-sm-font-size);
+  --f-title-xs-md-font-size: var(--f-title-xs-sm-font-size);
+  --f-title-xs-sm-font-size: #{px-rem(14px)};
+  @include responsive-title('xs');
+}

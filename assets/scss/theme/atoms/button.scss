@@ -1,0 +1,77 @@
+:root {
+  /******************* Button *******************/
+  --button-font-family: var(--f-font-family-text);
+
+  /* L */
+  --button-l-font-size: #{px-rem(16px)};
+  --button-l-font-weight: 500;
+  --button-l-text-transform: uppercase;
+  --button-l-letter-spacing: normal;
+  --button-l-border-radius: 99px;
+  --button-l-padding-x: var(--f-length-3);
+  --button-l-min-height: var(--f-length-7);
+  --button-l-icon-size: var(--f-length-2);
+  --button-l-min-width: var(--f-length-19);
+
+  /* m */
+  --button-m-font-size: #{px-rem(14px)};
+  --button-m-font-weight: 500;
+  --button-m-text-transform: uppercase;
+  --button-m-letter-spacing: normal;
+  --button-m-border-radius: 99px;
+  --button-m-padding-x: var(--f-length-2);
+  --button-m-min-height: var(--f-length-5);
+  --button-m-icon-size: var(--f-length-2);
+  --button-m-min-width: var(--f-length-15);
+
+  /* s */
+  --button-s-font-size: #{px-rem(12px)};
+  --button-s-font-weight: 500;
+  --button-s-text-transform: uppercase;
+  --button-s-letter-spacing: 0.02em;
+  --button-s-border-radius: 99px;
+  --button-s-padding-x: var(--f-length-2);
+  --button-s-min-height: var(--f-length-4);
+  --button-s-icon-size: var(--f-length-3);
+  --button-s-min-width: auto;
+
+  /* Primary */
+  --button-primary-background: var(--f-color-background-dark);
+  --button-primary-border: solid 1px var(--f-color-background-dark);
+  --button-primary-color: var(--f-color-text-light);
+  --button-primary-hover-background: var(--f-color-background-very-light);
+  --button-primary-hover-border: solid 1px var(--f-color-background-dark);
+  --button-primary-hover-color: var(--f-color-text-dark);
+
+  /* Secondary */
+  --button-secondary-background: var(--f-color-background-very-light);
+  --button-secondary-border: solid 1px var(--f-color-border);
+  --button-secondary-color: var(--f-color-text-dark);
+  --button-secondary-hover-background: var(--f-color-background-light);
+  --button-secondary-hover-border: solid 1px var(--f-color-background-light);
+  --button-secondary-hover-color: var(--f-color-text-dark);
+
+  /* Tertiary */
+  --button-tertiary-background: var(--f-color-background-primary);
+  --button-tertiary-border: solid 1px var(--f-color-background-primary);
+  --button-tertiary-color: var(--f-color-text-light);
+  --button-tertiary-hover-background: var(--f-color-background-very-light);
+  --button-tertiary-hover-border: solid 1px var(--f-color-background-very-light);
+  --button-tertiary-hover-color: var(--f-color-text-primary);
+
+  /* Error */
+  --button-error-background: var(--f-color-background-error);
+  --button-error-border: 0;
+  --button-error-color: var(--f-color-text-error);
+  --button-error-hover-background: var(--f-color-text-error);
+  --button-error-hover-border: 0;
+  --button-error-hover-color: var(--f-color-background-error);
+
+  /* Success */
+  --button-success-background: var(--f-color-success-error);
+  --button-success-border: 0;
+  --button-success-color: var(--f-color-text-success);
+  --button-success-hover-background: var(--f-color-text-success);
+  --button-success-hover-border: 0;
+  --button-success-hover-color: var(--f-color-background-success);
+}

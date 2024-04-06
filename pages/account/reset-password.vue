@@ -15,11 +15,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useUserStore } from "../../stores/userStore";
-import { useRoute } from "vue-router";
-
-import { useI18n } from "vue-i18n";
-
 const { resetPassword } = useUserStore();
 const route = useRoute();
 const token = ref(route.params.token);

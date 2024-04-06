@@ -1,12 +1,4 @@
-import { computed } from "vue";
-import {
-  useCartStore,
-  usePriceFormatter,
-  useAddressesStore,
-  useShippingMethodsStore,
-} from "#imports";
-
-export function useCartData() {
+export const useCartData = () => {
   const cartStore = useCartStore();
   const addressesStore = useAddressesStore();
   const shippingMethodsStore = useShippingMethodsStore();
@@ -16,7 +8,7 @@ export function useCartData() {
 
   const paymentMethod = computed(() => cartStore.cartOrder?.paymentMethod);
   const clientSecret = computed(
-    () => cartStore.cartOrder?.stateContext?.[0]?.payment_intent?.client_secret,
+    () => cartStore.cartOrder?.stateContext?.[0]?.payment_intent?.client_secret
   );
 
   const cartId = computed(() => cartStore.cartId);
@@ -29,7 +21,7 @@ export function useCartData() {
   const shippingMethod = computed(() =>
     shippingMethodId.value && shippingMethods.value?.length
       ? shippingMethods.value.find((x) => x["@id"] === shippingMethodId.value)
-      : null,
+      : null
   );
   const shippingMethodName = computed(() => shippingMethod.value?.name);
   const shippingDelay = computed(() => shippingMethod.value?.comment);
@@ -49,13 +41,13 @@ export function useCartData() {
 
   const shippingAddress = computed(() =>
     addressesStore.addresses?.find(
-      (x) => x["@id"] === cartOrder.value?.shippingAddress,
-    ),
+      (x) => x["@id"] === cartOrder.value?.shippingAddress
+    )
   );
   const billingAddress = computed(() =>
     addressesStore.addresses?.find(
-      (x) => x["@id"] === cartOrder.value?.billingAddress,
-    ),
+      (x) => x["@id"] === cartOrder.value?.billingAddress
+    )
   );
 
   return {
@@ -83,4 +75,4 @@ export function useCartData() {
     shippingMethodName,
     shippingDelay,
   };
-}
+};

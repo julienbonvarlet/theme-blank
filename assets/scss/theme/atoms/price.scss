@@ -1,0 +1,18 @@
+:root {
+  /******************* Price *******************/
+  --price-font-family: var(--f-font-family-text);
+  --price-font-weight: 500;
+  --price-old-color: var(--f-color-text-grey);
+  --price-old-font-weight: 200;
+
+  /* L */
+  --price-l-lg-font-size: #{px-rem(35px)};
+  --price-l-md-font-size: #{px-rem(25px)};
+  --price-l-sm-font-size: #{px-rem(20px)};
+
+  /* M */
+  --price-m-font-size: #{px-rem(16px)};
+
+  /* S */
+  --price-s-font-size: #{px-rem(13px)};
+}

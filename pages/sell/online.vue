@@ -7,9 +7,6 @@
 </template>
 
 <script setup lang="ts">
-import { useRuntimeConfig, useNuxtApp, computed } from "#imports";
-import { useI18n } from "vue-i18n";
-
 const { t } = useI18n();
 const config = useRuntimeConfig();
 const { $trackingPlan } = useNuxtApp();

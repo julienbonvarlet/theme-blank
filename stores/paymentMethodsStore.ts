@@ -1,5 +1,3 @@
-import { defineStore } from "pinia";
-
 export const usePaymentMethodsStore = defineStore("paymentMethods", () => {
   const { $API } = useNuxtApp();
   const paymentMethods = ref(null);

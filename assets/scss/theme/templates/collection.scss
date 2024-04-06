@@ -1,0 +1,17 @@
+:root {
+  --f-collection-nbr-items-row-lg: repeat(4, 1fr);
+  --f-collection-nbr-items-row-md: repeat(3, 1fr);
+  --f-collection-nbr-items-row-sm: repeat(2, 1fr);
+
+  --f-collection-nbr-items-row: var(--f-collection-nbr-items-row-sm);
+
+  @include media(">=tablet", "<desktop") {
+    --f-carousel-container-gap: var(--f-carousel-container-gap-md);
+    --f-collection-nbr-items-row: var(--f-collection-nbr-items-row-md);
+  }
+
+  @include media(">=desktop") {
+    --f-carousel-container-gap: var(--f-carousel-container-gap-lg);
+    --f-collection-nbr-items-row: var(--f-collection-nbr-items-row-lg);
+  }
+}

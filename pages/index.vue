@@ -53,15 +53,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, useI18n, useCollectionsStore } from "#imports";
-import { useRuntimeConfig } from "#app";
-
 const { t } = useI18n();
 const config = useRuntimeConfig();
-const { locale } = useI18n();
 const { getCollectionTitle } = useCollectionsStore();
 
-const clientId = config.public.faume.clientId;
 const menuConfig = config.public.faume.menuConfig;
 
 //const backgroundImageUrl = `https://faume.imgix.net/${clientId}/home-baner.webp`;

@@ -21,9 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
-import { useUserStore, useAuthStore, useCartData } from "#imports";
-
 const userStore = useUserStore();
 const authStore = useAuthStore();
 const { shippingAddress, billingAddress, shippingMethodId } = useCartData();

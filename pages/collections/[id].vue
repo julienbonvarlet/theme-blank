@@ -69,18 +69,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted, nextTick, computed, watch } from "vue";
-import {
-  usePreviousTitle,
-  useNuxtApp,
-  useAsyncData,
-  useHeaderHeight,
-} from "#imports";
-import { useRouter, useRoute } from "vue-router";
-import { useRuntimeConfig } from "#app";
-import { unrefElement } from "@vueuse/core";
-import { useI18n } from "vue-i18n";
-
 const { t } = useI18n();
 
 // VARIABLES

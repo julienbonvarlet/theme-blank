@@ -1,6 +1,3 @@
-import { ref, computed } from "vue";
-import { defineStore } from "pinia";
-
 type TitleSize = "xs" | "s" | "m" | "l" | "xl";
 type TextSize = "xs" | "s" | "m" | "l" | "xl";
 type ButtonAnimation =

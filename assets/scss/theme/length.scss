@@ -1,0 +1,61 @@
+$step: 8px;
+$maxStep: 50;
+
+:root {
+  // ## Lengths generation
+  @for $i from 1 through $maxStep {
+    --f-length-#{$i}: #{$step * $i};
+  }
+
+  // ## Lengths generation
+  // --f-length-1: 8px;
+  // --f-length-2: 16px;
+  // --f-length-3: 24px;
+  // --f-length-4: 32px;
+  // --f-length-5: 40px;
+  // --f-length-6: 48px;
+  // --f-length-7: 56px;
+  // --f-length-8: 64px;
+  // --f-length-9: 72px;
+  // --f-length-10: 80px;
+  // --f-length-11: 88px;
+  // --f-length-12: 96px;
+  // --f-length-13: 104px;
+  // --f-length-14: 112px;
+  // --f-length-15: 120px;
+  // --f-length-16: 128px;
+  // --f-length-17: 136px;
+  // --f-length-18: 144px;
+  // --f-length-19: 152px;
+  // --f-length-20: 160px;
+  // --f-length-21: 168px;
+  // --f-length-22: 176px;
+  // --f-length-23: 184px;
+  // --f-length-24: 192px;
+  // --f-length-25: 200px;
+  // --f-length-26: 208px;
+  // --f-length-27: 216px;
+  // --f-length-28: 224px;
+  // --f-length-29: 232px;
+  // --f-length-30: 240px;
+  // --f-length-31: 248px;
+  // --f-length-32: 256px;
+  // --f-length-33: 264px;
+  // --f-length-34: 272px;
+  // --f-length-35: 280px;
+  // --f-length-36: 288px;
+  // --f-length-37: 296px;
+  // --f-length-38: 304px;
+  // --f-length-39: 312px;
+  // --f-length-40: 320px;
+  // --f-length-41: 328px;
+  // --f-length-42: 336px;
+  // --f-length-43: 344px;
+  // --f-length-44: 352px;
+  // --f-length-45: 360px;
+  // --f-length-46: 368px;
+  // --f-length-47: 376px;
+  // --f-length-48: 384px;
+  // --f-length-49: 392px;
+  // --f-length-50: 400px;
+}

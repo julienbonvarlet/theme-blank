@@ -10,9 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import { useRuntimeConfig } from "#imports";
-import { useI18n } from "vue-i18n";
-
 const { t } = useI18n();
 const config = useRuntimeConfig();
 const headerConfig = config.public.faume.headerConfig;

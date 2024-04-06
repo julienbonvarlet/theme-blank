@@ -1,5 +1,3 @@
-import { defineStore } from "pinia";
-
 export const useTradeInCartItem = defineStore("tradeInCartItem", () => {
   const { $API } = useNuxtApp();
 

@@ -1,6 +1,3 @@
-import { ref } from "#imports";
-import { defineStore } from "pinia";
-
 export const usePreviousTitle = defineStore("previousTitle", () => {
   // States
   const previousTitle = ref(null);

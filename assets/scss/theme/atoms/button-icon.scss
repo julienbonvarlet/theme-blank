@@ -1,0 +1,9 @@
+:root {
+  --button-icon-background: var(--f-color-background-very-light);
+  --button-icon-color: var(--f-color-text-dark);
+  --button-icon-border: solid 1px var(--f-color-border);
+  --button-icon-hover-border: solid 1px var(--f-color-background-dark);
+  --button-icon-border-radius: 50%;
+  --button-icon-width: var(--f-length-5);
+  --button-icon-svg-size: var(--f-length-2);
+}

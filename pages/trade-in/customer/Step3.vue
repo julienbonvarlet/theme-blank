@@ -56,12 +56,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted } from "vue";
-import { useRouter } from "vue-router";
-import { useUserStore } from "../../../stores/userStore";
-import { useAuthStore } from "../../../stores/authStore";
-import { useTradeInModule } from "../../../stores/tradeInModule";
-
 const router = useRouter();
 const userStore = useUserStore();
 const authStore = useAuthStore();

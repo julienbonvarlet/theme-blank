@@ -7,11 +7,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref } from "vue";
-import { useAsyncData } from "nuxt/app";
-import { useTradeInCartStore } from "../../../stores/TradeInCartStore";
-import { useRoute } from "vue-router";
-
 const tradeInCart = useTradeInCartStore();
 const route = useRoute();
 

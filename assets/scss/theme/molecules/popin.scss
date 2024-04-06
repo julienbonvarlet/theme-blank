@@ -1,0 +1,22 @@
+:root {
+  --f-popin-background: rgba(0, 0, 0, 0.3);
+  --f-popin-padding-x-lg: var(--f-length-5);
+  --f-popin-padding-x-md: var(--f-length-4);
+  --f-popin-padding-x-sm: var(--f-length-2);
+  --f-popin-padding-y-lg: var(--f-length-3);
+  --f-popin-padding-y-md: var(--f-length-3);
+  --f-popin-padding-y-sm: var(--f-length-2);
+
+  --f-popin-padding-x: var(--f-popin-padding-x-sm);
+  --f-popin-padding-y: var(--f-popin-padding-y-sm);
+
+  @include media(">=tablet", "<desktop") {
+    --f-popin-padding-x: var(--f-popin-padding-x-md);
+    --f-popin-padding-y: var(--f-popin-padding-y-md);
+  }
+
+  @include media(">=desktop") {
+    --f-popin-padding-x: var(--f-popin-padding-x-lg);
+    --f-popin-padding-y: var(--f-popin-padding-y-lg);
+  }
+}

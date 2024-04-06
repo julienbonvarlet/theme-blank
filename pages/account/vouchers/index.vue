@@ -5,11 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useAsyncData } from "nuxt/app";
-import { useVouchersStore } from "../../../stores/vouchers";
-import { useUserStore } from "../../../stores/userStore";
-
 const vouchersStore = useVouchersStore();
 const userStore = useUserStore();
 

@@ -1,0 +1,11 @@
+:root {
+  /******************* Subtitle *******************/
+  --subtitle-font-family: var(--f-font-family-text);
+  --subtitle-font-weight: 500;
+  --subtitle-line-height: 1;
+  --subtitle-text-transform: uppercase;
+  --subtitle-letter-spacing: normal;
+  --subtitle-lg-font-size: #{px-rem(20px)};
+  --subtitle-md-font-size: #{px-rem(16px)};
+  --subtitle-sm-font-size: #{px-rem(16px)};
+}

@@ -35,11 +35,6 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, nextTick } from "vue";
-import { usePreviousTitle } from "#imports";
-import { useCartStore } from "../../stores/cart";
-import { useI18n } from "vue-i18n";
-
 const { t } = useI18n();
 // const { products, filters } = await usePagesProducts();
 const cartStore = useCartStore();

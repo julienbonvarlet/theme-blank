@@ -1,0 +1,13 @@
+// # Fonts
+:root {
+  // ## Font families
+  --f-font-family-title: "PrimaryFont", sans-serif;
+  --f-font-family-text: "SecondaryFont", sans-serif;
+
+  // ## Font sizes
+  --f-font-size: #{px-rem(15px)};
+}
+
+html {
+  font-size: 16px;
+}

@@ -1,0 +1,12 @@
+:root {
+  /******************* Text *******************/
+  --f-text-line-height: 1.2;
+  --f-text-letter-spacing: normal;
+  --f-text-m-font-size: #{px-rem(15px)};
+  --f-text-s-font-size: #{px-rem(13px)};
+  --f-text-xs-font-size: #{px-rem(11px)};
+}
+
+body {
+  font-size: var(--f-text-m-font-size);
+}
