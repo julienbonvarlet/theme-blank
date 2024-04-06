@@ -5,11 +5,7 @@
       <FormKit v-bind="loginFields[0]" />
       <FormKit v-bind="loginFields[1]" @suffix-icon-click="togglePasswordFieldType" />
     </FormKit>
-    <FALink
-      :text="$t('account.identification.login.forgot_password')"
-      size="s"
-      @click.prevent="displayPasswordPopin = true"
-    />
+    <FALink :text="$t('account.identification.login.forgot_password')" size="s" @click.prevent="displayPasswordPopin = true" />
   </div>
 
   <FMPopin
@@ -28,12 +24,7 @@
       <FAButton :label="$t('global.close')" @click.prevent="displayPasswordPopin = false" />
     </div>
     <div v-else>
-      <FMFormMessage
-        v-if="passwordError"
-        ref="passwordError"
-        type="error"
-        :text="$t('account.forget_password.error')"
-      />
+      <FMFormMessage v-if="passwordError" ref="passwordError" type="error" :text="$t('account.forget_password.error')" />
       <FormKit type="form" :submit-label="$t('account.forget_password.button')" @submit="submitPassword">
         <FormKit v-bind="passwordFields[0]" />
       </FormKit>

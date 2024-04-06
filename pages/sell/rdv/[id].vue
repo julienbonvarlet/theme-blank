@@ -1,12 +1,6 @@
 <template>
   <div class="fp-rdv">
-    <FOBookResaleAppointment
-      :store="currentStore"
-      :available-days="availableDays"
-      :available-slots="availableSlots"
-      @date-changed="fetchAvailableSlots"
-      @validate="sendAppointment"
-    />
+    <FOBookResaleAppointment :store="currentStore" :available-days="availableDays" :available-slots="availableSlots" @date-changed="fetchAvailableSlots" @validate="sendAppointment" />
   </div>
 </template>
 
@@ -48,9 +42,7 @@ const dayOfToday = new Intl.DateTimeFormat("fr-CA", {
 }).format(Date.now());
 
 const config = useRuntimeConfig();
-const { data: storeDays } = await useFetch(
-  `https://api.faume.co/${config.clientSlug}/booking/days/${storeId}/${dayOfToday}`,
-);
+const { data: storeDays } = await useFetch(`https://api.faume.co/${config.clientSlug}/booking/days/${storeId}/${dayOfToday}`);
 
 const availableDays = computed(() => {
   return storeDays.value?.map((entry: any) => {

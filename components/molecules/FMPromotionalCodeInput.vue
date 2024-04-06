@@ -8,14 +8,7 @@
     }"
   >
     <FAFieldTitle>{{ $t("global.form.promo_code") }}</FAFieldTitle>
-    <FormKit
-      v-model="model"
-      name="promotionCode"
-      type="text"
-      :errors="error ? [$t('global.form.promo_code_error')] : null"
-      :suffix-icon="icon"
-      @suffix-icon-click="model = ''"
-    />
+    <FormKit v-model="model" name="promotionCode" type="text" :errors="error ? [$t('global.form.promo_code_error')] : null" :suffix-icon="icon" @suffix-icon-click="model = ''" />
   </div>
 </template>
 

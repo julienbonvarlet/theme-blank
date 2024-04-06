@@ -1,22 +1,6 @@
 <template>
-  <FMSectionContainer
-    class="f-section-text"
-    :margin-y="marginY"
-    :margin-x="marginX"
-    :padding-y="paddingY"
-    :padding-x="paddingX"
-    :max-width="maxWidth"
-    v-bind="attrs"
-  >
-    <FMTextContainer
-      :title="title"
-      :title-size="titleSize"
-      :title-tag="titleTag"
-      :text="text"
-      :subtitle="subtitle"
-      :link1="link1"
-      :link2="link2"
-    >
+  <FMSectionContainer class="f-section-text" :margin-y="marginY" :margin-x="marginX" :padding-y="paddingY" :padding-x="paddingX" :max-width="maxWidth" v-bind="attrs">
+    <FMTextContainer :title="title" :title-size="titleSize" :title-tag="titleTag" :text="text" :subtitle="subtitle" :link1="link1" :link2="link2">
       <slot />
     </FMTextContainer>
   </FMSectionContainer>

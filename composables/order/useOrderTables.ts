@@ -14,15 +14,7 @@ export function useOrderTables(order: any, wording: any) {
     const data = [];
     data.push(pushInTable(wording.reference, order.reference));
     data.push(pushInTable(wording.order_date, createdDate.value));
-    data.push(
-      pushInTable(
-        wording[order.items?.length > 1 ? "articles_count" : "article_count"].replace(
-          "{count}",
-          order.items?.length || 0,
-        ),
-        formatPrice(order.total),
-      ),
-    );
+    data.push(pushInTable(wording[order.items?.length > 1 ? "articles_count" : "article_count"].replace("{count}", order.items?.length || 0), formatPrice(order.total)));
     if (order.shippingMode) {
       data.push(pushInTable(wording.shipping_method, order.shippingMode));
     }

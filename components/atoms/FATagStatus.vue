@@ -20,17 +20,7 @@ const colorsByStatus = {
   dark: ["confirmed", "received", "delivred", "refunded", "validated", "treated", "paid", "partially_accepted"],
   light: ["doing", "waiting", "sended", "sent", "async", "preparing", "draft", "shipped", "received", "controlling"],
   success: ["validated", "valid", "accepted", true],
-  error: [
-    "refused",
-    "cancelled",
-    false,
-    "rejected",
-    "canceled",
-    "partially_refunded",
-    "refunded",
-    "requires_payment_method",
-    "cancel",
-  ],
+  error: ["refused", "cancelled", false, "rejected", "canceled", "partially_refunded", "refunded", "requires_payment_method", "cancel"],
 };
 
 const colorClass = computed(() => {

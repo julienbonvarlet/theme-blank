@@ -91,23 +91,20 @@
   --fk-border-focus: var(--fk-border-width-focus) var(--fk-border-style) var(--fk-color-border-focus);
   --fk-border-decorator: var(--fk-border-width-decorator) var(--fk-border-style) var(--fk-color-border);
   --fk-border-decorator-focus: var(--fk-border-width-focus) var(--fk-border-style) var(--fk-color-border-focus);
-  --fk-border-decorator-focus-visible: var(--fk-border-width-decorator-focus-visible) var(--fk-border-style)
-    var(--fk-color-border-focus);
+  --fk-border-decorator-focus-visible: var(--fk-border-width-decorator-focus-visible) var(--fk-border-style) var(--fk-color-border-focus);
   --fk-border-decorator-checked: var(--fk-border-width-checked) var(--fk-border-style) var(--fk-color-border-focus);
   --fk-border-box-shadow: 0 0 0 var(--fk-border-width) var(--fk-color-border);
   --fk-border-box-shadow-focus: 0 0 0 var(--fk-border-width-focus) var(--fk-color-border-focus);
   --fk-border-box-shadow-decorator: 0 0 0 var(--fk-border-width-decorator);
   --fk-border-box-shadow-decorator-focus: 0 0 0 var(--fk-border-width-decorator-focus) var(--fk-color-border-focus);
-  --fk-border-box-shadow-decorator-focus-visible: 0 0 0 var(--fk-border-width-decorator-focus-visible)
-    var(--fk-color-border-focus);
+  --fk-border-box-shadow-decorator-focus-visible: 0 0 0 var(--fk-border-width-decorator-focus-visible) var(--fk-color-border-focus);
   --fk-border-box-shadow-decorator-checked: 0 0 0 var(--fk-border-width-decorator-checked) var(--fk-color-border-focus);
   --fk-border-box-shadow-invalid: 0 0 0 var(--fk-border-width-decorator-focus-visible) var(--fk-error-ring-color);
   --fk-border-radius-tl: 100px;
   --fk-border-radius-tr: 100px;
   --fk-border-radius-bl: 100px;
   --fk-border-radius-br: 100px;
-  --fk-border-radius: var(--fk-border-radius-tl, 0.25em) var(--fk-border-radius-tr, 0.25em)
-    var(--fk-border-radius-br, 0.25em) var(--fk-border-radius-bl, 0.25em);
+  --fk-border-radius: var(--fk-border-radius-tl, 0.25em) var(--fk-border-radius-tr, 0.25em) var(--fk-border-radius-br, 0.25em) var(--fk-border-radius-bl, 0.25em);
   --fk-border-radius-full: 999em;
   --fk-focus-ring: 0.25em;
   --fk-error-ring: 3px;
@@ -122,8 +119,7 @@
   --fk-padding-input-r: var(--fk-padding-input-x, 0);
   --fk-padding-input-b: var(--fk-padding-input-y, 0);
   --fk-padding-input-l: var(--fk-padding-input-x, 0);
-  --fk-padding-input: var(--fk-padding-input-t) var(--fk-padding-input-r) var(--fk-padding-input-b)
-    var(--fk-padding-input-l);
+  --fk-padding-input: var(--fk-padding-input-t) var(--fk-padding-input-r) var(--fk-padding-input-b) var(--fk-padding-input-l);
 
   --fk-padding-label-x: inherit;
   --fk-padding-label-y: inherit;
@@ -131,8 +127,7 @@
   --fk-padding-label-r: var(--fk-padding-label-x, 0);
   --fk-padding-label-b: var(--fk-padding-label-y, 0.5em);
   --fk-padding-label-l: var(--fk-padding-label-x, 0);
-  --fk-padding-label: var(--fk-padding-label-t) var(--fk-padding-label-r) var(--fk-padding-label-b)
-    var(--fk-padding-label-l);
+  --fk-padding-label: var(--fk-padding-label-t) var(--fk-padding-label-r) var(--fk-padding-label-b) var(--fk-padding-label-l);
 
   --fk-padding-help-x: inherit;
   --fk-padding-help-y: var(--fk-padding-base);
@@ -148,8 +143,7 @@
   --fk-padding-option-r: var(--fk-padding-option-x, 0);
   --fk-padding-option-b: var(--fk-padding-option-y, 0);
   --fk-padding-option-l: var(--fk-padding-option-x, 0);
-  --fk-padding-option: var(--fk-padding-option-t) var(--fk-padding-option-r) var(--fk-padding-option-b)
-    var(--fk-padding-option-l);
+  --fk-padding-option: var(--fk-padding-option-t) var(--fk-padding-option-r) var(--fk-padding-option-b) var(--fk-padding-option-l);
 
   --fk-padding-messages-x: inherit;
   --fk-padding-messages-y: inherit;
@@ -157,8 +151,7 @@
   --fk-padding-messages-r: var(--fk-padding-messages-x, 0);
   --fk-padding-messages-b: var(--fk-padding-messages-y, 0);
   --fk-padding-messages-l: var(--fk-padding-messages-x, 0);
-  --fk-padding-messages: var(--fk-padding-messages-t) var(--fk-padding-messages-r) var(--fk-padding-messages-b)
-    var(--fk-padding-messages-l);
+  --fk-padding-messages: var(--fk-padding-messages-t) var(--fk-padding-messages-r) var(--fk-padding-messages-b) var(--fk-padding-messages-l);
 
   --fk-padding-message-x: inherit;
   --fk-padding-message-y: var(--fk-padding-base);
@@ -166,8 +159,7 @@
   --fk-padding-message-r: var(--fk-padding-message-x, 0);
   --fk-padding-message-b: var(--fk-padding-message-y, 0);
   --fk-padding-message-l: var(--fk-padding-message-x, 0);
-  --fk-padding-message: var(--fk-padding-message-t) var(--fk-padding-message-r) var(--fk-padding-message-b)
-    var(--fk-padding-message-l);
+  --fk-padding-message: var(--fk-padding-message-t) var(--fk-padding-message-r) var(--fk-padding-message-b) var(--fk-padding-message-l);
 
   --fk-padding-legend-x: 0;
   --fk-padding-legend-y: 0.25em;
@@ -175,8 +167,7 @@
   --fk-padding-legend-r: var(--fk-padding-legend-x);
   --fk-padding-legend-b: var(--fk-padding-legend-y);
   --fk-padding-legend-l: var(--fk-padding-legend-x);
-  --fk-padding-legend: var(--fk-padding-legend-t) var(--fk-padding-legend-r) var(--fk-padding-legend-b)
-    var(--fk-padding-legend-l);
+  --fk-padding-legend: var(--fk-padding-legend-t) var(--fk-padding-legend-r) var(--fk-padding-legend-b) var(--fk-padding-legend-l);
 
   --fk-padding-fieldset-x: var(--fk-padding-input-x);
   --fk-padding-fieldset-y: var(--fk-padding-input-y);
@@ -192,8 +183,7 @@
   --fk-padding-decorator-r: var(--fk-padding-decorator-x, 1.25em);
   --fk-padding-decorator-b: var(--fk-padding-decorator-y, 1.25em);
   --fk-padding-decorator-l: var(--fk-padding-decorator-x, 1.25em);
-  --fk-padding-decorator: var(--fk-padding-decorator-t) var(--fk-padding-decorator-r) var(--fk-padding-decorator-b)
-    var(--fk-padding-decorator-l);
+  --fk-padding-decorator: var(--fk-padding-decorator-t) var(--fk-padding-decorator-r) var(--fk-padding-decorator-b) var(--fk-padding-decorator-l);
 
   --fk-padding-button-x: calc(var(--fk-padding-base) * 8);
   --fk-padding-button-y: calc(var(--fk-padding-base) * 3);
@@ -201,8 +191,7 @@
   --fk-padding-button-r: var(--fk-padding-button-x);
   --fk-padding-button-b: var(--fk-padding-button-y);
   --fk-padding-button-l: var(--fk-padding-button-x);
-  --fk-padding-button: var(--fk-padding-button-t) var(--fk-padding-button-r) var(--fk-padding-button-b)
-    var(--fk-padding-button-l);
+  --fk-padding-button: var(--fk-padding-button-t) var(--fk-padding-button-r) var(--fk-padding-button-b) var(--fk-padding-button-l);
 
   /* Margin */
   --fk-margin-base: 0.5em;
@@ -221,8 +210,7 @@
   --fk-margin-wrapper-r: var(--fk-margin-wrapper-x, 0);
   --fk-margin-wrapper-b: var(--fk-margin-wrapper-y, 0);
   --fk-margin-wrapper-l: var(--fk-margin-wrapper-x, 0);
-  --fk-margin-wrapper: var(--fk-margin-wrapper-t) var(--fk-margin-wrapper-r) var(--fk-margin-wrapper-b)
-    var(--fk-margin-wrapper-l);
+  --fk-margin-wrapper: var(--fk-margin-wrapper-t) var(--fk-margin-wrapper-r) var(--fk-margin-wrapper-b) var(--fk-margin-wrapper-l);
 
   --fk-margin-input-x: inherit;
   --fk-margin-input-y: inherit;
@@ -254,8 +242,7 @@
   --fk-margin-option-r: var(--fk-margin-option-x, 0);
   --fk-margin-option-b: var(--fk-margin-option-y, 0.625em);
   --fk-margin-option-l: var(--fk-margin-option-x, 0);
-  --fk-margin-option: var(--fk-margin-option-t) var(--fk-margin-option-r) var(--fk-margin-option-b)
-    var(--fk-margin-option-l);
+  --fk-margin-option: var(--fk-margin-option-t) var(--fk-margin-option-r) var(--fk-margin-option-b) var(--fk-margin-option-l);
 
   --fk-margin-message-x: inherit;
   --fk-margin-message-y: inherit;
@@ -263,8 +250,7 @@
   --fk-margin-message-r: var(--fk-margin-message-x, 0);
   --fk-margin-message-b: var(--fk-margin-message-y, 0);
   --fk-margin-message-l: var(--fk-margin-message-x, 0);
-  --fk-margin-message: var(--fk-margin-message-t) var(--fk-margin-message-r) var(--fk-margin-message-b)
-    var(--fk-margin-message-l);
+  --fk-margin-message: var(--fk-margin-message-t) var(--fk-margin-message-r) var(--fk-margin-message-b) var(--fk-margin-message-l);
 
   --fk-margin-legend-x: 0em;
   --fk-margin-legend-y: inherit;
@@ -272,8 +258,7 @@
   --fk-margin-legend-r: var(--fk-margin-legend-x, 0);
   --fk-margin-legend-b: var(--fk-margin-legend-y, 0);
   --fk-margin-legend-l: var(--fk-margin-legend-x, 0);
-  --fk-margin-legend: var(--fk-margin-legend-t) var(--fk-margin-legend-r) var(--fk-margin-legend-b)
-    var(--fk-margin-legend-l);
+  --fk-margin-legend: var(--fk-margin-legend-t) var(--fk-margin-legend-r) var(--fk-margin-legend-b) var(--fk-margin-legend-l);
 
   --fk-margin-fieldset-x: inherit;
   --fk-margin-fieldset-y: inherit;
@@ -281,8 +266,7 @@
   --fk-margin-fieldset-r: var(--fk-margin-fieldset-x, 0);
   --fk-margin-fieldset-b: var(--fk-margin-fieldset-y, 0);
   --fk-margin-fieldset-l: var(--fk-margin-fieldset-x, 0);
-  --fk-margin-fieldset: var(--fk-margin-fieldset-t) var(--fk-margin-fieldset-r) var(--fk-margin-fieldset-b)
-    var(--fk-margin-fieldset-l);
+  --fk-margin-fieldset: var(--fk-margin-fieldset-t) var(--fk-margin-fieldset-r) var(--fk-margin-fieldset-b) var(--fk-margin-fieldset-l);
 
   --fk-margin-decorator-x: inherit;
   --fk-margin-decorator-y: inherit;
@@ -290,8 +274,7 @@
   --fk-margin-decorator-r: var(--fk-margin-decorator-x, 0.5em);
   --fk-margin-decorator-b: var(--fk-margin-decorator-y, 0);
   --fk-margin-decorator-l: var(--fk-margin-decorator-x, 0);
-  --fk-margin-decorator: var(--fk-margin-decorator-t) var(--fk-margin-decorator-r) var(--fk-margin-decorator-b)
-    var(--fk-margin-decorator-l);
+  --fk-margin-decorator: var(--fk-margin-decorator-t) var(--fk-margin-decorator-r) var(--fk-margin-decorator-b) var(--fk-margin-decorator-l);
 
   --fk-margin-button-x: inherit;
   --fk-margin-button-y: inherit;
@@ -299,8 +282,7 @@
   --fk-margin-button-r: var(--fk-margin-button-x, 0.5em);
   --fk-margin-button-b: var(--fk-margin-button-y, 0);
   --fk-margin-button-l: var(--fk-margin-button-x, 0);
-  --fk-margin-button: var(--fk-margin-button-t) var(--fk-margin-button-r) var(--fk-margin-button-b)
-    var(--fk-margin-button-l);
+  --fk-margin-button: var(--fk-margin-button-t) var(--fk-margin-button-r) var(--fk-margin-button-b) var(--fk-margin-button-l);
 
   /* default icons */
   --fk-icon-close: PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMiAxNiI +
@@ -310,12 +292,10 @@
     PC9zdmc +;
   --fk-icon-fileDoc: PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNSAxNiI +
     PHBhdGggZD0iTTEyLjUsMTZIMi41Yy0uODMsMC0xLjUtLjY3LTEuNS0xLjVWMS41YzAtLjgzLC42Ny0xLjUsMS41LTEuNWg3LjA5Yy40LDAsLjc4LC4xNiwxLjA2LC40NGwyLjkxLDIuOTFjLjI4LC4yOCwuNDQsLjY2LC40NCwxLjA2VjE0LjVjMCwuODMtLjY3LDEuNS0xLjUsMS41Wk0yLjUsMWMtLjI4LDAtLjUsLjIyLS41LC41VjE0LjVjMCwuMjgsLjIyLC41LC41LC41SDEyLjVjLjI4LDAsLjUtLjIyLC41LS41VjQuNDFjMC0uMTMtLjA1LS4yNi0uMTUtLjM1bC0yLjkxLTIuOTFjLS4wOS0uMDktLjIyLS4xNS0uMzUtLjE1SDIuNVoiIGZpbGw9ImN1cnJlbnRDb2xvciIvPjxwYXRoIGQ9Ik0xMy4zOCw1aC0yLjkxYy0uODEsMC0xLjQ3LS42Ni0xLjQ3LTEuNDdWLjYyYzAtLjI4LC4yMi0uNSwuNS0uNXMuNSwuMjIsLjUsLjVWMy41M2MwLC4yNiwuMjEsLjQ3LC40NywuNDdoMi45MWMuMjgsMCwuNSwuMjIsLjUsLjVzLS4yMiwuNS0uNSwuNVoiIGZpbGw9ImN1cnJlbnRDb2xvciIvPjxwYXRoIGQ9Ik0xMCwxM0g1Yy0uMjgsMC0uNS0uMjItLjUtLjVzLjIyLS41LC41LS41aDVjLjI4LDAsLjUsLjIyLC41LC41cy0uMjIsLjUtLjUsLjVaIiBmaWxsPSJjdXJyZW50Q29sb3IiLz48cGF0aCBkPSJNMTAsMTBINWMtLjI4LDAtLjUtLjIyLS41LS41cy4yMi0uNSwuNS0uNWg1Yy4yOCwwLC41LC4yMiwuNSwuNXMtLjIyLC41LS41LC41WiIgZmlsbD0iY3VycmVudENvbG9yIi8 +
-    PHBhdGggZD0iTTcsN2gtMmMtLjI4LDAtLjUtLjIyLS41LS41cy4yMi0uNSwuNS0uNWgyYy4yOCwwLC41LC4yMiwuNSwuNXMtLjIyLC41LS41LC41WiIgZmlsbD0iY3VycmVudENvbG9yIi8 +
-    PC9zdmc + Cg==;
+    PHBhdGggZD0iTTcsN2gtMmMtLjI4LDAtLjUtLjIyLS41LS41cy4yMi0uNSwuNS0uNWgyYy4yOCwwLC41LC4yMiwuNSwuNXMtLjIyLC41LS41LC41WiIgZmlsbD0iY3VycmVudENvbG9yIi8 + PC9zdmc + Cg==;
   --fk-icon-check: PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAyNyI +
     PHBvbHlnb24gZmlsbD0iY3VycmVudENvbG9yIiBwb2ludHM9IjI2Ljk5IDAgMTAuMTMgMTcuMTcgNC42OSAxMS42MyAwIDE2LjQxIDEwLjQgMjcgMTUuMDUgMjIuMjcgMTUuMDkgMjIuMzEgMzIgNS4xIDI2Ljk5IDAiLz48L3N2Zz4=;
-  --fk-icon-circle: PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI +
-    PGNpcmNsZSBmaWxsPSJjdXJyZW50Q29sb3IiIGN4PSIxNiIgY3k9IjE2IiByPSIxNiIvPjwvc3ZnPg==;
+  --fk-icon-circle: PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI + PGNpcmNsZSBmaWxsPSJjdXJyZW50Q29sb3IiIGN4PSIxNiIgY3k9IjE2IiByPSIxNiIvPjwvc3ZnPg==;
 
   /* icons by location name */
   --fk-icon-fileItem: var(--fk-icon-fileDoc);

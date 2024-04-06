@@ -9,18 +9,8 @@
           <FormKit v-bind="registerFields[i + 1]" @suffix-icon-click="togglePasswordFieldType" />
         </FormKit>
       </template>
-      <FormKit
-        v-model="emailSubscription"
-        type="checkbox"
-        name="emailSubscription"
-        :label="$t('global.form.marketing_email')"
-      />
-      <FormKit
-        v-model="smsSubscription"
-        type="checkbox"
-        name="smsSubscription"
-        :label="$t('global.form.marketing_sms')"
-      />
+      <FormKit v-model="emailSubscription" type="checkbox" name="emailSubscription" :label="$t('global.form.marketing_email')" />
+      <FormKit v-model="smsSubscription" type="checkbox" name="smsSubscription" :label="$t('global.form.marketing_sms')" />
     </FormKit>
     <FALink :text="$t('account.identification.login.button')" size="s" @click.prevent="emit('goToLogin')" />
   </div>

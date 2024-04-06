@@ -1,11 +1,5 @@
 <template>
-  <FMPopin
-    :title="$t('sections.minicart.title')"
-    position="right"
-    extra-class="f-minicart"
-    :visible="isMiniCartOpen"
-    @on-close="close"
-  >
+  <FMPopin :title="$t('sections.minicart.title')" position="right" extra-class="f-minicart" :visible="isMiniCartOpen" @on-close="close">
     <FALoader v-if="!cartItems" />
 
     <div v-if="isCartEmpty && cartItems" class="f-minicart__empty">
@@ -35,19 +29,7 @@ const { t } = useI18n();
 const cartStore = useCartStore();
 const { selectedFiltersForSuggestions } = useCartSuggestions();
 
-const {
-  cartItems,
-  isMiniCartOpen,
-  shippingTotal,
-  subtotal,
-  total,
-  totalFormatted,
-  isCartEmpty,
-  amountForFreeShipping,
-  discountTotal,
-  shippingMethodName,
-  shippingDelay,
-} = useCartData();
+const { cartItems, isMiniCartOpen, shippingTotal, subtotal, total, totalFormatted, isCartEmpty, amountForFreeShipping, discountTotal, shippingMethodName, shippingDelay } = useCartData();
 
 const cartResume = computed(() => ({
   subtotal: subtotal.value,

@@ -80,10 +80,7 @@ const step = computed(() => Number(route.query.step || 0));
 const recapSteps = computed(() =>
   ["sku", "size", "color", "condition"].map((name) => ({
     title: t(`trade_in.add_product.${name}.name`),
-    value:
-      name === "condition" && article.value.condition
-        ? t(`trade_in.add_product.condition.${article.value.condition}`)
-        : article.value[name] || "-",
+    value: name === "condition" && article.value.condition ? t(`trade_in.add_product.condition.${article.value.condition}`) : article.value[name] || "-",
     valid: !!article.value[name],
   })),
 );

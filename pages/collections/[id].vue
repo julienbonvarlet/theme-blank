@@ -8,26 +8,9 @@
       <FOCollectionSuggestionMenu :suggestion-menu-items="suggestionMenuItems" />
     </FMSectionContainer>
 
-    <FMSectionContainer
-      ref="filterBar"
-      max-width="xl"
-      :padding-x="true"
-      :padding-y="false"
-      :class="['f-filter-bar', { 'is-sticky': isSticky }]"
-      class-child="f-filter-bar__container"
-    >
-      <FOFilterBar
-        :filters-options-active="newActiveFilters"
-        :checkbox="true"
-        :filters-options="filters"
-        @filter-changed="handleFilterChange"
-      />
-      <FOFilterBar
-        :filters-options-active="newActiveOrder"
-        :checkbox="true"
-        :filters-options="sortOptions"
-        @filter-changed="handleOrderChange"
-      />
+    <FMSectionContainer ref="filterBar" max-width="xl" :padding-x="true" :padding-y="false" :class="['f-filter-bar', { 'is-sticky': isSticky }]" class-child="f-filter-bar__container">
+      <FOFilterBar :filters-options-active="newActiveFilters" :checkbox="true" :filters-options="filters" @filter-changed="handleFilterChange" />
+      <FOFilterBar :filters-options-active="newActiveOrder" :checkbox="true" :filters-options="sortOptions" @filter-changed="handleOrderChange" />
     </FMSectionContainer>
 
     <FMSectionContainer :padding-x="true" max-width="xl" :padding-y="true" class="f-product-listing__content-grid">
@@ -105,25 +88,11 @@ const sortOptions = {
 // Sort
 
 // Filter
-const filterOrder = [
-  "size_filters",
-  "color_filters",
-  "modele",
-  "season",
-  "state",
-  "gender",
-  "composition",
-  "gender",
-  "sort",
-];
+const filterOrder = ["size_filters", "color_filters", "modele", "season", "state", "gender", "composition", "gender", "sort"];
 const initialFetch = await $API.article.apiCustomerArticlesGetCollection(1, 12);
 const orderedFilters = {};
 filterOrder.forEach((key) => {
-  if (
-    initialFetch["hydra:facets"] &&
-    initialFetch["hydra:facets"][key] &&
-    initialFetch["hydra:facets"][key].length > 1
-  ) {
+  if (initialFetch["hydra:facets"] && initialFetch["hydra:facets"][key] && initialFetch["hydra:facets"][key].length > 1) {
     orderedFilters[key] = initialFetch["hydra:facets"][key];
   }
 });
@@ -201,14 +170,11 @@ watch(currentPage, () => fetchProducts());
 // Fetch products with active filters && sort
 const fetchProducts = async (page = currentPage.value || 1, itemsPerPage = 12) => {
   const { data: products } = useAsyncData("filters", async () => {
-    const response = await fetch(
-      `https://api.faume.co/api/v3/customer/articles?page=${page}&itemsPerPage=${itemsPerPage}${filterArgs.value}`,
-      {
-        headers: {
-          "X-Brand-Id": clientId,
-        },
+    const response = await fetch(`https://api.faume.co/api/v3/customer/articles?page=${page}&itemsPerPage=${itemsPerPage}${filterArgs.value}`, {
+      headers: {
+        "X-Brand-Id": clientId,
       },
-    );
+    });
     const data = await response.json();
     products.value = data["hydra:member"];
     pagination.value = data["hydra:view"];

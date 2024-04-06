@@ -35,9 +35,7 @@ export const useTradeInStore = defineStore("tradeIn", () => {
     }
   };
 
-  const createTradeInMerchandising = async (
-    merchandisingData: TradeInMerchandising_TradeInMerchandisingInput_jsonld,
-  ) => {
+  const createTradeInMerchandising = async (merchandisingData: TradeInMerchandising_TradeInMerchandisingInput_jsonld) => {
     try {
       const response = await $API.tradeIn.apiCustomerTradeInsmerchandisingPost(merchandisingData);
       return response as TradeInMerchandising_jsonld;

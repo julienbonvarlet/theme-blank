@@ -125,14 +125,11 @@ export const useAuthStore = defineStore("auth", () => {
   };
 
   const getUserFromSSO = async (provider: "facebook" | "google", brandId) => {
-    const response = await axios.get(
-      `https://api.faume.co/api/v3/customer/auth/connect/${provider}/${brandId}/check${window.location.search}`,
-      {
-        headers: {
-          "X-Brand-Id": clientId,
-        },
+    const response = await axios.get(`https://api.faume.co/api/v3/customer/auth/connect/${provider}/${brandId}/check${window.location.search}`, {
+      headers: {
+        "X-Brand-Id": clientId,
       },
-    );
+    });
     const user = response.data;
     authToken.value = user.token;
     userId.value = user.id;

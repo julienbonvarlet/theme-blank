@@ -1,20 +1,8 @@
 <template>
   <div v-if="link1?.url || link2?.url || hasSlot" class="f-cta-container">
-    <FAButton
-      v-if="link1?.url && link1.title?.length && isButton"
-      :to="link1.url"
-      :type="link1.type"
-      :label="link1.title"
-      :icon="link1.icon"
-    />
+    <FAButton v-if="link1?.url && link1.title?.length && isButton" :to="link1.url" :type="link1.type" :label="link1.title" :icon="link1.icon" />
     <FALink v-if="link1?.url && !isButton" :to="link1.url" :text="link1.title" />
-    <FAButton
-      v-if="link2?.url && link2?.title?.length && isButton"
-      :to="link2.url"
-      :type="link2.type"
-      :label="link2.title"
-      :icon="link2.icon"
-    />
+    <FAButton v-if="link2?.url && link2?.title?.length && isButton" :to="link2.url" :type="link2.type" :label="link2.title" :icon="link2.icon" />
     <FALink v-if="link2?.url && !isButton" :to="link2.url" :text="link2.title" />
     <slot />
   </div>

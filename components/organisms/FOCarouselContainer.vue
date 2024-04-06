@@ -1,12 +1,5 @@
 <template>
-  <FMSectionContainer
-    v-if="carousels?.length"
-    class="f-carousel-container"
-    :padding-x="true"
-    :margin-y="true"
-    max-width="xl"
-    class-child="f-carousel-container__inner"
-  >
+  <FMSectionContainer v-if="carousels?.length" class="f-carousel-container" :padding-x="true" :margin-y="true" max-width="xl" class-child="f-carousel-container__inner">
     <div class="f-carousel-container__heading">
       <FMTextContainer :title="title" :title-size="titleSize" :subtitle="subtitle" :text="text" align="left" />
       <FATabs v-if="tabs?.length > 1" :options="tabs" :active="activeTab" @change="(x) => (activeTab = x)" />

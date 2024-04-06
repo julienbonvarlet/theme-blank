@@ -35,12 +35,7 @@ export function useTrackingPlanDataFormatter() {
           index: "",
         };
       } else if (tool === "matomo") {
-        product = [
-          data.product.id,
-          normalizeString(data.product.title),
-          ["", "", normalizeString(data.choice.state), normalizeString(data.choice.size)],
-          formatPrice(data.choice.price),
-        ];
+        product = [data.product.id, normalizeString(data.product.title), ["", "", normalizeString(data.choice.state), normalizeString(data.choice.size)], formatPrice(data.choice.price)];
       } else {
         product = {};
       }

@@ -1,13 +1,7 @@
 <template>
   <div class="f-collection-suggestion-menu">
     <FMCarousel>
-      <FMCollectionCard
-        v-for="(item, i) in suggestionMenuItems"
-        :key="i"
-        :collection="item"
-        title-size="xs"
-        class="f-collection-suggestion-menu__item"
-      />
+      <FMCollectionCard v-for="(item, i) in suggestionMenuItems" :key="i" :collection="item" title-size="xs" class="f-collection-suggestion-menu__item" />
     </FMCarousel>
   </div>
 </template>

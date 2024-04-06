@@ -6,15 +6,7 @@
     </div>
     <div v-else>
       <div class="f-ti-fields__list">
-        <FAFieldBox
-          v-for="field in fields"
-          :key="field"
-          v-bind="field"
-          size="m"
-          class="f-ti-fields__field"
-          :class="`f-ti-fields__field--${type}`"
-          @input="handleFieldChange"
-        >
+        <FAFieldBox v-for="field in fields" :key="field" v-bind="field" size="m" class="f-ti-fields__field" :class="`f-ti-fields__field--${type}`" @input="handleFieldChange">
           <template v-if="type === 'seller'" #content>
             <FAIcon icon="user" />
           </template>
@@ -24,12 +16,7 @@
         </FAFieldBox>
       </div>
       <div class="f-ti-fields__cta">
-        <FAButton
-          type="primary"
-          :label="$t('trade_in.add_product.button_continue')"
-          :disabled="!selectionMade"
-          @click.prevent="emit('next')"
-        />
+        <FAButton type="primary" :label="$t('trade_in.add_product.button_continue')" :disabled="!selectionMade" @click.prevent="emit('next')" />
         <FAButton type="secondary" :label="t('global.back')" @click.prevent="back" />
       </div>
     </div>
@@ -45,15 +32,7 @@
     @on-close="confirmCondition = false"
   >
     <div class="f-popin-condition__images">
-      <img
-        v-for="img in images[model].examples"
-        :key="img"
-        :src="img"
-        :alt="model"
-        width="200"
-        height="400"
-        loading="lazy"
-      />
+      <img v-for="img in images[model].examples" :key="img" :src="img" :alt="model" width="200" height="400" loading="lazy" />
     </div>
     <FAButton :label="t('trade_in.add_product.button_continue')" @click.prevent="emit('next')" />
   </FMPopin>
@@ -87,9 +66,7 @@ const images = {
   },
   good: {
     picto: "https://demo.faume.co/cdn/shop/files/tshirt_4.png?v=1694055484",
-    examples: [
-      "https://demo.faume.co/cdn/shop/products/bf506d7bdce26144f5fe6fe8d63c7dd3_fa5e6e39-9c96-42c2-8aa9-a2c9f322b69d.jpg?v=1690991608",
-    ],
+    examples: ["https://demo.faume.co/cdn/shop/products/bf506d7bdce26144f5fe6fe8d63c7dd3_fa5e6e39-9c96-42c2-8aa9-a2c9f322b69d.jpg?v=1690991608"],
   },
 };
 

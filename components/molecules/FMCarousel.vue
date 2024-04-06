@@ -5,19 +5,9 @@
     </div>
 
     <div class="f-carousel__arrows">
-      <FAButtonIcon
-        class="f-carousel__arrows--prev"
-        :is-disabled="isFirstItemVisible"
-        icon="left"
-        @click="scrollPrev"
-      />
+      <FAButtonIcon class="f-carousel__arrows--prev" :is-disabled="isFirstItemVisible" icon="left" @click="scrollPrev" />
 
-      <FAButtonIcon
-        class="f-carousel__arrows--next"
-        :is-disabled="isLastItemVisible"
-        icon="right"
-        @click="scrollNext"
-      />
+      <FAButtonIcon class="f-carousel__arrows--next" :is-disabled="isLastItemVisible" icon="right" @click="scrollNext" />
     </div>
   </div>
 </template>

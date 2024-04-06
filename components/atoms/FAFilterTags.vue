@@ -99,13 +99,7 @@ const isTagDisabled = (tag) => {
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(
-          to bottom right,
-          transparent calc(50% - 1px),
-          #666 calc(50% - 1px),
-          #666 50%,
-          transparent 50%
-        );
+        background: linear-gradient(to bottom right, transparent calc(50% - 1px), #666 calc(50% - 1px), #666 50%, transparent 50%);
       }
     }
   }
@@ -130,13 +124,7 @@ const isTagDisabled = (tag) => {
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(
-          to bottom right,
-          transparent calc(50% - 1px),
-          #666 calc(50% - 1px),
-          #666 50%,
-          transparent 50%
-        );
+        background: linear-gradient(to bottom right, transparent calc(50% - 1px), #666 calc(50% - 1px), #666 50%, transparent 50%);
       }
     }
   }

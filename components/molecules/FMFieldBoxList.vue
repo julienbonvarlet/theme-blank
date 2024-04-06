@@ -5,16 +5,7 @@
       <FALinkHelper v-if="helper" :text="helper" @click.prevent="emit('onHelperClick')" />
     </div>
     <div class="f-field-box-list__container">
-      <FAFieldBox
-        v-for="field in fields"
-        :key="field"
-        v-bind="field"
-        :size="size"
-        :selected="field.value == selected"
-        :name="name"
-        :required="required"
-        @input="(value) => emitInput(value)"
-      />
+      <FAFieldBox v-for="field in fields" :key="field" v-bind="field" :size="size" :selected="field.value == selected" :name="name" :required="required" @input="(value) => emitInput(value)" />
     </div>
   </div>
 </template>

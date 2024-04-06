@@ -2,14 +2,7 @@
   <div class="f-search-product">
     <div class="f-search-product__container">
       <div class="f-search-product__header">
-        <FormKit
-          v-model="searchQuery"
-          type="text"
-          :placeholder="$t('sections.search.placeholder')"
-          class="search-input"
-          suffix-icon="search"
-          @input="searchProducts"
-        />
+        <FormKit v-model="searchQuery" type="text" :placeholder="$t('sections.search.placeholder')" class="search-input" suffix-icon="search" @input="searchProducts" />
         <FAButtonIcon class="close-button" :is-disabled="isFirstItemVisible" icon="cross" @click="closeSearch" />
       </div>
       <div class="f-search-product__content">
@@ -17,13 +10,7 @@
         <aside class="f-search-sidebar">
           <div class="sidebar-section">
             <nav v-if="data.menu" class="f-header-submenu__menu">
-              <FMNavigationList
-                v-for="item in data.menu"
-                :key="item.title"
-                :title="item.title"
-                :links="item.links"
-                @list-click="closeSearch"
-              />
+              <FMNavigationList v-for="item in data.menu" :key="item.title" :title="item.title" :links="item.links" @list-click="closeSearch" />
             </nav>
           </div>
         </aside>
@@ -37,35 +24,17 @@
           <div v-if="searchResults.length" class="results-container">
             <FATitle size="xs">{{ $t("sections.search.results") }}</FATitle>
             <div class="results-container__content">
-              <FMProductCard
-                v-for="product in searchResults"
-                :key="product.id"
-                :product="product"
-                @card-click="closeSearch"
-              />
+              <FMProductCard v-for="product in searchResults" :key="product.id" :product="product" @card-click="closeSearch" />
             </div>
             <div class="results-container__actions">
-              <FAButton
-                size="m"
-                type="primary"
-                :to="`/collections/id=?modele=${searchQuery}`"
-                label="Voir tous les produits"
-                @click="closeSearch"
-              />
+              <FAButton size="m" type="primary" :to="`/collections/id=?modele=${searchQuery}`" label="Voir tous les produits" @click="closeSearch" />
             </div>
           </div>
           <!-- Affiche les collections suggérées si aucun produit n'est recherché ou aucun produit trouvé -->
           <div v-else class="f-search-main__collection">
             <FATitle size="xs">{{ $t("sections.search.collections") }}</FATitle>
             <div class="f-search-main__collection-content">
-              <FMCollectionCard
-                v-for="(item, i) in suggestionMenuItems"
-                :key="i"
-                :collection="item"
-                title-size="xs"
-                class="f-collection-suggestion-menu__item"
-                @collection-click="closeSearch"
-              />
+              <FMCollectionCard v-for="(item, i) in suggestionMenuItems" :key="i" :collection="item" title-size="xs" class="f-collection-suggestion-menu__item" @collection-click="closeSearch" />
             </div>
           </div>
         </div>

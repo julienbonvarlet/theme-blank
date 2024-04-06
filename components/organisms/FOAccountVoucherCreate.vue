@@ -2,12 +2,7 @@
   <div class="f-account-create-voucher">
     <FMAccountHeading :title="$t('account.gift_cards.create.title')" back-url="/account/vouchers" />
     <FMWalletCard :wallet-amount="walletAmount" />
-    <FormKit
-      v-model="formData"
-      type="form"
-      :submit-label="$t('account.gift_cards.create.button', { amount: formData.amount || 0 })"
-      @submit="submit"
-    >
+    <FormKit v-model="formData" type="form" :submit-label="$t('account.gift_cards.create.button', { amount: formData.amount || 0 })" @submit="submit">
       <FMFormMessage v-if="error" :text="error" type="error" />
       <FormKit
         type="radio"

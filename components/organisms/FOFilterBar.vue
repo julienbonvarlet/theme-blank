@@ -1,10 +1,5 @@
 <template>
-  <FOFilterDropdown
-    :filters-options="filtersOptions"
-    :filters-options-active="filtersOptionsActive"
-    :checkbox="checkbox"
-    @filter-changed="handleFilterChange"
-  />
+  <FOFilterDropdown :filters-options="filtersOptions" :filters-options-active="filtersOptionsActive" :checkbox="checkbox" @filter-changed="handleFilterChange" />
 </template>
 
 <script setup lang="ts">

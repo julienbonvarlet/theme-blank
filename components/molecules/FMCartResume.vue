@@ -28,9 +28,7 @@
       <tr v-if="shippingMethod || shippingTotal" class="f-cart-resume__shipping">
         <td>
           <FAText size="s">{{ $t("global.shipping") }}</FAText>
-          <FAText v-if="shippingMethod" size="xs" :is-grey="true">
-            {{ shippingMethod }} {{ shippingDelay ? `: ${shippingDelay}` : "" }}
-          </FAText>
+          <FAText v-if="shippingMethod" size="xs" :is-grey="true"> {{ shippingMethod }} {{ shippingDelay ? `: ${shippingDelay}` : "" }} </FAText>
         </td>
         <td>
           <FAText size="s">{{ shippingTotal > 0 ? shippingPrice : $t("global.free") }}</FAText>
@@ -47,13 +45,7 @@
     </table>
     <slot />
     <FAButton v-if="primaryButton" v-bind="primaryButton" size="l" />
-    <FAButton
-      v-if="secondaryButton"
-      class="f-cart-resume__continue"
-      v-bind="secondaryButton"
-      size="m"
-      type="secondary"
-    />
+    <FAButton v-if="secondaryButton" class="f-cart-resume__continue" v-bind="secondaryButton" size="m" type="secondary" />
   </div>
 </template>
 

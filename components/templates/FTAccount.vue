@@ -1,11 +1,5 @@
 <template>
-  <FMSectionContainer
-    max-width="xl"
-    :padding-y="true"
-    :padding-x="true"
-    class="ft-account"
-    class-child="ft-account__container"
-  >
+  <FMSectionContainer max-width="xl" :padding-y="true" :padding-x="true" class="ft-account" class-child="ft-account__container">
     <FOAccountMenu />
     <div class="ft-account__content" :class="`is-${name}`">
       <FALoader v-if="!user" size="l" />

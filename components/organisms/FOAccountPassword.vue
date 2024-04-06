@@ -1,31 +1,10 @@
 <template>
   <div class="f-account-password">
-    <FMAccountHeading
-      :title="$t('account.informations.password_edit.title')"
-      size="m"
-      back-url="/account/informations"
-    />
-    <FMFormMessage
-      v-if="displaySuccessMessage"
-      :text="$t('account.informations.password_edit.message_success')"
-      type="success"
-    />
+    <FMAccountHeading :title="$t('account.informations.password_edit.title')" size="m" back-url="/account/informations" />
+    <FMFormMessage v-if="displaySuccessMessage" :text="$t('account.informations.password_edit.message_success')" type="success" />
     <FMFormMessage v-if="displayErrorMessage" :text="displayErrorMessage" type="error" />
-    <FormKit
-      v-model="formData"
-      type="form"
-      :submit-label="$t('account.informations.password_edit.button')"
-      @submit="save"
-    >
-      <FormKit
-        v-for="field in fields"
-        :key="field"
-        v-bind="field"
-        suffix-icon="eyeClosed"
-        validator="required"
-        type="password"
-        @suffix-icon-click="togglePasswordFieldType"
-      />
+    <FormKit v-model="formData" type="form" :submit-label="$t('account.informations.password_edit.button')" @submit="save">
+      <FormKit v-for="field in fields" :key="field" v-bind="field" suffix-icon="eyeClosed" validator="required" type="password" @suffix-icon-click="togglePasswordFieldType" />
     </FormKit>
   </div>
 </template>

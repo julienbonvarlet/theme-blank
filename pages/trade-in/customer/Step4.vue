@@ -4,15 +4,7 @@
       <FMResaleShippingExplanation :resale="cart" />
     </FMTradeInStep>
 
-    <FMSectionContainer
-      v-if="cart"
-      class="f-ti-voucher"
-      class-child="f-ti-voucher__inner"
-      max-width="m"
-      :padding-x="true"
-      :padding-y="true"
-      :margin-y="true"
-    >
+    <FMSectionContainer v-if="cart" class="f-ti-voucher" class-child="f-ti-voucher__inner" max-width="m" :padding-x="true" :padding-y="true" :margin-y="true">
       <FATradeInTitle :title="$t('trade_in.customer_final.voucher.title')" size="s" />
       <FAText :text="$t('trade_in.customer_final.voucher.text')" />
       <FMCtaContainer v-bind="ctaContainerData" />

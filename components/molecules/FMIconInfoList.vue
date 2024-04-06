@@ -1,22 +1,8 @@
 <template>
   <div class="f-icon-info-list">
-    <FMTextContainer
-      :title="title"
-      :title-size="titleSize"
-      :text="text"
-      :subtitle="subtitle"
-      :link1="link"
-      :align="align"
-    >
+    <FMTextContainer :title="title" :title-size="titleSize" :text="text" :subtitle="subtitle" :link1="link" :align="align">
       <div class="f-icon-info-list__content">
-        <FMIconInfo
-          v-for="item in icons"
-          :key="item"
-          :title="item.title"
-          :text="item.text"
-          :image="item.image"
-          :alt="item.alt"
-        />
+        <FMIconInfo v-for="item in icons" :key="item" :title="item.title" :text="item.text" :image="item.image" :alt="item.alt" />
       </div>
     </FMTextContainer>
   </div>

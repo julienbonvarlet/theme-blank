@@ -25,8 +25,7 @@ const sectionReassurance = {
     {
       text: t("trade_in.reinsurance.2"),
       alt: t("trade_in.reinsurance.2"),
-      image:
-        "https://demo.faume.co/cdn/shop/files/keyboard_double_arrow_left_FILL0_wght400_GRAD0_opsz24.svg?v=1699347817",
+      image: "https://demo.faume.co/cdn/shop/files/keyboard_double_arrow_left_FILL0_wght400_GRAD0_opsz24.svg?v=1699347817",
     },
     {
       text: t("trade_in.reinsurance.3"),

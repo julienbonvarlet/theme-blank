@@ -36,10 +36,7 @@ const cardInlineData = computed(() => {
   const order = props.order;
   return {
     title: order.reference,
-    text:
-      count.value < 2
-        ? t("account.orders.product_bought", { count: count.value })
-        : t("account.orders.products_bought", { count: count.value }),
+    text: count.value < 2 ? t("account.orders.product_bought", { count: count.value }) : t("account.orders.products_bought", { count: count.value }),
     details: order.date || date.value,
     price: order.total,
     image: image.value || order.photo || imageStore.placeholder,

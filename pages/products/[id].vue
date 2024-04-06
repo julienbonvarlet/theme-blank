@@ -6,11 +6,7 @@
       <FAButton :to="{ name: 'homepage' }" :label="$t('pages.product.cta_back_home')" />
     </div>
     <div v-else>
-      <FMBreadcrumb
-        current-page-type="product"
-        :current-page-title="product.title"
-        :previous-page-title="previousPageTitle"
-      />
+      <FMBreadcrumb current-page-type="product" :current-page-title="product.title" :previous-page-title="previousPageTitle" />
       <FOProductPresentation :product="product" :choice="choice" @on-choice-change="(value) => updateChoice(value)" />
       <FOProductSuggestions :color="choice.color" :size="choice.size" :gender="choice.gender" :type="choice.type" />
     </div>

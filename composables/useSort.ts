@@ -1,25 +1,6 @@
 export function useSort() {
   const sortSizes = (sizes) => {
-    const sizeOrder = [
-      "3XS",
-      "XXXS",
-      "2XS",
-      "XXS",
-      "XS",
-      "S",
-      "M",
-      "L",
-      "XL",
-      "XXL",
-      "2XL",
-      "XXXL",
-      "3Xl",
-      "XXXXL",
-      "4XL",
-      "5XL",
-      "TU",
-      "U",
-    ];
+    const sizeOrder = ["3XS", "XXXS", "2XS", "XXS", "XS", "S", "M", "L", "XL", "XXL", "2XL", "XXXL", "3Xl", "XXXXL", "4XL", "5XL", "TU", "U"];
     const sizesStr = sizes.map((size) => size.toString());
     return sizesStr.sort((a, b) => {
       const indexA = sizeOrder.indexOf(a) >= 0 ? sizeOrder.indexOf(a) : 100 + parseInt(a, 10);

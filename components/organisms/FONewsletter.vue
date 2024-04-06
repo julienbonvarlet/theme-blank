@@ -14,13 +14,7 @@
       <FMFormMessage v-if="success" type="success" :text="$t('sections.newsletter.success_message')" />
       <FMFormMessage v-if="error" type="error" :text="$t('sections.newsletter.error_message')" />
       <div v-if="!success" class="f-newsletter__field">
-        <FormKit
-          name="email"
-          type="email"
-          :value="email"
-          validation="required|email"
-          :help="$t('sections.newsletter.help')"
-        />
+        <FormKit name="email" type="email" :value="email" validation="required|email" :help="$t('sections.newsletter.help')" />
         <FAButton :submit="true" :label="$t('sections.newsletter.button')" :is-loading="loading" />
       </div>
     </FormKit>

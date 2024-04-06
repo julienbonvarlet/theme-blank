@@ -1,17 +1,8 @@
 <template>
-  <FTAuth
-    :title="$t('account.identification.title')"
-    :image="image"
-    :message="!emailChecked || emailExists ? $t('account.identification.text') : null"
-  >
+  <FTAuth :title="$t('account.identification.title')" :image="image" :message="!emailChecked || emailExists ? $t('account.identification.text') : null">
     <FMFormCheckEmail v-if="!emailChecked" @submit="handleEmailSubmit" />
 
-    <FMFormLogin
-      v-else-if="emailExists"
-      :email="email"
-      @go-to-register="toggleEmailExists"
-      @next="router.push('/account')"
-    />
+    <FMFormLogin v-else-if="emailExists" :email="email" @go-to-register="toggleEmailExists" @next="router.push('/account')" />
 
     <FMFormRegister v-else :email="email" @go-to-login="toggleEmailExists" @next="router.push('/account')" />
   </FTAuth>

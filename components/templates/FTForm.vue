@@ -4,12 +4,7 @@
     <FMFormMessage v-if="success" type="success" :text="success" />
 
     <FormKit type="form" :submit-label="button || $t('global.validate')" @submit="submit">
-      <FormKit
-        v-for="field in fields"
-        :key="field"
-        v-bind="field"
-        @suffix-icon-click="(node) => suffiIconClick(node, field.type)"
-      />
+      <FormKit v-for="field in fields" :key="field" v-bind="field" @suffix-icon-click="(node) => suffiIconClick(node, field.type)" />
     </FormKit>
 
     <slot />

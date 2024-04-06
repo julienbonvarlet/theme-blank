@@ -3,47 +3,22 @@
     <FALoader v-if="!addresses" size="m" />
     <FMFormAddress v-else-if="!addresses?.length" :inline-desktop="true" />
     <div v-else class="f-form-select-address__list">
-      <div
-        v-for="item in addresses"
-        :key="item"
-        class="f-form-select-address__item"
-        :class="{ 'is-selected': item['@id'] == model }"
-        @click="selectAddress(item['@id'])"
-      >
+      <div v-for="item in addresses" :key="item" class="f-form-select-address__item" :class="{ 'is-selected': item['@id'] == model }" @click="selectAddress(item['@id'])">
         <FACheckbox :radio="true" :checked="item['@id'] == model" />
         <FMCardText v-bind="formatAddressCardText(item)">
           <FATagDefault v-if="item.isDefault" :text="$t('global.form.default_address')" />
         </FMCardText>
-        <FAButton
-          :label="$t('account.addresses.button_edit')"
-          size="s"
-          type="secondary"
-          icon="write"
-          @click.prevent.stop="editAddress = item"
-        />
+        <FAButton :label="$t('account.addresses.button_edit')" size="s" type="secondary" icon="write" @click.prevent.stop="editAddress = item" />
       </div>
       <FALink v-if="addresses" :text="$t('account.addresses.button_add')" @click.prevent="createAddress = true" />
     </div>
   </div>
 
-  <FMPopin
-    v-if="createAddress"
-    position="right"
-    :visible="true"
-    :title="$t('account.addresses.create.title')"
-    @on-close="createAddress = false"
-  >
+  <FMPopin v-if="createAddress" position="right" :visible="true" :title="$t('account.addresses.create.title')" @on-close="createAddress = false">
     <FMFormAddress @next="createAddress = false" />
   </FMPopin>
 
-  <FMPopin
-    v-if="editAddress"
-    :key="editAddress"
-    position="right"
-    :visible="true"
-    :title="$t('account.addresses.edit.title')"
-    @on-close="editAddress = null"
-  >
+  <FMPopin v-if="editAddress" :key="editAddress" position="right" :visible="true" :title="$t('account.addresses.edit.title')" @on-close="editAddress = null">
     <FMFormAddress :address="editAddress" @next="editAddress = null" />
   </FMPopin>
 </template>

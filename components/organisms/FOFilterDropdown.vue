@@ -1,22 +1,8 @@
 <template>
   <div ref="clickArea" class="f-filter-dropdown">
     <div v-for="(filter, key) in filtersOptions" :key="key">
-      <FMFilterLabel
-        :text="key"
-        icon="down"
-        :display-text="true"
-        :display-icon="true"
-        :class="getFilterLabelClass(String(key))"
-        @click.prevent="toggleOpen(String(key))"
-      />
-      <FMFilterList
-        v-if="filter"
-        :checkbox="checkbox"
-        :type="key"
-        :filters-options-active="filtersOptionsActive"
-        :items="filter"
-        @filter-changed="handleFilterChange"
-      />
+      <FMFilterLabel :text="key" icon="down" :display-text="true" :display-icon="true" :class="getFilterLabelClass(String(key))" @click.prevent="toggleOpen(String(key))" />
+      <FMFilterList v-if="filter" :checkbox="checkbox" :type="key" :filters-options-active="filtersOptionsActive" :items="filter" @filter-changed="handleFilterChange" />
     </div>
   </div>
 </template>

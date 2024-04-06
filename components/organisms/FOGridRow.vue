@@ -1,13 +1,5 @@
 <template>
-  <FMSectionContainer
-    v-if="columns?.length"
-    class="f-grid-row"
-    :max-width="maxWidth"
-    :margin-y="marginY"
-    :margin-x="marginX"
-    :padding-y="paddingY"
-    :padding-x="paddingX"
-  >
+  <FMSectionContainer v-if="columns?.length" class="f-grid-row" :max-width="maxWidth" :margin-y="marginY" :margin-x="marginX" :padding-y="paddingY" :padding-x="paddingX">
     <div class="f-grid-row__content">
       <FMGridColumn v-for="(column, index) in columns" :key="index" v-bind="column" :align="align" />
       <slot />

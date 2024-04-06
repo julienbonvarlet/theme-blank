@@ -1,11 +1,5 @@
 <template>
-  <FOSectionText
-    class="f-order-success"
-    max-width="l"
-    :title="$t('pages.checkout.confirmation.title')"
-    :text="$t('pages.checkout.confirmation.text')"
-    :link1="button"
-  />
+  <FOSectionText class="f-order-success" max-width="l" :title="$t('pages.checkout.confirmation.title')" :text="$t('pages.checkout.confirmation.text')" :link1="button" />
 </template>
 
 <script setup lang="ts">

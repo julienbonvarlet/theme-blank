@@ -40,13 +40,7 @@
       />
       <FormKit name="email" type="email" label="Email" validation="required|email" validation-visibility="live" />
 
-      <FormKit
-        type="date"
-        label="Birthday"
-        help="Enter your birth day"
-        validation="required|date_after:2023-01-01"
-        validation-visibility="live"
-      />
+      <FormKit type="date" label="Birthday" help="Enter your birth day" validation="required|date_after:2023-01-01" validation-visibility="live" />
       <FormKit
         type="password"
         name="password"
@@ -69,12 +63,7 @@
         suffix-icon="eyeClosed"
         @suffix-icon-click="handleIconClick"
       />
-      <FormKit
-        type="select"
-        label="Which country is the smallest?"
-        name="small_country"
-        :options="['Monaco', 'Vatican City', 'Maldives', 'Tuvalu']"
-      />
+      <FormKit type="select" label="Which country is the smallest?" name="small_country" :options="['Monaco', 'Vatican City', 'Maldives', 'Tuvalu']" />
       <FormKit
         type="textarea"
         name="instructions"

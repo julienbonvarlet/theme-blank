@@ -3,18 +3,8 @@
     <FATitle size="s" :title="$t('pages.checkout.address.title')" />
     <FATabs v-if="addresses?.length" :options="billingTabs" :active="displayType" @change="(x) => (displayType = x)" />
     <FMFormMessage v-if="error" type="error" :text="error" />
-    <FMFormSelectAddress
-      v-if="displayType === 'shipping'"
-      ref="shipping"
-      :model="shippingAddress"
-      @select="(id) => updateAddress(id, 'shippingAddress')"
-    />
-    <FMFormSelectAddress
-      v-else
-      ref="billing"
-      :model="billingAddress"
-      @select="(id) => updateAddress(id, 'billingAddress')"
-    />
+    <FMFormSelectAddress v-if="displayType === 'shipping'" ref="shipping" :model="shippingAddress" @select="(id) => updateAddress(id, 'shippingAddress')" />
+    <FMFormSelectAddress v-else ref="billing" :model="billingAddress" @select="(id) => updateAddress(id, 'billingAddress')" />
   </div>
 </template>
 

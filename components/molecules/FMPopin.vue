@@ -1,12 +1,6 @@
 <template>
   <Teleport to="body">
-    <div
-      v-if="isVisible"
-      class="f-popin"
-      :class="[positionClass, extraClass]"
-      v-bind="attrs"
-      @click.self.prevent="close"
-    >
+    <div v-if="isVisible" class="f-popin" :class="[positionClass, extraClass]" v-bind="attrs" @click.self.prevent="close">
       <div class="f-popin__inner">
         <div class="f-popin__heading">
           <slot name="heading" />

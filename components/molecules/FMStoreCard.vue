@@ -13,12 +13,7 @@
       </FAText>
     </FMCollapse>
     <div class="f-store-card__status">
-      <FATagDefault
-        icon="dot"
-        class="f-store-card__status-tag"
-        :class="isStoreOpen ? 'is-open' : 'is-closed'"
-        :text="isStoreOpen ? t('pages.stores.open_today') : t('pages.stores.closed')"
-      />
+      <FATagDefault icon="dot" class="f-store-card__status-tag" :class="isStoreOpen ? 'is-open' : 'is-closed'" :text="isStoreOpen ? t('pages.stores.open_today') : t('pages.stores.closed')" />
       <FAButtonIcon icon="time" />
     </div>
     <FAButton

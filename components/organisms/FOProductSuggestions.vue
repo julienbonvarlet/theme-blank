@@ -1,11 +1,5 @@
 <template>
-  <FOCarouselContainer
-    v-if="suggestionsProducts?.length"
-    class="f-product-suggestions"
-    :title="$t('pages.product.suggestions.title')"
-    :title-size="titleSize"
-    :carousels="carousels"
-  />
+  <FOCarouselContainer v-if="suggestionsProducts?.length" class="f-product-suggestions" :title="$t('pages.product.suggestions.title')" :title-size="titleSize" :carousels="carousels" />
 </template>
 
 <script lang="ts" setup>
@@ -35,11 +29,7 @@ const suggestionsCarousel = computed(() => ({
   products: suggestionsProducts.value?.length ? [...suggestionsProducts.value] : [],
 }));
 
-const carousels = computed(() =>
-  recentlyViewedProducts.value?.length
-    ? [suggestionsCarousel.value, recentlyViewCarousel.value]
-    : [suggestionsCarousel.value],
-);
+const carousels = computed(() => (recentlyViewedProducts.value?.length ? [suggestionsCarousel.value, recentlyViewCarousel.value] : [suggestionsCarousel.value]));
 
 watch(
   () => [props.size, props.color, props.gender, props.type],

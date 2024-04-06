@@ -5,14 +5,7 @@
       <FAText>{{ $t("account.gift_cards.total_credits") }}</FAText>
     </div>
     <FAPrice :price="walletAmount" size="l" :cents="false" />
-    <FAButton
-      v-if="walletAmount > 0"
-      to="/account/vouchers/create"
-      type="secondary"
-      :label="$t('account.gift_cards.button_convert')"
-      size="s"
-      icon="gift-card"
-    />
+    <FAButton v-if="walletAmount > 0" to="/account/vouchers/create" type="secondary" :label="$t('account.gift_cards.button_convert')" size="s" icon="gift-card" />
   </div>
 </template>
 

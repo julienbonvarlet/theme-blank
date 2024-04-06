@@ -1,13 +1,7 @@
 <template>
   <div class="f-filter-list">
     <div v-for="(item, i) in items" :key="i" class="f-filter-list__checkbox">
-      <FAFilterCheckbox
-        :checkbox="checkbox"
-        :type="type"
-        :item="{ key: item.key, value: item.value }"
-        :filters-options-active="filtersOptionsActive"
-        @filter-changed="handleFilterChange"
-      />
+      <FAFilterCheckbox :checkbox="checkbox" :type="type" :item="{ key: item.key, value: item.value }" :filters-options-active="filtersOptionsActive" @filter-changed="handleFilterChange" />
     </div>
   </div>
 </template>

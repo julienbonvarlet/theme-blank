@@ -1,12 +1,6 @@
 <template>
   <div class="product-listing content">
-    <FOBanner
-      :title="$t('pages.collection.all.title')"
-      :text="$t('pages.collection.all.text')"
-      :background-image="backgroundImage"
-      title-size="l"
-      size="m"
-    />
+    <FOBanner :title="$t('pages.collection.all.title')" :text="$t('pages.collection.all.text')" :background-image="backgroundImage" title-size="l" size="m" />
     <FMSectionContainer :padding-x="true" max-width="xl" :padding-y="true">
       <FMBreadcrumb current-page-type="collection" :current-page-title="$t('pages.collection.all.title')" />
       <FOCollectionSuggestionMenu :suggestion-menu-items="suggestionMenuItems" />
@@ -14,12 +8,7 @@
     <FOFilterBar :filters-options="filters" :order-options="exempleDataOrder" :checkbox="true" />
     <FMSectionContainer :padding-x="true" max-width="xl" :padding-y="true">
       <div class="f-products-grid">
-        <FMProductCard
-          v-for="product in products"
-          :key="product.id"
-          :product="product"
-          @add-to-cart="handleAddToCart"
-        />
+        <FMProductCard v-for="product in products" :key="product.id" :product="product" @add-to-cart="handleAddToCart" />
       </div>
     </FMSectionContainer>
   </div>

@@ -1,20 +1,8 @@
 <template>
   <div class="f-form-order-follow">
     <FormKit type="form" :submit-label="$t('pages.order_tracking.button_track_order')" @submit="submitOrderFollow">
-      <FormKit
-        v-model="formData.email"
-        :label="$t('global.form.email') + ' *'"
-        type="email"
-        name="email"
-        validator="required|email"
-      />
-      <FormKit
-        v-model="formData.orderNumber"
-        :label="$t('pages.order_tracking.order_number') + ' *'"
-        type="text"
-        name="orderNumber"
-        validator="required"
-      />
+      <FormKit v-model="formData.email" :label="$t('global.form.email') + ' *'" type="email" name="email" validator="required|email" />
+      <FormKit v-model="formData.orderNumber" :label="$t('pages.order_tracking.order_number') + ' *'" type="text" name="orderNumber" validator="required" />
     </FormKit>
     <FALink :text="$t('pages.order_tracking.button_login')" size="s" to="/account" />
   </div>

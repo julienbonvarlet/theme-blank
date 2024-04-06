@@ -1,14 +1,6 @@
 <template>
   <FMSectionContainer class="f-section-icons" :padding-x="true" :margin-y="marginY" :padding-y="paddingY" max-width="l">
-    <FMIconInfoList
-      :title="title"
-      :title-size="titleSize"
-      :text="text"
-      :subtitle="subtitle"
-      :link="link"
-      :icons="icons"
-      :align="align"
-    />
+    <FMIconInfoList :title="title" :title-size="titleSize" :text="text" :subtitle="subtitle" :link="link" :icons="icons" :align="align" />
   </FMSectionContainer>
 </template>
 

@@ -1,12 +1,5 @@
 <template>
-  <FOCarouselContainer
-    v-if="carousels"
-    :title="title"
-    :subtitle="subtitle"
-    :text="text"
-    :carousels="carousels"
-    :link1="link1"
-  />
+  <FOCarouselContainer v-if="carousels" :title="title" :subtitle="subtitle" :text="text" :carousels="carousels" :link1="link1" />
 </template>
 
 <script setup lang="ts">

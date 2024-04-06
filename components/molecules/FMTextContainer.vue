@@ -6,13 +6,7 @@
       <span v-if="text" v-html="text"></span>
     </FARichtext>
     <slot />
-    <FMCtaContainer
-      v-if="link1 || link2"
-      class="f-text-container__cta-container"
-      :link1="link1"
-      :link2="link2"
-      :cta-appearance="ctaAppearance"
-    />
+    <FMCtaContainer v-if="link1 || link2" class="f-text-container__cta-container" :link1="link1" :link2="link2" :cta-appearance="ctaAppearance" />
   </div>
 </template>
 

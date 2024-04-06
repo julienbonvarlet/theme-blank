@@ -1,10 +1,5 @@
 <template>
-  <component
-    :is="tag"
-    :to="to"
-    :class="['f-field-box', colorClass, selectedClass, disabledClass, imageClass, textClass, sizeClass]"
-    v-bind="attrs"
-  >
+  <component :is="tag" :to="to" :class="['f-field-box', colorClass, selectedClass, disabledClass, imageClass, textClass, sizeClass]" v-bind="attrs">
     <input v-if="name" v-model="selected" type="radio" :name="name" :required="required" :value="value" />
 
     <span class="f-field-box__content">
@@ -180,13 +175,7 @@ const attrs = useAttrs();
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(
-          to bottom right,
-          transparent calc(50% - 1px),
-          var(--f-field-box-border-color) calc(50% - 2px),
-          var(--f-field-box-border-color) 50%,
-          transparent 50%
-        );
+        background: linear-gradient(to bottom right, transparent calc(50% - 1px), var(--f-field-box-border-color) calc(50% - 2px), var(--f-field-box-border-color) 50%, transparent 50%);
       }
     }
   }

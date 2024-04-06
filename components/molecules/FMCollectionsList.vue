@@ -1,11 +1,6 @@
 <template>
   <div class="f-collections-list">
-    <FMCollectionCard
-      v-for="collection in collections"
-      :key="collection"
-      :collection="collection"
-      :title-size="titleSize"
-    />
+    <FMCollectionCard v-for="collection in collections" :key="collection" :collection="collection" :title-size="titleSize" />
   </div>
 </template>
 

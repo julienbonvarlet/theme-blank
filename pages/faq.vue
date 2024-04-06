@@ -1,20 +1,7 @@
 <template>
-  <FOSectionText
-    :title="$t('pages.faq.title')"
-    align="center"
-    title-tag="h1"
-    title-size="l"
-    max-width="l"
-    class="fp-faq"
-  >
+  <FOSectionText :title="$t('pages.faq.title')" align="center" title-tag="h1" title-size="l" max-width="l" class="fp-faq">
     <ul class="fp-faq__menu">
-      <li
-        v-for="(category, key) in categories"
-        :key="category"
-        class="fp-faq__category"
-        :class="{ 'is-active': active === key }"
-        @click.prevent="selectCategory(key)"
-      >
+      <li v-for="(category, key) in categories" :key="category" class="fp-faq__category" :class="{ 'is-active': active === key }" @click.prevent="selectCategory(key)">
         <FAIcon :icon="data[key]" />
         <FATitle size="xs" :title="$t(`pages.faq.categories.${key}.title`)" />
       </li>
@@ -22,15 +9,7 @@
     <div ref="content" class="fp-faq__content">
       <div v-if="activeCategory" :key="activeCategory.title" class="fp-faq__list">
         <FATitle class="fp-faq__subtitle" size="s" :title="$t(`pages.faq.categories.${active}.title`)" />
-        <FMCollapse
-          v-for="(question, index) in questions"
-          :key="index"
-          title-tag="h2"
-          title-size="xs"
-          :is-title="true"
-          :title="question.title"
-          :content="question.answer"
-        />
+        <FMCollapse v-for="(question, index) in questions" :key="index" title-tag="h2" title-size="xs" :is-title="true" :title="question.title" :content="question.answer" />
       </div>
     </div>
   </FOSectionText>

@@ -26,9 +26,7 @@ const loading = ref(false);
 
 const article = computed(() => props.item?.article);
 const title = computed(() => props.item.article?.metadata?.title);
-const text = computed(() =>
-  [props.item.article?.size, props.item.article?.color, props.item.article?.state].join(" • "),
-);
+const text = computed(() => [props.item.article?.size, props.item.article?.color, props.item.article?.state].join(" • "));
 const photo = computed(() => article.value?.photos?.[0]);
 
 const removeFromCart = async () => {

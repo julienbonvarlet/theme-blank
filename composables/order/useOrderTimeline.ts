@@ -23,9 +23,7 @@ export function useOrderTimeline(order: any, wording: any) {
       timeline.push(pushInTimeline("time", wording.states.treating, createdDate.value));
     }
     if (order.sentAt) {
-      const description = order.shippingTrackingNumber
-        ? `${order.shippingMode} - ${order.shippingTrackingNumber}`
-        : null;
+      const description = order.shippingTrackingNumber ? `${order.shippingMode} - ${order.shippingTrackingNumber}` : null;
       timeline.push(pushInTimeline("shipping", wording.states.shipped, order.sentAt, description));
     }
     if (order.receivedAt) {

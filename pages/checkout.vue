@@ -25,9 +25,7 @@ const loading = ref(true);
 const isAuthenticated = computed(() => authStore.authToken);
 const displayAddress = computed(() => isAuthenticated.value);
 const displayShippingMethod = computed(() => isAuthenticated.value && billingAddress.value && shippingAddress.value);
-const displayPayment = computed(
-  () => isAuthenticated.value && billingAddress.value && shippingAddress.value && shippingMethodId.value,
-);
+const displayPayment = computed(() => isAuthenticated.value && billingAddress.value && shippingAddress.value && shippingMethodId.value);
 
 onMounted(() => {
   if (isAuthenticated.value) {

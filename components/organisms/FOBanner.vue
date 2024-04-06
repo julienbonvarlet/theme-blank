@@ -2,16 +2,7 @@
   <div class="f-banner" :class="maxHeightClass">
     <img class="f-banner__image" :src="backgroundImage" alt="Faume" />
     <FMSectionContainer :padding-x="true" :padding-y="true" max-width="xl" class-child="f-banner__content">
-      <FMTextContainer
-        :title="title"
-        :title-size="titleSize"
-        :title-tag="titleTag"
-        :subtitle="subtitle"
-        :text="text"
-        :link1="link1"
-        :link2="link2"
-        :align="props.align"
-      />
+      <FMTextContainer :title="title" :title-size="titleSize" :title-tag="titleTag" :subtitle="subtitle" :text="text" :link1="link1" :link2="link2" :align="props.align" />
     </FMSectionContainer>
   </div>
 </template>

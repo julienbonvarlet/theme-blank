@@ -8,9 +8,7 @@
     <FMSectionContainer :padding-x="true" :padding-y="true" max-width="xl">
       <div class="f-book-resale-appointement__content">
         <div class="f-book-resale-appointement__left">
-          <FATitle class="f-book-resale-appointement__subtitle" size="s">{{
-            $t("pages.appointment.subtitle_left")
-          }}</FATitle>
+          <FATitle class="f-book-resale-appointement__subtitle" size="s">{{ $t("pages.appointment.subtitle_left") }}</FATitle>
           <div class="f-book-resale-appointement__store">
             <div class="f-book-resale-appointement__store-icon">
               <FAIcon icon="store" />
@@ -23,14 +21,7 @@
             </div>
           </div>
           <FormKit v-model="bookingInfo" type="form" :actions="false">
-            <FormKit
-              type="select"
-              :label="$t('global.form.date') + ' *'"
-              name="date"
-              :placeholder="$t('pages.appointment.date_placeholder')"
-              :options="availableDays"
-              validation="required"
-            />
+            <FormKit type="select" :label="$t('global.form.date') + ' *'" name="date" :placeholder="$t('pages.appointment.date_placeholder')" :options="availableDays" validation="required" />
             <FormKit
               v-if="availableSlots"
               type="select"
@@ -43,31 +34,16 @@
           </FormKit>
         </div>
         <div class="f-book-resale-appointement__right">
-          <FATitle class="f-book-resale-appointement__subtitle" size="s">{{
-            $t("pages.appointment.subtitle_right")
-          }}</FATitle>
+          <FATitle class="f-book-resale-appointement__subtitle" size="s">{{ $t("pages.appointment.subtitle_right") }}</FATitle>
           <FormKit v-model="userInfo" type="form" :actions="false">
             <FormKit type="text" :label="$t('global.form.firstname') + ' *'" validation="required" name="firstname" />
             <FormKit type="text" :label="$t('global.form.lastname') + ' *'" validation="required" name="lastname" />
             <FormKit type="email" :label="$t('global.form.email') + ' *'" validation="required|email" name="email" />
             <FormKit type="text" :label="$t('global.form.phone') + ' *'" validation="required" name="phone" />
-            <FormKit
-              type="number"
-              :label="$t('pages.appointment.label_products') + ' *'"
-              name="nbProducts"
-              number="integer"
-              validation="required|number|between:1,5"
-              min="1"
-              max="5"
-            />
+            <FormKit type="number" :label="$t('pages.appointment.label_products') + ' *'" name="nbProducts" number="integer" validation="required|number|between:1,5" min="1" max="5" />
             <FormKit type="textarea" :label="$t('pages.appointment.label_comment')" name="message" />
 
-            <FAButton
-              :label="$t('pages.appointment.button_validate')"
-              type="primary"
-              :is-disabled="!formValidity"
-              @click.prevent="$emit('validate', finalPayload)"
-            />
+            <FAButton :label="$t('pages.appointment.button_validate')" type="primary" :is-disabled="!formValidity" @click.prevent="$emit('validate', finalPayload)" />
           </FormKit>
         </div>
       </div>
@@ -167,15 +143,7 @@ const userInfo = ref<UserInfoType>({
 
 // TODO: fix form validity using formkit
 const formValidity = computed(() => {
-  return (
-    bookingInfo.value.date &&
-    bookingInfo.value.hour &&
-    userInfo.value.firstname &&
-    userInfo.value.lastname &&
-    userInfo.value.email &&
-    userInfo.value.phone &&
-    userInfo.value.nbProducts
-  );
+  return bookingInfo.value.date && bookingInfo.value.hour && userInfo.value.firstname && userInfo.value.lastname && userInfo.value.email && userInfo.value.phone && userInfo.value.nbProducts;
 });
 
 const finalPayload = computed(() => {

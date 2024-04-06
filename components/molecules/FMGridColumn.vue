@@ -1,36 +1,12 @@
 <template>
   <div class="f-grid-column">
     <FAImage v-if="type === 'image'" :src="src" :alt="alt" />
-    <FMThumbnail
-      v-else-if="type === 'thumbnail'"
-      :title-size="titleSize || 'l'"
-      :title="title"
-      :src="src"
-      :alt="alt"
-      :to="to"
-    />
+    <FMThumbnail v-else-if="type === 'thumbnail'" :title-size="titleSize || 'l'" :title="title" :src="src" :alt="alt" :to="to" />
     <div v-else-if="type === 'text'" class="f-grid-column__text">
       <img v-if="src" :src="src" :alt="alt || title" />
-      <FMTextContainer
-        :title-size="titleSize || 'm'"
-        :title="title"
-        :subtitle="subtitle"
-        :text="text"
-        :link1="link1"
-        :link2="link2"
-        :align="align"
-      />
+      <FMTextContainer :title-size="titleSize || 'm'" :title="title" :subtitle="subtitle" :text="text" :link1="link1" :link2="link2" :align="align" />
     </div>
-    <FMIconInfoList
-      v-else-if="type === 'icons'"
-      :title-size="titleSize || 'm'"
-      :title="title"
-      :subtitle="subtitle"
-      :text="text"
-      :link="link1"
-      :icons="icons"
-      :align="align"
-    />
+    <FMIconInfoList v-else-if="type === 'icons'" :title-size="titleSize || 'm'" :title="title" :subtitle="subtitle" :text="text" :link="link1" :icons="icons" :align="align" />
   </div>
 </template>
 

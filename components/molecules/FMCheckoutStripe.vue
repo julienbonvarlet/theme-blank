@@ -4,12 +4,7 @@
   <form class="f-checkout-stripe" @submit.prevent="submitStripe">
     <FMFormMessage v-if="submitError" type="error" :text="submitError" />
     <div id="payment-element"></div>
-    <FAButton
-      v-if="!stripeLoading && !stripeError"
-      :submit="true"
-      :label="$t('pages.checkout.payment.bank_card.button')"
-      :is-loading="submitLoading"
-    />
+    <FAButton v-if="!stripeLoading && !stripeError" :submit="true" :label="$t('pages.checkout.payment.bank_card.button')" :is-loading="submitLoading" />
   </form>
 </template>
 
@@ -32,9 +27,7 @@ const submitError = ref<string | boolean>(false);
 let elements: StripeElements;
 
 const submitStripe = async () => {
-  const billingAddress = await addressesStore
-    .fetchAddressById(cartOrder.value?.billingAddress?.split("/").pop())
-    .then((res) => res);
+  const billingAddress = await addressesStore.fetchAddressById(cartOrder.value?.billingAddress?.split("/").pop()).then((res) => res);
 
   if (!stripe || !elements || submitLoading.value) {
     return;

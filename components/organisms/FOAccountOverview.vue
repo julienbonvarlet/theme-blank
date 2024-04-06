@@ -38,11 +38,7 @@ const data = computed(() => ({
 
 <style lang="scss">
 .account-overview {
-  min-height: calc(
-    100vh - var(--f-header-height) - var(--f-top-bar-height) - var(--f-announcement-bar-height) - var(
-        --f-margin-section
-      ) - var(--f-margin-page)
-  );
+  min-height: calc(100vh - var(--f-header-height) - var(--f-top-bar-height) - var(--f-announcement-bar-height) - var(--f-margin-section) - var(--f-margin-page));
   position: relative;
 
   &__background {

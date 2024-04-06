@@ -16,11 +16,7 @@ export const useCartData = () => {
   const isCartEmpty = computed(() => !cartItems.value?.length);
 
   const shippingMethodId = computed(() => cartOrder.value?.shippingMethod);
-  const shippingMethod = computed(() =>
-    shippingMethodId.value && shippingMethods.value?.length
-      ? shippingMethods.value.find((x) => x["@id"] === shippingMethodId.value)
-      : null,
-  );
+  const shippingMethod = computed(() => (shippingMethodId.value && shippingMethods.value?.length ? shippingMethods.value.find((x) => x["@id"] === shippingMethodId.value) : null));
   const shippingMethodName = computed(() => shippingMethod.value?.name);
   const shippingDelay = computed(() => shippingMethod.value?.comment);
   const shippingTotal = computed(() => cartOrder.value?.shippingTotal);
@@ -37,12 +33,8 @@ export const useCartData = () => {
 
   const isMiniCartOpen = computed(() => cartStore.isMiniCartOpen);
 
-  const shippingAddress = computed(() =>
-    addressesStore.addresses?.find((x) => x["@id"] === cartOrder.value?.shippingAddress),
-  );
-  const billingAddress = computed(() =>
-    addressesStore.addresses?.find((x) => x["@id"] === cartOrder.value?.billingAddress),
-  );
+  const shippingAddress = computed(() => addressesStore.addresses?.find((x) => x["@id"] === cartOrder.value?.shippingAddress));
+  const billingAddress = computed(() => addressesStore.addresses?.find((x) => x["@id"] === cartOrder.value?.billingAddress));
 
   return {
     cartId,

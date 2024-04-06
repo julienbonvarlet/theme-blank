@@ -9,20 +9,8 @@
       @on-helper-click="displaySizeGuide()"
       @input="(value) => selectField('size', value)"
     />
-    <FMFieldBoxList
-      name="color"
-      :label="$t('pages.product.labels.color')"
-      :fields="colorsFields"
-      :selected="selectedAttributes.color"
-      @input="(value) => selectField('color', value)"
-    />
-    <FMFieldBoxList
-      name="state"
-      :label="$t('pages.product.labels.condition')"
-      :fields="stateFields"
-      :selected="selectedAttributes.state"
-      @input="(value) => selectField('state', value)"
-    />
+    <FMFieldBoxList name="color" :label="$t('pages.product.labels.color')" :fields="colorsFields" :selected="selectedAttributes.color" @input="(value) => selectField('color', value)" />
+    <FMFieldBoxList name="state" :label="$t('pages.product.labels.condition')" :fields="stateFields" :selected="selectedAttributes.state" @input="(value) => selectField('state', value)" />
     <FAButton size="l" :label="$t('pages.product.add_button')" />
   </form>
 </template>
@@ -68,20 +56,11 @@ const stateFields = computed(() =>
   states.value.map((state) => ({
     label: state,
     value: state,
-    disabled: !choices.value?.find(
-      (c) => c.size == selectedAttributes.value.size && c.color == selectedAttributes.value.color && c.state === state,
-    ),
+    disabled: !choices.value?.find((c) => c.size == selectedAttributes.value.size && c.color == selectedAttributes.value.color && c.state === state),
   })),
 );
 
-const choice = computed(() =>
-  choices.value?.find(
-    (x) =>
-      x.state === selectedAttributes.value.state &&
-      x.color === selectedAttributes.value.color &&
-      x.size === selectedAttributes.value.size,
-  ),
-);
+const choice = computed(() => choices.value?.find((x) => x.state === selectedAttributes.value.state && x.color === selectedAttributes.value.color && x.size === selectedAttributes.value.size));
 
 const displaySizeGuide = () => {
   console.log("Afficher le guide des tailles");

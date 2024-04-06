@@ -5,11 +5,7 @@ export const usePaymentMethodsStore = defineStore("paymentMethod", () => {
   // Récupérer la collection des méthodes de paiement pour une commande spécifique
   const fetchPaymentMethodsForOrder = async (orderId, page = 1, itemsPerPage = 10) => {
     try {
-      const response = await $API.paymentMethod.apiCustomerOrdersOrderIdpaymentMethodsGetCollection(
-        orderId,
-        page,
-        itemsPerPage,
-      );
+      const response = await $API.paymentMethod.apiCustomerOrdersOrderIdpaymentMethodsGetCollection(orderId, page, itemsPerPage);
       paymentMethods.value = response["hydra:member"];
       return paymentMethods.value;
     } catch (error) {

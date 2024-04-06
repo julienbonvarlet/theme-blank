@@ -4,14 +4,7 @@
     <FMFormMessage v-if="errorPayment" type="error" :text="$t('pages.checkout.identification.error_payment')" />
     <FALoader v-if="loading" />
     <ul v-else-if="paymentMethods?.length">
-      <FMRadioInline
-        v-for="method in paymentMethods"
-        :key="method"
-        :title="method.name"
-        :icon="method.code"
-        :checked="paymentMethod === method['@id']"
-        @click="setPaymentMethod(method['@id'])"
-      >
+      <FMRadioInline v-for="method in paymentMethods" :key="method" :title="method.name" :icon="method.code" :checked="paymentMethod === method['@id']" @click="setPaymentMethod(method['@id'])">
         <FMCheckoutStripe v-if="displayStripe && method.code === 'card'" />
       </FMRadioInline>
     </ul>

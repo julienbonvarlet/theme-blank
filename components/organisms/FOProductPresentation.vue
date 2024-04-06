@@ -1,11 +1,5 @@
 <template>
-  <FMSectionContainer
-    v-if="product"
-    :padding-x="true"
-    max-width="xl"
-    class="f-product-presentation"
-    class-child="f-product-presentation__container"
-  >
+  <FMSectionContainer v-if="product" :padding-x="true" max-width="xl" class="f-product-presentation" class-child="f-product-presentation__container">
     <FMProductGallery v-if="photos?.length" :photos="photos" />
 
     <div class="f-product-presentation__detail">
@@ -16,20 +10,9 @@
       <FMSmallReassurance v-bind="data.reassurance" />
 
       <div class="f-product-presentation__collapses">
-        <FMCollapse
-          v-if="product.description?.length"
-          :title="$t('pages.product.description')"
-          :content="product.description"
-        />
-        <FMCollapse
-          v-if="product.composition?.length"
-          :title="$t('pages.product.composition')"
-          :content="product.composition"
-        />
-        <FMCollapse
-          :title="$t('pages.product.shipping_return_title')"
-          :content="$t('pages.product.shipping_return_text')"
-        />
+        <FMCollapse v-if="product.description?.length" :title="$t('pages.product.description')" :content="product.description" />
+        <FMCollapse v-if="product.composition?.length" :title="$t('pages.product.composition')" :content="product.composition" />
+        <FMCollapse :title="$t('pages.product.shipping_return_title')" :content="$t('pages.product.shipping_return_text')" />
       </div>
     </div>
   </FMSectionContainer>

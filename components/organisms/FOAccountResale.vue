@@ -28,10 +28,7 @@
         <FAText :text="$t('account.trade_ins.detail.not_validated.text')" />
         <FAButton :label="$t('account.trade_ins.detail.not_validated.button')" @click.prevent="continueTradeIn" />
       </section>
-      <section
-        v-if="!resale.sentAt && !resale.receivedAt && resale.state === 'validated'"
-        class="f-account-resale__explanation"
-      >
+      <section v-if="!resale.sentAt && !resale.receivedAt && resale.state === 'validated'" class="f-account-resale__explanation">
         <FMAccountHeading :title="$t('account.trade_ins.detail.how_to_send')" size="s" />
         <FMResaleShippingExplanation :resale="resale" />
       </section>
@@ -82,9 +79,7 @@ const informationTable = computed(() => {
   const data = [];
   data.push(pushInTable(t("account.trade_ins.detail.reference"), resale.reference));
   data.push(pushInTable(t("account.trade_ins.detail.created_date"), formatDate(resale.createdAt)));
-  data.push(
-    pushInTable(t(`account.trade_ins.detail.article${resale.items?.length > 1 ? "s" : ""}`), resale.items?.length || 0),
-  );
+  data.push(pushInTable(t(`account.trade_ins.detail.article${resale.items?.length > 1 ? "s" : ""}`), resale.items?.length || 0));
   data.push(pushInTable(t("account.trade_ins.detail.estimated_amount"), formatPrice(estimatedTotal.value)));
   if (resale.trackingNumber) {
     data.push(pushInTable(t("account.trade_ins.detail.tracking_number"), resale.trackingNumber));

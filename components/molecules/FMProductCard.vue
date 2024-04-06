@@ -1,11 +1,7 @@
 <template>
   <NuxtLink :to="`/products/${product.id}`" class="f-product-card" @click="handleClick">
     <div class="f-product-card__visual">
-      <FADiscountTag
-        class="f-product-card__discount"
-        :original-price="product.originPrice"
-        :sale-price="product.minPrice"
-      />
+      <FADiscountTag class="f-product-card__discount" :original-price="product.originPrice" :sale-price="product.minPrice" />
 
       <div class="f-product-card__images">
         <img :src="product.frontPhoto" :alt="`${product.title}`" />

@@ -1,11 +1,6 @@
 <template>
   <div class="fp-cart" :class="{ 'is-empty': isCartEmpty }">
-    <FOSectionText
-      title-size="l"
-      title-tag="h1"
-      :title="$t('pages.cart.title')"
-      :text="isCartEmpty && cartItems ? $t('pages.cart.empty') : null"
-    />
+    <FOSectionText title-size="l" title-tag="h1" :title="$t('pages.cart.title')" :text="isCartEmpty && cartItems ? $t('pages.cart.empty') : null" />
 
     <FALoader v-if="!cartItems" class="fp-cart__loader" />
 
@@ -35,19 +30,7 @@ const { t } = useI18n();
 const { selectedFiltersForSuggestions } = useCartSuggestions();
 const { $trackingPlan } = useNuxtApp();
 
-const {
-  cartItems,
-  isCartEmpty,
-  shippingTotal,
-  shippingMethodName,
-  shippingDelay,
-  discountTotal,
-  total,
-  subtotal,
-  totalFormatted,
-  amountForFreeShipping,
-  cartCount,
-} = useCartData();
+const { cartItems, isCartEmpty, shippingTotal, shippingMethodName, shippingDelay, discountTotal, total, subtotal, totalFormatted, amountForFreeShipping, cartCount } = useCartData();
 
 const data = computed(() => {
   return {
@@ -69,9 +52,7 @@ const data = computed(() => {
 });
 
 const productCountTitle = computed(() => {
-  return cartCount.value > 1
-    ? t("pages.cart.products_count", { count: cartCount.value })
-    : t("pages.cart.product_count");
+  return cartCount.value > 1 ? t("pages.cart.products_count", { count: cartCount.value }) : t("pages.cart.product_count");
 });
 
 const cartResume = computed(() => ({

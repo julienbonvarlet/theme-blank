@@ -17,20 +17,8 @@
     </FormKit>
 
     <div class="f-form-check-email__sso">
-      <FAButton
-        type="secondary"
-        icon="sso-google"
-        :label="$t('account.identification.login.sso_google')"
-        icon-position="left"
-        @click.prevent="connectSSO('google')"
-      />
-      <FAButton
-        type="secondary"
-        icon="sso-facebook"
-        :label="$t('account.identification.login.sso_facebook')"
-        icon-position="left"
-        @click.prevent="connectSSO('facebook')"
-      />
+      <FAButton type="secondary" icon="sso-google" :label="$t('account.identification.login.sso_google')" icon-position="left" @click.prevent="connectSSO('google')" />
+      <FAButton type="secondary" icon="sso-facebook" :label="$t('account.identification.login.sso_facebook')" icon-position="left" @click.prevent="connectSSO('facebook')" />
     </div>
   </div>
 </template>

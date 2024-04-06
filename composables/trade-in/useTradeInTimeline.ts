@@ -25,13 +25,7 @@ export function useTradeInTimeline(tradeIn: {}, wording: {}) {
     if (tradeIn.state === "draft") {
       timeline.push(pushInTimeline("time", wording.waiting_for_validation, wording.finalize_form));
     } else if (!tradeIn.sentAt && !tradeIn.receivedAt) {
-      timeline.push(
-        pushInTimeline(
-          "shipping",
-          wording.waiting_for_send,
-          wording.send_to_receive.replace("{amount}", priceEstimatedFormatted),
-        ),
-      );
+      timeline.push(pushInTimeline("shipping", wording.waiting_for_send, wording.send_to_receive.replace("{amount}", priceEstimatedFormatted)));
     }
 
     if (tradeIn.sentAt) {
@@ -48,14 +42,7 @@ export function useTradeInTimeline(tradeIn: {}, wording: {}) {
     }
 
     if (tradeIn.creditedAt) {
-      timeline.push(
-        pushInTimeline(
-          "wallet",
-          wording.credited,
-          tradeIn.creditedAt,
-          wording.wallet_credited_of.replace("{amount}", priceCreditedFormatted || priceEstimatedFormatted),
-        ),
-      );
+      timeline.push(pushInTimeline("wallet", wording.credited, tradeIn.creditedAt, wording.wallet_credited_of.replace("{amount}", priceCreditedFormatted || priceEstimatedFormatted)));
     }
 
     return timeline;

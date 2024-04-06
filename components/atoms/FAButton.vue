@@ -1,13 +1,5 @@
 <template>
-  <component
-    :is="tag"
-    :type="submitAttribute"
-    :disabled="isDisabled"
-    :to="to"
-    class="f-button"
-    :class="[sizeClass, typeClass, animationClass, disabledClass, loadingClass]"
-    v-bind="attrs"
-  >
+  <component :is="tag" :type="submitAttribute" :disabled="isDisabled" :to="to" class="f-button" :class="[sizeClass, typeClass, animationClass, disabledClass, loadingClass]" v-bind="attrs">
     <span class="f-button__content">
       <FAIcon v-if="icon && iconPosition === 'left'" :icon="icon" />
       <span v-if="label" class="f-button__text">

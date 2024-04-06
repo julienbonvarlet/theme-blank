@@ -5,10 +5,7 @@ export const useProductsSuggestions = () => {
   const filters = ref<string[]>([]);
 
   const fetchProducts = async (filtersUrl?: string) => {
-    const response = await fetch(
-      `https://api.faume.co/api/v3/customer/articles?page=1&itemsPerPage=20${filtersUrl || ""}`,
-      { headers: { "X-Brand-Id": config.clientId } },
-    );
+    const response = await fetch(`https://api.faume.co/api/v3/customer/articles?page=1&itemsPerPage=20${filtersUrl || ""}`, { headers: { "X-Brand-Id": config.clientId } });
     const data = await response.json();
     return data["hydra:member"];
   };

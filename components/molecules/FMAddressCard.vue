@@ -9,18 +9,9 @@
     </template>
   </FMCardInline>
 
-  <FMPopin
-    v-if="displayDelete"
-    :title="$t('account.addresses.delete.title')"
-    :text="$t('account.addresses.delete.text')"
-    :visible="true"
-  >
+  <FMPopin v-if="displayDelete" :title="$t('account.addresses.delete.title')" :text="$t('account.addresses.delete.text')" :visible="true">
     <FMCtaContainer>
-      <FAButton
-        :label="$t('account.addresses.delete.button_no')"
-        type="secondary"
-        @click.prevent="displayDelete = false"
-      />
+      <FAButton :label="$t('account.addresses.delete.button_no')" type="secondary" @click.prevent="displayDelete = false" />
       <FAButton :label="$t('account.addresses.delete.button_yes')" @click.prevent="deleteAddress" />
     </FMCtaContainer>
   </FMPopin>

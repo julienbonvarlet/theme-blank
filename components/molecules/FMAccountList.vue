@@ -1,15 +1,6 @@
 <template>
   <div v-if="items?.length" class="f-account-list">
-    <component
-      :is="compo[name]"
-      v-for="(item, i) in items"
-      :key="item.id || i"
-      :article="item"
-      :order="item"
-      :resale="item"
-      :voucher="item"
-      :address="item"
-    />
+    <component :is="compo[name]" v-for="(item, i) in items" :key="item.id || i" :article="item" :order="item" :resale="item" :voucher="item" :address="item" />
   </div>
 </template>
 

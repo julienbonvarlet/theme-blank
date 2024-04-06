@@ -1,16 +1,7 @@
 <template>
-  <FMTradeInStep
-    class="f-ti-product-form-ref"
-    :title="$t('trade_in.add_product.sku.title')"
-    :subtitle="$t('trade_in.add_product.sku.text')"
-  >
+  <FMTradeInStep class="f-ti-product-form-ref" :title="$t('trade_in.add_product.sku.title')" :subtitle="$t('trade_in.add_product.sku.text')">
     <div class="f-ti-product-form-ref__input">
-      <FALink
-        class="f-ti-product-form-ref__help"
-        size="s"
-        :text="$t('trade_in.add_product.sku.help.title')"
-        @click.prevent="displayPopin = true"
-      />
+      <FALink class="f-ti-product-form-ref__help" size="s" :text="$t('trade_in.add_product.sku.help.title')" @click.prevent="displayPopin = true" />
       <FormKit
         v-model="model"
         type="text"
@@ -19,10 +10,7 @@
         :placeholder="$t('trade_in.add_product.sku.placeholder')"
         :errors="isInvalidSku ? [$t('trade_in.add_product.sku.error')] : []"
       />
-      <ul
-        v-if="sku && skuSuggestions && skuSuggestions.length > 0 && skuSuggestions.some((item) => item !== model)"
-        class="f-ti-product-form-ref__autocompletion"
-      >
+      <ul v-if="sku && skuSuggestions && skuSuggestions.length > 0 && skuSuggestions.some((item) => item !== model)" class="f-ti-product-form-ref__autocompletion">
         <li
           v-for="item in skuSuggestions"
           :key="item"
@@ -35,13 +23,7 @@
         </li>
       </ul>
     </div>
-    <FAButton
-      v-if="model && model !== ''"
-      :is-disabled="!isValidSku"
-      :is-loading="!skuSuggestions"
-      :label="$t('trade_in.add_product.button_continue')"
-      @click.prevent="emit('next')"
-    />
+    <FAButton v-if="model && model !== ''" :is-disabled="!isValidSku" :is-loading="!skuSuggestions" :label="$t('trade_in.add_product.button_continue')" @click.prevent="emit('next')" />
   </FMTradeInStep>
   <FMPopin
     :visible="displayPopin"

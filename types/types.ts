@@ -24,7 +24,7 @@ export type Pagination = {
   nextPage?: String;
 };
 
-export type ApiItem<Item> = {};
+export type ApiItem = {};
 
 export type ApiCollection<Item> = {
   items: Item[];

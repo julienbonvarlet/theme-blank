@@ -54,8 +54,7 @@ const data = {
       {
         text: "Retours gratuits sous 14 jours",
         alt: "Retours gratuits",
-        image:
-          "https://demo.faume.co/cdn/shop/files/keyboard_double_arrow_left_FILL0_wght400_GRAD0_opsz24.svg?v=1699347817",
+        image: "https://demo.faume.co/cdn/shop/files/keyboard_double_arrow_left_FILL0_wght400_GRAD0_opsz24.svg?v=1699347817",
       },
       {
         text: "Articles authentifiés et nettoyés",
