@@ -26,7 +26,7 @@ const props = defineProps({
 });
 
 const available = computed(
-  () => props.voucher.state === "available" || props.voucher.sync
+  () => props.voucher.state === "available" || props.voucher.sync,
 );
 </script>
 

@@ -64,7 +64,7 @@ watch(
   (value) => {
     email.value = value;
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 const submit = async (formData) => {

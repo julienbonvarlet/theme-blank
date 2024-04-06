@@ -100,7 +100,7 @@ const wording = computed(() => {
       refunded: t("account.orders.states.refunded"),
       treating: t("account.orders.states.treating"),
       requires_payment_method: t(
-        "account.orders.states.requires_payment_method"
+        "account.orders.states.requires_payment_method",
       ),
     },
   };
@@ -116,12 +116,12 @@ const { items } = useAsyncOrderItems(apiConfig, props.order);
 const { informationTable, paymentTable } = useOrderTables(
   props.order,
   wording.value,
-  promotionalCode
+  promotionalCode,
 );
 const invoice = computed(
-  () => `${apiConfig.BASE}/api/v3/customer/orders/${props.order?.id}/invoice`
+  () => `${apiConfig.BASE}/api/v3/customer/orders/${props.order?.id}/invoice`,
 );
 const invoiceIsAvailable = computed(() =>
-  ["traited", "refunded", "partially_refunded"].includes(props.order?.state)
+  ["traited", "refunded", "partially_refunded"].includes(props.order?.state),
 );
 </script>

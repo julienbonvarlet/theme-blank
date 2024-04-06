@@ -50,7 +50,7 @@ const total = computed(() => {
       tradeInModule.cart.total ||
       tradeInModule.cart.items.reduce(
         (total, item) => total + item.priceResale,
-        0
+        0,
       )
     );
   }

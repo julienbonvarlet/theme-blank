@@ -12,7 +12,7 @@ export const useTradeInCartItemStore = defineStore("tradeInCartItem", () => {
     } catch (error) {
       console.error(
         "Erreur lors de la récupération des articles du panier:",
-        error
+        error,
       );
     }
   };
@@ -26,7 +26,7 @@ export const useTradeInCartItemStore = defineStore("tradeInCartItem", () => {
     } catch (error) {
       console.error(
         "Erreur lors de la création d'un article du panier:",
-        error
+        error,
       );
     }
   };
@@ -37,7 +37,7 @@ export const useTradeInCartItemStore = defineStore("tradeInCartItem", () => {
     } catch (error) {
       console.error(
         "Erreur lors de la récupération d'un article du panier:",
-        error
+        error,
       );
     }
   };
@@ -49,7 +49,7 @@ export const useTradeInCartItemStore = defineStore("tradeInCartItem", () => {
     } catch (error) {
       console.error(
         "Erreur lors de la suppression d'un article du panier:",
-        error
+        error,
       );
     }
   };

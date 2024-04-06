@@ -1,6 +1,6 @@
 <template>
   <div class="fl-default">
-    <FATopBar :text="$t(headerConfig.topBar.text)" />
+    <FATopBar :text="$t(faumeConfig.header.topBar.text)" />
     <FOHeader />
     <FAAnnouncementBar v-if="showAnnouncementBar" />
     <slot />
@@ -10,11 +10,11 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n();
-const config = useRuntimeConfig();
-const headerConfig = config.public.faume.headerConfig;
+import faumeConfig from "~/faumeConfig";
 
-const showAnnouncementBar = headerConfig.showAnnouncementBar;
+const { t } = useI18n();
+
+const showAnnouncementBar = faumeConfig.header.showAnnouncementBar;
 
 const data = {
   sectionReassurance: {

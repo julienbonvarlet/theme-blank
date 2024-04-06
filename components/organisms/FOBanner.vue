@@ -39,7 +39,7 @@ const props = withDefaults(
     titleSize: "xl",
     titleTag: "h1",
     size: "l",
-  }
+  },
 );
 
 const maxHeightClass = computed(() => (props.size ? `is-${props.size}` : null));

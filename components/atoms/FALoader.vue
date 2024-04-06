@@ -32,7 +32,7 @@ const props = withDefaults(
   }>(),
   {
     size: "m",
-  }
+  },
 );
 
 const sizeClass = computed(() => `is-${props.size}`);

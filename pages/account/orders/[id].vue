@@ -29,7 +29,7 @@ watch(
       order.value = await loadOrderData(newId);
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 watch(orderData, (newOrderData) => {

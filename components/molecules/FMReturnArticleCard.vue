@@ -12,7 +12,7 @@ const props = withDefaults(
   }>(),
   {
     displayOldPrice: true,
-  }
+  },
 );
 
 const cardInlineData = computed(() => {

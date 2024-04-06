@@ -19,8 +19,8 @@ export function useOrderTables(order: any, wording: any, promotionalCode: any) {
         wording[
           order.items?.length > 1 ? "articles_count" : "article_count"
         ].replace("{count}", order.items?.length || 0),
-        formatPrice(order.total)
-      )
+        formatPrice(order.total),
+      ),
     );
     if (order.shippingMode) {
       data.push(pushInTable(wording.shipping_method, order.shippingMode));
@@ -38,11 +38,11 @@ export function useOrderTables(order: any, wording: any, promotionalCode: any) {
     const data = [];
     data.push(pushInTable(wording.subtotal, formatPrice(order.itemsTotal)));
     data.push(
-      pushInTable(wording.shipping, formatPrice(order.shippingTotal || 0))
+      pushInTable(wording.shipping, formatPrice(order.shippingTotal || 0)),
     );
     if (order.discountTotal) {
       data.push(
-        pushInTable(wording.discount, formatPrice(order.discountTotal))
+        pushInTable(wording.discount, formatPrice(order.discountTotal)),
       );
     }
     if (order.promotionalCode) {
@@ -52,8 +52,8 @@ export function useOrderTables(order: any, wording: any, promotionalCode: any) {
       data.push(
         pushInTable(
           wording.states.refunded,
-          "-" + formatPrice(order.refundedPrice)
-        )
+          "-" + formatPrice(order.refundedPrice),
+        ),
       );
     }
     data.push(pushInTable(wording.total, formatPrice(order.total)));

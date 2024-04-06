@@ -36,7 +36,7 @@ const storeId = route.params.id.toString();
 const { data: currentStore } = await useAsyncData<Store[]>(
   "products",
   //TODO: use SDK to fetch data when backend is ready
-  () => $API.realStore.apiCustomerRealStoresIdGet(storeId)
+  () => $API.realStore.apiCustomerRealStoresIdGet(storeId),
 );
 
 /* HANDLE DAY SELECTOR */
@@ -49,7 +49,7 @@ const dayOfToday = new Intl.DateTimeFormat("fr-CA", {
 
 const config = useRuntimeConfig();
 const { data: storeDays } = await useFetch(
-  `https://api.faume.co/${config.public.faume.oldApiClientId}/booking/days/${storeId}/${dayOfToday}`
+  `https://api.faume.co/${config.public.faume.oldApiClientId}/booking/days/${storeId}/${dayOfToday}`,
 );
 
 const availableDays = computed(() => {
@@ -93,7 +93,7 @@ const formatHour = (date: string) => {
 const fetchAvailableSlots = async (date: any) => {
   if (date) {
     const { data: result } = await useFetch(
-      `https://api.faume.co/blue-collection/booking/slots/${storeId}/${date}/30`
+      `https://api.faume.co/blue-collection/booking/slots/${storeId}/${date}/30`,
     );
     availableSlots.value = result.value
       .map((entry: any) => {

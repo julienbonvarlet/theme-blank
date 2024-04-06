@@ -21,7 +21,7 @@ const props = withDefaults(
   }>(),
   {
     titleSize: "m",
-  }
+  },
 );
 
 const collection = computed(() => getCollectionBySlug(props.slug));

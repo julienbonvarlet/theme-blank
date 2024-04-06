@@ -28,7 +28,7 @@ const userCardData = computed(() =>
         title: `${user.value.firstName} ${user.value.lastName}`,
         text: user.value.email,
       }
-    : null
+    : null,
 );
 </script>
 

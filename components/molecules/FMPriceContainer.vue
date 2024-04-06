@@ -25,7 +25,7 @@ const props = withDefaults(
   {
     size: "s",
     displayOldPrice: true,
-  }
+  },
 );
 
 const sizeClass = computed(() => `price--${props.size}`);

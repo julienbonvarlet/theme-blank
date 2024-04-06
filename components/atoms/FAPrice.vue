@@ -17,13 +17,13 @@ const props = withDefaults(
   {
     size: "s",
     cents: true,
-  }
+  },
 );
 
 const sizeClass = computed(() => `is-${props.size}`);
 const oldClass = computed(() => (props.old ? "is-old" : null));
 const formattedPrice = computed(() =>
-  props.cents ? formatPrice(props.price) : formatPriceWithoutCents(props.price)
+  props.cents ? formatPrice(props.price) : formatPriceWithoutCents(props.price),
 );
 </script>
 

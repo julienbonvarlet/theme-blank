@@ -38,7 +38,7 @@ const show = computed(() => {
 });
 
 const promotionalClass = computed(() =>
-  props.promotionalOffer ? "is-promo-offer" : ""
+  props.promotionalOffer ? "is-promo-offer" : "",
 );
 </script>
 

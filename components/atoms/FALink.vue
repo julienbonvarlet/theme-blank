@@ -23,7 +23,7 @@ const props = withDefaults(
   {
     isActive: true,
     size: "m",
-  }
+  },
 );
 
 let NuxtLink;

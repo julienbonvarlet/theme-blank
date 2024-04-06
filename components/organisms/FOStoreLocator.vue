@@ -54,7 +54,7 @@ const props = withDefaults(
   defineProps<{
     stores: any[];
   }>(),
-  {}
+  {},
 );
 
 // DOM element references
@@ -117,7 +117,7 @@ automaticBounds = new mapboxgl.LngLatBounds(
   [
     automaticBounds.getSouthWest().lng + padding,
     automaticBounds.getSouthWest().lat + padding,
-  ]
+  ],
 );
 
 // Init the map when the component is mounted
@@ -171,7 +171,7 @@ const onMapLoad = () => {
         // Fly to the point
         focusStore(clickedPoint);
       });
-    }
+    },
   );
 };
 
@@ -188,7 +188,7 @@ const currentStore = computed(() => {
     return null;
   }
   return geoJson.value?.features.find(
-    (store) => store.id == currentStoreId.value
+    (store) => store.id == currentStoreId.value,
   );
 });
 

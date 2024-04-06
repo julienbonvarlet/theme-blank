@@ -1,8 +1,7 @@
+import faumeConfig from "~/faumeConfig";
+
 export const useCollectionsStore = defineStore("collectionsStore", () => {
   const { $API } = useNuxtApp();
-  const config = useRuntimeConfig();
-  const collectionsConfig = config.public.faume.collectionsConfig;
-  const menuConfig = config.public.faume.menuConfig;
 
   const collections = ref([]);
 
@@ -27,7 +26,7 @@ export const useCollectionsStore = defineStore("collectionsStore", () => {
             params: { id: collection.slugName },
           },
         };
-        const config = collectionsConfig?.find(
+        const config = faumeConfig.collections.find(
           (x) => x.slugName === collection.slugName,
         );
         if (config) collectionData = { ...collectionData, ...config };

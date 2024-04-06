@@ -40,7 +40,7 @@ const image = computed(() =>
     ? image_email
     : emailExists.value
       ? image_login
-      : image_register
+      : image_register,
 );
 
 const handleEmailSubmit = (data) => {

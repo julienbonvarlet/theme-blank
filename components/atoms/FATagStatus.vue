@@ -13,7 +13,7 @@ const props = withDefaults(
     value?: string;
     color?: "dark" | "light" | "success" | "error";
   }>(),
-  {}
+  {},
 );
 
 const colorsByStatus = {

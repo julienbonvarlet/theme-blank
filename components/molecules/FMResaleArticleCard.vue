@@ -13,7 +13,7 @@ const props = withDefaults(
   }>(),
   {
     displayOldPrice: true,
-  }
+  },
 );
 
 const getDescription = (article) => {

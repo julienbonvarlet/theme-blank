@@ -1,13 +1,18 @@
+import faumeConfig from "~/faumeConfig";
+
 export const useCartStore = defineStore("cart", () => {
   const { $API } = useNuxtApp();
 
   const orderStore = useOrdersStore();
   const shippingMethodsStore = useShippingMethodsStore();
 
-  const cartId = useCookie("faume-cart-id", cookiesConfig);
+  const cartId = useCookie("faume-cart-id", faumeConfig.cookies);
   const cartOrder = ref<null | object>(null);
   const cartItems = ref<null | any[]>(null);
-  const promotionalCode = useCookie("faume-cart-code-promo", cookiesConfig);
+  const promotionalCode = useCookie(
+    "faume-cart-code-promo",
+    faumeConfig.cookies,
+  );
   const isMiniCartOpen = ref(false);
   const amountForFreeShipping = 10000;
 

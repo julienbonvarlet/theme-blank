@@ -24,12 +24,12 @@ const text = computed(() => {
 });
 
 const percent = computed(
-  () => (props.total / props.amountForFreeShipping) * 100
+  () => (props.total / props.amountForFreeShipping) * 100,
 );
 
 const totalFormatted = computed(() => formatPrice(props.total));
 const amountForFreeShippingFormatted = computed(() =>
-  formatPrice(props.amountForFreeShipping)
+  formatPrice(props.amountForFreeShipping),
 );
 </script>
 

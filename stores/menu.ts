@@ -1,3 +1,5 @@
+import faumeConfig from "~/faumeConfig";
+
 const getLinkTo = (link) => {
   const { pageSlug, collectionSlug } = link;
   if (pageSlug) return { name: pageSlug };
@@ -35,14 +37,13 @@ const getVisuals = (link) => {
 
 export const useMenuStore = defineStore("menu", () => {
   const config = useRuntimeConfig();
-  const menuConfig = config.public.faume.menuConfig;
   const { getCollectionTitle } = useCollectionsStore();
   const { t } = useI18n();
 
   const getMenu = () => {
-    if (!menuConfig?.length) return [];
+    if (!faumeConfig.menu.length) return [];
     const menu = [];
-    menuConfig.forEach((link) => {
+    faumeConfig.menu.forEach((link) => {
       menu.push({
         slug: link.collectionSlug || link.pageSlug,
         to: getLinkTo(link),

@@ -24,7 +24,7 @@ const marginYClass = computed(() => (props.marginY ? "is-margin-y" : null));
 const paddingXClass = computed(() => (props.paddingX ? "is-padding-x" : null));
 const paddingYClass = computed(() => (props.paddingY ? "is-padding-y" : null));
 const maxWidthClass = computed(() =>
-  props.maxWidth ? `is-${props.maxWidth}` : null
+  props.maxWidth ? `is-${props.maxWidth}` : null,
 );
 </script>
 

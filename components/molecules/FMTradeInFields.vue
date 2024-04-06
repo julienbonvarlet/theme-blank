@@ -128,7 +128,7 @@ const getFieldLabel = (value: string | number) => {
 };
 
 const selectionMade = computed(
-  () => props.model !== undefined && props.model !== null
+  () => props.model !== undefined && props.model !== null,
 );
 
 const fields = computed(() => {

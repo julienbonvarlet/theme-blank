@@ -86,7 +86,7 @@ watch(
       phoneFieldValue.value = countryCallingCode.value;
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 watch(phoneFieldValue, (newValue, oldValue) => {
   const asYouType = new AsYouType(selectedCountry.value);
@@ -226,13 +226,13 @@ const submit = async (formData) => {
 
     const phoneNumber = parsePhoneNumberFromString(
       phoneFieldValue.value,
-      selectedCountry.value
+      selectedCountry.value,
     );
     if (!phoneNumber || !phoneNumber.isValid()) {
       const exampleNumber = getExampleNumber(selectedCountry.value, examples);
       const formattedExample = exampleNumber.formatInternational();
       displayError(
-        `${t("global.form.phone_invalid")} ${selectedCountry.value}: ${formattedExample}`
+        `${t("global.form.phone_invalid")} ${selectedCountry.value}: ${formattedExample}`,
       );
       return;
     }

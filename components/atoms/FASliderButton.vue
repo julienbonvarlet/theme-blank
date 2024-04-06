@@ -12,7 +12,7 @@ const props = withDefaults(
   }>(),
   {
     direction: "right",
-  }
+  },
 );
 </script>
 

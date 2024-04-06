@@ -31,7 +31,7 @@ const selectedAddress = computed(() => tradeInModule.selectedAddress);
 const isValid = computed(() =>
   selectedAddress.value
     ? addresses.value?.find((x) => x["@id"] === selectedAddress.value)
-    : null
+    : null,
 );
 
 const confirm = async () => {

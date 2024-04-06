@@ -63,8 +63,10 @@
 </template>
 
 <script setup lang="ts">
-const wishlistIcon = headerConfig.wishlistIcon;
-const storeIcon = headerConfig.storeIcon;
+import faumeConfig from "~/faumeConfig";
+
+const wishlistIcon = faumeConfig.header.wishlistIcon;
+const storeIcon = faumeConfig.header.storeIcon;
 
 const { menu, getLinkTitle } = useMenuStore();
 const cartStore = useCartStore();

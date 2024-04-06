@@ -60,7 +60,7 @@ const categories = computed(() => ({
 }));
 
 const activeCategory = computed(() =>
-  categories.value[active.value] ? active.value : null
+  categories.value[active.value] ? active.value : null,
 );
 
 const questions = computed(() => {
@@ -70,10 +70,10 @@ const questions = computed(() => {
   const numberOfQuestions = 10;
   const questions = Array.from({ length: numberOfQuestions }, (_, i) => ({
     title: t(
-      `pages.faq.categories.${activeCategory.value}.questions.${i + 1}.title`
+      `pages.faq.categories.${activeCategory.value}.questions.${i + 1}.title`,
     ),
     answer: t(
-      `pages.faq.categories.${activeCategory.value}.questions.${i + 1}.answer`
+      `pages.faq.categories.${activeCategory.value}.questions.${i + 1}.answer`,
     ),
   }));
   return questions.filter((x) => x.title?.length && x.answer?.length);

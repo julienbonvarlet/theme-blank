@@ -38,7 +38,7 @@ const props = withDefaults(
     titleSize: "s",
     titleTag: "p",
     isTitle: false,
-  }
+  },
 );
 
 const isOpen = ref(props.open || false);

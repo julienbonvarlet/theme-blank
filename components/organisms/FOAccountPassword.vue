@@ -65,7 +65,7 @@ const fields = [
   {
     name: "passwordConfirm",
     label: t(
-      "account.informations.password_edit.label_confirmation_new_password"
+      "account.informations.password_edit.label_confirmation_new_password",
     ),
   },
 ];

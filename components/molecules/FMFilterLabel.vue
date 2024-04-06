@@ -26,7 +26,7 @@ const filterlabelCorrespondance: Record<string, string> = {
   sort: t("pages.collection.filters.labels.sort"),
 };
 const filterLabeltext = computed(() =>
-  props.text ? filterlabelCorrespondance[props.text] : ""
+  props.text ? filterlabelCorrespondance[props.text] : "",
 );
 </script>
 

@@ -12,7 +12,7 @@ const props = withDefaults(
   }>(),
   {
     tag: "h3",
-  }
+  },
 );
 </script>
 

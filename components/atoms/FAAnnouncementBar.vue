@@ -4,12 +4,13 @@
     class-child="f-announcement-bar__inner"
     :padding-x="true"
   >
-    <FAIcon :icon="headerConfig.announcementBar.icon" />
-    <FAText :text="$t(headerConfig.announcementBar.text)" size="s" />
+    <FAIcon :icon="faumeConfig.header.announcementBar.icon" />
+    <FAText :text="$t(faumeConfig.header.announcementBar.text)" size="s" />
   </FMSectionContainer>
 </template>
 
 <script setup lang="ts">
+import faumeConfig from "~/faumeConfig";
 </script>
 
 <style lang="scss">

@@ -85,7 +85,7 @@ const recapSteps = computed(() =>
         ? t(`trade_in.add_product.condition.${article.value.condition}`)
         : article.value[name] || "-",
     valid: !!article.value[name],
-  }))
+  })),
 );
 
 const submitRef = () => {

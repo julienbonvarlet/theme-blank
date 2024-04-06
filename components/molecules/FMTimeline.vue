@@ -18,7 +18,7 @@ const props = withDefaults(
   {
     steps: () => [],
     size: "s",
-  }
+  },
 );
 
 const sizeClass = computed(() => `is-${props.size}`);

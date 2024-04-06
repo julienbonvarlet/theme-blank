@@ -14,12 +14,12 @@ const props = withDefaults(
   }>(),
   {
     displayOldPrice: true,
-  }
+  },
 );
 
 const articleChoice = ref<null | {}>(null);
 const articleChoiceId = computed(() =>
-  props.article?.articleChoice?.split("/")?.pop()
+  props.article?.articleChoice?.split("/")?.pop(),
 );
 
 const cardInlineData = computed(() => {
@@ -49,7 +49,7 @@ watch(
         await $API.articleChoice.apiCustomerArticleChoicesIdGet(id);
     }
   },
-  { deep: true, immediate: true }
+  { deep: true, immediate: true },
 );
 </script>
 

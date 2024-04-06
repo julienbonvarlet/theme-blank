@@ -78,12 +78,12 @@ const pushInTable = (title: string, value: string) => ({
 const estimatedTotal = computed(
   () =>
     props.resale?.items?.reduce((total, item) => total + item.priceResale, 0) ||
-    0
+    0,
 );
 const creditedTotal = computed(
   () =>
     props.resale?.items?.reduce((total, item) => total + item.priceCredit, 0) ||
-    0
+    0,
 );
 
 const timeline = useTradeInTimeline(props.resale, {
@@ -109,42 +109,42 @@ const informationTable = computed(() => {
   const resale = props.resale;
   const data = [];
   data.push(
-    pushInTable(t("account.trade_ins.detail.reference"), resale.reference)
+    pushInTable(t("account.trade_ins.detail.reference"), resale.reference),
   );
   data.push(
     pushInTable(
       t("account.trade_ins.detail.created_date"),
-      formatDate(resale.createdAt)
-    )
+      formatDate(resale.createdAt),
+    ),
   );
   data.push(
     pushInTable(
       t(
-        `account.trade_ins.detail.article${resale.items?.length > 1 ? "s" : ""}`
+        `account.trade_ins.detail.article${resale.items?.length > 1 ? "s" : ""}`,
       ),
-      resale.items?.length || 0
-    )
+      resale.items?.length || 0,
+    ),
   );
   data.push(
     pushInTable(
       t("account.trade_ins.detail.estimated_amount"),
-      formatPrice(estimatedTotal.value)
-    )
+      formatPrice(estimatedTotal.value),
+    ),
   );
   if (resale.trackingNumber) {
     data.push(
       pushInTable(
         t("account.trade_ins.detail.tracking_number"),
-        resale.trackingNumber
-      )
+        resale.trackingNumber,
+      ),
     );
   }
   if (creditedTotal.value > 0) {
     data.push(
       pushInTable(
         t("account.trade_ins.detail.credited_amount"),
-        formatPrice(creditedTotal.value)
-      )
+        formatPrice(creditedTotal.value),
+      ),
     );
   }
   return data;

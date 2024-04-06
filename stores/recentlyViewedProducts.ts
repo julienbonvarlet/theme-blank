@@ -10,7 +10,7 @@ export const useRecentlyViewedProductsStore = defineStore(
     if (process.client) {
       productsInit = useLocalStorage<Product[]>(
         "recentlyViewedProducts",
-        []
+        [],
       ).value;
     }
 
@@ -21,7 +21,7 @@ export const useRecentlyViewedProductsStore = defineStore(
       if (product && product.id !== undefined) {
         activeProduct.value = product;
         const existingIndex = products.value.findIndex(
-          (x) => x.id === product.id
+          (x) => x.id === product.id,
         );
         if (existingIndex === -1) {
           products.value.unshift(product);
@@ -44,5 +44,5 @@ export const useRecentlyViewedProductsStore = defineStore(
       allowedProducts,
       addProduct,
     };
-  }
+  },
 );

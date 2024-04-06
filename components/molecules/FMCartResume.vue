@@ -91,7 +91,7 @@ const totalPrice = computed(() => formatPrice(props.total));
 const subtotalPrice = computed(() => formatPrice(props.subtotal));
 const shippingPrice = computed(() => formatPrice(props.shippingTotal));
 const discountPrice = computed(() =>
-  props.discountTotal ? formatPrice(props.discountTotal) : null
+  props.discountTotal ? formatPrice(props.discountTotal) : null,
 );
 </script>
 

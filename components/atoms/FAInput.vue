@@ -32,7 +32,7 @@ const props = withDefaults(
   {
     type: "text",
     autocomplete: true,
-  }
+  },
 );
 
 const disabledClass = computed(() => (props.disabled ? "is-disabled" : ""));

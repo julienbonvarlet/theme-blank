@@ -38,7 +38,7 @@ const props = withDefaults(
   }>(),
   {
     size: "m",
-  }
+  },
 );
 
 const emitInput = (value) => {

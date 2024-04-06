@@ -15,7 +15,7 @@ const props = withDefaults(
   }>(),
   {
     displayOldPrice: true,
-  }
+  },
 );
 
 const getDescription = (resale) => {
@@ -35,7 +35,7 @@ const total = computed(() => {
 
 const status = computed(() => props.resale?.items[0]?.warehouseStage);
 const statusText = computed(() =>
-  t(`account.trade_ins.status.${status.value}`)
+  t(`account.trade_ins.status.${status.value}`),
 );
 
 const cardInlineData = computed(() => {
@@ -69,7 +69,7 @@ watch(
   props.resale,
   async (resale) => {
     const article = await $API.tradeInCart.apiCustomerTradeInCartsIdGet(
-      resale.id
+      resale.id,
     );
     article?.items.forEach((item) => {
       const photo =
@@ -82,6 +82,6 @@ watch(
       }
     });
   },
-  { immediate: true, deep: true }
+  { immediate: true, deep: true },
 );
 </script>

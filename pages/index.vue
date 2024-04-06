@@ -53,11 +53,13 @@
 </template>
 
 <script setup lang="ts">
+import faumeConfig from "~/faumeConfig";
+
 const { t } = useI18n();
 const config = useRuntimeConfig();
 const { getCollectionTitle } = useCollectionsStore();
 
-const menuConfig = config.public.faume.menuConfig;
+const menuConfig = faumeConfig.menu;
 
 //const backgroundImageUrl = `https://faume.imgix.net/${clientId}/home-baner.webp`;
 const backgroundImageUrl =

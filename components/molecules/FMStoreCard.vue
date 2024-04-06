@@ -64,7 +64,7 @@ const props = withDefaults(
   {
     showPlanning: true,
     isFocus: false,
-  }
+  },
 );
 
 // emit focusStore event
