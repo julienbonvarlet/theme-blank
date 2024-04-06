@@ -2,6 +2,10 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@pinia/nuxt", "@nuxtjs/i18n"],
+  runtimeConfig: {
+    apiBaseUrl: "",
+    clientId: "",
+  },
   components: [
     {
       path: "~/components",

@@ -24,16 +24,14 @@
 </template>
 
 <script lang="ts" setup>
-import type TitleSizes from '@/types/ui';
-
 const props = withDefaults(
   defineProps<{
     title: string;
     content?: string;
     isTitle?: boolean;
     titleSize?: TitleSizes;
-    textSize?: string;
-    titleTag?: string;
+    textSize?: TextSizes;
+    titleTag?: TitleTags;
     open: boolean;
   }>(),
   {
