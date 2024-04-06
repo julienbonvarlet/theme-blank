@@ -1,21 +1,9 @@
 <template>
   <div class="f-form-login">
-    <FMFormMessage
-      v-if="loginError && loginError !== ''"
-      ref="login"
-      type="error"
-      :text="loginError"
-    />
-    <FormKit
-      type="form"
-      :submit-label="$t('account.identification.login.button')"
-      @submit="submitLogin"
-    >
+    <FMFormMessage v-if="loginError && loginError !== ''" ref="login" type="error" :text="loginError" />
+    <FormKit type="form" :submit-label="$t('account.identification.login.button')" @submit="submitLogin">
       <FormKit v-bind="loginFields[0]" />
-      <FormKit
-        v-bind="loginFields[1]"
-        @suffix-icon-click="togglePasswordFieldType"
-      />
+      <FormKit v-bind="loginFields[1]" @suffix-icon-click="togglePasswordFieldType" />
     </FormKit>
     <FALink
       :text="$t('account.identification.login.forgot_password')"
@@ -36,15 +24,8 @@
     "
   >
     <div v-if="passwordSuccess">
-      <FMFormMessage
-        ref="passwordSuccess"
-        type="success"
-        :text="$t('account.forget_password.success')"
-      />
-      <FAButton
-        :label="$t('global.close')"
-        @click.prevent="displayPasswordPopin = false"
-      />
+      <FMFormMessage ref="passwordSuccess" type="success" :text="$t('account.forget_password.success')" />
+      <FAButton :label="$t('global.close')" @click.prevent="displayPasswordPopin = false" />
     </div>
     <div v-else>
       <FMFormMessage
@@ -53,11 +34,7 @@
         type="error"
         :text="$t('account.forget_password.error')"
       />
-      <FormKit
-        type="form"
-        :submit-label="$t('account.forget_password.button')"
-        @submit="submitPassword"
-      >
+      <FormKit type="form" :submit-label="$t('account.forget_password.button')" @submit="submitPassword">
         <FormKit v-bind="passwordFields[0]" />
       </FormKit>
     </div>

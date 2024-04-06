@@ -11,10 +11,7 @@
     <div class="f-product-presentation__detail">
       <FMProductHeading :product="product" :price="price" />
 
-      <FMProductForm
-        :product="product"
-        @on-choice-change="(x) => emit('onChoiceChange', x)"
-      />
+      <FMProductForm :product="product" @on-choice-change="(x) => emit('onChoiceChange', x)" />
 
       <FMSmallReassurance v-bind="data.reassurance" />
 

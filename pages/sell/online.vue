@@ -7,11 +7,12 @@
 </template>
 
 <script setup lang="ts">
+import faumeConfig from "~/faumeConfig";
+
 const { t } = useI18n();
-const config = useRuntimeConfig();
 const { $trackingPlan } = useNuxtApp();
 
-const data = config.public.faume.sellOnlineConfig;
+const data = faumeConfig.sellOnline;
 const bannerData = computed(() => {
   return {
     ...data.banner,

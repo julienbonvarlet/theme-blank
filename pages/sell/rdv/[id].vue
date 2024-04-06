@@ -49,7 +49,7 @@ const dayOfToday = new Intl.DateTimeFormat("fr-CA", {
 
 const config = useRuntimeConfig();
 const { data: storeDays } = await useFetch(
-  `https://api.faume.co/${config.public.faume.oldApiClientId}/booking/days/${storeId}/${dayOfToday}`,
+  `https://api.faume.co/${config.clientSlug}/booking/days/${storeId}/${dayOfToday}`,
 );
 
 const availableDays = computed(() => {
@@ -85,16 +85,12 @@ const availableSlots = ref(null);
 
 const formatHour = (date: string) => {
   const dateObj = new Date(date);
-  return dateObj
-    .toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })
-    .replace(":", "h");
+  return dateObj.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }).replace(":", "h");
 };
 
 const fetchAvailableSlots = async (date: any) => {
   if (date) {
-    const { data: result } = await useFetch(
-      `https://api.faume.co/blue-collection/booking/slots/${storeId}/${date}/30`,
-    );
+    const { data: result } = await useFetch(`https://api.faume.co/blue-collection/booking/slots/${storeId}/${date}/30`);
     availableSlots.value = result.value
       .map((entry: any) => {
         if (entry.is_open) {

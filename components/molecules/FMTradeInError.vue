@@ -1,10 +1,7 @@
 <template>
   <FMSectionContainer class="f-ti-error" max-width="m" :padding-x="true">
     <FMFormMessage :text="$t('trade_in.error.text')" type="error" />
-    <FAButton
-      :label="$t('trade_in.error.button')"
-      @click.prevent="emit('next')"
-    />
+    <FAButton :label="$t('trade_in.error.button')" @click.prevent="emit('next')" />
   </FMSectionContainer>
 </template>
 

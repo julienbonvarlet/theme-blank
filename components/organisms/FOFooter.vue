@@ -3,23 +3,13 @@
     <FMSectionContainer :padding-x="true" max-width="l" :padding-y="true">
       <div class="f-footer__content">
         <div class="f-footer__nav">
-          <FMNavigationList
-            v-for="link in data.menu"
-            :key="link"
-            :title="link.title"
-            :links="link.links"
-          />
+          <FMNavigationList v-for="link in data.menu" :key="link" :title="link.title" :links="link.links" />
         </div>
-        <FMSocialNetworkList
-          class="f-footer__network-list"
-          :items="data.socialNetworks"
-        />
+        <FMSocialNetworkList class="f-footer__network-list" :items="data.socialNetworks" />
         <div class="f-footer__bottom">
           <FAText size="s">{{ $t("sections.footer.copyright") }}</FAText>
           <FAText weight="bold" size="s">
-            <NuxtLink to="https://faume.co/">{{
-              $t("sections.footer.faume")
-            }}</NuxtLink>
+            <NuxtLink to="https://faume.co/">{{ $t("sections.footer.faume") }}</NuxtLink>
           </FAText>
         </div>
       </div>
@@ -64,7 +54,7 @@ const data = computed(() => {
           { title: t("sections.footer.term_of_sell"), url: "/pages/cgv" },
           {
             title: t("sections.footer.term_of_use"),
-            url: `${config.public.faume.clientUrlFirstHand}`,
+            url: `${config.clientUrlFirstHand}`,
             target: "_blank",
           },
         ],

@@ -1,13 +1,7 @@
 <template>
   <div class="f-account-voucher">
-    <FMAccountHeading
-      :title="$t('account.gift_cards.detail.title')"
-      back-url="/account/vouchers"
-    />
-    <FMFormMessage
-      v-if="!available"
-      :text="$t('account.gift_cards.detail.not_sync_message')"
-    />
+    <FMAccountHeading :title="$t('account.gift_cards.detail.title')" back-url="/account/vouchers" />
+    <FMFormMessage v-if="!available" :text="$t('account.gift_cards.detail.not_sync_message')" />
     <FAText>{{ $t("account.gift_cards.detail.text") }}</FAText>
     <FMVoucherCard v-if="available && voucher.amount" :voucher="voucher" />
     <FAButton
@@ -22,12 +16,13 @@
 
 <script lang="ts" setup>
 const props = defineProps({
-  voucher: Object,
+  voucher: {
+    type: Object,
+    required: true,
+  },
 });
 
-const available = computed(
-  () => props.voucher.state === "available" || props.voucher.sync,
-);
+const available = computed(() => props.voucher.state === "available" || props.voucher.sync);
 </script>
 
 <style lang="scss">

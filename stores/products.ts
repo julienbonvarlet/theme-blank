@@ -5,17 +5,9 @@ export const useProductsStore = defineStore("products", () => {
   const products = ref([]);
 
   // Actions
-  const fetchProducts = async (
-    filters = {},
-    sortOptions = {},
-    page = 1,
-    itemsPerPage = 10,
-  ) => {
+  const fetchProducts = async (filters = {}, sortOptions = {}, page = 1, itemsPerPage = 10) => {
     const filterQuery = Object.entries(filters)
-      .map(
-        ([key, value]) =>
-          `${encodeURIComponent(key)}=${encodeURIComponent(value)}`,
-      )
+      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
       .join("&");
 
     const sortQuery = Object.entries(sortOptions)

@@ -1,17 +1,6 @@
 <template>
-  <FOGridRow
-    :columns="columns"
-    max-with="xl"
-    :padding-x="false"
-    :margin-y="false"
-    class="ft-auth"
-  >
-    <FMSectionContainer
-      :padding-x="true"
-      :padding-y="true"
-      max-wdith="xl"
-      class-child="ft-auth__inner"
-    >
+  <FOGridRow :columns="columns" max-with="xl" :padding-x="false" :margin-y="false" class="ft-auth">
+    <FMSectionContainer :padding-x="true" :padding-y="true" max-wdith="xl" class-child="ft-auth__inner">
       <div class="ft-auth__header">
         <FATitle size="m">{{ title }}</FATitle>
         <FMFormMessage v-if="message" :text="message" />

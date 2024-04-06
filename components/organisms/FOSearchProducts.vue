@@ -10,12 +10,7 @@
           suffix-icon="search"
           @input="searchProducts"
         />
-        <FAButtonIcon
-          class="close-button"
-          :is-disabled="isFirstItemVisible"
-          icon="cross"
-          @click="closeSearch"
-        />
+        <FAButtonIcon class="close-button" :is-disabled="isFirstItemVisible" icon="cross" @click="closeSearch" />
       </div>
       <div class="f-search-product__content">
         <!-- Sidebar -->
@@ -35,10 +30,7 @@
         <!-- Conteneur principal -->
         <div class="f-search-main">
           <!-- Afficher "Aucun produit trouvé" uniquement si une recherche a été effectuée sans résultat -->
-          <div
-            v-if="searchQuery && !searchResults.length"
-            class="f-search-main__no-result"
-          >
+          <div v-if="searchQuery && !searchResults.length" class="f-search-main__no-result">
             <FAText size="s">{{ $t("sections.search.empty") }}</FAText>
           </div>
           <!-- Affiche les résultats de la recherche si présents -->

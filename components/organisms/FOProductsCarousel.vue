@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   title?: string;
   subtitle?: string;
   text?: string;
@@ -19,17 +19,11 @@ const props = defineProps<{
 
 const productStore = useProductsStore();
 
-const {
-  data: products,
-  pending,
-  error,
-} = useAsyncData("unique-key-for-products", () => {
+const { data: products } = useAsyncData("unique-key-for-products", () => {
   return productStore.fetchProducts(1, 12);
 });
 
 const carousels = computed(() => {
-  return products.value?.length && typeof products.value[0] === "object"
-    ? [{ products: products.value }]
-    : null;
+  return products.value?.length && typeof products.value[0] === "object" ? [{ products: products.value }] : null;
 });
 </script>

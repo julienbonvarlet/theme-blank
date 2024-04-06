@@ -1,19 +1,11 @@
 <template>
-  <div
-    class="f-collapse"
-    :class="{ 'is-title': isTitle, 'not-ready': !maxContentHeight }"
-  >
+  <div class="f-collapse" :class="{ 'is-title': isTitle, 'not-ready': !maxContentHeight }">
     <div class="f-collapse__heading" @click.prevent="toggleCollapse">
-      <FAText v-if="!isTitle" :tag="titleTag" :size="textSize">{{
-        title
-      }}</FAText>
+      <FAText v-if="!isTitle" :tag="titleTag" :size="textSize">{{ title }}</FAText>
       <FATitle v-else :size="titleSize" :tag="titleTag">{{ title }}</FATitle>
       <FAIcon :key="isOpen" :icon="isOpen ? 'up' : 'down'" />
     </div>
-    <div
-      class="f-collapse__content"
-      :style="{ maxHeight: isOpen ? maxContentHeight + 'px' : '0' }"
-    >
+    <div class="f-collapse__content" :style="{ maxHeight: isOpen ? maxContentHeight + 'px' : '0' }">
       <div ref="textContent" class="f-collapse__text">
         <slot>
           <FARichtext :content="content" />
@@ -38,7 +30,7 @@ const props = withDefaults(
     titleSize: "s",
     titleTag: "p",
     isTitle: false,
-  }
+  },
 );
 
 const isOpen = ref(props.open || false);

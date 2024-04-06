@@ -17,7 +17,7 @@ const props = withDefaults(
   defineProps<{
     slug: string;
     title?: string;
-    titleSize?: (typeof TitleSizes)[string];
+    titleSize?: TitleSizes;
   }>(),
   {
     titleSize: "m",

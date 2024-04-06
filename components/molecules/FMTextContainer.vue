@@ -1,9 +1,7 @@
 <template>
   <div class="f-text-container" :class="[alignClass]" v-bind="attrs">
     <FARichtext>
-      <FATitle v-if="title" :size="titleSize" :tag="titleTag">{{
-        title
-      }}</FATitle>
+      <FATitle v-if="title" :size="titleSize" :tag="titleTag">{{ title }}</FATitle>
       <FASubtitle v-if="subtitle">{{ subtitle }}</FASubtitle>
       <span v-if="text" v-html="text"></span>
     </FARichtext>
@@ -24,8 +22,8 @@ const props = withDefaults(
     title?: string;
     subtitle?: string;
     text?: string;
-    titleSize?: (typeof TitleSizes)[string];
-    titleTag?: (typeof TitleTags)[string];
+    titleSize?: TitleSizes;
+    titleTag?: TitleTags;
     ctaAppearance?: "button" | "link";
     align?: "left" | "center" | "right";
     link1?: Record<string, any>;

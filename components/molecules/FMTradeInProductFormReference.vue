@@ -20,12 +20,7 @@
         :errors="isInvalidSku ? [$t('trade_in.add_product.sku.error')] : []"
       />
       <ul
-        v-if="
-          sku &&
-          skuSuggestions &&
-          skuSuggestions.length > 0 &&
-          skuSuggestions.some((item) => item !== model)
-        "
+        v-if="sku && skuSuggestions && skuSuggestions.length > 0 && skuSuggestions.some((item) => item !== model)"
         class="f-ti-product-form-ref__autocompletion"
       >
         <li
@@ -58,10 +53,7 @@
     <FMCarousel>
       <FAImage v-for="img in refImages" :key="img" :src="img" />
     </FMCarousel>
-    <FAButton
-      :label="$t('trade_in.add_product.button_continue')"
-      @click.prevent="displayPopin = false"
-    />
+    <FAButton :label="$t('trade_in.add_product.button_continue')" @click.prevent="displayPopin = false" />
   </FMPopin>
 </template>
 

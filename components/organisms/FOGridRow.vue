@@ -9,12 +9,7 @@
     :padding-x="paddingX"
   >
     <div class="f-grid-row__content">
-      <FMGridColumn
-        v-for="(column, index) in columns"
-        :key="index"
-        v-bind="column"
-        :align="align"
-      />
+      <FMGridColumn v-for="(column, index) in columns" :key="index" v-bind="column" :align="align" />
       <slot />
     </div>
   </FMSectionContainer>
@@ -28,7 +23,7 @@ const props = withDefaults(
     marginX?: boolean;
     paddingX?: boolean;
     paddingY?: boolean;
-    maxWidth?: (typeof WrapperWidths)[string];
+    maxWidth?: WrapperWidths;
     align?: "left" | "center" | "right";
   }>(),
   {

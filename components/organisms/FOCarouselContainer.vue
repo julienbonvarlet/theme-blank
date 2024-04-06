@@ -8,19 +8,8 @@
     class-child="f-carousel-container__inner"
   >
     <div class="f-carousel-container__heading">
-      <FMTextContainer
-        :title="title"
-        :title-size="titleSize"
-        :subtitle="subtitle"
-        :text="text"
-        align="left"
-      />
-      <FATabs
-        v-if="tabs?.length > 1"
-        :options="tabs"
-        :active="activeTab"
-        @change="(x) => (activeTab = x)"
-      />
+      <FMTextContainer :title="title" :title-size="titleSize" :subtitle="subtitle" :text="text" align="left" />
+      <FATabs v-if="tabs?.length > 1" :options="tabs" :active="activeTab" @change="(x) => (activeTab = x)" />
     </div>
 
     <div class="f-carousel-container__content">
@@ -32,13 +21,7 @@
       </FMCarousel>
     </div>
 
-    <FAButton
-      v-if="link1"
-      size="m"
-      type="primary"
-      :to="link1.url"
-      :label="link1.title"
-    />
+    <FAButton v-if="link1" size="m" type="primary" :to="link1.url" :label="link1.title" />
   </FMSectionContainer>
 </template>
 
@@ -48,31 +31,23 @@ const props = defineProps<{
   subtitle?: string;
   text?: string;
   carousels?: any[];
-  titleSize?: (typeof TitleSizes)[string];
+  titleSize?: TitleSizes;
   link1?: Record<string, any>;
 }>();
 
 const activeTab = ref(props.carousels?.[0]?.title);
 
-const tabs = computed(() =>
-  props.carousels?.map((x) => ({ label: x.title, value: x.title })),
-);
+const tabs = computed(() => props.carousels?.map((x) => ({ label: x.title, value: x.title })));
 const carousel = computed(() => {
   if (!props.carousels?.length) {
     return null;
   }
-  const foundCarousel = props.carousels?.find(
-    (x) => x.title === activeTab.value,
-  );
+  const foundCarousel = props.carousels?.find((x) => x.title === activeTab.value);
   return foundCarousel || props.carousels?.[0];
 });
 const button = computed(() => carousel.value?.button);
-const slides = computed(
-  () => carousel.value?.products || carousel.value?.collections,
-);
-const carouselType = computed(() =>
-  carousel.value?.products ? "product" : "collection",
-);
+const slides = computed(() => carousel.value?.products || carousel.value?.collections);
+const carouselType = computed(() => (carousel.value?.products ? "product" : "collection"));
 
 watch(tabs, () => {
   activeTab.value = props.carousels?.[0]?.title;

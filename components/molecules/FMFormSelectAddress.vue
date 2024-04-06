@@ -12,10 +12,7 @@
       >
         <FACheckbox :radio="true" :checked="item['@id'] == model" />
         <FMCardText v-bind="formatAddressCardText(item)">
-          <FATagDefault
-            v-if="item.isDefault"
-            :text="$t('global.form.default_address')"
-          />
+          <FATagDefault v-if="item.isDefault" :text="$t('global.form.default_address')" />
         </FMCardText>
         <FAButton
           :label="$t('account.addresses.button_edit')"
@@ -25,11 +22,7 @@
           @click.prevent.stop="editAddress = item"
         />
       </div>
-      <FALink
-        v-if="addresses"
-        :text="$t('account.addresses.button_add')"
-        @click.prevent="createAddress = true"
-      />
+      <FALink v-if="addresses" :text="$t('account.addresses.button_add')" @click.prevent="createAddress = true" />
     </div>
   </div>
 
@@ -70,9 +63,7 @@ const editAddress = ref<null | string | number>(null);
 const createAddress = ref(false);
 
 const addresses = computed(() => addressesStore.addresses);
-const isValid = computed(() =>
-  props.model ? addresses.value?.find((x) => x["@id"] === props.model) : null,
-);
+const isValid = computed(() => (props.model ? addresses.value?.find((x) => x["@id"] === props.model) : null));
 
 const selectAddress = async (id) => {
   emit("select", id);

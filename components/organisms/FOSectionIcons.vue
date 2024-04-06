@@ -1,11 +1,5 @@
 <template>
-  <FMSectionContainer
-    class="f-section-icons"
-    :padding-x="true"
-    :margin-y="marginY"
-    :padding-y="paddingY"
-    max-width="l"
-  >
+  <FMSectionContainer class="f-section-icons" :padding-x="true" :margin-y="marginY" :padding-y="paddingY" max-width="l">
     <FMIconInfoList
       :title="title"
       :title-size="titleSize"
@@ -22,7 +16,7 @@
 const props = withDefaults(
   defineProps<{
     title?: string;
-    titleSize?: (typeof TitleSizes)[string];
+    titleSize?: TitleSizes;
     subtitle?: string;
     text?: string;
     link?: Record<string, any>;

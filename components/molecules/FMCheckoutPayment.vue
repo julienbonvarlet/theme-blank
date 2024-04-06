@@ -1,11 +1,7 @@
 <template>
   <div class="f-checkout-payment">
     <FATitle size="s" :title="$t('pages.checkout.payment.title')" />
-    <FMFormMessage
-      v-if="errorPayment"
-      type="error"
-      :text="$t('pages.checkout.identification.error_payment')"
-    />
+    <FMFormMessage v-if="errorPayment" type="error" :text="$t('pages.checkout.identification.error_payment')" />
     <FALoader v-if="loading" />
     <ul v-else-if="paymentMethods?.length">
       <FMRadioInline
@@ -19,11 +15,7 @@
         <FMCheckoutStripe v-if="displayStripe && method.code === 'card'" />
       </FMRadioInline>
     </ul>
-    <FMFormMessage
-      v-else
-      type="error"
-      :text="$t('pages.checkout.payment.error_payments')"
-    />
+    <FMFormMessage v-else type="error" :text="$t('pages.checkout.payment.error_payments')" />
   </div>
 </template>
 
@@ -34,10 +26,7 @@ const paymentMethodsStore = usePaymentMethodsStore();
 
 const { cartId, billingAddress } = useCartData();
 const paymentMethods = computed(() => paymentMethodsStore.paymentMethods);
-const paymentMethodType = computed(
-  () =>
-    paymentMethods.value?.find((x) => x["@id"] === paymentMethod.value)?.code,
-);
+const paymentMethodType = computed(() => paymentMethods.value?.find((x) => x["@id"] === paymentMethod.value)?.code);
 const loading = ref(true);
 const errorPayment = ref(false);
 const paymentMethod = ref<null | string>(null);

@@ -8,8 +8,8 @@
 const props = withDefaults(
   defineProps<{
     title?: string;
-    size?: (typeof TitleSizes)[string];
-    tag?: (typeof TitleTags)[string];
+    size?: TitleSizes;
+    tag?: TitleTags;
   }>(),
   {
     size: "m",

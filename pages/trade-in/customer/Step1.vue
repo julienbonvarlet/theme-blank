@@ -1,14 +1,7 @@
 <template>
   <FTTradeIn>
-    <FMTradeInStep
-      v-if="!agree"
-      :title="$t('trade_in.criteria.title')"
-      :subtitle="$t('trade_in.criteria.text')"
-    >
-      <FAButton
-        :label="$t('trade_in.criteria.button')"
-        @click.prevent="tradeInModule.setAgree(true)"
-      />
+    <FMTradeInStep v-if="!agree" :title="$t('trade_in.criteria.title')" :subtitle="$t('trade_in.criteria.text')">
+      <FAButton :label="$t('trade_in.criteria.button')" @click.prevent="tradeInModule.setAgree(true)" />
     </FMTradeInStep>
 
     <FMTradeInProductForm v-else @next="next" />

@@ -1,6 +1,6 @@
 <template>
   <div class="fp-index">
-    <FOBanner
+    <!-- <FOBanner
       :title="$t('pages.index.banner.title')"
       align="center"
       :subtitle="$t('pages.index.banner.subtitle')"
@@ -48,7 +48,7 @@
       :title="$t('pages.index.carousel_collections.title')"
       :carousels="categoriesCarousels"
     />
-    <FONewsletter />
+    <FONewsletter /> -->
   </div>
 </template>
 
@@ -56,7 +56,6 @@
 import faumeConfig from "~/faumeConfig";
 
 const { t } = useI18n();
-const config = useRuntimeConfig();
 const { getCollectionTitle } = useCollectionsStore();
 
 const menuConfig = faumeConfig.menu;
@@ -106,23 +105,19 @@ const gridColumns = computed(() => [
     },
     icons: [
       {
-        image:
-          "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
         text: t("pages.index.grid.2.icons.1"),
       },
       {
-        image:
-          "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
         text: t("pages.index.grid.2.icons.2"),
       },
       {
-        image:
-          "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
         text: t("pages.index.grid.2.icons.3"),
       },
       {
-        image:
-          "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
         text: t("pages.index.grid.2.icons.4"),
       },
     ],
@@ -137,23 +132,19 @@ const gridColumns = computed(() => [
     },
     icons: [
       {
-        image:
-          "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
         text: t("pages.index.grid.3.icons.1"),
       },
       {
-        image:
-          "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
         text: t("pages.index.grid.3.icons.2"),
       },
       {
-        image:
-          "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
         text: t("pages.index.grid.3.icons.3"),
       },
       {
-        image:
-          "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
         text: t("pages.index.grid.3.icons.4"),
       },
     ],

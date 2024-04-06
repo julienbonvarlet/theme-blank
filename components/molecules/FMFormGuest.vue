@@ -1,11 +1,7 @@
 <template>
   <div class="f-form-guest">
     <FMFormMessage v-if="error && error !== ''" type="error" :text="error" />
-    <FormKit
-      type="form"
-      :submit-label="$t('pages.checkout.identification.continue_as_guest')"
-      @submit="submit"
-    >
+    <FormKit type="form" :submit-label="$t('pages.checkout.identification.continue_as_guest')" @submit="submit">
       <template v-for="field in registerFields" :key="field.name">
         <FormKit v-bind="field" />
       </template>

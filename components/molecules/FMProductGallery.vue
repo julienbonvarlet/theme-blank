@@ -37,12 +37,7 @@ const props = defineProps<{
       left: 0;
       mix-blend-mode: multiply;
       z-index: calc(var(--z-index-above) + 1);
-      background: radial-gradient(
-        circle,
-        transparent,
-        transparent,
-        var(--f-color-background-light)
-      );
+      background: radial-gradient(circle, transparent, transparent, var(--f-color-background-light));
     }
   }
 

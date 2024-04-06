@@ -1,23 +1,22 @@
 import faumeConfig from "~/faumeConfig";
 
+type Collections = {
+  name: String;
+  slugName: String;
+};
+
 export const useCollectionsStore = defineStore("collectionsStore", () => {
-  const { $API } = useNuxtApp();
+  const { $getCollection } = useNuxtApp();
 
-  const collections = ref([]);
+  const collections = ref<Collections[]>([]);
 
-  const getCollectionBySlug = (slug) =>
-    collections.value?.find((x) => x.slugName === slug);
-  const getCollectionTitle = (slug) =>
-    collections.value?.find((x) => x.slugName === slug)?.name;
-  const getCollectionDescription = (slug) =>
-    collections.value?.find((x) => x.slugName === slug)?.description;
+  const getCollectionBySlug = (slug: String) => collections.value?.find((x) => x.slugName === slug);
+  const getCollectionTitle = (slug: String) => collections.value?.find((x) => x.slugName === slug)?.name;
 
   onMounted(async () => {
     if (!collections.value?.length) {
-      const response =
-        await $API.collection.apiCustomerCollectionsGetCollection();
-      let data = response?.["hydra:member"];
-      data = data.map((collection) => {
+      const { items } = await $getCollection<ApiCollection<Collections>>("/api/v3/customer/collections");
+      const data = items.map((collection) => {
         let collectionData = {
           ...collection,
           title: collection.name?.split(" - ").pop(),
@@ -26,10 +25,9 @@ export const useCollectionsStore = defineStore("collectionsStore", () => {
             params: { id: collection.slugName },
           },
         };
-        const config = faumeConfig.collections.find(
-          (x) => x.slugName === collection.slugName,
-        );
+        const config = faumeConfig.collections.find((x) => x.slugName === collection.slugName);
         if (config) collectionData = { ...collectionData, ...config };
+
         return collectionData;
       });
       collections.value = data;
@@ -40,6 +38,5 @@ export const useCollectionsStore = defineStore("collectionsStore", () => {
     collections,
     getCollectionBySlug,
     getCollectionTitle,
-    getCollectionDescription,
   };
 });

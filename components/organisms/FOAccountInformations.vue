@@ -1,29 +1,12 @@
 <template>
   <div class="f-account-info">
     <FMAccountHeading :title="$t('account.informations.title')" size="m" />
-    <FMFormMessage
-      v-if="displaySuccessMessage"
-      :text="$t('account.informations.message_success')"
-      type="success"
-    />
-    <FMFormMessage
-      v-if="displayErrorMessage"
-      :text="$t('account.informations.message_error')"
-      type="error"
-    />
-    <FormKit
-      v-model="formData"
-      type="form"
-      :submit-label="$t('account.informations.button')"
-      @submit="save"
-    >
+    <FMFormMessage v-if="displaySuccessMessage" :text="$t('account.informations.message_success')" type="success" />
+    <FMFormMessage v-if="displayErrorMessage" :text="$t('account.informations.message_error')" type="error" />
+    <FormKit v-model="formData" type="form" :submit-label="$t('account.informations.button')" @submit="save">
       <FormKit v-for="field in fields" :key="field" v-bind="field" />
     </FormKit>
-    <FALink
-      :text="$t('account.informations.update_password')"
-      size="s"
-      to="/account/informations/password"
-    />
+    <FALink :text="$t('account.informations.update_password')" size="s" to="/account/informations/password" />
   </div>
 </template>
 

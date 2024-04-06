@@ -1,10 +1,6 @@
 <template>
   <FALoader v-if="stripeLoading" />
-  <FMFormMessage
-    v-if="stripeError"
-    type="error"
-    :text="$t('pages.checkout.payment.error_payment')"
-  />
+  <FMFormMessage v-if="stripeError" type="error" :text="$t('pages.checkout.payment.error_payment')" />
   <form class="f-checkout-stripe" @submit.prevent="submitStripe">
     <FMFormMessage v-if="submitError" type="error" :text="submitError" />
     <div id="payment-element"></div>
@@ -18,11 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  loadStripe,
-  type Stripe,
-  type StripeElements,
-} from "@stripe/stripe-js";
+import { loadStripe, type Stripe, type StripeElements } from "@stripe/stripe-js";
 
 const addressesStore = useAddressesStore();
 const { $trackingPlan } = useNuxtApp();
@@ -52,15 +44,14 @@ const submitStripe = async () => {
     const { error: errorOnSubmit } = await elements.submit();
     if (errorOnSubmit) {
       submitLoading.value = false;
-      submitError.value =
-        errorOnSubmit || t("pages.checkout.payment.bank_card.error");
+      submitError.value = errorOnSubmit || t("pages.checkout.payment.bank_card.error");
       return;
     }
     const { error: errorOnPayment } = await stripe.confirmPayment({
       elements,
       clientSecret: clientSecret.value,
       confirmParams: {
-        return_url: `${config.public.faume.clientUrlSecondHand}/pages/order-success`,
+        return_url: `${config.clientUrlSecondHand}/pages/order-success`,
         payment_method_data: {
           billing_details: {
             address: {
@@ -73,12 +64,8 @@ const submitStripe = async () => {
         },
       },
     });
-    if (
-      errorOnPayment.type === "card_error" ||
-      errorOnPayment.type === "validation_error"
-    ) {
-      submitError.value =
-        errorOnPayment || t("pages.checkout.payment.bank_card.error");
+    if (errorOnPayment.type === "card_error" || errorOnPayment.type === "validation_error") {
+      submitError.value = errorOnPayment || t("pages.checkout.payment.bank_card.error");
       return;
     }
     router.push({ name: "order-success" });

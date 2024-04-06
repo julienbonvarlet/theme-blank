@@ -1,9 +1,5 @@
 <template>
-  <NuxtLink
-    :to="`/products/${product.id}`"
-    class="f-product-card"
-    @click="handleClick"
-  >
+  <NuxtLink :to="`/products/${product.id}`" class="f-product-card" @click="handleClick">
     <div class="f-product-card__visual">
       <FADiscountTag
         class="f-product-card__discount"
@@ -13,37 +9,21 @@
 
       <div class="f-product-card__images">
         <img :src="product.frontPhoto" :alt="`${product.title}`" />
-        <img
-          v-if="product.backPhoto"
-          :src="product.backPhoto"
-          :alt="`${product.title}`"
-        />
+        <img v-if="product.backPhoto" :src="product.backPhoto" :alt="`${product.title}`" />
       </div>
 
-      <FAButtonIcon
-        class="f-product-card__quickview"
-        icon="cart"
-        @click.prevent="handleQuickViewClick"
-      />
+      <FAButtonIcon class="f-product-card__quickview" icon="cart" @click.prevent="handleQuickViewClick" />
     </div>
 
     <div class="f-product-card__content">
-      <FMCardText
-        :title="product.title"
-        :price="product.minPrice"
-        :original-price="product.originPrice"
-      />
+      <FMCardText :title="product.title" :price="product.minPrice" :original-price="product.originPrice" />
       <div class="f-product-card__sizes">
         <FAFieldBox v-for="size in sizesFields" :key="size" v-bind="size" />
       </div>
     </div>
   </NuxtLink>
 
-  <FOQuickview
-    v-if="isQuickViewVisible"
-    :product="product"
-    @on-close="isQuickViewVisible = false"
-  />
+  <FOQuickview v-if="isQuickViewVisible" :product="product" @on-close="isQuickViewVisible = false" />
 </template>
 
 <script setup lang="ts">
@@ -109,12 +89,7 @@ function handleClick() {
       left: 0;
       mix-blend-mode: multiply;
       z-index: calc(var(--z-index-above) + 1);
-      background: radial-gradient(
-        circle,
-        transparent,
-        transparent,
-        var(--f-color-background-light)
-      );
+      background: radial-gradient(circle, transparent, transparent, var(--f-color-background-light));
     }
 
     img {

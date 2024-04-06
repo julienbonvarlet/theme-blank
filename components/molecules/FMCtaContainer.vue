@@ -7,11 +7,7 @@
       :label="link1.title"
       :icon="link1.icon"
     />
-    <FALink
-      v-if="link1?.url && !isButton"
-      :to="link1.url"
-      :text="link1.title"
-    />
+    <FALink v-if="link1?.url && !isButton" :to="link1.url" :text="link1.title" />
     <FAButton
       v-if="link2?.url && link2?.title?.length && isButton"
       :to="link2.url"
@@ -19,11 +15,7 @@
       :label="link2.title"
       :icon="link2.icon"
     />
-    <FALink
-      v-if="link2?.url && !isButton"
-      :to="link2.url"
-      :text="link2.title"
-    />
+    <FALink v-if="link2?.url && !isButton" :to="link2.url" :text="link2.title" />
     <slot />
   </div>
 </template>

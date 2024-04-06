@@ -34,9 +34,7 @@ const cardInlineData = computed(() => {
     price: article.priceResale,
     image: article?.medatada?.images?.[0] || imageStore.placeholder,
     statusValue: article.warehouseStage,
-    statusText:
-      t(`account.trade_ins.status.${article.warehouseStage}`) ||
-      article.warehouseStage,
+    statusText: t(`account.trade_ins.status.${article.warehouseStage}`) || article.warehouseStage,
   };
 });
 </script>

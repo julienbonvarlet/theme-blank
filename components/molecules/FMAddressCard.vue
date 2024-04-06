@@ -1,23 +1,10 @@
 <template>
   <FMCardInline v-if="address" class="f-address-card" v-bind="cardInlineData">
-    <FATagDefault
-      v-if="address.isDefault"
-      :text="$t('account.addresses.default')"
-    />
+    <FATagDefault v-if="address.isDefault" :text="$t('account.addresses.default')" />
     <template v-if="displayCta" #right>
       <div class="f-address-card__cta">
-        <FAButton
-          size="s"
-          type="secondary"
-          :to="editRoute"
-          :label="$t('account.addresses.button_edit')"
-          icon="write"
-        />
-        <FALink
-          size="s"
-          :text="$t('account.addresses.button_delete')"
-          @click.prevent="displayDelete = true"
-        />
+        <FAButton size="s" type="secondary" :to="editRoute" :label="$t('account.addresses.button_edit')" icon="write" />
+        <FALink size="s" :text="$t('account.addresses.button_delete')" @click.prevent="displayDelete = true" />
       </div>
     </template>
   </FMCardInline>
@@ -34,10 +21,7 @@
         type="secondary"
         @click.prevent="displayDelete = false"
       />
-      <FAButton
-        :label="$t('account.addresses.delete.button_yes')"
-        @click.prevent="deleteAddress"
-      />
+      <FAButton :label="$t('account.addresses.delete.button_yes')" @click.prevent="deleteAddress" />
     </FMCtaContainer>
   </FMPopin>
 </template>

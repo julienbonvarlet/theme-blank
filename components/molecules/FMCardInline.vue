@@ -1,11 +1,5 @@
 <template>
-  <component
-    :is="tag"
-    :to="to"
-    v-bind="attrs"
-    class="f-card-inline"
-    :class="[backgroundClass, linkClass]"
-  >
+  <component :is="tag" :to="to" v-bind="attrs" class="f-card-inline" :class="[backgroundClass, linkClass]">
     <div v-if="image" class="f-card-inline__image">
       <img :src="image" :alt="title" />
     </div>
@@ -66,9 +60,7 @@ try {
   NuxtLink = "a";
 }
 const tag = computed(() => (props.to ? NuxtLink : "div"));
-const backgroundClass = computed(() =>
-  props.hasBackground ? "has-background" : null,
-);
+const backgroundClass = computed(() => (props.hasBackground ? "has-background" : null));
 const linkClass = computed(() => (props.to ? "is-link" : null));
 
 const attrs = useAttrs();
@@ -118,12 +110,7 @@ const attrs = useAttrs();
       left: 0;
       mix-blend-mode: multiply;
       z-index: calc(var(--z-index-above) + 1);
-      background: radial-gradient(
-        circle,
-        transparent,
-        transparent,
-        var(--f-color-background-light)
-      );
+      background: radial-gradient(circle, transparent, transparent, var(--f-color-background-light));
     }
 
     img {

@@ -50,9 +50,7 @@ onMounted(() => {
 
 const updateIndicator = () => {
   nextTick(() => {
-    const optionIndex = props.options.findIndex(
-      (option) => option.value === activeOption.value,
-    );
+    const optionIndex = props.options.findIndex((option) => option.value === activeOption.value);
     const optionElement = optionRefs.value[optionIndex];
     if (optionElement) {
       indicatorStyle.value = {

@@ -1,17 +1,9 @@
 <template>
-  <FMSectionContainer
-    max-width="xl"
-    :padding-x="true"
-    class="ft-trade-in"
-    class-child="ft-trade-in__inner"
-  >
+  <FMSectionContainer max-width="xl" :padding-x="true" class="ft-trade-in" class-child="ft-trade-in__inner">
     <FMStepsMenu :steps="menu" />
     <slot />
   </FMSectionContainer>
-  <FOSectionReassurance
-    class="f-ti-reassurance"
-    v-bind="data.sectionReassurance"
-  />
+  <FOSectionReassurance class="f-ti-reassurance" v-bind="data.sectionReassurance" />
 </template>
 
 <script setup lang="ts">
@@ -57,8 +49,7 @@ const data = {
       {
         text: "Livraison gratuite à partir de 100€ d'achat",
         alt: "Livraison gratuite",
-        image:
-          "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
       },
       {
         text: "Retours gratuits sous 14 jours",
@@ -69,14 +60,12 @@ const data = {
       {
         text: "Articles authentifiés et nettoyés",
         alt: "Article authentifiés",
-        image:
-          "https://demo.faume.co/cdn/shop/files/clean-clothes_100x100_crop_center.png?v=1691013900",
+        image: "https://demo.faume.co/cdn/shop/files/clean-clothes_100x100_crop_center.png?v=1691013900",
       },
       {
         text: "Paiement 100% sécurisé",
         alt: "Paiement sécurisé",
-        image:
-          "https://demo.faume.co/cdn/shop/files/verified_user_FILL0_wght400_GRAD0_opsz24.svg?v=1699347206",
+        image: "https://demo.faume.co/cdn/shop/files/verified_user_FILL0_wght400_GRAD0_opsz24.svg?v=1699347206",
       },
     ],
   },

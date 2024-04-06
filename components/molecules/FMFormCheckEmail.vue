@@ -6,29 +6,13 @@
         name="email"
         :label="$t('global.form.email')"
         validator="required|email"
-        :help="
-          !emailExist && emailIsValid && emailChecked
-            ? $t('account.identification.email_doesnt_exist')
-            : null
-        "
+        :help="!emailExist && emailIsValid && emailChecked ? $t('account.identification.email_doesnt_exist') : null"
         :suffix-icon="loading ? 'spinner' : null"
       />
       <div v-if="emailChecked && emailIsValid" class="f-form-check-email__cta">
-        <FAButton
-          v-if="emailExist"
-          type="submit"
-          :label="$t('account.identification.login.button')"
-        />
-        <FAButton
-          v-else
-          type="submit"
-          :label="$t('account.identification.register.button')"
-        />
-        <FALink
-          v-if="guest"
-          :text="$t('pages.checkout.identification.continue_as_guest')"
-          @click.prevent="invite"
-        />
+        <FAButton v-if="emailExist" type="submit" :label="$t('account.identification.login.button')" />
+        <FAButton v-else type="submit" :label="$t('account.identification.register.button')" />
+        <FALink v-if="guest" :text="$t('pages.checkout.identification.continue_as_guest')" @click.prevent="invite" />
       </div>
     </FormKit>
 

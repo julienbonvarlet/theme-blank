@@ -1,12 +1,7 @@
 <template>
   <div class="f-store-locator">
     <FMSectionContainer :padding-x="true" max-width="xl" :padding-y="true">
-      <FATitle
-        class="f-store-locator__title"
-        :title="$t('pages.stores.title')"
-        size="l"
-        tag="h2"
-      />
+      <FATitle class="f-store-locator__title" :title="$t('pages.stores.title')" size="l" tag="h2" />
     </FMSectionContainer>
     <FMSectionContainer :padding-x="true" max-width="xl" :padding-y="false">
       <div class="f-store-locator__content">
@@ -28,17 +23,8 @@
 
         <!-- STORE POPUP -->
         <div id="popup" ref="popupTemplate" class="f-store-locator__popup">
-          <FAIcon
-            class="f-store-locator__popup-close"
-            icon="cross"
-            @click="currentStoreId = null"
-          />
-          <FMStoreCard
-            v-if="currentStore"
-            :store="currentStore"
-            :is-focus="false"
-            :show-planning="false"
-          />
+          <FAIcon class="f-store-locator__popup-close" icon="cross" @click="currentStoreId = null" />
+          <FMStoreCard v-if="currentStore" :store="currentStore" :is-focus="false" :show-planning="false" />
         </div>
       </div>
     </FMSectionContainer>
@@ -91,11 +77,7 @@ const geoJson = computed(() => {
 
 const cleanedGeoPos = geoJson.value.features
   .map((feature) => {
-    if (
-      feature.geometry.coordinates &&
-      feature.geometry.coordinates[0] &&
-      feature.geometry.coordinates[1]
-    ) {
+    if (feature.geometry.coordinates && feature.geometry.coordinates[0] && feature.geometry.coordinates[1]) {
       return feature.geometry.coordinates;
     }
   })
@@ -110,69 +92,60 @@ let automaticBounds = new mapboxgl.LngLatBounds(cleanedGeoPos);
 
 const padding = 1;
 automaticBounds = new mapboxgl.LngLatBounds(
-  [
-    automaticBounds.getNorthEast().lng - padding,
-    automaticBounds.getNorthEast().lat - padding,
-  ],
-  [
-    automaticBounds.getSouthWest().lng + padding,
-    automaticBounds.getSouthWest().lat + padding,
-  ],
+  [automaticBounds.getNorthEast().lng - padding, automaticBounds.getNorthEast().lat - padding],
+  [automaticBounds.getSouthWest().lng + padding, automaticBounds.getSouthWest().lat + padding],
 );
 
 // Init the map when the component is mounted
 onMounted(() => {
   // Initialize the map
-  mapboxgl.accessToken = config.public.faume.mapbox.apiKey;
+  mapboxgl.accessToken = config.mapboxApiKey;
   mapInstance.value = new mapboxgl.Map({
     padding: true,
     container: mapContainer.value,
-    style: `mapbox://styles/faume/${config.public.faume.mapbox.styleId}`, // Replace with your style URL
+    style: `mapbox://styles/faume/${config.mapboxStyleId}`, // Replace with your style URL
     bounds: automaticBounds,
     minZoom: 3,
   }).on("load", onMapLoad);
 });
 
 const onMapLoad = () => {
-  mapInstance.value.loadImage(
-    `https://faume.imgix.net/${config.public.faume.clientId}/pin-map.png`,
-    (error, image) => {
-      if (error) {
-        throw error;
+  mapInstance.value.loadImage(`https://faume.imgix.net/${config.clientId}/pin-map.png`, (error, image) => {
+    if (error) {
+      throw error;
+    }
+    mapInstance.value.addImage("custom-marker", image);
+    mapInstance.value.addLayer({
+      id: "locations",
+      type: "symbol",
+      source: {
+        type: "geojson",
+        data: geoJson.value,
+      },
+      layout: {
+        "icon-image": "custom-marker",
+        "icon-size": 0.5,
+        "icon-allow-overlap": false,
+      },
+    });
+
+    // Detect marker click
+    mapInstance.value.on("click", (event) => {
+      // Determine if a feature in the "locations" layer exists at that point.
+      const features = mapInstance.value.queryRenderedFeatures(event.point, {
+        layers: ["locations"],
+      });
+      // If it does not exist, return
+      if (!features.length) {
+        return;
       }
-      mapInstance.value.addImage("custom-marker", image);
-      mapInstance.value.addLayer({
-        id: "locations",
-        type: "symbol",
-        source: {
-          type: "geojson",
-          data: geoJson.value,
-        },
-        layout: {
-          "icon-image": "custom-marker",
-          "icon-size": 0.5,
-          "icon-allow-overlap": false,
-        },
-      });
 
-      // Detect marker click
-      mapInstance.value.on("click", (event) => {
-        // Determine if a feature in the "locations" layer exists at that point.
-        const features = mapInstance.value.queryRenderedFeatures(event.point, {
-          layers: ["locations"],
-        });
-        // If it does not exist, return
-        if (!features.length) {
-          return;
-        }
+      const clickedPoint = features[0];
 
-        const clickedPoint = features[0];
-
-        // Fly to the point
-        focusStore(clickedPoint);
-      });
-    },
-  );
+      // Fly to the point
+      focusStore(clickedPoint);
+    });
+  });
 };
 
 const focusStore = (currentFeature) => {
@@ -187,9 +160,7 @@ const currentStore = computed(() => {
   if (currentStoreId.value === null) {
     return null;
   }
-  return geoJson.value?.features.find(
-    (store) => store.id == currentStoreId.value,
-  );
+  return geoJson.value?.features.find((store) => store.id == currentStoreId.value);
 });
 
 // Watch the currentStoreId and update the marker on the map

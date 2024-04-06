@@ -8,21 +8,15 @@
   --f-carousel-container-items-visible-sm: 2.5;
 
   --f-carousel-container-gap: var(--f-carousel-container-gap-sm);
-  --f-carousel-container-items-visible: var(
-    --f-carousel-container-items-visible-sm
-  );
+  --f-carousel-container-items-visible: var(--f-carousel-container-items-visible-sm);
 
   @include media(">=tablet", "<desktop") {
     --f-carousel-container-gap: var(--f-carousel-container-gap-md);
-    --f-carousel-container-items-visible: var(
-      --f-carousel-container-items-visible-md
-    );
+    --f-carousel-container-items-visible: var(--f-carousel-container-items-visible-md);
   }
 
   @include media(">=desktop") {
     --f-carousel-container-gap: var(--f-carousel-container-gap-lg);
-    --f-carousel-container-items-visible: var(
-      --f-carousel-container-items-visible-lg
-    );
+    --f-carousel-container-items-visible: var(--f-carousel-container-items-visible-lg);
   }
 }

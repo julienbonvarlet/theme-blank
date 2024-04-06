@@ -1,11 +1,5 @@
 <template>
-  <FOCarouselContainer
-    v-if="carousels"
-    :title="title"
-    :subitle="subtitle"
-    :text="text"
-    :carousels="carousels"
-  />
+  <FOCarouselContainer v-if="carousels" :title="title" :subitle="subtitle" :text="text" :carousels="carousels" />
 </template>
 
 <script setup lang="ts">
@@ -22,8 +16,6 @@ const collections = ref(null);
 const collectionsFormated = computed(() => props.fakeData);
 
 const carousels = computed(() => {
-  return collectionsFormated.value?.length
-    ? [{ collections: collectionsFormated.value }]
-    : null;
+  return collectionsFormated.value?.length ? [{ collections: collectionsFormated.value }] : null;
 });
 </script>

@@ -1,11 +1,11 @@
 <template>
   <div class="fl-default">
-    <FATopBar :text="$t(faumeConfig.header.topBar.text)" />
-    <FOHeader />
-    <FAAnnouncementBar v-if="showAnnouncementBar" />
+    <FATopBar />
+    <!-- <FOHeader />
+    <FAAnnouncementBar v-if="showAnnouncementBar" /> -->
     <slot />
-    <FOSectionReassurance v-bind="data.sectionReassurance" />
-    <FOFooter />
+    <!-- <FOSectionReassurance v-bind="data.sectionReassurance" />
+    <FOFooter /> -->
   </div>
 </template>
 
@@ -22,8 +22,7 @@ const data = {
       {
         text: t("trade_in.reinsurance.1"),
         alt: t("trade_in.reinsurance.1"),
-        image:
-          "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
       },
       {
         text: t("trade_in.reinsurance.2"),
@@ -34,14 +33,12 @@ const data = {
       {
         text: t("trade_in.reinsurance.3"),
         alt: t("trade_in.reinsurance.3"),
-        image:
-          "https://demo.faume.co/cdn/shop/files/clean-clothes_100x100_crop_center.png?v=1691013900",
+        image: "https://demo.faume.co/cdn/shop/files/clean-clothes_100x100_crop_center.png?v=1691013900",
       },
       {
         text: t("trade_in.reinsurance.4"),
         alt: t("trade_in.reinsurance.4"),
-        image:
-          "https://demo.faume.co/cdn/shop/files/verified_user_FILL0_wght400_GRAD0_opsz24.svg?v=1699347206",
+        image: "https://demo.faume.co/cdn/shop/files/verified_user_FILL0_wght400_GRAD0_opsz24.svg?v=1699347206",
       },
     ],
   },

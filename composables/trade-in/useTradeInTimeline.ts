@@ -1,9 +1,4 @@
-const pushInTimeline = (
-  icon: string,
-  title: string,
-  text?: string,
-  description?: string | null,
-) => ({
+const pushInTimeline = (icon: string, title: string, text?: string, description?: string | null) => ({
   icon,
   title,
   text,
@@ -20,33 +15,15 @@ export function useTradeInTimeline(tradeIn: {}, wording: {}) {
     }
 
     const timeline = [];
-    const priceEstimated =
-      tradeIn?.items?.reduce((total, item) => total + item.priceResale, 0) ||
-      tradeIn.price ||
-      0;
-    const priceCredited =
-      tradeIn?.items?.reduce((total, item) => total + item.priceCredit, 0) ||
-      tradeIn.price ||
-      0;
+    const priceEstimated = tradeIn?.items?.reduce((total, item) => total + item.priceResale, 0) || tradeIn.price || 0;
+    const priceCredited = tradeIn?.items?.reduce((total, item) => total + item.priceCredit, 0) || tradeIn.price || 0;
     const priceEstimatedFormatted = formatPrice(priceEstimated);
     const priceCreditedFormatted = formatPrice(priceCredited);
 
-    timeline.push(
-      pushInTimeline(
-        "cart",
-        wording.trade_in_created,
-        formatDate(tradeIn.createdAt),
-      ),
-    );
+    timeline.push(pushInTimeline("cart", wording.trade_in_created, formatDate(tradeIn.createdAt)));
 
     if (tradeIn.state === "draft") {
-      timeline.push(
-        pushInTimeline(
-          "time",
-          wording.waiting_for_validation,
-          wording.finalize_form,
-        ),
-      );
+      timeline.push(pushInTimeline("time", wording.waiting_for_validation, wording.finalize_form));
     } else if (!tradeIn.sentAt && !tradeIn.receivedAt) {
       timeline.push(
         pushInTimeline(
@@ -62,23 +39,12 @@ export function useTradeInTimeline(tradeIn: {}, wording: {}) {
     }
 
     if (tradeIn.receivedAt) {
-      timeline.push(
-        pushInTimeline("check", wording.shipped, tradeIn.receivedAt),
-      );
-      timeline.push(
-        pushInTimeline(
-          "time",
-          wording.waiting_for_review,
-          tradeIn.receivedAt,
-          wording.expert_analysing,
-        ),
-      );
+      timeline.push(pushInTimeline("check", wording.shipped, tradeIn.receivedAt));
+      timeline.push(pushInTimeline("time", wording.waiting_for_review, tradeIn.receivedAt, wording.expert_analysing));
     }
 
     if (tradeIn.controlledAt) {
-      timeline.push(
-        pushInTimeline("search", wording.controlled, tradeIn.controlledAt),
-      );
+      timeline.push(pushInTimeline("search", wording.controlled, tradeIn.controlledAt));
     }
 
     if (tradeIn.creditedAt) {
@@ -87,10 +53,7 @@ export function useTradeInTimeline(tradeIn: {}, wording: {}) {
           "wallet",
           wording.credited,
           tradeIn.creditedAt,
-          wording.wallet_credited_of.replace(
-            "{amount}",
-            priceCreditedFormatted || priceEstimatedFormatted,
-          ),
+          wording.wallet_credited_of.replace("{amount}", priceCreditedFormatted || priceEstimatedFormatted),
         ),
       );
     }

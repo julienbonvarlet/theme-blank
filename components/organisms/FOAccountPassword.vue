@@ -10,11 +10,7 @@
       :text="$t('account.informations.password_edit.message_success')"
       type="success"
     />
-    <FMFormMessage
-      v-if="displayErrorMessage"
-      :text="displayErrorMessage"
-      type="error"
-    />
+    <FMFormMessage v-if="displayErrorMessage" :text="displayErrorMessage" type="error" />
     <FormKit
       v-model="formData"
       type="form"
@@ -59,14 +55,11 @@ const fields = [
     label: t("account.informations.password_edit.label_new_password"),
     help: t("account.informations.password_edit.help"),
     minlength: "8",
-    validation:
-      "required|length:8,30|contains_numeric|contains_uppercase|contains_lowercase|contains_symbol",
+    validation: "required|length:8,30|contains_numeric|contains_uppercase|contains_lowercase|contains_symbol",
   },
   {
     name: "passwordConfirm",
-    label: t(
-      "account.informations.password_edit.label_confirmation_new_password",
-    ),
+    label: t("account.informations.password_edit.label_confirmation_new_password"),
   },
 ];
 

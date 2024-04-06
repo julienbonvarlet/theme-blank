@@ -26,7 +26,7 @@
 const props = withDefaults(
   defineProps<{
     title?: string;
-    titleSize?: (typeof TitleSizes)[string];
+    titleSize?: TitleSizes;
     subtitle?: string;
     text?: string;
     link?: Record<string, any>;

@@ -7,15 +7,11 @@ export const useArticleChoiceStore = defineStore("articleChoice", () => {
   // Action to fetch a specific ArticleChoice by ID
   const fetchArticleChoiceById = async (id) => {
     try {
-      const response =
-        await $API.articleChoice.apiCustomerArticleChoicesIdGet(id);
+      const response = await $API.articleChoice.apiCustomerArticleChoicesIdGet(id);
       articleChoice.value = response;
       return articleChoice.value;
     } catch (error) {
-      console.error(
-        "Erreur lors de la récupération d'un choix d'article:",
-        error,
-      );
+      console.error("Erreur lors de la récupération d'un choix d'article:", error);
       throw error;
     }
   };

@@ -1,12 +1,5 @@
 <template>
-  <component
-    :is="tag"
-    v-bind="attrs"
-    :target="target"
-    :to="to"
-    class="f-link"
-    :class="[underlineClass, sizeClass]"
-  >
+  <component :is="tag" v-bind="attrs" :target="target" :to="to" class="f-link" :class="[underlineClass, sizeClass]">
     <slot>{{ text }}</slot>
   </component>
 </template>

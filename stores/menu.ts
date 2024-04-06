@@ -3,8 +3,7 @@ import faumeConfig from "~/faumeConfig";
 const getLinkTo = (link) => {
   const { pageSlug, collectionSlug } = link;
   if (pageSlug) return { name: pageSlug };
-  if (collectionSlug)
-    return { name: "collection", params: { id: collectionSlug } };
+  if (collectionSlug) return { name: "collection", params: { id: collectionSlug } };
   return null;
 };
 
@@ -36,7 +35,6 @@ const getVisuals = (link) => {
 };
 
 export const useMenuStore = defineStore("menu", () => {
-  const config = useRuntimeConfig();
   const { getCollectionTitle } = useCollectionsStore();
   const { t } = useI18n();
 

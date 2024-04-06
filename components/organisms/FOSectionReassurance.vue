@@ -1,10 +1,5 @@
 <template>
-  <FOSectionIcons
-    class="f-section-reassurance"
-    :padding-y="true"
-    :margin-y="false"
-    :icons="icons"
-  />
+  <FOSectionIcons class="f-section-reassurance" :padding-y="true" :margin-y="false" :icons="icons" />
 </template>
 
 <script setup lang="ts">

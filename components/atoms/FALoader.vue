@@ -28,7 +28,7 @@
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
-    size?: (typeof LoaderSizes)[string];
+    size?: LoaderSizes;
   }>(),
   {
     size: "m",

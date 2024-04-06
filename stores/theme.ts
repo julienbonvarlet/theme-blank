@@ -1,18 +1,6 @@
 type TitleSize = "xs" | "s" | "m" | "l" | "xl";
 type TextSize = "xs" | "s" | "m" | "l" | "xl";
-type ButtonAnimation =
-  | "fade"
-  | "translationY"
-  | "translationX"
-  | "anim-text"
-  | "no-anim";
-type BackgroundColor =
-  | "very-light"
-  | "light"
-  | "dark"
-  | "primary"
-  | "secondary";
-type TextColor = "grey" | "light" | "dark" | "primary" | "secondary";
+type ButtonAnimation = "fade" | "translationY" | "translationX" | "anim-text" | "no-anim";
 
 interface navigationListOptions {
   titleSize: TitleSize;

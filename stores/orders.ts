@@ -14,10 +14,7 @@ export const useOrdersStore = defineStore("orders", () => {
       });
       return response;
     } catch (error) {
-      console.error(
-        "Erreur lors de l'ajout d'un article dans une commande:",
-        error,
-      );
+      console.error("Erreur lors de l'ajout d'un article dans une commande:", error);
       throw error;
     }
   };
@@ -28,10 +25,7 @@ export const useOrdersStore = defineStore("orders", () => {
       const response = await $API.orderItem.apiCustomerOrderItemsIdGet(id);
       return response;
     } catch (error) {
-      console.error(
-        "Erreur lors de la récupération d'un article de commande:",
-        error,
-      );
+      console.error("Erreur lors de la récupération d'un article de commande:", error);
       throw error;
     }
   };
@@ -42,10 +36,7 @@ export const useOrdersStore = defineStore("orders", () => {
       await $API.orderItem.apiCustomerOrderItemsIdDelete(id);
       console.log("Article supprimé de la commande avec succès");
     } catch (error) {
-      console.error(
-        "Erreur lors de la suppression d'un article de commande:",
-        error,
-      );
+      console.error("Erreur lors de la suppression d'un article de commande:", error);
       throw error;
     }
   };
@@ -53,10 +44,7 @@ export const useOrdersStore = defineStore("orders", () => {
   // Récupérer la collection des commandes
   const fetchOrders = async () => {
     try {
-      const response = await $API.order.apiCustomerOrdersGetCollection(
-        page.value,
-        itemsPerPage.value,
-      );
+      const response = await $API.order.apiCustomerOrdersGetCollection(page.value, itemsPerPage.value);
       orders.value = response["hydra:member"] || [];
       return orders.value;
     } catch (error) {
@@ -102,10 +90,7 @@ export const useOrdersStore = defineStore("orders", () => {
   // Mettre à jour une commande
   const updateOrder = async (id, updatedData) => {
     try {
-      const response = await $API.order.apiCustomerOrdersIdPatch(
-        id,
-        updatedData,
-      );
+      const response = await $API.order.apiCustomerOrdersIdPatch(id, updatedData);
       return response;
     } catch (error) {
       console.error("Erreur lors de la mise à jour de la commande:", error);
@@ -116,18 +101,14 @@ export const useOrdersStore = defineStore("orders", () => {
   // Récupérer la collection des points de dépôt pour une commande spécifique
   const fetchDropoffPoints = async (orderId, page = 1, itemsPerPage = 10) => {
     try {
-      const response =
-        await $API.order.apiCustomerOrdersIddropoffpointsGetCollection({
-          id: orderId,
-          page,
-          itemsPerPage,
-        });
+      const response = await $API.order.apiCustomerOrdersIddropoffpointsGetCollection({
+        id: orderId,
+        page,
+        itemsPerPage,
+      });
       return response;
     } catch (error) {
-      console.error(
-        "Erreur lors de la récupération des points de dépôt pour une commande:",
-        error,
-      );
+      console.error("Erreur lors de la récupération des points de dépôt pour une commande:", error);
       throw error;
     }
   };

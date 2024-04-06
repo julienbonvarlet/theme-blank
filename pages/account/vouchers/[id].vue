@@ -3,15 +3,9 @@
     <FALoader v-if="loading" size="l" />
     <FOAccountVoucher v-else-if="voucher" :voucher="voucher" />
     <div v-else>
-      <FMFormMessage
-        type="error"
-        :text="$t('account.gift_cards.details.not_found.text')"
-      />
+      <FMFormMessage type="error" :text="$t('account.gift_cards.details.not_found.text')" />
       <br />
-      <FAButton
-        :label="$t('account.gift_cards.details.not_found.button')"
-        to="/account/vouchers"
-      />
+      <FAButton :label="$t('account.gift_cards.details.not_found.button')" to="/account/vouchers" />
     </div>
   </FTAccount>
 </template>

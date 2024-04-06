@@ -1,17 +1,8 @@
 <template>
   <div class="fp-appointment">
-    <FMSectionContainer
-      class="fp-appointment__header"
-      :padding-x="true"
-      max-width="xl"
-      :padding-y="true"
-    >
-      <FATitle class="fp-appointment__title" size="l">{{
-        $t("pages.appointment.title")
-      }}</FATitle>
-      <FAText>{{
-        $t("pages.appointment.confirmation.confirm_message")
-      }}</FAText>
+    <FMSectionContainer class="fp-appointment__header" :padding-x="true" max-width="xl" :padding-y="true">
+      <FATitle class="fp-appointment__title" size="l">{{ $t("pages.appointment.title") }}</FATitle>
+      <FAText>{{ $t("pages.appointment.confirmation.confirm_message") }}</FAText>
     </FMSectionContainer>
     <FMSectionContainer :padding-x="true" max-width="m" :padding-y="true">
       <div class="fp-appointment__content">
@@ -34,9 +25,7 @@
         </div>
       </div>
       <div class="fp-appointment__info">
-        <FAText size="s">{{
-          $t("pages.appointment.confirmation.success_message")
-        }}</FAText>
+        <FAText size="s">{{ $t("pages.appointment.confirmation.success_message") }}</FAText>
       </div>
     </FMSectionContainer>
   </div>

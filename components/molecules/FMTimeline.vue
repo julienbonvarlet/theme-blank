@@ -1,11 +1,6 @@
 <template>
   <div class="f-timeline" :class="[sizeClass]">
-    <FMTimelineStep
-      v-for="(step, i) in steps"
-      :key="i"
-      v-bind="step"
-      :size="size"
-    />
+    <FMTimelineStep v-for="(step, i) in steps" :key="i" v-bind="step" :size="size" />
   </div>
 </template>
 

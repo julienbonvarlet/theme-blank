@@ -23,29 +23,61 @@
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(
-  defineProps<{
-    title?: string;
-    titleSize?: (typeof TitleSizes)[string];
-    titleTag?: (typeof TitleTags)[string];
-    subtitle?: string;
-    text?: string;
-    link1?: Record<string, any>;
-    link2?: Record<string, any>;
-    maxWidth?: (typeof WrapperWidths)[string];
-    marginY?: boolean;
-    marginX?: boolean;
-    paddingX?: boolean;
-    paddingY?: boolean;
-  }>(),
-  {
-    titleSize: "m",
-    titleTag: "h2",
-    maxWidth: "m",
-    marginY: true,
-    paddingX: true,
+defineProps({
+  title: {
+    type: String,
+    required: false,
   },
-);
+  titleSize: {
+    type: TitleSizes,
+    required: false,
+    default: TitleSizes.M,
+  },
+  titleTag: {
+    type: TitleTags,
+    required: false,
+    default: TitleTags.H2,
+  },
+  subtitle: {
+    type: String,
+    required: false,
+  },
+  text: {
+    type: String,
+    required: false,
+  },
+  link1: {
+    type: Object,
+    required: false,
+  },
+  link2: {
+    type: Object,
+    required: false,
+  },
+  maxWidth: {
+    type: WrapperWidths,
+    required: false,
+    default: WrapperWidths.M,
+  },
+  marginX: {
+    type: Boolean,
+    required: false,
+  },
+  marginY: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+  paddingX: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+  paddingY: {
+    type: Boolean,
+    required: false,
+  },
+});
 
 const attrs = useAttrs();
 </script>

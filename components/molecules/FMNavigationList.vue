@@ -1,8 +1,6 @@
 <template>
   <div v-if="links?.length" class="f-navigation-list">
-    <FATitle v-if="title" size="xs">{{
-      title.includes(".") ? $t(title) : title
-    }}</FATitle>
+    <FATitle v-if="title" size="xs">{{ title.includes(".") ? $t(title) : title }}</FATitle>
     <FALink
       v-for="link in links"
       :key="link"

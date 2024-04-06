@@ -1,9 +1,6 @@
 <template>
   <div class="f-section-container" :class="[marginYClass, marginXClass]">
-    <div
-      class="f-section-container__inner"
-      :class="[maxWidthClass, paddingXClass, paddingYClass, classChild]"
-    >
+    <div class="f-section-container__inner" :class="[maxWidthClass, paddingXClass, paddingYClass, classChild]">
       <slot />
     </div>
   </div>
@@ -15,7 +12,7 @@ const props = defineProps<{
   marginX?: boolean;
   paddingX?: boolean;
   paddingY?: boolean;
-  maxWidth?: (typeof WrapperWidths)[string];
+  maxWidth?: WrapperWidths;
   classChild?: String;
 }>();
 
@@ -23,9 +20,7 @@ const marginXClass = computed(() => (props.marginX ? "is-margin-x" : null));
 const marginYClass = computed(() => (props.marginY ? "is-margin-y" : null));
 const paddingXClass = computed(() => (props.paddingX ? "is-padding-x" : null));
 const paddingYClass = computed(() => (props.paddingY ? "is-padding-y" : null));
-const maxWidthClass = computed(() =>
-  props.maxWidth ? `is-${props.maxWidth}` : null,
-);
+const maxWidthClass = computed(() => (props.maxWidth ? `is-${props.maxWidth}` : null));
 </script>
 
 <style lang="scss">

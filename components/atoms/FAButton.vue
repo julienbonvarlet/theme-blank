@@ -25,10 +25,10 @@
 const props = withDefaults(
   defineProps<{
     label?: string;
-    size?: (typeof ButtonSizes)[string];
-    type?: (typeof ButtonColors)[string];
+    size?: ButtonSizes;
+    type?: ButtonColors;
     to?: string | object;
-    icon?: (typeof IconNames)[string];
+    icon?: IconNames;
     iconPosition?: "left" | "right";
     submit?: boolean;
     isDisabled?: boolean;

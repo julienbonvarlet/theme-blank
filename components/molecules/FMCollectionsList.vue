@@ -12,7 +12,7 @@
 <script setup lang="ts">
 const props = defineProps<{
   collections: any[];
-  titleSize?: (typeof TitleSizes)[string];
+  titleSize?: TitleSizes;
 }>();
 </script>
 

@@ -1,25 +1,16 @@
 <template>
   <div class="f-account-credits">
     <FMAccountHeading :title="$t('account.gift_cards.title')">
-      <FAButton
-        to="/pages/sell"
-        :label="$t('account.gift_cards.button_new_trade_in')"
-        icon="plus"
-      />
+      <FAButton to="/pages/sell" :label="$t('account.gift_cards.button_new_trade_in')" icon="plus" />
     </FMAccountHeading>
     <div class="f-account-credits__wallet">
       <FAText>{{ $t("account.gift_cards.text") }}</FAText>
-      <FALink to="/pages/faq">{{
-        $t("account.gift_cards.how_it_works")
-      }}</FALink>
+      <FALink to="/pages/faq">{{ $t("account.gift_cards.how_it_works") }}</FALink>
       <FMWalletCard :wallet-amount="walletAmount" />
     </div>
     <FMAccountHeading :title="$t('account.gift_cards.subtitle')" size="s" />
     <FALoader v-if="!vouchers" size="m" />
-    <FAText
-      v-else-if="!vouchers?.length"
-      :text="$t('account.gift_cards.empty')"
-    />
+    <FAText v-else-if="!vouchers?.length" :text="$t('account.gift_cards.empty')" />
     <FMAccountList v-if="vouchers?.length" :items="vouchers" name="voucher" />
     <FMPagination v-if="pagination && vouchers?.length" v-bind="pagination" />
     <FMCreditsExplanation />

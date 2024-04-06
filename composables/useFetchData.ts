@@ -11,9 +11,7 @@ export async function fetchAllData(urls: string[], apiConfig: object = {}) {
   if (!urls?.length) {
     return null;
   }
-  let responses = await Promise.all(
-    urls.map((url) => fetchData(url, apiConfig)),
-  );
+  let responses = await Promise.all(urls.map((url) => fetchData(url, apiConfig)));
   responses = responses.filter((x) => x !== null);
   return responses;
 }

@@ -1,12 +1,7 @@
 <template>
   <component :is="tag" :to="to" class="f-icon-info">
     <FAIcon v-if="icon" :icon="icon" />
-    <FAImage
-      v-if="image"
-      class="f-icon-info__img"
-      :alt="alt || title || text || 'icon'"
-      :src="image"
-    />
+    <FAImage v-if="image" class="f-icon-info__img" :alt="alt || title || text || 'icon'" :src="image" />
     <FATitle v-if="title" size="xs">{{ title }}</FATitle>
     <FARichtext v-if="text?.length" :content="text" />
   </component>
@@ -18,7 +13,7 @@ const props = defineProps<{
   text?: string;
   alt?: string;
   image?: string;
-  icon?: (typeof IconNames)[string];
+  icon?: IconNames;
   to?: string | object;
 }>();
 

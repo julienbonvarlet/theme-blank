@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  icon: (typeof IconNames)[string];
+  icon: IconNames;
   to: string | object;
   title: string;
   text: string;

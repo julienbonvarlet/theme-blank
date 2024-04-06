@@ -2,47 +2,21 @@
   <component
     :is="tag"
     :to="to"
-    :class="[
-      'f-field-box',
-      colorClass,
-      selectedClass,
-      disabledClass,
-      imageClass,
-      textClass,
-      sizeClass,
-    ]"
+    :class="['f-field-box', colorClass, selectedClass, disabledClass, imageClass, textClass, sizeClass]"
     v-bind="attrs"
   >
-    <input
-      v-if="name"
-      v-model="selected"
-      type="radio"
-      :name="name"
-      :required="required"
-      :value="value"
-    />
+    <input v-if="name" v-model="selected" type="radio" :name="name" :required="required" :value="value" />
 
     <span class="f-field-box__content">
-      <span
-        v-if="colorCode"
-        class="f-field-box__color"
-        :style="{ backgroundColor: colorCode }"
-      ></span>
-      <FAImage
-        v-else-if="image"
-        class="f-field-box__image"
-        :src="image"
-        :alt="label || value"
-      />
+      <span v-if="colorCode" class="f-field-box__color" :style="{ backgroundColor: colorCode }"></span>
+      <FAImage v-else-if="image" class="f-field-box__image" :src="image" :alt="label || value" />
       <span v-if="label" class="f-field-box__text">
         <slot>{{ label }}</slot>
       </span>
       <slot name="content" />
     </span>
 
-    <FAText v-if="tooltip" size="xs" class="f-field-box__tooltip">{{
-      tooltip
-    }}</FAText>
+    <FAText v-if="tooltip" size="xs" class="f-field-box__tooltip">{{ tooltip }}</FAText>
   </component>
 </template>
 
@@ -61,7 +35,7 @@ const props = withDefaults(
     disabled?: boolean;
     selected?: boolean;
     image?: string;
-    size?: (typeof FieldBoxSizes)[string];
+    size?: FieldBoxSizes;
   }>(),
   {
     tag: "label",
@@ -73,20 +47,14 @@ const props = withDefaults(
 const selected = ref(props.selected ? props.value : null);
 
 const isSelected = computed(() => props.selected);
-const selectedClass = computed(() =>
-  selected.value === props.value ? "is-selected" : null,
-);
+const selectedClass = computed(() => (selected.value === props.value ? "is-selected" : null));
 const disabledClass = computed(() => (props.disabled ? "is-disabled" : null));
 const colorClass = computed(() => (props.colorCode ? "is-color" : null));
-const textClass = computed(() =>
-  !props.colorCode && !props.image ? "is-text" : null,
-);
+const textClass = computed(() => (!props.colorCode && !props.image ? "is-text" : null));
 const imageClass = computed(() => (props.image ? "is-image" : null));
 const sizeClass = computed(() => `is-${props.size}`);
 
-const tag = computed(() =>
-  props.name ? "label" : props.to ? "NuxtLink" : "span",
-);
+const tag = computed(() => (props.name ? "label" : props.to ? "NuxtLink" : "span"));
 
 watch(
   () => props.selected,

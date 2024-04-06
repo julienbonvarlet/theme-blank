@@ -1,9 +1,6 @@
 <template>
   <div class="f-progress-bar">
-    <span
-      class="f-progress-bar__cursor"
-      :style="{ width: `${percent}%` }"
-    ></span>
+    <span class="f-progress-bar__cursor" :style="{ width: `${percent}%` }"></span>
   </div>
 </template>
 

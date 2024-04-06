@@ -11,10 +11,7 @@ export const useVouchersStore = defineStore("vouchers", () => {
 
   const getVouchers = async () => {
     try {
-      const response = await $API.giftCard.apiCustomerGiftCardsGetCollection(
-        page.value,
-        itemsPerPage.value,
-      );
+      const response = await $API.giftCard.apiCustomerGiftCardsGetCollection(page.value, itemsPerPage.value);
       vouchers.value = response["hydra:member"] || [];
     } catch (error) {
       console.error("Erreur lors de la récupération des vouchers:", error);

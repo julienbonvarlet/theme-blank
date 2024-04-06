@@ -13,20 +13,13 @@
       <FAButton :label="$t('sections.minicart.empty_cta')" to="/products" />
     </div>
 
-    <FMShippingProgressBar
-      v-if="!isCartEmpty"
-      :total="total"
-      :amount-for-free-shipping="amountForFreeShipping"
-    />
+    <FMShippingProgressBar v-if="!isCartEmpty" :total="total" :amount-for-free-shipping="amountForFreeShipping" />
 
     <div v-if="!isCartEmpty" class="f-minicart__products">
       <FMCartItem v-for="item in cartItems" :key="item.id" :item="item" />
     </div>
 
-    <FOProductSuggestions
-      title-size="xs"
-      v-bind="selectedFiltersForSuggestions"
-    />
+    <FOProductSuggestions title-size="xs" v-bind="selectedFiltersForSuggestions" />
 
     <template v-if="!isCartEmpty" #bottom>
       <div class="f-minicart__bottom">

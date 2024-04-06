@@ -9,18 +9,10 @@
 
     <FALoader v-if="!cartItems" class="fp-cart__loader" />
 
-    <FMSectionContainer
-      v-if="!isCartEmpty"
-      class-child="fp-cart__container"
-      :padding-x="true"
-      max-width="l"
-    >
+    <FMSectionContainer v-if="!isCartEmpty" class-child="fp-cart__container" :padding-x="true" max-width="l">
       <div class="fp-cart__col fp-cart__col--products">
         <FATitle size="s">{{ productCountTitle }}</FATitle>
-        <FMShippingProgressBar
-          :total="total"
-          :amount-for-free-shipping="amountForFreeShipping"
-        />
+        <FMShippingProgressBar :total="total" :amount-for-free-shipping="amountForFreeShipping" />
         <div class="fp-cart__products">
           <FMCartItem v-for="item in cartItems" :key="item.id" :item="item" />
         </div>

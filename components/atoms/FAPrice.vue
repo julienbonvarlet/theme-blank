@@ -10,7 +10,7 @@ const { formatPrice, formatPriceWithoutCents } = usePriceFormatter();
 const props = withDefaults(
   defineProps<{
     price: number;
-    size?: (typeof PriceSizes)[string];
+    size?: PriceSizes;
     old?: boolean;
     cents?: boolean;
   }>(),
@@ -22,9 +22,7 @@ const props = withDefaults(
 
 const sizeClass = computed(() => `is-${props.size}`);
 const oldClass = computed(() => (props.old ? "is-old" : null));
-const formattedPrice = computed(() =>
-  props.cents ? formatPrice(props.price) : formatPriceWithoutCents(props.price),
-);
+const formattedPrice = computed(() => (props.cents ? formatPrice(props.price) : formatPriceWithoutCents(props.price)));
 </script>
 
 <style lang="scss">

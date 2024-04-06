@@ -1,17 +1,13 @@
 export const useProductsSuggestions = () => {
   const config = useRuntimeConfig();
-  const clientId = config.public.faume.clientId;
-
   const defaultProducts = ref<null | object[]>(null);
   const products = ref<object[]>([]);
   const filters = ref<string[]>([]);
 
   const fetchProducts = async (filtersUrl?: string) => {
     const response = await fetch(
-      `https://api.faume.co/api/v3/customer/articles?page=1&itemsPerPage=20${
-        filtersUrl || ""
-      }`,
-      { headers: { "X-Brand-Id": clientId } },
+      `https://api.faume.co/api/v3/customer/articles?page=1&itemsPerPage=20${filtersUrl || ""}`,
+      { headers: { "X-Brand-Id": config.clientId } },
     );
     const data = await response.json();
     return data["hydra:member"];
@@ -25,9 +21,7 @@ export const useProductsSuggestions = () => {
   };
 
   const getProducts = async () => {
-    const filtersUrl = filters.value?.length
-      ? `&${filters.value.join("&")}`
-      : "";
+    const filtersUrl = filters.value?.length ? `&${filters.value.join("&")}` : "";
     products.value = await fetchProducts(encodeURIComponent(filtersUrl));
     if (!products.value?.length) {
       if (filters.value?.length > 1) {
@@ -48,9 +42,7 @@ export const useProductsSuggestions = () => {
           filters.value.push(`${name}_filters=${value}`);
         } else {
           // If value is array, example in cart
-          filters.value.push(
-            value.map((x) => `${name}_filters[]=${x}`).join("&"),
-          );
+          filters.value.push(value.map((x) => `${name}_filters[]=${x}`).join("&"));
         }
       }
     }

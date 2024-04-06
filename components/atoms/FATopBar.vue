@@ -1,18 +1,18 @@
 <template>
-  <FMSectionContainer
-    class="f-top-bar"
-    class-child="f-top-bar__inner"
-    :padding-x="true"
-  >
+  <FMSectionContainer class="f-top-bar" class-child="f-top-bar__inner" :padding-x="true">
     <FAIcon v-if="icon" :icon="icon" />
-    <FAText :text="text" size="xs" />
+    <FAText :text="topBarText" :size="size" />
   </FMSectionContainer>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-  text: string;
-  icon?: string;
+import { IconNames, TextSizes } from "~/types/enums";
+
+const { t } = useI18n();
+const topBarText = t("sections.top_bar");
+const size = TextSizes.XS;
+defineProps<{
+  icon?: IconNames;
 }>();
 </script>
 

@@ -19,11 +19,7 @@ const props = defineProps<{
   font-size: var(--f-text-m-font-size);
 
   @each $size in ("xl", "l", "m", "s", "xs") {
-    $tag: if(
-      $size == "m",
-      "h2",
-      if($size == "s", "h3", if($size == "xs", "h4", "h5"))
-    );
+    $tag: if($size == "m", "h2", if($size == "s", "h3", if($size == "xs", "h4", "h5")));
     #{$tag}:not(.f-title) {
       font-weight: var(--f-title-#{$size}-font-weight);
       text-transform: var(--f-title-#{$size}-text-transform);

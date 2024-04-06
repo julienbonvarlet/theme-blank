@@ -20,16 +20,8 @@
       </li>
     </ul>
     <div ref="content" class="fp-faq__content">
-      <div
-        v-if="activeCategory"
-        :key="activeCategory.title"
-        class="fp-faq__list"
-      >
-        <FATitle
-          class="fp-faq__subtitle"
-          size="s"
-          :title="$t(`pages.faq.categories.${active}.title`)"
-        />
+      <div v-if="activeCategory" :key="activeCategory.title" class="fp-faq__list">
+        <FATitle class="fp-faq__subtitle" size="s" :title="$t(`pages.faq.categories.${active}.title`)" />
         <FMCollapse
           v-for="(question, index) in questions"
           :key="index"
@@ -59,9 +51,7 @@ const categories = computed(() => ({
   customer_service: "customer_service",
 }));
 
-const activeCategory = computed(() =>
-  categories.value[active.value] ? active.value : null,
-);
+const activeCategory = computed(() => (categories.value[active.value] ? active.value : null));
 
 const questions = computed(() => {
   if (!activeCategory.value) {
@@ -69,12 +59,8 @@ const questions = computed(() => {
   }
   const numberOfQuestions = 10;
   const questions = Array.from({ length: numberOfQuestions }, (_, i) => ({
-    title: t(
-      `pages.faq.categories.${activeCategory.value}.questions.${i + 1}.title`,
-    ),
-    answer: t(
-      `pages.faq.categories.${activeCategory.value}.questions.${i + 1}.answer`,
-    ),
+    title: t(`pages.faq.categories.${activeCategory.value}.questions.${i + 1}.title`),
+    answer: t(`pages.faq.categories.${activeCategory.value}.questions.${i + 1}.answer`),
   }));
   return questions.filter((x) => x.title?.length && x.answer?.length);
 });

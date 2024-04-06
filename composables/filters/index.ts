@@ -1,9 +1,7 @@
 export const useFilters = async () => {
   const filtersStore = useFiltersStore();
 
-  const { data: filters } = await useAsyncData("filters", () =>
-    filtersStore.getFilters(),
-  );
+  const { data: filters } = await useAsyncData("filters", () => filtersStore.getFilters());
 
   return {
     filters,

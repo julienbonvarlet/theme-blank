@@ -5,10 +5,7 @@
       back-url="/account/addresses"
       :back-text="$t('account.addresses.back')"
     />
-    <FMFormAddress
-      :inline-desktop="true"
-      @next="router.push('/account/addresses')"
-    />
+    <FMFormAddress :inline-desktop="true" @next="router.push('/account/addresses')" />
   </section>
 </template>
 

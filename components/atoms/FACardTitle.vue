@@ -7,7 +7,7 @@
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
-    tag?: (typeof TagTypes)[string];
+    tag?: TagTypes;
     title?: string;
   }>(),
   {

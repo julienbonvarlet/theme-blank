@@ -1,26 +1,12 @@
 <template>
   <div class="f-form-register">
     <FMFormMessage v-if="error && error !== ''" type="error" :text="error" />
-    <FormKit
-      type="form"
-      :submit-label="$t('account.identification.register.button')"
-      @submit="submit"
-    >
+    <FormKit type="form" :submit-label="$t('account.identification.register.button')" @submit="submit">
       <template v-for="(field, i) in registerFields" :key="field.name">
         <FormKit v-if="field.type !== 'password'" v-bind="field" />
-        <FormKit
-          v-else-if="field.name === 'password'"
-          type="group"
-          name="password"
-        >
-          <FormKit
-            v-bind="field"
-            @suffix-icon-click="togglePasswordFieldType"
-          />
-          <FormKit
-            v-bind="registerFields[i + 1]"
-            @suffix-icon-click="togglePasswordFieldType"
-          />
+        <FormKit v-else-if="field.name === 'password'" type="group" name="password">
+          <FormKit v-bind="field" @suffix-icon-click="togglePasswordFieldType" />
+          <FormKit v-bind="registerFields[i + 1]" @suffix-icon-click="togglePasswordFieldType" />
         </FormKit>
       </template>
       <FormKit
@@ -36,20 +22,12 @@
         :label="$t('global.form.marketing_sms')"
       />
     </FormKit>
-    <FALink
-      :text="$t('account.identification.login.button')"
-      size="s"
-      @click.prevent="emit('goToLogin')"
-    />
+    <FALink :text="$t('account.identification.login.button')" size="s" @click.prevent="emit('goToLogin')" />
   </div>
 </template>
 
 <script setup lang="ts">
-import {
-  AsYouType,
-  getExampleNumber,
-  parsePhoneNumberFromString,
-} from "libphonenumber-js";
+import { AsYouType, getExampleNumber, parsePhoneNumberFromString } from "libphonenumber-js";
 import examples from "libphonenumber-js/mobile/examples";
 
 const { t } = useI18n();
@@ -98,9 +76,7 @@ watch(phoneFieldValue, (newValue, oldValue) => {
 
 const phonePlaceholder = computed(() => {
   const exampleNumber = getExampleNumber(selectedCountry.value, examples);
-  return exampleNumber
-    ? exampleNumber.formatInternational()
-    : t("global.form.phone");
+  return exampleNumber ? exampleNumber.formatInternational() : t("global.form.phone");
 });
 
 const countries = ref([]);
@@ -192,8 +168,7 @@ const registerFields = computed(() => [
     type: "password",
     name: "password",
     label: t("global.form.password") + " *",
-    validation:
-      "required|length:8,30|contains_numeric|contains_uppercase|contains_lowercase|contains_symbol",
+    validation: "required|length:8,30|contains_numeric|contains_uppercase|contains_lowercase|contains_symbol",
     validationVisibility: "live",
     suffixIcon: "eyeClosed",
   },
@@ -224,16 +199,11 @@ const submit = async (formData) => {
   try {
     error.value = null;
 
-    const phoneNumber = parsePhoneNumberFromString(
-      phoneFieldValue.value,
-      selectedCountry.value,
-    );
+    const phoneNumber = parsePhoneNumberFromString(phoneFieldValue.value, selectedCountry.value);
     if (!phoneNumber || !phoneNumber.isValid()) {
       const exampleNumber = getExampleNumber(selectedCountry.value, examples);
       const formattedExample = exampleNumber.formatInternational();
-      displayError(
-        `${t("global.form.phone_invalid")} ${selectedCountry.value}: ${formattedExample}`,
-      );
+      displayError(`${t("global.form.phone_invalid")} ${selectedCountry.value}: ${formattedExample}`);
       return;
     }
 
@@ -253,9 +223,7 @@ const submit = async (formData) => {
     await register(newFormData);
     emit("next");
   } catch (err) {
-    const formattedViolations = err.body.violations
-      .map((v) => `${v.propertyPath}: ${v.message}`)
-      .join("\n");
+    const formattedViolations = err.body.violations.map((v) => `${v.propertyPath}: ${v.message}`).join("\n");
     displayError(formattedViolations);
   }
 };

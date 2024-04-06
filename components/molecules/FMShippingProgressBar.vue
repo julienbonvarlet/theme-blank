@@ -23,14 +23,10 @@ const text = computed(() => {
   return t("promotional_offers.amount_left_free_shipping", { amount });
 });
 
-const percent = computed(
-  () => (props.total / props.amountForFreeShipping) * 100,
-);
+const percent = computed(() => (props.total / props.amountForFreeShipping) * 100);
 
 const totalFormatted = computed(() => formatPrice(props.total));
-const amountForFreeShippingFormatted = computed(() =>
-  formatPrice(props.amountForFreeShipping),
-);
+const amountForFreeShippingFormatted = computed(() => formatPrice(props.amountForFreeShipping));
 </script>
 
 <style lang="scss">

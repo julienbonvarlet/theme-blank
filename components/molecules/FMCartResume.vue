@@ -19,20 +19,13 @@
       </tr>
       <tr v-for="line in lines" :key="line.label">
         <td>
-          <FAText size="s" :weight="line.bold ? 'bold' : null">{{
-            line.label
-          }}</FAText>
+          <FAText size="s" :weight="line.bold ? 'bold' : null">{{ line.label }}</FAText>
         </td>
         <td>
-          <FAText size="s" :weight="line.bold ? 'bold' : null">{{
-            line.value
-          }}</FAText>
+          <FAText size="s" :weight="line.bold ? 'bold' : null">{{ line.value }}</FAText>
         </td>
       </tr>
-      <tr
-        v-if="shippingMethod || shippingTotal"
-        class="f-cart-resume__shipping"
-      >
+      <tr v-if="shippingMethod || shippingTotal" class="f-cart-resume__shipping">
         <td>
           <FAText size="s">{{ $t("global.shipping") }}</FAText>
           <FAText v-if="shippingMethod" size="xs" :is-grey="true">
@@ -40,9 +33,7 @@
           </FAText>
         </td>
         <td>
-          <FAText size="s">{{
-            shippingTotal > 0 ? shippingPrice : $t("global.free")
-          }}</FAText>
+          <FAText size="s">{{ shippingTotal > 0 ? shippingPrice : $t("global.free") }}</FAText>
         </td>
       </tr>
       <tr v-if="total && total > 0" class="f-cart-resume__total">
@@ -90,9 +81,7 @@ const props = defineProps<{
 const totalPrice = computed(() => formatPrice(props.total));
 const subtotalPrice = computed(() => formatPrice(props.subtotal));
 const shippingPrice = computed(() => formatPrice(props.shippingTotal));
-const discountPrice = computed(() =>
-  props.discountTotal ? formatPrice(props.discountTotal) : null,
-);
+const discountPrice = computed(() => (props.discountTotal ? formatPrice(props.discountTotal) : null));
 </script>
 
 <style lang="scss">

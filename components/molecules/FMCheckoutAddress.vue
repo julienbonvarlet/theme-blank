@@ -1,12 +1,7 @@
 <template>
   <div class="f-checkout-address">
     <FATitle size="s" :title="$t('pages.checkout.address.title')" />
-    <FATabs
-      v-if="addresses?.length"
-      :options="billingTabs"
-      :active="displayType"
-      @change="(x) => (displayType = x)"
-    />
+    <FATabs v-if="addresses?.length" :options="billingTabs" :active="displayType" @change="(x) => (displayType = x)" />
     <FMFormMessage v-if="error" type="error" :text="error" />
     <FMFormSelectAddress
       v-if="displayType === 'shipping'"
@@ -37,20 +32,14 @@ const shippingAddress = computed(() => cartStore.cartOrder?.shippingAddress);
 const billingAddress = computed(() => cartStore.cartOrder?.billingAddress);
 const addresses = computed(() => addressesStore.addresses);
 
-const updateAddress = async (
-  id,
-  type: "shippingAddress" | "billingAddress",
-) => {
+const updateAddress = async (id, type: "shippingAddress" | "billingAddress") => {
   error.value = false;
   try {
     const data = {
       [type]: id,
     };
     // On ajoute la même adresse de facturation par défaut
-    if (
-      type === "shippingAddress" &&
-      (!billingAddress.value || billingAddress.value === shippingAddress.value)
-    ) {
+    if (type === "shippingAddress" && (!billingAddress.value || billingAddress.value === shippingAddress.value)) {
       data["billingAddress"] = id;
     }
     await cartStore.updateOrder(data);

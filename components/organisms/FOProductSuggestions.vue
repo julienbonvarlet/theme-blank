@@ -11,36 +11,26 @@
 <script lang="ts" setup>
 const { t } = useI18n();
 const recentlyViewedProductsStore = useRecentlyViewedProductsStore();
-const {
-  getSuggestions,
-  products: suggestionsProducts,
-  unsetProducts,
-} = useProductsSuggestions();
+const { getSuggestions, products: suggestionsProducts, unsetProducts } = useProductsSuggestions();
 
 const props = defineProps<{
   gender?: string | string[];
   size?: string | string[];
   type?: string | string[];
   color?: string | string[];
-  titleSize?: (typeof TitleSizes)[string];
+  titleSize?: TitleSizes;
 }>();
 
-const recentlyViewedProducts = computed(
-  () => recentlyViewedProductsStore.allowedProducts,
-);
+const recentlyViewedProducts = computed(() => recentlyViewedProductsStore.allowedProducts);
 
 const recentlyViewCarousel = computed(() => ({
   title: t("pages.product.suggestions.tab_recently_viewed"),
-  products: recentlyViewedProducts.value?.length
-    ? [...recentlyViewedProducts.value]
-    : [],
+  products: recentlyViewedProducts.value?.length ? [...recentlyViewedProducts.value] : [],
 }));
 
 const suggestionsCarousel = computed(() => ({
   title: t("pages.product.suggestions.tab_suggestions"),
-  products: suggestionsProducts.value?.length
-    ? [...suggestionsProducts.value]
-    : [],
+  products: suggestionsProducts.value?.length ? [...suggestionsProducts.value] : [],
 }));
 
 const carousels = computed(() =>

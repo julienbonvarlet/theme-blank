@@ -3,11 +3,7 @@
     <FATitle size="s" :title="$t('pages.checkout.shipping.title')" />
     <FALoader v-if="loading" />
     <div v-else-if="shippingMethods?.length">
-      <FMFormMessage
-        v-if="error"
-        type="error"
-        :text="$t('pages.checkout.shipping.error_method')"
-      />
+      <FMFormMessage v-if="error" type="error" :text="$t('pages.checkout.shipping.error_method')" />
       <ul class="f-checkout-shipping__list">
         <FMRadioInline
           v-for="method in shippingMethods"
@@ -20,11 +16,7 @@
         />
       </ul>
     </div>
-    <FMFormMessage
-      v-else
-      type="error"
-      :text="$t('pages.checkout.shipping.error_country')"
-    />
+    <FMFormMessage v-else type="error" :text="$t('pages.checkout.shipping.error_country')" />
   </div>
 </template>
 
@@ -53,9 +45,7 @@ onMounted(() => {
   if (shippingMethods.value?.length) {
     loading.value = false;
   } else {
-    shippingMethodsStore
-      .fetchShippingMethodsForOrder(cartId.value)
-      .then(() => (loading.value = false));
+    shippingMethodsStore.fetchShippingMethodsForOrder(cartId.value).then(() => (loading.value = false));
   }
 });
 </script>

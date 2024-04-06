@@ -38,12 +38,7 @@ export function useTrackingPlanDataFormatter() {
         product = [
           data.product.id,
           normalizeString(data.product.title),
-          [
-            "",
-            "",
-            normalizeString(data.choice.state),
-            normalizeString(data.choice.size),
-          ],
+          ["", "", normalizeString(data.choice.state), normalizeString(data.choice.size)],
           formatPrice(data.choice.price),
         ];
       } else {

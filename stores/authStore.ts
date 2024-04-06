@@ -77,8 +77,7 @@ export const useAuthStore = defineStore("auth", () => {
       countryCode: data.countryCode || "FRA",
       locale: data.locale || "fr_FR",
     };
-    const response =
-      await $API.auth.apiCustomerAuthregisterGuestPost(requestBody);
+    const response = await $API.auth.apiCustomerAuthregisterGuestPost(requestBody);
     setUser(response);
     return response;
   };

@@ -1,25 +1,14 @@
 <template>
   <FMCardInline class="f-cart-item" :image="photo" :title="title" :text="text">
-    <FMPriceContainer
-      :price="item.total"
-      :original-price="article.originPrice"
-      size="s"
-    />
+    <FMPriceContainer :price="item.total" :original-price="article.originPrice" size="s" />
     <div class="f-cart-item__reductions">
-      <FADiscountTag
-        :sale-price="item.total"
-        :original-price="article.originPrice"
-      />
+      <FADiscountTag :sale-price="item.total" :original-price="article.originPrice" />
       <FADiscountTag v-if="false" :promotional-offer="true" />
     </div>
     <template #right>
       <div class="f-cart-item__actions">
         <FAButtonIcon v-if="false" icon="write" />
-        <FAButtonIcon
-          icon="cross"
-          :is-loading="loading"
-          @click.prevent="removeFromCart"
-        />
+        <FAButtonIcon icon="cross" :is-loading="loading" @click.prevent="removeFromCart" />
       </div>
     </template>
   </FMCardInline>
@@ -38,11 +27,7 @@ const loading = ref(false);
 const article = computed(() => props.item?.article);
 const title = computed(() => props.item.article?.metadata?.title);
 const text = computed(() =>
-  [
-    props.item.article?.size,
-    props.item.article?.color,
-    props.item.article?.state,
-  ].join(" • "),
+  [props.item.article?.size, props.item.article?.color, props.item.article?.state].join(" • "),
 );
 const photo = computed(() => article.value?.photos?.[0]);
 

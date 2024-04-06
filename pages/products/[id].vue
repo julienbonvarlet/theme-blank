@@ -3,10 +3,7 @@
     <FALoader v-if="pending" size="l" />
     <div v-else-if="error" class="fp-product__error">
       <FAText :text="$t('pages.product.error')" />
-      <FAButton
-        :to="{ name: 'homepage' }"
-        :label="$t('pages.product.cta_back_home')"
-      />
+      <FAButton :to="{ name: 'homepage' }" :label="$t('pages.product.cta_back_home')" />
     </div>
     <div v-else>
       <FMBreadcrumb
@@ -14,17 +11,8 @@
         :current-page-title="product.title"
         :previous-page-title="previousPageTitle"
       />
-      <FOProductPresentation
-        :product="product"
-        :choice="choice"
-        @on-choice-change="(value) => updateChoice(value)"
-      />
-      <FOProductSuggestions
-        :color="choice.color"
-        :size="choice.size"
-        :gender="choice.gender"
-        :type="choice.type"
-      />
+      <FOProductPresentation :product="product" :choice="choice" @on-choice-change="(value) => updateChoice(value)" />
+      <FOProductSuggestions :color="choice.color" :size="choice.size" :gender="choice.gender" :type="choice.type" />
     </div>
   </div>
 </template>
@@ -33,10 +21,8 @@
 const { t } = useI18n();
 const { $trackingPlan } = useNuxtApp();
 
-const { product, pending, error, choice, updateChoice } =
-  await usePagesProductId();
-const previousPageTitle =
-  usePreviousTitle().previousTitle || t("global.collection");
+const { product, pending, error, choice, updateChoice } = await usePagesProductId();
+const previousPageTitle = usePreviousTitle().previousTitle || t("global.collection");
 
 // Tracking Plan //
 if (process.client) {

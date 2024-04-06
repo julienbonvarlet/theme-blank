@@ -1,15 +1,10 @@
 <template>
-  <nuxt-icon
-    v-if="icon?.length"
-    class="f-icon"
-    :name="icon"
-    :filled="filled || !!icon.includes('sso')"
-  />
+  <nuxt-icon v-if="icon?.length" class="f-icon" :name="icon" :filled="filled || !!icon.includes('sso')" />
 </template>
 
 <script setup lang="ts">
 const props = defineProps<{
-  icon?: (typeof IconNames)[string];
+  icon?: IconNames;
   filled?: boolean;
 }>();
 </script>

@@ -44,7 +44,7 @@ const props = withDefaults(
     src?: string;
     alt?: string;
     icons?: Array;
-    titleSize?: (typeof TitleSizes)[string];
+    titleSize?: TitleSizes;
     to?: string | object;
     link1?: Record<string, any>;
     link2?: Record<string, any>;

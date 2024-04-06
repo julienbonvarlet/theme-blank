@@ -4,13 +4,7 @@
     <FAText v-if="text" :text="text" size="s" />
     <FMPriceContainer :price="price" :original-price="originalPrice" size="s" />
     <FAText v-if="description" :text="description" size="xs" />
-    <FAText
-      v-if="details"
-      :text="details"
-      size="xs"
-      :is-grey="true"
-      weight="light"
-    />
+    <FAText v-if="details" :text="details" size="xs" :is-grey="true" weight="light" />
     <slot />
   </div>
 </template>

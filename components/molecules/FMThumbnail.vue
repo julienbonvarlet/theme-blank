@@ -1,9 +1,7 @@
 <template>
   <NuxtLink :to="to" class="f-thumbnail">
     <FAImage class="f-thumbnail__img" :src="src" :alt="title" />
-    <FATitle v-if="title" :size="titleSize" class="f-thumbnail__title">{{
-      title
-    }}</FATitle>
+    <FATitle v-if="title" :size="titleSize" class="f-thumbnail__title">{{ title }}</FATitle>
   </NuxtLink>
 </template>
 
@@ -12,7 +10,7 @@ const props = withDefaults(
   defineProps<{
     src: string;
     title?: string;
-    titleSize?: (typeof TitleSizes)[string];
+    titleSize?: TitleSizes;
     to?: string | object;
   }>(),
   {

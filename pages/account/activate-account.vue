@@ -6,10 +6,7 @@
     :submit-function="enableAccount"
     @handle-success="router.push({ name: 'account' })"
   >
-    <FALink
-      :text="$t('account.identification.login.back_login')"
-      :to="{ name: 'login' }"
-    />
+    <FALink :text="$t('account.identification.login.back_login')" :to="{ name: 'login' }" />
   </FTForm>
 </template>
 

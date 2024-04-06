@@ -26,14 +26,7 @@ const compo = {
 
 const props = defineProps<{
   items: Array;
-  name:
-    | "address"
-    | "voucher"
-    | "order"
-    | "resaleArticle"
-    | "orderArticle"
-    | "resale"
-    | "returnArticles";
+  name: "address" | "voucher" | "order" | "resaleArticle" | "orderArticle" | "resale" | "returnArticles";
 }>();
 </script>
 

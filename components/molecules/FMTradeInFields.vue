@@ -2,10 +2,7 @@
   <FMTradeInStep class="f-ti-fields" :title="title">
     <div v-if="!values?.length">
       <FMFormMessage :text="$t('trade_in.error.no_option')" />
-      <FAButton
-        :label="$t('trade_in.error.button')"
-        @click.prevent="emit('backToSku')"
-      />
+      <FAButton :label="$t('trade_in.error.button')" @click.prevent="emit('backToSku')" />
     </div>
     <div v-else>
       <div class="f-ti-fields__list">
@@ -22,10 +19,7 @@
             <FAIcon icon="user" />
           </template>
           <template v-else-if="type === 'state'" #content>
-            <FAText
-              size="s"
-              :text="t(`global.conditions.${field.value}.subtitle`)"
-            />
+            <FAText size="s" :text="t(`global.conditions.${field.value}.subtitle`)" />
           </template>
         </FAFieldBox>
       </div>
@@ -36,11 +30,7 @@
           :disabled="!selectionMade"
           @click.prevent="emit('next')"
         />
-        <FAButton
-          type="secondary"
-          :label="t('global.back')"
-          @click.prevent="back"
-        />
+        <FAButton type="secondary" :label="t('global.back')" @click.prevent="back" />
       </div>
     </div>
   </FMTradeInStep>
@@ -65,10 +55,7 @@
         loading="lazy"
       />
     </div>
-    <FAButton
-      :label="t('trade_in.add_product.button_continue')"
-      @click.prevent="emit('next')"
-    />
+    <FAButton :label="t('trade_in.add_product.button_continue')" @click.prevent="emit('next')" />
   </FMPopin>
 </template>
 
@@ -89,9 +76,7 @@ const images = {
   },
   excellent: {
     picto: "https://demo.faume.co/cdn/shop/files/tshirt_3.png?v=1694055484",
-    examples: [
-      "https://demo.faume.co/cdn/shop/products/6eee1f3b69bc6b9772faff4f2cbfb43a.jpg?v=1690992230",
-    ],
+    examples: ["https://demo.faume.co/cdn/shop/products/6eee1f3b69bc6b9772faff4f2cbfb43a.jpg?v=1690992230"],
   },
   very_good: {
     picto: "https://demo.faume.co/cdn/shop/files/tshirt_4.png?v=1694055484",
@@ -127,9 +112,7 @@ const getFieldLabel = (value: string | number) => {
   }
 };
 
-const selectionMade = computed(
-  () => props.model !== undefined && props.model !== null,
-);
+const selectionMade = computed(() => props.model !== undefined && props.model !== null);
 
 const fields = computed(() => {
   if (!props.values?.length) {

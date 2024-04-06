@@ -9,8 +9,7 @@ export const useTradeInCartStore = defineStore("tradeInCart", () => {
       const requestBody = {
         channel: "web",
       };
-      const response =
-        await $API.tradeInCart.apiCustomerTradeInCartsPost(requestBody);
+      const response = await $API.tradeInCart.apiCustomerTradeInCartsPost(requestBody);
       tradeInCart.value = response;
       return response;
     } catch (error) {
@@ -19,7 +18,7 @@ export const useTradeInCartStore = defineStore("tradeInCart", () => {
     }
   };
 
-  const fetchTradeInCart = async (id) => {
+  const fetchTradeInCart = async (id: string) => {
     try {
       const response = await $API.tradeInCart.apiCustomerTradeInCartsIdGet(id);
       tradeInCart.value = response;
@@ -30,15 +29,10 @@ export const useTradeInCartStore = defineStore("tradeInCart", () => {
     }
   };
 
-  const fetchTradeInCarts = async (id) => {
+  const fetchTradeInCarts = async () => {
     try {
-      const apiConfig = getAxiosConfig(
-        $API.tradeInCart?.httpRequest?.config || {},
-      );
-      const response = await axios.get(
-        "/api/v3/customer/trade-in-carts",
-        apiConfig,
-      );
+      const apiConfig = getAxiosConfig($API.tradeInCart?.httpRequest?.config || {});
+      const response = await axios.get("/api/v3/customer/trade-in-carts", apiConfig);
       tradeInCarts.value = response?.data["hydra:member"] || [];
       return response;
     } catch (error) {
@@ -49,10 +43,7 @@ export const useTradeInCartStore = defineStore("tradeInCart", () => {
 
   const updateTradeInCart = async (id, updateData) => {
     try {
-      const response = await $API.tradeInCart.apiCustomerTradeInCartsIdPatch(
-        id,
-        updateData,
-      );
+      const response = await $API.tradeInCart.apiCustomerTradeInCartsIdPatch(id, updateData);
       tradeInCart.value = response;
       return response;
     } catch (error) {
@@ -63,8 +54,7 @@ export const useTradeInCartStore = defineStore("tradeInCart", () => {
 
   const validateTradeInCart = async (id) => {
     try {
-      const response =
-        await $API.tradeInCart.apiCustomerTradeInCartsIdvalidatePatch(id, {});
+      const response = await $API.tradeInCart.apiCustomerTradeInCartsIdvalidatePatch(id, {});
       tradeInCart.value = response;
       return response;
     } catch (error) {

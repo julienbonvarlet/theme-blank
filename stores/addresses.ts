@@ -38,10 +38,7 @@ export const useAddressesStore = defineStore("addresses", () => {
 
   const updateAddress = async (id, updatedData) => {
     try {
-      const response = await $API.address.apiCustomerAddressesIdPatch(
-        id,
-        updatedData,
-      );
+      const response = await $API.address.apiCustomerAddressesIdPatch(id, updatedData);
       const index = addresses.value.findIndex((address) => address.id === id);
       if (index !== -1) {
         addresses.value[index] = response;

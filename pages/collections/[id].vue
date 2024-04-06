@@ -1,23 +1,11 @@
 <template>
   <div class="product-listing">
-    <FOBanner
-      :title="title"
-      :text="text"
-      :background-image="backgroundImage"
-      size="s"
-      title-size="l"
-    />
-    <FMBreadcrumb
-      current-page-type="collection"
-      :current-page-title="title"
-      :padding-y="false"
-    />
+    <FOBanner :title="title" :text="text" :background-image="backgroundImage" :size="BannerSizes.S" title-size="l" />
+    <FMBreadcrumb current-page-type="collection" :current-page-title="title" :padding-y="false" />
 
     <FMSectionContainer :padding-x="true" max-width="xl" :padding-y="false">
       <!-- <FMBreadcrumb currentPageType="collection" :currentPageTitle="title" /> -->
-      <FOCollectionSuggestionMenu
-        :suggestion-menu-items="suggestionMenuItems"
-      />
+      <FOCollectionSuggestionMenu :suggestion-menu-items="suggestionMenuItems" />
     </FMSectionContainer>
 
     <FMSectionContainer
@@ -42,18 +30,9 @@
       />
     </FMSectionContainer>
 
-    <FMSectionContainer
-      :padding-x="true"
-      max-width="xl"
-      :padding-y="true"
-      class="f-product-listing__content-grid"
-    >
+    <FMSectionContainer :padding-x="true" max-width="xl" :padding-y="true" class="f-product-listing__content-grid">
       <div class="f-products-grid">
-        <FMProductCard
-          v-for="product in listProducts"
-          :key="product.id"
-          :product="product"
-        />
+        <FMProductCard v-for="product in listProducts" :key="product.id" :product="product" />
       </div>
       <FMPagination
         v-if="pagination && listProducts?.length"
@@ -73,11 +52,10 @@ const { t } = useI18n();
 
 // VARIABLES
 const config = useRuntimeConfig();
-const clientId = config.public.faume.clientId;
+const clientId = config.clientId;
 const { getPreviousTitle } = usePreviousTitle();
 const { $API } = useNuxtApp();
 const router = useRouter();
-const route = useRoute();
 const listProducts = ref<any[] | null>(null);
 const filters = ref<any[] | null>(null);
 const newActiveFilters = ref<any[]>([]);
@@ -156,8 +134,7 @@ listProducts.value = initialFetch["hydra:member"] || [];
 // Pagination
 pagination.value = initialFetch["hydra:view"] || {};
 firstPage.value = pagination.value["hydra:first"]?.split("&page=")[1] || null;
-previousPage.value =
-  pagination.value["hydra:previous"]?.split("&page=")[1] || null;
+previousPage.value = pagination.value["hydra:previous"]?.split("&page=")[1] || null;
 currentPage.value = pagination.value["@id"]?.split("&page=")[1] || null;
 nextPage.value = pagination.value["hydra:next"]?.split("&page=")[1] || null;
 lastPage.value = pagination.value["hydra:last"]?.split("&page=")[1] || null;
@@ -176,12 +153,8 @@ const handleOrderChange = (payload) => {
 };
 // Detect Filter Change
 // Formatters of filter args
-const filterArgs = computed(() =>
-  generateFilterArgs(newActiveFilters.value.concat(newActiveOrder.value)),
-);
-function generateFilterArgs(
-  newActiveFilters: { type: string; value: string }[],
-): string {
+const filterArgs = computed(() => generateFilterArgs(newActiveFilters.value.concat(newActiveOrder.value)));
+function generateFilterArgs(newActiveFilters: { type: string; value: string }[]): string {
   const filters = {};
 
   newActiveFilters.forEach((filter) => {
@@ -196,9 +169,7 @@ function generateFilterArgs(
   for (const type in filters) {
     const values = filters[type];
     if (values.length > 1) {
-      filterArgs += values
-        .map((value) => `&${type}[]=${encodeURIComponent(value)}`)
-        .join("");
+      filterArgs += values.map((value) => `&${type}[]=${encodeURIComponent(value)}`).join("");
     } else {
       const value = values[0].split("-");
       if (value.length > 1) {
@@ -212,7 +183,7 @@ function generateFilterArgs(
 }
 // Formatters of filter args
 // Launch the fetch when the filters change
-watch(filterArgs, (value) => fetchProducts());
+watch(filterArgs, () => fetchProducts());
 // Launch the fetch when the filters change
 // Filter
 
@@ -223,15 +194,12 @@ const handleFilterChange = (payload) => {
 };
 // Detect Order Change
 // Launch the fetch when the order change
-watch(currentPage, (value) => fetchProducts());
+watch(currentPage, () => fetchProducts());
 // Launch the fetch when the order change
 // Sort
 
 // Fetch products with active filters && sort
-const fetchProducts = async (
-  page = currentPage.value || 1,
-  itemsPerPage = 12,
-) => {
+const fetchProducts = async (page = currentPage.value || 1, itemsPerPage = 12) => {
   const { data: products } = useAsyncData("filters", async () => {
     const response = await fetch(
       `https://api.faume.co/api/v3/customer/articles?page=${page}&itemsPerPage=${itemsPerPage}${filterArgs.value}`,
@@ -248,15 +216,11 @@ const fetchProducts = async (
       listProducts.value = products.value;
     }
     if (pagination.value) {
-      firstPage.value =
-        pagination.value["hydra:first"]?.split("&page=")[1] || null;
-      previousPage.value =
-        pagination.value["hydra:previous"]?.split("&page=")[1] || null;
+      firstPage.value = pagination.value["hydra:first"]?.split("&page=")[1] || null;
+      previousPage.value = pagination.value["hydra:previous"]?.split("&page=")[1] || null;
       currentPage.value = pagination.value["@id"]?.split("&page=")[1] || null;
-      nextPage.value =
-        pagination.value["hydra:next"]?.split("&page=")[1] || null;
-      lastPage.value =
-        pagination.value["hydra:last"]?.split("&page=")[1] || null;
+      nextPage.value = pagination.value["hydra:next"]?.split("&page=")[1] || null;
+      lastPage.value = pagination.value["hydra:last"]?.split("&page=")[1] || null;
     }
 
     // Update available filters
@@ -276,11 +240,7 @@ const fetchProducts = async (
 
     const combinedFilters = { ...potentialFilters, ...newPotentialFilters };
     filterOrder.forEach((key) => {
-      if (
-        combinedFilters[key] &&
-        key !== "composition" &&
-        combinedFilters[key].length > 1
-      ) {
+      if (combinedFilters[key] && key !== "composition" && combinedFilters[key].length > 1) {
         orderedFilters[key] = combinedFilters[key];
       }
     });

@@ -12,9 +12,7 @@ export function useOrderDetails(order: any, wording: any) {
   });
 
   const articlesCount = computed(() =>
-    wording[
-      order.items?.length > 1 ? "articles_count" : "article_count"
-    ]?.replace("{count}", order.items?.length || 0),
+    wording[order.items?.length > 1 ? "articles_count" : "article_count"]?.replace("{count}", order.items?.length || 0),
   );
 
   return { title, createdDate, articlesCount };

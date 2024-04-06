@@ -19,11 +19,7 @@ const button = computed(() => ({
 
 <style lang="scss">
 .f-order-success {
-  min-height: calc(
-    100vh - var(--f-header-height) - var(--f-announcement-bar-height) - var(
-        --f-top-bar-height
-      )
-  );
+  min-height: calc(100vh - var(--f-header-height) - var(--f-announcement-bar-height) - var(--f-top-bar-height));
   padding: var(--f-margin-section) 0;
   &.is-margin-y {
     margin: 0;

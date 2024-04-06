@@ -3,25 +3,17 @@ export const usePaymentMethodsStore = defineStore("paymentMethods", () => {
   const paymentMethods = ref(null);
 
   // Récupérer la collection des méthodes de paiement pour une commande spécifique
-  const fetchPaymentMethodsForOrder = async (
-    orderId,
-    page = 1,
-    itemsPerPage = 10,
-  ) => {
+  const fetchPaymentMethodsForOrder = async (orderId, page = 1, itemsPerPage = 10) => {
     try {
-      const response =
-        await $API.paymentMethod.apiCustomerOrdersOrderIdpaymentMethodsGetCollection(
-          orderId,
-          page,
-          itemsPerPage,
-        );
+      const response = await $API.paymentMethod.apiCustomerOrdersOrderIdpaymentMethodsGetCollection(
+        orderId,
+        page,
+        itemsPerPage,
+      );
       paymentMethods.value = response["hydra:member"];
       return paymentMethods.value;
     } catch (error) {
-      console.error(
-        "Erreur lors de la récupération des méthodes de paiement:",
-        error,
-      );
+      console.error("Erreur lors de la récupération des méthodes de paiement:", error);
       throw error;
     }
   };
@@ -37,10 +29,7 @@ export const usePaymentMethodsStore = defineStore("paymentMethods", () => {
       if (error.response && error.response.status === 404) {
         console.error("Méthode de paiement non trouvée:", error);
       } else {
-        console.error(
-          "Erreur lors de la récupération de la méthode de paiement:",
-          error,
-        );
+        console.error("Erreur lors de la récupération de la méthode de paiement:", error);
       }
       throw error;
     }

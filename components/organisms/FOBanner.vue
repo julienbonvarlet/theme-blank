@@ -1,12 +1,7 @@
 <template>
   <div class="f-banner" :class="maxHeightClass">
     <img class="f-banner__image" :src="backgroundImage" alt="Faume" />
-    <FMSectionContainer
-      :padding-x="true"
-      :padding-y="true"
-      max-width="xl"
-      class-child="f-banner__content"
-    >
+    <FMSectionContainer :padding-x="true" :padding-y="true" max-width="xl" class-child="f-banner__content">
       <FMTextContainer
         :title="title"
         :title-size="titleSize"
@@ -25,14 +20,14 @@
 const props = withDefaults(
   defineProps<{
     title?: string;
-    titleSize?: (typeof TitleSizes)[string];
-    titleTag?: (typeof TitleTags)[string];
+    titleSize?: TitleSizes;
+    titleTag?: TitleTags;
     text?: string;
     subtitle?: string;
     backgroundImage?: String;
     link1?: Record<string, any>;
     link2?: Record<string, any>;
-    size?: typeof BannerSizes;
+    size?: BannerSizes;
     align?: "left" | "center" | "right";
   }>(),
   {

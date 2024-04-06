@@ -31,10 +31,6 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(
-    100vh - var(--f-header-height) - var(--f-announcement-bar-height) - var(
-        --f-top-bar-height
-      )
-  );
+  height: calc(100vh - var(--f-header-height) - var(--f-announcement-bar-height) - var(--f-top-bar-height));
 }
 </style>

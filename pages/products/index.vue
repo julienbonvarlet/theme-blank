@@ -8,19 +8,10 @@
       size="m"
     />
     <FMSectionContainer :padding-x="true" max-width="xl" :padding-y="true">
-      <FMBreadcrumb
-        current-page-type="collection"
-        :current-page-title="$t('pages.collection.all.title')"
-      />
-      <FOCollectionSuggestionMenu
-        :suggestion-menu-items="suggestionMenuItems"
-      />
+      <FMBreadcrumb current-page-type="collection" :current-page-title="$t('pages.collection.all.title')" />
+      <FOCollectionSuggestionMenu :suggestion-menu-items="suggestionMenuItems" />
     </FMSectionContainer>
-    <FOFilterBar
-      :filters-options="filters"
-      :order-options="exempleDataOrder"
-      :checkbox="true"
-    />
+    <FOFilterBar :filters-options="filters" :order-options="exempleDataOrder" :checkbox="true" />
     <FMSectionContainer :padding-x="true" max-width="xl" :padding-y="true">
       <div class="f-products-grid">
         <FMProductCard

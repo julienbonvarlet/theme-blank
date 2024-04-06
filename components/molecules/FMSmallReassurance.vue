@@ -1,9 +1,5 @@
 <template>
-  <ul
-    v-if="items?.length"
-    class="f-small-reassurance"
-    :class="{ 'is-align': isAlign }"
-  >
+  <ul v-if="items?.length" class="f-small-reassurance" :class="{ 'is-align': isAlign }">
     <li v-for="item in items" :key="item">
       <img v-if="item.image" :src="item.image" :alt="item.text" />
       <FAIcon v-if="item.icon" :icon="item.icon" />

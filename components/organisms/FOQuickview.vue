@@ -1,11 +1,5 @@
 <template>
-  <FMPopin
-    v-if="product"
-    class="f-quickview"
-    position="right"
-    :visible="true"
-    @on-close="close"
-  >
+  <FMPopin v-if="product" class="f-quickview" position="right" :visible="true" @on-close="close">
     <template #bottom>
       <div class="f-quickview__container">
         <div class="f-quickview__product-images">
@@ -17,10 +11,7 @@
           <div class="f-quickview__presentation-sticky">
             <div class="f-quickview__presentation-content">
               <FMProductHeading :product="product" :price="price" />
-              <FMProductForm
-                :product="product"
-                @on-choice-change="updateChoice"
-              />
+              <FMProductForm :product="product" @on-choice-change="updateChoice" />
             </div>
           </div>
         </div>
@@ -143,12 +134,7 @@ const close = () => {
       left: 0;
       mix-blend-mode: multiply;
       z-index: calc(var(--z-index-above) + 1);
-      background: radial-gradient(
-        circle,
-        transparent,
-        transparent,
-        var(--f-color-background-light)
-      );
+      background: radial-gradient(circle, transparent, transparent, var(--f-color-background-light));
     }
   }
 

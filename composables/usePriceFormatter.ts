@@ -12,10 +12,7 @@ export function usePriceFormatter() {
    * @param {string} currency - La devise à utiliser pour le formatage (par défaut 'EUR').
    * @returns {string} - Le prix formaté.
    */
-  const formatPrice = (
-    priceInCents: number = 0,
-    currency: string = "EUR",
-  ): string => {
+  const formatPrice = (priceInCents: number = 0, currency: string = "EUR"): string => {
     const priceInEuros = priceInCents / 100;
     return new Intl.NumberFormat(locale, {
       style: "currency",
@@ -30,10 +27,7 @@ export function usePriceFormatter() {
    * @param {string} currency - La devise à utiliser pour le formatage (par défaut 'EUR').
    * @returns {string} - Le prix formaté sans centimes.
    */
-  const formatPriceWithoutCents = (
-    priceInCents: number,
-    currency: string = "EUR",
-  ): string => {
+  const formatPriceWithoutCents = (priceInCents: number, currency: string = "EUR"): string => {
     const priceInEuros = priceInCents / 100;
     return new Intl.NumberFormat(locale, {
       style: "currency",

@@ -1,64 +1,36 @@
 <template>
   <div class="f-pagination">
-    <button
-      v-if="previousPage"
-      class="f-pagination__button"
-      @click.prevent="go(previousPage)"
-    >
+    <button v-if="previousPage" class="f-pagination__button" @click.prevent="go(previousPage)">
       <FAIcon icon="left" />
     </button>
     <ul>
       <template v-if="activePage != firstPage && previousPage != firstPage">
         <li>
-          <FAText
-            class="f-pagination__page"
-            size="s"
-            @click.prevent="go(firstPage)"
-            >{{ firstPage }}</FAText
-          >
+          <FAText class="f-pagination__page" size="s" @click.prevent="go(firstPage)">{{ firstPage }}</FAText>
         </li>
         <li>
           <FAText class="f-pagination__page" size="s">•</FAText>
         </li>
       </template>
       <li v-if="previousPage">
-        <FAText
-          class="f-pagination__page"
-          size="s"
-          @click.prevent="go(previousPage)"
-          >{{ previousPage }}</FAText
-        >
+        <FAText class="f-pagination__page" size="s" @click.prevent="go(previousPage)">{{ previousPage }}</FAText>
       </li>
       <li v-if="activePage" class="is-selected">
         <FAText class="f-pagination__page" size="s">{{ activePage }}</FAText>
       </li>
       <li v-if="nextPage">
-        <FAText
-          class="f-pagination__page"
-          size="s"
-          @click.prevent="go(nextPage)"
-          >{{ nextPage }}</FAText
-        >
+        <FAText class="f-pagination__page" size="s" @click.prevent="go(nextPage)">{{ nextPage }}</FAText>
       </li>
       <template v-if="activePage != lastPage && nextPage != lastPage">
         <li>
           <FAText class="f-pagination__page" size="s">•</FAText>
         </li>
         <li>
-          <FAText
-            class="f-pagination__page"
-            size="s"
-            @click.prevent="go(lastPage)"
-            >{{ lastPage }}</FAText
-          >
+          <FAText class="f-pagination__page" size="s" @click.prevent="go(lastPage)">{{ lastPage }}</FAText>
         </li>
       </template>
     </ul>
-    <button
-      v-if="nextPage"
-      class="f-pagination__button"
-      @click.prevent="go(nextPage)"
-    >
+    <button v-if="nextPage" class="f-pagination__button" @click.prevent="go(nextPage)">
       <FAIcon icon="right" />
     </button>
   </div>

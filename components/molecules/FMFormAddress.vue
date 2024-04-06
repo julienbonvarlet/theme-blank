@@ -2,12 +2,7 @@
   <div class="f-form-address" :class="[inlineClass]">
     <FMFormMessage v-if="error && error !== ''" type="error" :text="error" />
     <FMFormMessage v-if="success" type="success" :text="successMessage" />
-    <FormKit
-      v-model="formData"
-      type="form"
-      :submit-label="buttonLabel || $t('global.validate')"
-      @submit="submit"
-    >
+    <FormKit v-model="formData" type="form" :submit-label="buttonLabel || $t('global.validate')" @submit="submit">
       <FormKit v-for="field in fields" :key="field" v-bind="field" />
     </FormKit>
     <slot />
@@ -29,9 +24,7 @@ const addressStore = useAddressesStore();
 
 const emit = defineEmits(["next"]);
 
-const inlineClass = computed(() =>
-  props.inlineDesktop ? "is-inline-desktop" : null,
-);
+const inlineClass = computed(() => (props.inlineDesktop ? "is-inline-desktop" : null));
 const user = computed(() => userStore.user);
 const error = ref<string | null>(null);
 const success = ref(false);
@@ -127,8 +120,7 @@ watch(
         formData.value[key] = newAddress[key] || formData.value[key];
       });
     } else {
-      formData.value.firstName =
-        user.value.firstName || formData.value.firstName;
+      formData.value.firstName = user.value.firstName || formData.value.firstName;
       formData.value.lastName = user.value.lastName || formData.value.lastName;
       formData.value.phone = user.value.phone || formData.value.phone;
       formData.value.country = user.value.country || formData.value.country;

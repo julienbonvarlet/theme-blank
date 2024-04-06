@@ -9,17 +9,12 @@ export const useCartStore = defineStore("cart", () => {
   const cartId = useCookie("faume-cart-id", faumeConfig.cookies);
   const cartOrder = ref<null | object>(null);
   const cartItems = ref<null | any[]>(null);
-  const promotionalCode = useCookie(
-    "faume-cart-code-promo",
-    faumeConfig.cookies,
-  );
+  const promotionalCode = useCookie("faume-cart-code-promo", faumeConfig.cookies);
   const isMiniCartOpen = ref(false);
   const amountForFreeShipping = 10000;
 
   const setDefaultShippingMethod = async () => {
-    const methods = await shippingMethodsStore.fetchShippingMethodsForOrder(
-      cartId.value,
-    );
+    const methods = await shippingMethodsStore.fetchShippingMethodsForOrder(cartId.value);
     console.log("methods", methods);
     const method = methods?.sort((a, b) => a.shippingCost - b.shippingCost)[0];
     if (method) {
@@ -50,12 +45,8 @@ export const useCartStore = defineStore("cart", () => {
   const getCartItems = async () => {
     const items = [];
     for (const id of cartOrder.value?.items || []) {
-      let item = await orderStore.getOrderItemById(
-        id["@id"].split("/").slice(-1)[0],
-      );
-      const article = await $API.tradeIn.apiCustomerTradeInsIdGet(
-        item.tradeIn.split("/").slice(-1)[0],
-      );
+      let item = await orderStore.getOrderItemById(id["@id"].split("/").slice(-1)[0]);
+      const article = await $API.tradeIn.apiCustomerTradeInsIdGet(item.tradeIn.split("/").slice(-1)[0]);
       item = {
         ...item,
         article: article,
@@ -109,10 +100,6 @@ export const useCartStore = defineStore("cart", () => {
       await getCartItems();
     }
     return cartOrder.value;
-  };
-
-  const updateDeliveryType = async (type: string) => {
-    return updateOrder({ deliveryType: type });
   };
 
   const applyPromotionalCode = async (code) => {

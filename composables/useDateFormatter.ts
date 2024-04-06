@@ -9,9 +9,7 @@ export function useDateFormatter() {
   }
 
   function formatDate(value: string, displayTime?: boolean) {
-    return !value
-      ? null
-      : dayjs(value).format(displayTime ? dateFormatWithTime : dateFormat);
+    return !value ? null : dayjs(value).format(displayTime ? dateFormatWithTime : dateFormat);
   }
 
   return { toUnixTimestamp, formatDate };

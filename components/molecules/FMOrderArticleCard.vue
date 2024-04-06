@@ -18,9 +18,7 @@ const props = withDefaults(
 );
 
 const articleChoice = ref<null | {}>(null);
-const articleChoiceId = computed(() =>
-  props.article?.articleChoice?.split("/")?.pop(),
-);
+const articleChoiceId = computed(() => props.article?.articleChoice?.split("/")?.pop());
 
 const cardInlineData = computed(() => {
   const article = props.article;
@@ -29,10 +27,7 @@ const cardInlineData = computed(() => {
     title: articleChoice.value?.metadata?.title || articleProps[0],
     text: articleProps.slice(1).join(" • "),
     details: t("account.orders.detail.id", { id: article.id }),
-    image:
-      articleChoice.value?.photos?.[0] ||
-      article.photo ||
-      imageStore.placeholder,
+    image: articleChoice.value?.photos?.[0] || article.photo || imageStore.placeholder,
     price: article.total,
     originalPrice: articleChoice.value?.originPrice || article.unitPric,
     statusValue: article.statusValue,
@@ -45,8 +40,7 @@ watch(
   articleChoiceId,
   async (id) => {
     if (id) {
-      articleChoice.value =
-        await $API.articleChoice.apiCustomerArticleChoicesIdGet(id);
+      articleChoice.value = await $API.articleChoice.apiCustomerArticleChoicesIdGet(id);
     }
   },
   { deep: true, immediate: true },

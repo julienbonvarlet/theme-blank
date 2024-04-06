@@ -18,11 +18,14 @@
 const userStore = useUserStore();
 const user = computed(() => userStore.user);
 
-const props = defineProps<{
-  name: string;
-}>();
+defineProps({
+  name: {
+    type: String,
+    required: true,
+  },
+});
 
-const { data, refresh, error } = useAsyncData(
+useAsyncData(
   "user-data",
   async () => {
     if (!user.value) {

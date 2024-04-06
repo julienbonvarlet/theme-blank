@@ -35,10 +35,7 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
     ...cookieOptions,
     default: () => false,
   });
-  const selectedAddress = useCookie(
-    "tradeInModuleSelectedAddress",
-    cookieOptions,
-  );
+  const selectedAddress = useCookie("tradeInModuleSelectedAddress", cookieOptions);
 
   const setAgree = (value) => {
     agree.value = value;
@@ -52,8 +49,7 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
     const { $API } = useNuxtApp();
     if (sku && sku !== "") {
       try {
-        const response =
-          await $API.tradeIn.apiCustomerTradeInssearchBySkuSkuGet(sku);
+        const response = await $API.tradeIn.apiCustomerTradeInssearchBySkuSkuGet(sku);
         skuSuggestions.value = response?.results?.slice(0, 20);
         if (!skuSuggestions.value?.length) {
           isInvalidSku.value = true;
@@ -71,10 +67,7 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
     colors.value = null;
     sizes.value = null;
     const { $API } = useNuxtApp();
-    const response =
-      await $API.tradeIn.apiCustomerTradeInsgetAvailableSizesAndColorsSkuGet(
-        article.value.sku,
-      );
+    const response = await $API.tradeIn.apiCustomerTradeInsgetAvailableSizesAndColorsSkuGet(article.value.sku);
     colors.value = sortBy(response.color) || [];
     sizes.value = sortSizes(response.size) || [];
   };
@@ -152,22 +145,15 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
   const selectAddress = async (id) => {
     selectedAddress.value = id;
     const { $API } = useNuxtApp();
-    const response = await $API.tradeInCart.apiCustomerTradeInCartsIdPatch(
-      cart.value.id,
-      {
-        shippingAddress: selectedAddress.value,
-      },
-    );
+    const response = await $API.tradeInCart.apiCustomerTradeInCartsIdPatch(cart.value.id, {
+      shippingAddress: selectedAddress.value,
+    });
     setCart(response);
   };
 
   const confirmCart = async () => {
     const { $API } = useNuxtApp();
-    const response =
-      await $API.tradeInCart.apiCustomerTradeInCartsIdvalidatePatch(
-        cart.value.id,
-        {},
-      );
+    const response = await $API.tradeInCart.apiCustomerTradeInCartsIdvalidatePatch(cart.value.id, {});
     setCart(response);
   };
 

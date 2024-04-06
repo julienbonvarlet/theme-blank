@@ -8,9 +8,15 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  title: String,
-  content: String,
+defineProps({
+  title: {
+    type: String,
+    required: true,
+  },
+  content: {
+    type: String,
+    required: true,
+  },
 });
 </script>
 

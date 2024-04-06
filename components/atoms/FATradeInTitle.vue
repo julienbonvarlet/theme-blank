@@ -1,11 +1,5 @@
 <template>
-  <FATitle
-    class="f-ti-title"
-    :class="`is-${size}`"
-    :title="title"
-    :tag="tag"
-    :size="size"
-  />
+  <FATitle class="f-ti-title" :class="`is-${size}`" :title="title" :tag="tag" :size="size" />
 </template>
 
 <script setup lang="ts">
@@ -13,7 +7,7 @@ const props = withDefaults(
   defineProps<{
     title: string;
     size: "s" | "m";
-    tag?: (typeof TitleTags)[string];
+    tag?: TitleTags;
   }>(),
   {
     size: "m",

@@ -5,19 +5,8 @@
       <img v-else-if="image" :src="image" :alt="title" />
     </div>
     <div class="f-timeline-step__text">
-      <FMCardText
-        :title="title"
-        :text="text"
-        :description="description"
-        :details="details"
-      />
-      <FAButton
-        v-if="button?.label"
-        size="s"
-        :label="button.label"
-        :to="button.to"
-        :icon="button.icon"
-      />
+      <FMCardText :title="title" :text="text" :description="description" :details="details" />
+      <FAButton v-if="button?.label" size="s" :label="button.label" :to="button.to" :icon="button.icon" />
       <slot />
     </div>
   </div>
@@ -30,7 +19,7 @@ const props = withDefaults(
     text?: string;
     description?: string;
     details?: string;
-    icon?: (typeof IconNames)[string];
+    icon?: IconNames;
     image?: string;
     size: "s" | "m";
     button?: object;

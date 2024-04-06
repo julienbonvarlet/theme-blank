@@ -1,16 +1,7 @@
 <template>
-  <div
-    v-if="price || price === 0"
-    class="f-price-container"
-    :class="[sizeClass]"
-  >
+  <div v-if="price || price === 0" class="f-price-container" :class="[sizeClass]">
     <FAPrice :price="price" :size="size" />
-    <FAPrice
-      v-if="displayOldPrice && originalPrice > price"
-      :price="originalPrice"
-      :size="size"
-      :old="true"
-    />
+    <FAPrice v-if="displayOldPrice && originalPrice > price" :price="originalPrice" :size="size" :old="true" />
   </div>
 </template>
 
@@ -19,7 +10,7 @@ const props = withDefaults(
   defineProps<{
     price?: string | number;
     originalPrice?: string | number;
-    size?: (typeof PriceSizes)[string];
+    size?: PriceSizes;
     displayOldPrice?: boolean;
   }>(),
   {

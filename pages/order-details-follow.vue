@@ -1,10 +1,6 @@
 <template>
   <FMSectionContainer :padding-x="true" :padding-y="true" max-width="l">
-    <FOAccountOrder
-      v-if="orderDetails"
-      :order="orderDetails"
-      :back-url="false"
-    />
+    <FOAccountOrder v-if="orderDetails" :order="orderDetails" :back-url="false" />
   </FMSectionContainer>
 </template>
 
@@ -22,15 +18,9 @@ onMounted(async () => {
       try {
         const specificOrderDetails = await ordersStore.getOrderById(orderId);
         orderDetails.value = specificOrderDetails;
-        console.log(
-          "Détails de la commande spécifique récupérés avec succès:",
-          orderDetails.value,
-        );
+        console.log("Détails de la commande spécifique récupérés avec succès:", orderDetails.value);
       } catch (error) {
-        console.error(
-          "Erreur lors de la récupération des détails de la commande:",
-          error,
-        );
+        console.error("Erreur lors de la récupération des détails de la commande:", error);
       }
     }
   }

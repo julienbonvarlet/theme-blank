@@ -7,9 +7,7 @@ export const useCartData = () => {
   const shippingMethods = computed(() => shippingMethodsStore.shippingMethods);
 
   const paymentMethod = computed(() => cartStore.cartOrder?.paymentMethod);
-  const clientSecret = computed(
-    () => cartStore.cartOrder?.stateContext?.[0]?.payment_intent?.client_secret,
-  );
+  const clientSecret = computed(() => cartStore.cartOrder?.stateContext?.[0]?.payment_intent?.client_secret);
 
   const cartId = computed(() => cartStore.cartId);
   const cartOrder = computed(() => cartStore.cartOrder);
@@ -40,14 +38,10 @@ export const useCartData = () => {
   const isMiniCartOpen = computed(() => cartStore.isMiniCartOpen);
 
   const shippingAddress = computed(() =>
-    addressesStore.addresses?.find(
-      (x) => x["@id"] === cartOrder.value?.shippingAddress,
-    ),
+    addressesStore.addresses?.find((x) => x["@id"] === cartOrder.value?.shippingAddress),
   );
   const billingAddress = computed(() =>
-    addressesStore.addresses?.find(
-      (x) => x["@id"] === cartOrder.value?.billingAddress,
-    ),
+    addressesStore.addresses?.find((x) => x["@id"] === cartOrder.value?.billingAddress),
   );
 
   return {

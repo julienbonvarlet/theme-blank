@@ -1,24 +1,11 @@
 <template>
   <div class="f-header-submenu">
-    <FMSectionContainer
-      :padding-x="true"
-      max-width="xl"
-      class-child="f-header-submenu__inner"
-    >
+    <FMSectionContainer :padding-x="true" max-width="xl" class-child="f-header-submenu__inner">
       <nav v-if="navigationListData" class="f-header-submenu__menu">
-        <FMNavigationList
-          v-for="link in navigationListData"
-          :key="link"
-          v-bind="link"
-        />
+        <FMNavigationList v-for="link in navigationListData" :key="link" v-bind="link" />
       </nav>
       <div v-if="visualsData" class="f-header-submenu__visuals">
-        <FMThumbnail
-          v-for="visual in visualsData"
-          :key="visual"
-          v-bind="visual"
-          title-size="s"
-        />
+        <FMThumbnail v-for="visual in visualsData" :key="visual" v-bind="visual" title-size="s" />
       </div>
     </FMSectionContainer>
   </div>

@@ -10,7 +10,7 @@ const props = withDefaults(
   defineProps<{
     title: string;
     url?: string;
-    icon?: (typeof IconNames)[string];
+    icon?: IconNames;
     displayIcon?: boolean;
   }>(),
   {

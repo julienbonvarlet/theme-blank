@@ -18,16 +18,8 @@ const { t } = useI18n();
 const { formatPrice } = usePriceFormatter();
 const cartStore = useCartStore();
 
-const {
-  cartItems,
-  shippingTotal,
-  shippingDelay,
-  discountTotal,
-  total,
-  subtotal,
-  totalFormatted,
-  shippingMethod,
-} = useCartData();
+const { cartItems, shippingTotal, shippingDelay, discountTotal, total, subtotal, totalFormatted, shippingMethod } =
+  useCartData();
 
 const reassurance = computed(() => [
   {

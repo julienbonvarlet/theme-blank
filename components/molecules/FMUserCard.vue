@@ -1,18 +1,7 @@
 <template>
-  <FMCardInline
-    v-if="user"
-    class="f-user-card"
-    v-bind="userCardData"
-    :has-background="true"
-  >
+  <FMCardInline v-if="user" class="f-user-card" v-bind="userCardData" :has-background="true">
     <template #right>
-      <FAButton
-        size="s"
-        :label="$t('global.edit')"
-        icon="write"
-        type="secondary"
-        @click.prevent="authStore.logout"
-      />
+      <FAButton size="s" :label="$t('global.edit')" icon="write" type="secondary" @click.prevent="authStore.logout" />
     </template>
   </FMCardInline>
 </template>

@@ -1,9 +1,5 @@
 <template>
-  <FMSectionContainer
-    :padding-x="true"
-    max-width="xl"
-    class-child="f-breadcrumb__inner"
-  >
+  <FMSectionContainer :padding-x="true" max-width="xl" class-child="f-breadcrumb__inner">
     <FABack v-if="isMobile" @click.prevent="goBack" />
 
     <div v-else class="f-breadcrumb__desktop">

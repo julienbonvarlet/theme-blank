@@ -1,9 +1,4 @@
-const pushInTimeline = (
-  icon: string,
-  title: string,
-  text?: string,
-  description?: string | null,
-) => ({
+const pushInTimeline = (icon: string, title: string, text?: string, description?: string | null) => ({
   icon,
   title,
   text,
@@ -21,71 +16,32 @@ export function useOrderTimeline(order: any, wording: any) {
     }
 
     const timeline = [];
-    timeline.push(
-      pushInTimeline("cart", wording.order_created, createdDate.value),
-    );
+    timeline.push(pushInTimeline("cart", wording.order_created, createdDate.value));
     if (order.preparedAt) {
-      timeline.push(
-        pushInTimeline("time", wording.states.treating, order.preparedAt),
-      );
+      timeline.push(pushInTimeline("time", wording.states.treating, order.preparedAt));
     } else if (order.state === "paid" && !order.sentAt) {
-      timeline.push(
-        pushInTimeline("time", wording.states.treating, createdDate.value),
-      );
+      timeline.push(pushInTimeline("time", wording.states.treating, createdDate.value));
     }
     if (order.sentAt) {
       const description = order.shippingTrackingNumber
         ? `${order.shippingMode} - ${order.shippingTrackingNumber}`
         : null;
-      timeline.push(
-        pushInTimeline(
-          "shipping",
-          wording.states.shipped,
-          order.sentAt,
-          description,
-        ),
-      );
+      timeline.push(pushInTimeline("shipping", wording.states.shipped, order.sentAt, description));
     }
     if (order.receivedAt) {
-      timeline.push(
-        pushInTimeline("check", wording.states.delivered, order.receivedAt),
-      );
+      timeline.push(pushInTimeline("check", wording.states.delivered, order.receivedAt));
     }
     if (order.returnCreatedAt) {
-      timeline.push(
-        pushInTimeline(
-          "shipping",
-          wording.states.return_created,
-          order.returnCreatedAt,
-        ),
-      );
+      timeline.push(pushInTimeline("shipping", wording.states.return_created, order.returnCreatedAt));
     }
     if (order.returnTreatedAt) {
-      timeline.push(
-        pushInTimeline(
-          "check",
-          wording.states.return_treated,
-          order.returnTreatedAt,
-        ),
-      );
+      timeline.push(pushInTimeline("check", wording.states.return_treated, order.returnTreatedAt));
     }
     if (order.returnRefundedAt) {
-      timeline.push(
-        pushInTimeline(
-          "wallet",
-          wording.states.refunded,
-          order.returnRefundedAt,
-        ),
-      );
+      timeline.push(pushInTimeline("wallet", wording.states.refunded, order.returnRefundedAt));
     }
     if (!isPaid.value || order.state === "draft") {
-      timeline.push(
-        pushInTimeline(
-          "time",
-          wording.states.requires_payment_method,
-          formatPrice(order.total),
-        ),
-      );
+      timeline.push(pushInTimeline("time", wording.states.requires_payment_method, formatPrice(order.total)));
     }
     return timeline;
   });

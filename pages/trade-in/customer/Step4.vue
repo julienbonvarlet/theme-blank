@@ -13,10 +13,7 @@
       :padding-y="true"
       :margin-y="true"
     >
-      <FATradeInTitle
-        :title="$t('trade_in.customer_final.voucher.title')"
-        size="s"
-      />
+      <FATradeInTitle :title="$t('trade_in.customer_final.voucher.title')" size="s" />
       <FAText :text="$t('trade_in.customer_final.voucher.text')" />
       <FMCtaContainer v-bind="ctaContainerData" />
     </FMSectionContainer>
@@ -46,13 +43,7 @@ const ctaContainerData = {
 // Tracking Plan //
 const total = computed(() => {
   if (tradeInModule.cart?.items && Array.isArray(tradeInModule.cart.items)) {
-    return (
-      tradeInModule.cart.total ||
-      tradeInModule.cart.items.reduce(
-        (total, item) => total + item.priceResale,
-        0,
-      )
-    );
+    return tradeInModule.cart.total || tradeInModule.cart.items.reduce((total, item) => total + item.priceResale, 0);
   }
   return 0;
 });

@@ -1,7 +1,6 @@
 export function useAddressFormatter() {
   const formatAddressCardText = (address) => {
-    const { addressLine1, addressLine2, zipCode, company, countryCode, city } =
-      address;
+    const { addressLine1, addressLine2, zipCode, company, countryCode, city } = address;
     let text = addressLine1;
     if (addressLine2 && addressLine2 !== "") {
       text += `\n${addressLine2}`;

@@ -1,10 +1,5 @@
 <template>
-  <FMPopin
-    position="left"
-    class="f-menu"
-    :visible="open"
-    @on-close="emit('onClose')"
-  >
+  <FMPopin position="left" class="f-menu" :visible="open" @on-close="emit('onClose')">
     <template #heading>
       <Transition>
         <FABack v-if="active !== 0" @click.prevent="active = 0" />
@@ -16,23 +11,12 @@
           <div v-if="active === 0" class="f-menu__list is-first">
             <ul>
               <li v-for="(link, i) in menu">
-                <p
-                  v-if="link.links?.length"
-                  class="f-menu__link-primary"
-                  @click.prevent="active = i + 1"
-                >
+                <p v-if="link.links?.length" class="f-menu__link-primary" @click.prevent="active = i + 1">
                   <span>{{ getLinkTitle(link) }}</span>
                   <FAIcon icon="right" />
                 </p>
-                <FAButton
-                  v-else-if="link.to?.name === 'sell'"
-                  :to="link.to"
-                  :label="getLinkTitle(link)"
-                  size="l"
-                />
-                <NuxtLink v-else class="f-menu__link-primary" :to="link.to">{{
-                  getLinkTitle(link)
-                }}</NuxtLink>
+                <FAButton v-else-if="link.to?.name === 'sell'" :to="link.to" :label="getLinkTitle(link)" size="l" />
+                <NuxtLink v-else class="f-menu__link-primary" :to="link.to">{{ getLinkTitle(link) }}</NuxtLink>
               </li>
             </ul>
             <ul class="f-menu__grid">
@@ -44,16 +28,8 @@
         </Transition>
         <template v-for="(link, i) in menu">
           <Transition name="slide-fade">
-            <div
-              v-if="link.links && active === i + 1"
-              class="f-menu__list is-second"
-            >
-              <FMCollapse
-                v-for="sub_link in link.links"
-                :title="getLinkTitle(sub_link)"
-                :open="true"
-                text-size="s"
-              >
+            <div v-if="link.links && active === i + 1" class="f-menu__list is-second">
+              <FMCollapse v-for="sub_link in link.links" :title="getLinkTitle(sub_link)" :open="true" text-size="s">
                 <ul>
                   <li v-for="sub_sub_link in sub_link.links">
                     <NuxtLink

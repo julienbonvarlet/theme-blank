@@ -1,10 +1,6 @@
 <template>
   <div class="f-ti-addresses">
-    <FMFormMessage
-      v-if="error"
-      type="error"
-      :text="error || $t('trade_in.address.error_selected_invalid')"
-    />
+    <FMFormMessage v-if="error" type="error" :text="error || $t('trade_in.address.error_selected_invalid')" />
     <FMFormSelectAddress :model="selectedAddress" @select="selectAddress" />
     <FAButton
       v-if="isValid"
@@ -29,9 +25,7 @@ const error = ref<boolean | string>(false);
 const addresses = computed(() => addressStore.addresses);
 const selectedAddress = computed(() => tradeInModule.selectedAddress);
 const isValid = computed(() =>
-  selectedAddress.value
-    ? addresses.value?.find((x) => x["@id"] === selectedAddress.value)
-    : null,
+  selectedAddress.value ? addresses.value?.find((x) => x["@id"] === selectedAddress.value) : null,
 );
 
 const confirm = async () => {

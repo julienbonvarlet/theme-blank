@@ -7,12 +7,8 @@
       :class="{ 'is-active': route.name === step.to.name }"
     >
       <NuxtLink :to="step.to">
-        <FAText class="f-steps-menu__nb" size="m" weight="bold">{{
-          step.number
-        }}</FAText>
-        <FAText v-if="step.title" class="f-steps-menu__text" size="s">{{
-          step.title
-        }}</FAText>
+        <FAText class="f-steps-menu__nb" size="m" weight="bold">{{ step.number }}</FAText>
+        <FAText v-if="step.title" class="f-steps-menu__text" size="s">{{ step.title }}</FAText>
       </NuxtLink>
     </li>
   </ul>

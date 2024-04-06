@@ -12,23 +12,37 @@
       @click="selectTag(tag)"
     >
       <span v-if="!tagImages">{{ tag }}</span>
-      <img
-        v-if="tagImages && tagImages[tag]"
-        :src="tagImages[tag]"
-        class="f-tags-container__tag-image"
-      />
+      <img v-if="tagImages && tagImages[tag]" :src="tagImages[tag]" class="f-tags-container__tag-image" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const props = defineProps({
-  tags: Array,
-  tagType: String,
-  tagImages: Object,
-  selectTag: Function,
-  isTagDisabled: Function,
-  isSelected: Function,
+  tags: {
+    type: Array,
+    required: true,
+  },
+  tagType: {
+    type: String,
+    required: true,
+  },
+  tagImages: {
+    type: Object,
+    required: true,
+  },
+  selectTag: {
+    type: Function,
+    required: true,
+  },
+  isTagDisabled: {
+    type: Function,
+    required: true,
+  },
+  isSelected: {
+    type: Function,
+    required: true,
+  },
 });
 
 const isSelected = (tag) => {

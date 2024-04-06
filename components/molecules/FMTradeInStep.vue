@@ -1,10 +1,5 @@
 <template>
-  <FMSectionContainer
-    :max-width="maxWidth"
-    class="f-ti-step"
-    class-child="f-ti-step__inner"
-    v-bind="attrs"
-  >
+  <FMSectionContainer :max-width="maxWidth" class="f-ti-step" class-child="f-ti-step__inner" v-bind="attrs">
     <div v-if="title || subtitle" class="f-ti-step__heading">
       <FATradeInTitle :title="title" tag="h1" size="m" />
       <FAText v-if="subtitle" :text="subtitle" />

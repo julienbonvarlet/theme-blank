@@ -13,8 +13,7 @@ const props = defineProps<{
   item: { key: string; value: number };
   filtersOptionsActive?: { type: string; value: string }[];
 }>();
-const currentFilter: { type: string; value: string }[] =
-  props.filtersOptionsActive || [];
+const currentFilter: { type: string; value: string }[] = props.filtersOptionsActive || [];
 
 const emit = defineEmits(["filter-changed"]);
 const isActive = ref(false);
@@ -33,9 +32,7 @@ const toggleActive = () => {
   if (isActive.value) {
     currentFilter.push({ type: props.type, value: props.item.key });
   } else {
-    const index = currentFilter.findIndex(
-      (item) => item.value === props.item.key,
-    );
+    const index = currentFilter.findIndex((item) => item.value === props.item.key);
     if (index !== -1) {
       currentFilter.splice(index, 1);
     }

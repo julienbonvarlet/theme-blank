@@ -1,16 +1,8 @@
 <template>
   <div class="f-credits-explanation">
-    <FMAccountHeading
-      :title="$t('account.trade_ins.credits_explanation.title')"
-      size="s"
-    />
+    <FMAccountHeading :title="$t('account.trade_ins.credits_explanation.title')" size="s" />
     <div class="f-credits-explanation__list">
-      <FMIconInfo
-        v-for="(step, i) in steps"
-        :key="step"
-        v-bind="step"
-        :image="images[i]"
-      />
+      <FMIconInfo v-for="(step, i) in steps" :key="step" v-bind="step" :image="images[i]" />
     </div>
   </div>
 </template>

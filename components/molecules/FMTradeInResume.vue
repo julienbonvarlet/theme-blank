@@ -3,11 +3,7 @@
     <FATradeInTitle :title="$t('trade_in.cart.title')" size="s" />
     <div class="f-ti-resume__container">
       <div class="f-ti-resume__products">
-        <FMTradeInCartItem
-          v-for="item in cart.items"
-          :key="item"
-          :item="item"
-        />
+        <FMTradeInCartItem v-for="item in cart.items" :key="item" :item="item" />
       </div>
       <FMCartResume v-bind="cartResumeData" />
     </div>
@@ -22,13 +18,7 @@ const tradeInModule = useTradeInModule();
 const cart = computed(() => tradeInModule.cart);
 const total = computed(() => {
   if (tradeInModule.cart?.items && Array.isArray(tradeInModule.cart.items)) {
-    return (
-      tradeInModule.cart.total ||
-      tradeInModule.cart.items.reduce(
-        (total, item) => total + item.priceResale,
-        0,
-      )
-    );
+    return tradeInModule.cart.total || tradeInModule.cart.items.reduce((total, item) => total + item.priceResale, 0);
   }
   return 0;
 });

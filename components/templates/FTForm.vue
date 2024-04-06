@@ -3,11 +3,7 @@
     <FMFormMessage v-if="error" type="error" :text="error" />
     <FMFormMessage v-if="success" type="success" :text="success" />
 
-    <FormKit
-      type="form"
-      :submit-label="button || $t('global.validate')"
-      @submit="submit"
-    >
+    <FormKit type="form" :submit-label="button || $t('global.validate')" @submit="submit">
       <FormKit
         v-for="field in fields"
         :key="field"

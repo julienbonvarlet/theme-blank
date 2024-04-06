@@ -14,10 +14,7 @@ export function useProductFilters() {
   const { fetchProducts } = useProductsStore();
 
   const updateProductsList = async () => {
-    listProducts.value = await fetchProducts(
-      newActiveFilters.value,
-      currentSortOption.value,
-    );
+    listProducts.value = await fetchProducts(newActiveFilters.value, currentSortOption.value);
   };
 
   const handleFilterChange = (filters) => {

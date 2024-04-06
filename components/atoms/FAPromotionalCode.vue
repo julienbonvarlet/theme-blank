@@ -1,13 +1,7 @@
 <template>
-  <div
-    class="f-promotional-code"
-    :class="{ 'is-copy': isCopied }"
-    @click.prevent="copyCode"
-  >
+  <div class="f-promotional-code" :class="{ 'is-copy': isCopied }" @click.prevent="copyCode">
     <FAText weight="bold" size="xs">{{ code }}</FAText>
-    <FAText class="f-promotional-code__confirm" size="xs" weight="bold">{{
-      $t("account.gift_cards.copied")
-    }}</FAText>
+    <FAText class="f-promotional-code__confirm" size="xs" weight="bold">{{ $t("account.gift_cards.copied") }}</FAText>
     <FAIcon icon="copy" />
   </div>
 </template>

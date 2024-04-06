@@ -1,18 +1,11 @@
 <template>
   <FTTradeIn>
-    <FMTradeInStep
-      class="f-ti-customer-auth"
-      class-child="f-ti-customer-auth__inner"
-      max-width="l"
-    >
+    <FMTradeInStep class="f-ti-customer-auth" class-child="f-ti-customer-auth__inner" max-width="l">
       <div class="f-ti-customer-auth__col">
         <FABack to="/pages/trade-in/customer/2" />
 
         <div>
-          <FATradeInTitle
-            :title="$t('trade_in.identification.title')"
-            size="s"
-          />
+          <FATradeInTitle :title="$t('trade_in.identification.title')" size="s" />
 
           <FALoader v-if="loading" size="m" />
 
@@ -20,33 +13,15 @@
 
           <div v-else>
             <FAText :text="$t('trade_in.identification.text')" />
-            <FMFormCheckEmail
-              v-if="!emailChecked"
-              @submit="handleEmailSubmit"
-            />
-            <FMFormLogin
-              v-else-if="emailExists"
-              :email="email"
-              @go-to-register="toggleEmailExists"
-            />
-            <FMFormRegister
-              v-else
-              :email="email"
-              @go-to-login="toggleEmailExists"
-            />
+            <FMFormCheckEmail v-if="!emailChecked" @submit="handleEmailSubmit" />
+            <FMFormLogin v-else-if="emailExists" :email="email" @go-to-register="toggleEmailExists" />
+            <FMFormRegister v-else :email="email" @go-to-login="toggleEmailExists" />
           </div>
         </div>
 
         <div>
-          <FATradeInTitle
-            :class="{ 'is-disabled': !user }"
-            :title="$t('trade_in.address.title')"
-            size="s"
-          />
-          <FMTradeInAddresses
-            v-if="user"
-            @next="router.push({ name: 'trade-in-customer-step-4' })"
-          />
+          <FATradeInTitle :class="{ 'is-disabled': !user }" :title="$t('trade_in.address.title')" size="s" />
+          <FMTradeInAddresses v-if="user" @next="router.push({ name: 'trade-in-customer-step-4' })" />
         </div>
       </div>
 
@@ -59,7 +34,6 @@
 const router = useRouter();
 const userStore = useUserStore();
 const authStore = useAuthStore();
-const tradeInModule = useTradeInModule();
 const { $trackingPlan } = useNuxtApp();
 
 const email = ref<null | string>(null);

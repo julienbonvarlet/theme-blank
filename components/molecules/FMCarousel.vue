@@ -81,10 +81,7 @@ const updateButtonStates = () => {
 
     & > * {
       flex: none;
-      width: calc(
-        (100% / var(--items-visible)) -
-          (var(--gap) * (var(--items-visible) - 1) / var(--items-visible))
-      );
+      width: calc((100% / var(--items-visible)) - (var(--gap) * (var(--items-visible) - 1) / var(--items-visible)));
     }
   }
 

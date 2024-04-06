@@ -1,33 +1,15 @@
 <template>
   <FMSectionContainer :padding-x="false" max-width="xl" :padding-y="false">
     <div class="f-collection-overview">
-      <div
-        v-for="(block, i) in blocks"
-        :key="i"
-        class="f-collection-overview__block"
-      >
-        <img
-          class="f-collection-overview__img"
-          :src="block.image"
-          :alt="block.title.text"
-        />
+      <div v-for="(block, i) in blocks" :key="i" class="f-collection-overview__block">
+        <img class="f-collection-overview__img" :src="block.image" :alt="block.title.text" />
         <NuxtLink :to="block.title.link">
-          <FATitle
-            tag="h2"
-            size="m"
-            class="f-collection-overview__title"
-            :title="block.title.text"
-          >
+          <FATitle tag="h2" size="m" class="f-collection-overview__title" :title="block.title.text">
             {{ block.title.text }}
           </FATitle>
         </NuxtLink>
         <div class="f-collection-overview__links">
-          <FALink
-            v-for="link in block.links"
-            :key="link"
-            v-bind="link"
-            :is-active="false"
-          />
+          <FALink v-for="link in block.links" :key="link" v-bind="link" :is-active="false" />
         </div>
       </div>
     </div>

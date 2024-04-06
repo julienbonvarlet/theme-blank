@@ -18,15 +18,8 @@
     </div>
 
     <div v-if="orderArticles || resaleArticles" class="f-account-detail__list">
-      <FMAccountHeading
-        :title="$t('account.trade_ins.detail.articles')"
-        size="s"
-      />
-      <FMAccountList
-        v-if="resaleArticles"
-        :items="resaleArticles"
-        name="resaleArticle"
-      />
+      <FMAccountHeading :title="$t('account.trade_ins.detail.articles')" size="s" />
+      <FMAccountList v-if="resaleArticles" :items="resaleArticles" name="resaleArticle" />
       <FMAccountList v-else :items="orderArticles" name="orderArticle" />
       <slot name="listing" />
     </div>
@@ -37,24 +30,15 @@
       <slot name="payment" />
     </div>
 
-    <div
-      v-if="shippingAddress || billingAddress"
-      class="f-account-detail__shipping-billing"
-    >
+    <div v-if="shippingAddress || billingAddress" class="f-account-detail__shipping-billing">
       <div v-if="shippingAddress" class="f-account-detail__shipping">
-        <FMAccountHeading
-          :title="$t('pages.checkout.shipping.title')"
-          size="s"
-        />
+        <FMAccountHeading :title="$t('pages.checkout.shipping.title')" size="s" />
         <FMAddressCard :address="shippingAddress" :display-cta="false" />
         <slot name="shipping" />
       </div>
 
       <div v-if="billingAddress" class="f-account-detail__shipping">
-        <FMAccountHeading
-          :title="$t('pages.checkout.address.billing')"
-          size="s"
-        />
+        <FMAccountHeading :title="$t('pages.checkout.address.billing')" size="s" />
         <FMAddressCard :address="billingAddress" :display-cta="false" />
         <slot name="billing" />
       </div>

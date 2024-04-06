@@ -1,11 +1,6 @@
 <template>
   <section class="fp-checkout">
-    <FMSectionContainer
-      max-width="l"
-      :padding-x="true"
-      :padding-y="true"
-      class-child="fp-checkout__inner"
-    >
+    <FMSectionContainer max-width="l" :padding-x="true" :padding-y="true" class-child="fp-checkout__inner">
       <div class="fp-checkout__col fp-checkout__col--payment">
         <FALoader v-if="loading" size="m" />
         <div v-else class="fp-checkout__steps">
@@ -29,15 +24,9 @@ const loading = ref(true);
 
 const isAuthenticated = computed(() => authStore.authToken);
 const displayAddress = computed(() => isAuthenticated.value);
-const displayShippingMethod = computed(
-  () => isAuthenticated.value && billingAddress.value && shippingAddress.value,
-);
+const displayShippingMethod = computed(() => isAuthenticated.value && billingAddress.value && shippingAddress.value);
 const displayPayment = computed(
-  () =>
-    isAuthenticated.value &&
-    billingAddress.value &&
-    shippingAddress.value &&
-    shippingMethodId.value,
+  () => isAuthenticated.value && billingAddress.value && shippingAddress.value && shippingMethodId.value,
 );
 
 onMounted(() => {

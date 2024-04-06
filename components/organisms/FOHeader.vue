@@ -1,15 +1,8 @@
 <template>
   <header class="f-header">
-    <FMSectionContainer
-      :padding-x="true"
-      max-width="xl"
-      class-child="f-header__container"
-    >
+    <FMSectionContainer :padding-x="true" max-width="xl" class-child="f-header__container">
       <div class="f-header__mobile">
-        <button
-          class="f-header__burger"
-          @click.prevent="isMobileMenuOpen = true"
-        >
+        <button class="f-header__burger" @click.prevent="isMobileMenuOpen = true">
           <FAIcon icon="menu" />
         </button>
       </div>
@@ -17,11 +10,7 @@
       <ul class="f-header__nav">
         <li v-for="link in menu" :key="link" class="f-header__link">
           <FAHeaderLink :to="link.to">{{ getLinkTitle(link) }}</FAHeaderLink>
-          <FMHeaderSubmenu
-            v-if="link.links || link.visuals"
-            :menu="link.links"
-            :visuals="link.visuals"
-          />
+          <FMHeaderSubmenu v-if="link.links || link.visuals" :menu="link.links" :visuals="link.visuals" />
         </li>
       </ul>
 
@@ -44,9 +33,7 @@
         </NuxtLink>
         <button class="f-header__cart" @click="toggleMiniCart">
           <FAIcon class="f-header__cart-icon" icon="cart" />
-          <span v-if="cartCount > 0" class="f-header__cart__count">{{
-            cartCount
-          }}</span>
+          <span v-if="cartCount > 0" class="f-header__cart__count">{{ cartCount }}</span>
         </button>
       </div>
     </FMSectionContainer>
@@ -54,10 +41,7 @@
 
   <FOMinicart />
 
-  <FOSearchProducts
-    v-if="isSearchOpen"
-    @update:is-search-open="isSearchOpen = $event"
-  />
+  <FOSearchProducts v-if="isSearchOpen" @update:is-search-open="isSearchOpen = $event" />
 
   <FOMenu :open="isMobileMenuOpen" @on-close="isMobileMenuOpen = false" />
 </template>
@@ -82,9 +66,7 @@ const toggleMiniCart = () => {
 const cartCount = computed(() => cartStore.cartItems?.length);
 
 onMounted(async () => {
-  const headerHeight = header.value
-    ? header.value.getBoundingClientRect().height
-    : 0;
+  const headerHeight = header.value ? header.value.getBoundingClientRect().height : 0;
   setHeaderHeight(headerHeight);
 });
 </script>

@@ -6,9 +6,7 @@ export const useUserStore = defineStore("user", () => {
   const config = useRuntimeConfig();
   const clientId = config?.public?.faume?.clientId;
 
-  const userIsGuest = computed(
-    () => user.value && user.value?.["@type"] !== "Customer",
-  );
+  const userIsGuest = computed(() => user.value && user.value?.["@type"] !== "Customer");
 
   const fetchCurrentUser = async () => {
     try {
@@ -16,45 +14,30 @@ export const useUserStore = defineStore("user", () => {
       user.value = response;
       return response;
     } catch (error) {
-      console.error(
-        "Erreur lors de la récupération des données utilisateur:",
-        error,
-      );
+      console.error("Erreur lors de la récupération des données utilisateur:", error);
     }
   };
 
   const updateUser = async (userId, updatedData) => {
     try {
-      const data = await $API.customer.apiCustomerCustomersIdPatch(
-        userId,
-        updatedData,
-      );
+      const data = await $API.customer.apiCustomerCustomersIdPatch(userId, updatedData);
       user.value = {
         ...user.value,
         ...data,
       };
       console.log("Informations utilisateur mises à jour");
     } catch (error) {
-      console.error(
-        "Erreur lors de la mise à jour des informations utilisateur:",
-        error,
-      );
+      console.error("Erreur lors de la mise à jour des informations utilisateur:", error);
       throw error;
     }
   };
 
   const changePassword = async (userId, passwordData) => {
-    return await $API.customer.apiCustomerCustomersIdchangePasswordPatch(
-      userId,
-      passwordData,
-    );
+    return await $API.customer.apiCustomerCustomersIdchangePasswordPatch(userId, passwordData);
   };
 
   const resetPassword = async (hashedToken, passwordData) => {
-    const data = await $API.auth.apiCustomerAuthresetPasswordHashedTokenPatch(
-      hashedToken,
-      passwordData,
-    );
+    const data = await $API.auth.apiCustomerAuthresetPasswordHashedTokenPatch(hashedToken, passwordData);
     if (typeof data === "object" && data.email) {
       user.value = data;
       router.push({ name: "account" });

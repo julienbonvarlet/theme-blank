@@ -2,12 +2,7 @@
   <div>
     <h1>formkit</h1>
     <FormKit v-model="value" type="form" :actions="false">
-      <FormKit
-        type="text"
-        label="Your username"
-        value="calypso"
-        help="Pick a username people will remember!"
-      />
+      <FormKit type="text" label="Your username" value="calypso" help="Pick a username people will remember!" />
       <FormKit
         name="genre"
         type="radio"
@@ -43,13 +38,7 @@
           { label: 'Homme', value: 'man' },
         ]"
       />
-      <FormKit
-        name="email"
-        type="email"
-        label="Email"
-        validation="required|email"
-        validation-visibility="live"
-      />
+      <FormKit name="email" type="email" label="Email" validation="required|email" validation-visibility="live" />
 
       <FormKit
         type="date"
@@ -107,7 +96,7 @@
 <script setup>
 const value = ref();
 
-const handleIconClick = (node, e) => {
+const handleIconClick = (node) => {
   node.props.suffixIcon = node.props.suffixIcon === "eye" ? "eyeClosed" : "eye";
   node.props.type = node.props.type === "password" ? "text" : "password";
 };

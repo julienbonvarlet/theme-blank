@@ -1,10 +1,6 @@
 <template>
   <div class="fp-buy">
-    <FOSectionText
-      :title="$t('pages.buy.title')"
-      :subtitle="$t('pages.buy.subtitle')"
-      :text="$t('pages.buy.text')"
-    />
+    <FOSectionText :title="$t('pages.buy.title')" :subtitle="$t('pages.buy.subtitle')" :text="$t('pages.buy.text')" />
     <FOCollectionOverview :blocks="blocks" />
   </div>
 </template>

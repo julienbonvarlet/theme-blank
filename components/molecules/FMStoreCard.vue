@@ -1,10 +1,5 @@
 <template>
-  <div
-    ref="el"
-    class="f-store-card"
-    :class="{ 'is-active': isFocus }"
-    @click.stop="emit('focusStore', props.store)"
-  >
+  <div ref="el" class="f-store-card" :class="{ 'is-active': isFocus }" @click.stop="emit('focusStore', props.store)">
     <FMCardText
       :title="store.properties.store.name"
       :text="`${store.properties.store.street}`"
@@ -12,18 +7,8 @@
       <br>${store.properties.store.phone}`"
       title-tag="h3"
     />
-    <FMCollapse
-      v-if="showPlanning"
-      title-tag="h2"
-      title-size="m"
-      :title="t('pages.stores.hours')"
-    >
-      <FAText
-        v-for="(value, key) in translatedSchedule"
-        :key="key"
-        size="xs"
-        class="f-store-card__planning-item"
-      >
+    <FMCollapse v-if="showPlanning" title-tag="h2" title-size="m" :title="t('pages.stores.hours')">
+      <FAText v-for="(value, key) in translatedSchedule" :key="key" size="xs" class="f-store-card__planning-item">
         <span>{{ key }} : </span><span>{{ value }}</span>
       </FAText>
     </FMCollapse>
@@ -32,9 +17,7 @@
         icon="dot"
         class="f-store-card__status-tag"
         :class="isStoreOpen ? 'is-open' : 'is-closed'"
-        :text="
-          isStoreOpen ? t('pages.stores.open_today') : t('pages.stores.closed')
-        "
+        :text="isStoreOpen ? t('pages.stores.open_today') : t('pages.stores.closed')"
       />
       <FAButtonIcon icon="time" />
     </div>
@@ -76,9 +59,7 @@ defineExpose({
   el,
 });
 
-const currentDay = new Date()
-  .toLocaleDateString("en-GB", { weekday: "long" })
-  .toLowerCase();
+const currentDay = new Date().toLocaleDateString("en-GB", { weekday: "long" }).toLowerCase();
 const isStoreOpen = computed(() => {
   // Test if the current day in the schedule contain a number ex : 9h00 - 12h00
   // to differentiate from "closed" for example
@@ -101,15 +82,7 @@ const translatedSchedule = computed(() => {
   const translated = {};
 
   // Define the desired order of the days
-  const orderedDays = [
-    "monday",
-    "tuesday",
-    "wednesday",
-    "thursday",
-    "friday",
-    "saturday",
-    "sunday",
-  ];
+  const orderedDays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 
   for (const dayKey of orderedDays) {
     if (dayKey in schedule) {

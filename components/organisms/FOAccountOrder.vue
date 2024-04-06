@@ -12,57 +12,32 @@
   >
     <template #bottom>
       <div>
-        <FMAccountHeading
-          :title="$t('account.orders.detail.returns.title')"
-          size="s"
-        >
+        <FMAccountHeading :title="$t('account.orders.detail.returns.title')" size="s">
           <FAButton
-            v-if="
-              !order.returnIsExpired &&
-              order.returnArticles?.length !== order.articles?.length
-            "
+            v-if="!order.returnIsExpired && order.returnArticles?.length !== order.articles?.length"
             to="/account/new-return"
             icon="plus"
             :label="$t('account.orders.detail.returns.button_new')"
           />
         </FMAccountHeading>
         <div v-if="order.returnIsExpired">
-          <FAText size="s">{{
-            $t("account.orders.detail.returns.expired")
-          }}</FAText>
+          <FAText size="s">{{ $t("account.orders.detail.returns.expired") }}</FAText>
           <br />
-          <FAButton
-            to="pages/sell"
-            :label="$t('account.orders.detail.returns.sell')"
-          />
+          <FAButton to="pages/sell" :label="$t('account.orders.detail.returns.sell')" />
         </div>
-        <FMAccountList
-          v-else-if="order.returnArticles?.length"
-          :items="order.returnArticles"
-          name="returnArticle"
-        />
+        <FMAccountList v-else-if="order.returnArticles?.length" :items="order.returnArticles" name="returnArticle" />
         <FAText v-else>{{ $t("account.orders.detail.returns.empty") }}</FAText>
       </div>
     </template>
 
     <template v-if="order.shippingTrackingUrl" #shipping>
       <br />
-      <FAButton
-        size="s"
-        icon="shipping"
-        :label="$t('account.orders.track_order')"
-        :to="order.shippingTrackingUrl"
-      />
+      <FAButton size="s" icon="shipping" :label="$t('account.orders.track_order')" :to="order.shippingTrackingUrl" />
     </template>
 
     <template v-if="invoiceIsAvailable" #billing>
       <br />
-      <FAButton
-        size="s"
-        icon="download"
-        :label="$t('account.orders.download_billing')"
-        :to="invoice"
-      />
+      <FAButton size="s" icon="download" :label="$t('account.orders.download_billing')" :to="invoice" />
     </template>
   </FOAccountDetail>
 </template>
@@ -99,9 +74,7 @@ const wording = computed(() => {
       return_treated: t("account.orders.states.return_treated"),
       refunded: t("account.orders.states.refunded"),
       treating: t("account.orders.states.treating"),
-      requires_payment_method: t(
-        "account.orders.states.requires_payment_method",
-      ),
+      requires_payment_method: t("account.orders.states.requires_payment_method"),
     },
   };
 });
@@ -109,19 +82,10 @@ const wording = computed(() => {
 const { $API } = useNuxtApp();
 const apiConfig = $API.order?.httpRequest?.config || {};
 
-const { billingAddress, shippingAddress, shippingMethod, promotionalCode } =
-  useAsyncOrderData(apiConfig, props.order);
+const { billingAddress, shippingAddress, shippingMethod, promotionalCode } = useAsyncOrderData(apiConfig, props.order);
 const timeline = useOrderTimeline(props.order, wording.value);
 const { items } = useAsyncOrderItems(apiConfig, props.order);
-const { informationTable, paymentTable } = useOrderTables(
-  props.order,
-  wording.value,
-  promotionalCode,
-);
-const invoice = computed(
-  () => `${apiConfig.BASE}/api/v3/customer/orders/${props.order?.id}/invoice`,
-);
-const invoiceIsAvailable = computed(() =>
-  ["traited", "refunded", "partially_refunded"].includes(props.order?.state),
-);
+const { informationTable, paymentTable } = useOrderTables(props.order, wording.value);
+const invoice = computed(() => `${apiConfig.BASE}/api/v3/customer/orders/${props.order?.id}/invoice`);
+const invoiceIsAvailable = computed(() => ["traited", "refunded", "partially_refunded"].includes(props.order?.state));
 </script>

@@ -5,11 +5,7 @@
       back-url="/account/addresses"
       :back-text="$t('account.addresses.back')"
     />
-    <FMFormAddress
-      :address="address"
-      :inline-desktop="true"
-      :success-message="$t('account.addresses.edit.success')"
-    />
+    <FMFormAddress :address="address" :inline-desktop="true" :success-message="$t('account.addresses.edit.success')" />
   </section>
 </template>
 

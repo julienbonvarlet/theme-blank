@@ -1,26 +1,16 @@
 <template>
-  <FMTradeInStep
-    :title="$t('trade_in.cart.title')"
-    class="f-ti-cart"
-    max-width="l"
-  >
+  <FMTradeInStep :title="$t('trade_in.cart.title')" class="f-ti-cart" max-width="l">
     <div class="f-ti-cart__container">
       <div class="f-ti-cart__col f-ti-cart__col--products">
         <FATradeInTitle :title="listTitle" size="s" />
         <div v-if="cart?.items?.length" class="f-ti-cart__items">
-          <FMTradeInCartItem
-            v-for="item in cart.items"
-            :key="item"
-            :item="item"
-          />
+          <FMTradeInCartItem v-for="item in cart.items" :key="item" :item="item" />
         </div>
         <FAButton
           class="f-ti-cart__add"
           :label="$t('trade_in.cart.button_add')"
           :to="{
-            name: isStore
-              ? 'trade-in-store-step-2'
-              : 'trade-in-customer-step-1',
+            name: isStore ? 'trade-in-store-step-2' : 'trade-in-customer-step-1',
           }"
           icon="plus"
         />
@@ -28,27 +18,15 @@
       <div class="f-ti-cart__col f-ti-cart__col--resume">
         <FATradeInTitle :title="$t('trade_in.cart.title_resume')" size="s" />
         <FMCartResume v-bind="cartResumeData">
-          <FormKit
-            v-model="cartAgree"
-            type="checkbox"
-            :label="$t('trade_in.cart.terms')"
-            name="cgv"
-          />
+          <FormKit v-model="cartAgree" type="checkbox" :label="$t('trade_in.cart.terms')" name="cgv" />
           <FAButton
             :is-disabled="!cartAgree"
-            :label="
-              $t('trade_in.cart.button_confirm', { total: totalFormatted })
-            "
+            :label="$t('trade_in.cart.button_confirm', { total: totalFormatted })"
             :to="{
-              name: isStore
-                ? 'trade-in-store-step-4'
-                : 'trade-in-customer-step-3',
+              name: isStore ? 'trade-in-store-step-4' : 'trade-in-customer-step-3',
             }"
           />
-          <FAText
-            size="xs"
-            :text="$t('trade_in.cart.text', { total: totalFormatted })"
-          />
+          <FAText size="xs" :text="$t('trade_in.cart.text', { total: totalFormatted })" />
         </FMCartResume>
       </div>
     </div>
@@ -72,13 +50,7 @@ const cart = computed(() => tradeInModule.cart);
 const count = computed(() => tradeInModule.cart?.items?.length || 0);
 const total = computed(() => {
   if (tradeInModule.cart?.items && Array.isArray(tradeInModule.cart.items)) {
-    return (
-      tradeInModule.cart.total ||
-      tradeInModule.cart.items.reduce(
-        (total, item) => total + item.priceResale,
-        0,
-      )
-    );
+    return tradeInModule.cart.total || tradeInModule.cart.items.reduce((total, item) => total + item.priceResale, 0);
   }
   return 0;
 });

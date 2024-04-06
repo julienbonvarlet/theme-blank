@@ -1,10 +1,5 @@
 <template>
-  <FAText
-    v-if="show"
-    size="xs"
-    class="f-discount-tag"
-    :class="[promotionalClass]"
-  >
+  <FAText v-if="show" size="xs" class="f-discount-tag" :class="[promotionalClass]">
     {{ content }}
   </FAText>
 </template>
@@ -23,8 +18,7 @@ const content = computed(() => {
   if (props.promotionalOffer) {
     return t("promotional_offers.20");
   } else if (props.originalPrice && props.originalPrice > props.salePrice) {
-    const reduction =
-      ((props.originalPrice - props.salePrice) / props.originalPrice) * 100;
+    const reduction = ((props.originalPrice - props.salePrice) / props.originalPrice) * 100;
     return `- ${reduction.toFixed(0)}%`;
   }
   return null;
@@ -37,9 +31,7 @@ const show = computed(() => {
   return props.originalPrice && props.originalPrice > props.salePrice;
 });
 
-const promotionalClass = computed(() =>
-  props.promotionalOffer ? "is-promo-offer" : "",
-);
+const promotionalClass = computed(() => (props.promotionalOffer ? "is-promo-offer" : ""));
 </script>
 
 <style lang="scss">

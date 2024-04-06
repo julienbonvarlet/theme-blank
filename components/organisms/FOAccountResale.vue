@@ -8,16 +8,10 @@
     :information-table="informationTable"
     class="f-account-resale"
   >
-    <template
-      v-if="resale.rejectReasons?.length || resale.creditedAt"
-      #informations
-    >
+    <template v-if="resale.rejectReasons?.length || resale.creditedAt" #informations>
       <FMWalletCard v-if="resale.creditedAt" />
       <div v-if="resale.rejectReasons?.length" class="f-account-resale__reject">
-        <FMAccountHeading
-          :title="$t('account.trade_ins.detail.rejected.title')"
-          size="s"
-        />
+        <FMAccountHeading :title="$t('account.trade_ins.detail.rejected.title')" size="s" />
         <FMFormMessage :text="$t('account.trade_ins.detail.rejected.text')" />
         <FAText>{{ resale.rejectReasons.join(" • ") }}</FAText>
         <ul class="f-account-resale__reject__images">
@@ -29,30 +23,16 @@
     </template>
 
     <template #bottom>
-      <section
-        v-if="resale.state === 'draft'"
-        class="f-account-resale__not-validated"
-      >
-        <FMAccountHeading
-          :title="$t('account.trade_ins.detail.not_validated.title')"
-          size="s"
-        />
+      <section v-if="resale.state === 'draft'" class="f-account-resale__not-validated">
+        <FMAccountHeading :title="$t('account.trade_ins.detail.not_validated.title')" size="s" />
         <FAText :text="$t('account.trade_ins.detail.not_validated.text')" />
-        <FAButton
-          :label="$t('account.trade_ins.detail.not_validated.button')"
-          @click.prevent="continueTradeIn"
-        />
+        <FAButton :label="$t('account.trade_ins.detail.not_validated.button')" @click.prevent="continueTradeIn" />
       </section>
       <section
-        v-if="
-          !resale.sentAt && !resale.receivedAt && resale.state === 'validated'
-        "
+        v-if="!resale.sentAt && !resale.receivedAt && resale.state === 'validated'"
         class="f-account-resale__explanation"
       >
-        <FMAccountHeading
-          :title="$t('account.trade_ins.detail.how_to_send')"
-          size="s"
-        />
+        <FMAccountHeading :title="$t('account.trade_ins.detail.how_to_send')" size="s" />
         <FMResaleShippingExplanation :resale="resale" />
       </section>
     </template>
@@ -75,16 +55,8 @@ const pushInTable = (title: string, value: string) => ({
   value,
 });
 
-const estimatedTotal = computed(
-  () =>
-    props.resale?.items?.reduce((total, item) => total + item.priceResale, 0) ||
-    0,
-);
-const creditedTotal = computed(
-  () =>
-    props.resale?.items?.reduce((total, item) => total + item.priceCredit, 0) ||
-    0,
-);
+const estimatedTotal = computed(() => props.resale?.items?.reduce((total, item) => total + item.priceResale, 0) || 0);
+const creditedTotal = computed(() => props.resale?.items?.reduce((total, item) => total + item.priceCredit, 0) || 0);
 
 const timeline = useTradeInTimeline(props.resale, {
   trade_in_created: t("account.trade_ins.detail.created_date"),
@@ -108,44 +80,17 @@ const informationTable = computed(() => {
   }
   const resale = props.resale;
   const data = [];
+  data.push(pushInTable(t("account.trade_ins.detail.reference"), resale.reference));
+  data.push(pushInTable(t("account.trade_ins.detail.created_date"), formatDate(resale.createdAt)));
   data.push(
-    pushInTable(t("account.trade_ins.detail.reference"), resale.reference),
+    pushInTable(t(`account.trade_ins.detail.article${resale.items?.length > 1 ? "s" : ""}`), resale.items?.length || 0),
   );
-  data.push(
-    pushInTable(
-      t("account.trade_ins.detail.created_date"),
-      formatDate(resale.createdAt),
-    ),
-  );
-  data.push(
-    pushInTable(
-      t(
-        `account.trade_ins.detail.article${resale.items?.length > 1 ? "s" : ""}`,
-      ),
-      resale.items?.length || 0,
-    ),
-  );
-  data.push(
-    pushInTable(
-      t("account.trade_ins.detail.estimated_amount"),
-      formatPrice(estimatedTotal.value),
-    ),
-  );
+  data.push(pushInTable(t("account.trade_ins.detail.estimated_amount"), formatPrice(estimatedTotal.value)));
   if (resale.trackingNumber) {
-    data.push(
-      pushInTable(
-        t("account.trade_ins.detail.tracking_number"),
-        resale.trackingNumber,
-      ),
-    );
+    data.push(pushInTable(t("account.trade_ins.detail.tracking_number"), resale.trackingNumber));
   }
   if (creditedTotal.value > 0) {
-    data.push(
-      pushInTable(
-        t("account.trade_ins.detail.credited_amount"),
-        formatPrice(creditedTotal.value),
-      ),
-    );
+    data.push(pushInTable(t("account.trade_ins.detail.credited_amount"), formatPrice(creditedTotal.value)));
   }
   return data;
 });

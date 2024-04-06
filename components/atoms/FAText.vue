@@ -1,10 +1,5 @@
 <template>
-  <component
-    :is="tag"
-    class="f-text"
-    :class="[sizeClass, weightClass, greyClass]"
-    v-bind="attrs"
-  >
+  <component :is="tag" class="f-text" :class="[sizeClass, weightClass, greyClass]" v-bind="attrs">
     <span v-if="text" v-html="text" />
     <slot />
   </component>
@@ -14,9 +9,9 @@
 const props = withDefaults(
   defineProps<{
     text?: string;
-    size?: (typeof TextSizes)[string];
-    weight?: (typeof TextWeights)[string];
-    tag?: (typeof TextTags)[string];
+    size?: TextSizes;
+    weight?: TextWeights;
+    tag?: TextTags;
     isGrey?: boolean;
   }>(),
   {

@@ -7,10 +7,7 @@ export const useResalesStore = defineStore("resales", () => {
 
   const fetchResales = async () => {
     try {
-      const response = await $API.tradeIn.apiCustomerTradeInsGetCollection(
-        page.value,
-        itemsPerPage.value,
-      );
+      const response = await $API.tradeIn.apiCustomerTradeInsGetCollection(page.value, itemsPerPage.value);
       resales.value = response["hydra:member"] || [];
       console.log("re", response);
       return resales.value;

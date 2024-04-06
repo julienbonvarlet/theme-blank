@@ -2,11 +2,7 @@
   <div v-if="fields?.length" class="f-field-box-list" :class="[sizeClass]">
     <div v-if="label" class="f-field-box-list__heading">
       <FAFieldTitle :label="label" />
-      <FALinkHelper
-        v-if="helper"
-        :text="helper"
-        @click.prevent="emit('onHelperClick')"
-      />
+      <FALinkHelper v-if="helper" :text="helper" @click.prevent="emit('onHelperClick')" />
     </div>
     <div class="f-field-box-list__container">
       <FAFieldBox

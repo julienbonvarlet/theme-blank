@@ -5,8 +5,7 @@ export const useTradeInCartItem = defineStore("tradeInCartItem", () => {
     if (!id) {
       return null;
     }
-    const response =
-      await $API.tradeInCartItemPhoto.apiCustomerTradeInCartItemPhotosIdGet(id);
+    const response = await $API.tradeInCartItemPhoto.apiCustomerTradeInCartItemPhotosIdGet(id);
     return response?.url;
   };
 

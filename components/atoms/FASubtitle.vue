@@ -8,7 +8,7 @@
 const props = withDefaults(
   defineProps<{
     text?: string;
-    tag?: (typeof SubtitleTags)[string];
+    tag?: SubtitleTags;
   }>(),
   {
     tag: "h3",

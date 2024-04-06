@@ -18,9 +18,7 @@
   --f-field-box-m-font-weight: 400;
   --f-field-box-s-font-weight: 400;
 
-  --f-field-box-m-padding-x: calc(
-    (var(--f-field-box-m-width) - var(--f-field-box-m-font-size)) / 2
-  );
+  --f-field-box-m-padding-x: calc((var(--f-field-box-m-width) - var(--f-field-box-m-font-size)) / 2);
   --f-field-box-s-padding-x: calc(var(--f-length-1) / 2);
 
   --f-field-box-m-border-width: 2px;

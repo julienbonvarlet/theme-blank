@@ -5,10 +5,7 @@ export const useTradeInStore = defineStore("tradeIn", () => {
 
   const fetchTradeIns = async (page = 1, itemsPerPage = 10) => {
     try {
-      const response = await $API.tradeIn.apiCustomerTradeInsGetCollection(
-        page,
-        itemsPerPage,
-      );
+      const response = await $API.tradeIn.apiCustomerTradeInsGetCollection(page, itemsPerPage);
       tradeIns.value = response["hydra:member"];
       return response;
     } catch (error) {
@@ -30,16 +27,10 @@ export const useTradeInStore = defineStore("tradeIn", () => {
 
   const fetchAvailableSizesAndColors = async (sku: string) => {
     try {
-      const response =
-        await $API.tradeIn.apiCustomerTradeInsgetAvailableSizesAndColorsSkuGet(
-          sku,
-        );
+      const response = await $API.tradeIn.apiCustomerTradeInsgetAvailableSizesAndColorsSkuGet(sku);
       return response as TradeInAvailableColorsAndSizes_jsonld;
     } catch (error) {
-      console.error(
-        "Erreur lors de la récupération des tailles et couleurs disponibles:",
-        error,
-      );
+      console.error("Erreur lors de la récupération des tailles et couleurs disponibles:", error);
       throw error;
     }
   };
@@ -48,24 +39,17 @@ export const useTradeInStore = defineStore("tradeIn", () => {
     merchandisingData: TradeInMerchandising_TradeInMerchandisingInput_jsonld,
   ) => {
     try {
-      const response =
-        await $API.tradeIn.apiCustomerTradeInsmerchandisingPost(
-          merchandisingData,
-        );
+      const response = await $API.tradeIn.apiCustomerTradeInsmerchandisingPost(merchandisingData);
       return response as TradeInMerchandising_jsonld;
     } catch (error) {
-      console.error(
-        "Erreur lors de la création du TradeInMerchandising:",
-        error,
-      );
+      console.error("Erreur lors de la création du TradeInMerchandising:", error);
       throw error;
     }
   };
 
   const searchBySku = async (sku: string) => {
     try {
-      const response =
-        await $API.tradeIn.apiCustomerTradeInssearchBySkuSkuGet(sku);
+      const response = await $API.tradeIn.apiCustomerTradeInssearchBySkuSkuGet(sku);
       return response.results;
     } catch (error) {
       console.error("Erreur lors de la recherche par SKU:", error);

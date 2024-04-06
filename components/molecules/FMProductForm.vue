@@ -45,15 +45,9 @@ const selectedAttributes = ref({
 
 const photos = computed(() => choice?.value?.photos);
 
-const sizes = ref(
-  props.product.size ? [...props.product.size].sort((a, b) => a - b) : [],
-);
-const states = ref(
-  props.product.state ? [...props.product.state].sort((a, b) => a - b) : [],
-);
-const colors = ref(
-  props.product.color ? [...props.product.color].sort((a, b) => a - b) : [],
-);
+const sizes = ref(props.product.size ? [...props.product.size].sort((a, b) => a - b) : []);
+const states = ref(props.product.state ? [...props.product.state].sort((a, b) => a - b) : []);
+const colors = ref(props.product.color ? [...props.product.color].sort((a, b) => a - b) : []);
 
 const sizesFields = computed(() =>
   sizes.value.map((size) => ({
@@ -66,9 +60,7 @@ const colorsFields = computed(() =>
   colors.value.map((color) => ({
     value: color,
     image: choices?.value?.find((c) => c.color === color)?.photos?.[0],
-    disabled: !choices.value?.find(
-      (c) => c.size == selectedAttributes.value.size && c.color === color,
-    ),
+    disabled: !choices.value?.find((c) => c.size == selectedAttributes.value.size && c.color === color),
   })),
 );
 
@@ -77,10 +69,7 @@ const stateFields = computed(() =>
     label: state,
     value: state,
     disabled: !choices.value?.find(
-      (c) =>
-        c.size == selectedAttributes.value.size &&
-        c.color == selectedAttributes.value.color &&
-        c.state === state,
+      (c) => c.size == selectedAttributes.value.size && c.color == selectedAttributes.value.color && c.state === state,
     ),
   })),
 );
@@ -130,9 +119,7 @@ watch(choice, (newValue) => {
     // If no choice exist with actual values, we select by default an other choice
     const { size, state, color } = selectedAttributes.value;
     const newChoice =
-      choices?.value?.find(
-        (c) => c.size === size && c.color === color && c.state === state,
-      ) ||
+      choices?.value?.find((c) => c.size === size && c.color === color && c.state === state) ||
       choices.value?.find((c) => c.size === size && c.color === color) ||
       choices.value?.find((c) => c.size === size) ||
       choices.value?.[0];

@@ -4,17 +4,9 @@
     <FATitle size="s" :title="$t('pages.checkout.identification.title')" />
     <FAText v-if="!user" :text="$t('pages.checkout.identification.text')" />
     <FMUserCard v-if="user" />
-    <FMFormCheckEmail
-      v-else-if="!emailChecked"
-      :guest="true"
-      @submit="handleEmailSubmit"
-    />
+    <FMFormCheckEmail v-else-if="!emailChecked" :guest="true" @submit="handleEmailSubmit" />
     <FMFormGuest v-else-if="invitation" :email="email" />
-    <FMFormLogin
-      v-else-if="emailExists"
-      :email="email"
-      @go-to-register="toggleEmailExists"
-    />
+    <FMFormLogin v-else-if="emailExists" :email="email" @go-to-register="toggleEmailExists" />
     <FMFormRegister v-else :email="email" @go-to-login="toggleEmailExists" />
   </div>
 </template>

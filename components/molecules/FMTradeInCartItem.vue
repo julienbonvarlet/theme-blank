@@ -47,9 +47,7 @@ const props = defineProps<{
 
 const photo = ref<null | string>(null);
 const total = computed(() => formatPrice(props.item.priceResale));
-const image = computed(
-  () => props.item?.medatada?.images?.[0] || imageStore.placeholder,
-);
+const image = computed(() => props.item?.medatada?.images?.[0] || imageStore.placeholder);
 
 const removeFromCart = (item) => {
   tradeInModule.removeFromCart(item.id);

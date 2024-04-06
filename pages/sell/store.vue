@@ -29,26 +29,22 @@ const data = {
       {
         title: t("pages.sell_in_store.section_icons.steps.1.title"),
         text: t("pages.sell_in_store.section_icons.steps.1.text"),
-        image:
-          "https://demo.faume.co/cdn/shop/files/clean-clothes_594x140.png?v=1691013900",
+        image: "https://demo.faume.co/cdn/shop/files/clean-clothes_594x140.png?v=1691013900",
       },
       {
         title: t("pages.sell_in_store.section_icons.steps.2.title"),
         text: t("pages.sell_in_store.section_icons.steps.2.text"),
-        image:
-          "https://demo.faume.co/cdn/shop/files/contact-form_594x140.png?v=1691012775",
+        image: "https://demo.faume.co/cdn/shop/files/contact-form_594x140.png?v=1691012775",
       },
       {
         title: t("pages.sell_in_store.section_icons.steps.3.title"),
         text: t("pages.sell_in_store.section_icons.steps.3.text"),
-        image:
-          "https://demo.faume.co/cdn/shop/files/delivery-truck_594x140.png?v=1691012825",
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_594x140.png?v=1691012825",
       },
       {
         title: t("pages.sell_in_store.section_icons.steps.4.title"),
         text: t("pages.sell_in_store.section_icons.steps.4.text"),
-        image:
-          "https://demo.faume.co/cdn/shop/files/voucher_594x140.png?v=1691012875",
+        image: "https://demo.faume.co/cdn/shop/files/voucher_594x140.png?v=1691012875",
       },
     ],
     link: {

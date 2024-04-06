@@ -25,9 +25,7 @@ const filterlabelCorrespondance: Record<string, string> = {
   season: t("pages.collection.filters.labels.season"),
   sort: t("pages.collection.filters.labels.sort"),
 };
-const filterLabeltext = computed(() =>
-  props.text ? filterlabelCorrespondance[props.text] : "",
-);
+const filterLabeltext = computed(() => (props.text ? filterlabelCorrespondance[props.text] : ""));
 </script>
 
 <style lang="scss">

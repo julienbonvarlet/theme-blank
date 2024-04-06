@@ -1,11 +1,6 @@
 <template>
   <div class="f-book-resale-appointement">
-    <FMSectionContainer
-      class="f-book-resale-appointement__header"
-      :padding-x="true"
-      max-width="xl"
-      :padding-y="true"
-    >
+    <FMSectionContainer class="f-book-resale-appointement__header" :padding-x="true" max-width="xl" :padding-y="true">
       <FATitle size="l" tag="h2">
         {{ $t("pages.appointment.title") }}
       </FATitle>
@@ -52,30 +47,10 @@
             $t("pages.appointment.subtitle_right")
           }}</FATitle>
           <FormKit v-model="userInfo" type="form" :actions="false">
-            <FormKit
-              type="text"
-              :label="$t('global.form.firstname') + ' *'"
-              validation="required"
-              name="firstname"
-            />
-            <FormKit
-              type="text"
-              :label="$t('global.form.lastname') + ' *'"
-              validation="required"
-              name="lastname"
-            />
-            <FormKit
-              type="email"
-              :label="$t('global.form.email') + ' *'"
-              validation="required|email"
-              name="email"
-            />
-            <FormKit
-              type="text"
-              :label="$t('global.form.phone') + ' *'"
-              validation="required"
-              name="phone"
-            />
+            <FormKit type="text" :label="$t('global.form.firstname') + ' *'" validation="required" name="firstname" />
+            <FormKit type="text" :label="$t('global.form.lastname') + ' *'" validation="required" name="lastname" />
+            <FormKit type="email" :label="$t('global.form.email') + ' *'" validation="required|email" name="email" />
+            <FormKit type="text" :label="$t('global.form.phone') + ' *'" validation="required" name="phone" />
             <FormKit
               type="number"
               :label="$t('pages.appointment.label_products') + ' *'"
@@ -85,11 +60,7 @@
               min="1"
               max="5"
             />
-            <FormKit
-              type="textarea"
-              :label="$t('pages.appointment.label_comment')"
-              name="message"
-            />
+            <FormKit type="textarea" :label="$t('pages.appointment.label_comment')" name="message" />
 
             <FAButton
               :label="$t('pages.appointment.button_validate')"

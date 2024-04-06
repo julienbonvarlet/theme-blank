@@ -1,12 +1,5 @@
 <template>
-  <component
-    :is="tag"
-    :to="to"
-    class="f-button-icon"
-    :class="[disabledClass]"
-    :disabled="isDisabled"
-    :type="typeAttrs"
-  >
+  <component :is="tag" :to="to" class="f-button-icon" :class="[disabledClass]" :disabled="isDisabled" :type="typeAttrs">
     <FALoader v-if="isLoading" />
     <FAIcon v-else :icon="icon" />
   </component>
@@ -15,7 +8,7 @@
 <script setup lang="ts">
 const props = defineProps<{
   submit?: boolean;
-  icon?: (typeof IconNames)[string];
+  icon?: IconNames;
   to?: string | object;
   isDisabled?: boolean;
   isLoading?: boolean;

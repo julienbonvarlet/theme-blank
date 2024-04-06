@@ -2,11 +2,7 @@
   <div class="account-overview">
     <img class="account-overview__background" :src="data.image" alt="Compte" />
     <div class="account-overview__blocks">
-      <FMAccountOverviewBlock
-        v-for="block in data.blocks"
-        :key="block"
-        v-bind="block"
-      />
+      <FMAccountOverviewBlock v-for="block in data.blocks" :key="block" v-bind="block" />
     </div>
   </div>
 </template>
@@ -43,9 +39,9 @@ const data = computed(() => ({
 <style lang="scss">
 .account-overview {
   min-height: calc(
-    100vh - var(--f-header-height) - var(--f-top-bar-height) - var(
-        --f-announcement-bar-height
-      ) - var(--f-margin-section) - var(--f-margin-page)
+    100vh - var(--f-header-height) - var(--f-top-bar-height) - var(--f-announcement-bar-height) - var(
+        --f-margin-section
+      ) - var(--f-margin-page)
   );
   position: relative;
 

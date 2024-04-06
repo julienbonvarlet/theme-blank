@@ -7,10 +7,7 @@
     :submit-function="resetPassword"
     :parameter1="token"
   >
-    <FALink
-      :text="$t('account.reset_password.back_login')"
-      :to="{ name: 'login' }"
-    />
+    <FALink :text="$t('account.reset_password.back_login')" :to="{ name: 'login' }" />
   </FTForm>
 </template>
 
@@ -27,8 +24,7 @@ const fields = [
     name: "password",
     validator: "required",
     validationVisibility: "live",
-    validation:
-      "|contains_numeric|contains_uppercase|contains_lowercase|contains_symbol|length:8,30",
+    validation: "|contains_numeric|contains_uppercase|contains_lowercase|contains_symbol|length:8,30",
     suffixIcon: "eyeClosed",
     minlength: "8",
     help: t("account.reset_password.helper"),
@@ -39,8 +35,7 @@ const fields = [
     name: "passwordConfirm",
     validator: "required",
     validationVisibility: "live",
-    validation:
-      "|contains_numeric|contains_uppercase|contains_lowercase|contains_symbol|length:8,30",
+    validation: "|contains_numeric|contains_uppercase|contains_lowercase|contains_symbol|length:8,30",
     suffixIcon: "eyeClosed",
     minlength: "8",
   },
