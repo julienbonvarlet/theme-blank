@@ -1,7 +1,7 @@
 <template>
   <NuxtLink :to="visual.to" class="f-thumbnail">
     <FAImage class="f-thumbnail__img" :src="visual.image" :alt="t(visual.label)" />
-    <FATitle :size="titleSize" class="f-thumbnail__title">{{ $t(visual.label) }}</FATitle>
+    <FATitle :size="titleSize" class="f-thumbnail__title">{{ $t(title || visual.label) }}</FATitle>
   </NuxtLink>
 </template>
 
@@ -14,6 +14,7 @@ const { t } = useI18n();
 const props = withDefaults(
   defineProps<{
     visual: MenuVisual;
+    title?: string;
     titleSize?: TitleSizes;
   }>(),
   {

@@ -7,63 +7,31 @@
 </template>
 
 <script setup lang="ts">
-import type { TitleSizes, TitleTags, WrapperWidths } from "~/types/enums";
+import { TitleSizes, TitleTags, WrapperWidths } from "~/types/enums";
 
-defineProps<{
-  title: {
-    type: String;
-    required: false;
-  };
-  titleSize: {
-    type: TitleSizes;
-    required: false;
-    default: TitleSizes.M;
-  };
-  titleTag: {
-    type: TitleTags;
-    required: false;
-    default: TitleTags.H2;
-  };
-  subtitle: {
-    type: String;
-    required: false;
-  };
-  text: {
-    type: String;
-    required: false;
-  };
-  link1: {
-    type: Object;
-    required: false;
-  };
-  link2: {
-    type: Object;
-    required: false;
-  };
-  maxWidth: {
-    type: WrapperWidths;
-    required: false;
-    default: WrapperWidths.M;
-  };
-  marginX: {
-    type: Boolean;
-    required: false;
-  };
-  marginY: {
-    type: Boolean;
-    required: false;
-    default: true;
-  };
-  paddingX: {
-    type: Boolean;
-    required: false;
-    default: true;
-  };
-  paddingY: {
-    type: Boolean;
-    required: false;
-  };
-}>();
+withDefaults(
+  defineProps<{
+    title?: string;
+    titleSize?: TitleSizes;
+    titleTag?: TitleTags;
+    subtitle?: string;
+    text?: string;
+    link1?: { label: string; to: string, type: string };
+    link2?: { label: string; to: string, type: string };
+    maxWidth?: WrapperWidths;
+    marginX?: boolean;
+    marginY?: boolean;
+    paddingX?: boolean;
+    paddingY?: boolean;
+  }>(),
+  {
+    titleSize: TitleSizes.M,
+    titleTag: TitleTags.H2,
+    maxWidth: WrapperWidths.M,
+    marginY: true,
+    paddingX: true,
+  },
+);
 
 const attrs = useAttrs();
 </script>

@@ -59,3 +59,8 @@ export type LinkTo = {
     id: String;
   };
 };
+
+export type Carousel = {
+  title: string;
+  collections: MenuVisual[];
+};

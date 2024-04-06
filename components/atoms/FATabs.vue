@@ -1,7 +1,7 @@
 <template>
   <div ref="tabs" class="f-tabs">
     <div v-for="option in options" :key="option" ref="optionRefs" class="f-tabs__option" :class="{ 'is-active': activeOption === option.value }" @click="setActive(option.value)">
-      {{ option.label }}
+      {{ $t(option.label) }}
     </div>
     <span class="f-tabs__indicator" :style="indicatorStyle" />
   </div>

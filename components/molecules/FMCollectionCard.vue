@@ -1,15 +1,14 @@
 <template>
-  <FMThumbnail v-if="collection?.thumbnail" class="f-collection-card" :src="collection.thumbnail" :title="title || collection.title" :title-size="titleSize" :to="collection.to" @click="handleClick" />
+  <FMThumbnail class="f-collection-card" :visual="collection" :title="title || collection.label" :title-size="titleSize" />
 </template>
 
 <script lang="ts" setup>
 import { TitleSizes } from "~/types/enums";
-
-const { getCollectionBySlug } = useCollectionsStore();
+import type { MenuVisual } from "~/types/types";
 
 const props = withDefaults(
   defineProps<{
-    slug: string;
+    collection: MenuVisual;
     title?: string;
     titleSize?: TitleSizes;
   }>(),
@@ -17,14 +16,6 @@ const props = withDefaults(
     titleSize: TitleSizes.M,
   },
 );
-
-const collection = computed(() => getCollectionBySlug(props.slug));
-
-const emit = defineEmits(["collection-click"]);
-
-function handleClick() {
-  emit("collection-click");
-}
 </script>
 
 <style lang="scss">

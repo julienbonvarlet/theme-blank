@@ -14,6 +14,8 @@
 </template>
 
 <script setup lang="ts">
+import { ButtonColors, ButtonSizes, type IconNames } from '~/types/enums';
+
 const props = withDefaults(
   defineProps<{
     label?: string;
@@ -27,8 +29,8 @@ const props = withDefaults(
     isLoading?: boolean;
   }>(),
   {
-    size: "m",
-    type: "primary",
+    size: ButtonSizes.M,
+    type: ButtonColors.PRIMARY,
     iconPosition: "right",
   },
 );
