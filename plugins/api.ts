@@ -63,6 +63,36 @@ export default defineNuxtPlugin(() => {
 
         return response as ApiItem;
       },
+
+      async patch<ApiItem>(...args: Parameters<typeof $fetch>) {
+        const response = await $fetch<ApiResponse>(args[0], {
+          method: "PATCH",
+          baseURL: config.public.apiBaseUrl,
+          headers: {
+            Accept: "application/merge-patch+json",
+            "Content-Type": "application/merge-patch+json",
+            "X-Brand-Id": config.public.clientId,
+          },
+          ...args[1],
+        });
+
+        return response as ApiItem;
+      },
+
+      async delete<ApiItem>(...args: Parameters<typeof $fetch>) {
+        const response = await $fetch<ApiResponse>(args[0], {
+          method: "DELETE",
+          baseURL: config.public.apiBaseUrl,
+          headers: {
+            Accept: "application/ld+json",
+            "Content-Type": "application/ld+json",
+            "X-Brand-Id": config.public.clientId,
+          },
+          ...args[1],
+        });
+
+        return response as ApiItem;
+      },
     },
   };
 });

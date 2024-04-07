@@ -1,18 +1,15 @@
+import type { Login_LoginInput_jsonld } from "@faume-tech/sdk-recommerce";
+
 export const useAuthStore = defineStore("auth", () => {
   const route = useRoute();
   const userStore = useUserStore();
   const config = useRuntimeConfig();
-  const clientId = config?.public?.faume?.clientId;
-  const { $API } = useNuxtApp();
+  const clientId = config.public.clientId;
+  const { $post } = useNuxtApp();
 
-  const cookieConfig = {
-    secure: process.env.NODE_ENV === "production", // Sécurisé en production
-    sameSite: "lax", // ou 'strict' selon vos besoins
-    maxAge: 7 * 24 * 60 * 60,
-  };
-  const authToken = useCookie("auth-token", cookieConfig);
-  const authGuestToken = useCookie("auth-guest-token", cookieConfig);
-  const ssoPreviousRoute = useCookie("sso-previous-route", cookieConfig);
+  const accessToken = useCookie<string>("access_token");
+  const accessTokenGuest = useCookie<string>("access_token_guest");
+  const ssoPreviousRoute = useCookie<string>("sso-previous-route");
 
   const userId = ref(null);
   const userGuestId = ref(false);
@@ -20,24 +17,29 @@ export const useAuthStore = defineStore("auth", () => {
   const setUser = (data, isGuest = false) => {
     if (isGuest) {
       // Si l'utilisateur est un invité, utilisez authGuestToken
-      authGuestToken.value = data.token;
+      accessTokenGuest.value = data.token;
       userGuestId.value = true; // Marquez correctement l'utilisateur comme invité
     } else {
       // Sinon, utilisez authToken pour un utilisateur pleinement authentifié
-      authToken.value = data.token;
+      accessToken.value = data.token;
       userGuestId.value = false; // Assurez-vous que userGuestId reflète correctement le statut de l'utilisateur
     }
     userId.value = data.id;
     userStore.setUser(data);
   };
 
-  const login = async (loginData: LoginForm) => {
+  const getAccessToken = () => {
+    return accessToken.value || accessTokenGuest.value;
+  };
+
+  const login = async (loginData: Login_LoginInput_jsonld) => {
     try {
-      const requestBody = {
-        email: loginData.email,
-        password: loginData.password,
-      };
-      const response = await $API.auth.apiCustomerAuthloginPost(requestBody);
+      const response = await $post("/api/v3/customer/auth/login", {
+        body: {
+          email: loginData.email,
+          password: loginData.password,
+        },
+      });
       setUser(response);
       return response;
     } catch (error) {
@@ -82,7 +84,6 @@ export const useAuthStore = defineStore("auth", () => {
     return response;
   };
 
-  // Suivre une commande
   const guestLogin = async (orderReference) => {
     try {
       const response = await $API.auth.apiCustomerAuthguestLoginPost({
@@ -98,7 +99,7 @@ export const useAuthStore = defineStore("auth", () => {
   };
 
   const guestIsAuthenticated = () => {
-    return authGuestToken.value != null;
+    return accessTokenGuest.value != null;
   };
 
   const checkEmailExists = async (email) => {
@@ -137,23 +138,11 @@ export const useAuthStore = defineStore("auth", () => {
     return user;
   };
 
-  watch(
-    [authToken, authGuestToken],
-    ([auth, guestAuth]) => {
-      const token = auth || guestAuth;
-      if (token) {
-        $API.request.config.HEADERS["Authorization"] = `Bearer ${token}`;
-      } else {
-        delete $API.request.config.HEADERS["Authorization"];
-      }
-    },
-    { immediate: true },
-  );
-
   return {
-    authToken,
-    authGuestToken,
+    accessToken,
+    accessTokenGuest,
     ssoPreviousRoute,
+    getAccessToken,
     login,
     register,
     guestLogin,

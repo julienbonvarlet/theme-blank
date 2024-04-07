@@ -14,7 +14,7 @@ const user = computed(() => userStore.user);
 
 defineProps({
   name: {
-    type: string,
+    type: String,
     required: true,
   },
 });
