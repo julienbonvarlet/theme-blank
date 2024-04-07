@@ -17,13 +17,14 @@
     </FormKit>
 
     <div class="f-form-check-email__sso">
-      <FAButton type="secondary" icon="sso-google" :label="$t('account.identification.login.sso_google')" icon-position="left" @click.prevent="connectSSO('google')" />
-      <FAButton type="secondary" icon="sso-facebook" :label="$t('account.identification.login.sso_facebook')" icon-position="left" @click.prevent="connectSSO('facebook')" />
+      <FAButton :type="ButtonColors.SECONDARY" :icon="IconNames.SsoGoogle" :label="$t('account.identification.login.sso_google')" icon-position="left" @click.prevent="connectSSO('google')" />
+      <FAButton :type="ButtonColors.SECONDARY" :icon="IconNames.SsoFacebook" :label="$t('account.identification.login.sso_facebook')" icon-position="left" @click.prevent="connectSSO('facebook')" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ButtonColors, IconNames } from "~/types/enums";
 const emit = defineEmits(["submit"]);
 const { checkEmailExists, connectSSO } = useAuthStore();
 const formData = ref({ email: "" });
@@ -31,7 +32,7 @@ const emailExist = ref(false);
 const loading = ref(false);
 const emailChecked = ref(false);
 
-const props = defineProps<{
+defineProps<{
   guest?: boolean;
 }>();
 
@@ -50,9 +51,9 @@ const invite = () => {
   });
 };
 
-const checkEmail = async (email) => {
+const checkEmail = async (email: string) => {
   try {
-    await checkEmailExists(email?.trim());
+    await checkEmailExists(email.trim());
     emailChecked.value = true;
     emailExist.value = true;
     loading.value = false;

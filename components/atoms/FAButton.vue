@@ -20,7 +20,7 @@ const props = withDefaults(
   defineProps<{
     label?: string;
     size?: ButtonSizes;
-    type?: ButtonColors;
+    type?: ButtonColors | "submit" | "reset" | "button";
     to?: string | object;
     icon?: IconNames;
     iconPosition?: "left" | "right";

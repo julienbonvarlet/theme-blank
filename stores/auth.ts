@@ -1,30 +1,36 @@
-import type { Login_LoginInput_jsonld } from "@faume-tech/sdk-recommerce";
+import {
+  OAuth2Connect_Customer_jsonld,
+  type EnableAccount_EnableAccountInput_jsonld,
+  type GuestLogin_GuestLoginInput_jsonld,
+  type GuestLogin_jsonld_guest_login_read,
+  type Login_Customer_jsonld,
+  type Login_LoginInput_jsonld,
+  type Register_Customer_jsonld,
+  type Register_RegisterGuestInput_jsonld,
+  type Register_RegisterInput_jsonld,
+} from "@faume-tech/sdk-recommerce";
+import type { RouteRecordName } from "vue-router";
 
 export const useAuthStore = defineStore("auth", () => {
   const route = useRoute();
   const userStore = useUserStore();
   const config = useRuntimeConfig();
   const clientId = config.public.clientId;
-  const { $post } = useNuxtApp();
+  const { $get, $post } = useNuxtApp();
 
-  const accessToken = useCookie<string>("access_token");
-  const accessTokenGuest = useCookie<string>("access_token_guest");
-  const ssoPreviousRoute = useCookie<string>("sso-previous-route");
+  const accessToken = useCookie<string | null>("access_token");
+  const accessTokenGuest = useCookie<string | null>("access_token_guest");
+  const ssoPreviousRoute = useCookie<RouteRecordName | null | undefined>("sso-previous-route");
 
   const userId = ref(null);
   const userGuestId = ref(false);
 
-  const setUser = (data, isGuest = false) => {
+  const setUser = (data: Login_Customer_jsonld, isGuest = false) => {
     if (isGuest) {
-      // Si l'utilisateur est un invité, utilisez authGuestToken
-      accessTokenGuest.value = data.token;
-      userGuestId.value = true; // Marquez correctement l'utilisateur comme invité
+      accessTokenGuest.value = data.token as string;
     } else {
-      // Sinon, utilisez authToken pour un utilisateur pleinement authentifié
-      accessToken.value = data.token;
-      userGuestId.value = false; // Assurez-vous que userGuestId reflète correctement le statut de l'utilisateur
+      accessToken.value = data.token as string;
     }
-    userId.value = data.id;
     userStore.setUser(data);
   };
 
@@ -34,13 +40,14 @@ export const useAuthStore = defineStore("auth", () => {
 
   const login = async (loginData: Login_LoginInput_jsonld) => {
     try {
-      const response = await $post("/api/v3/customer/auth/login", {
+      const response = await $post<Login_Customer_jsonld>("/api/v3/customer/auth/login", {
         body: {
           email: loginData.email,
           password: loginData.password,
         },
       });
       setUser(response);
+
       return response;
     } catch (error) {
       if (typeof error === "object" && error !== null && "message" in error) {
@@ -51,88 +58,83 @@ export const useAuthStore = defineStore("auth", () => {
     }
   };
 
-  const register = async (registerData: RegisterForm) => {
-    const requestBody = {
-      gender: registerData.gender,
-      firstName: registerData.firstName,
-      lastName: registerData.lastName,
-      email: registerData.email,
-      phone: registerData.phone,
-      password: registerData.password,
-      birthdate: registerData.birthdate,
-      countryCode: registerData.countryCode,
-      locale: registerData.locale,
-      emailSubscription: !!registerData.emailSubscription,
-      smsSubscription: !!registerData.smsSubscription,
-    };
-    const response = await $API.auth.apiCustomerAuthregisterPost(requestBody);
+  const register = async (registerData: Register_RegisterInput_jsonld) => {
+    const response = await $post<Register_Customer_jsonld>("/api/v3/customer/auth/register", {
+      body: {
+        gender: registerData.gender,
+        firstName: registerData.firstName,
+        lastName: registerData.lastName,
+        email: registerData.email,
+        phone: registerData.phone,
+        password: registerData.password,
+        birthdate: registerData.birthdate,
+        countryCode: registerData.countryCode,
+        locale: registerData.locale,
+        emailSubscription: !!registerData.emailSubscription,
+        smsSubscription: !!registerData.smsSubscription,
+      },
+    });
     setUser(response);
+
     return response;
   };
 
-  const registerAsGuest = async (data) => {
-    const requestBody = {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      phone: data.phone,
-      countryCode: data.countryCode || "FRA",
-      locale: data.locale || "fr_FR",
-    };
-    const response = await $API.auth.apiCustomerAuthregisterGuestPost(requestBody);
-    setUser(response);
+  const registerAsGuest = async (data: Register_RegisterGuestInput_jsonld) => {
+    const response = await $post<Register_Customer_jsonld>("/api/v3/customer/auth/register-guest", {
+      body: {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        countryCode: data.countryCode || "FRA",
+        locale: data.locale || "fr_FR",
+      },
+    });
+    setUser(response, true);
+
     return response;
   };
 
-  const guestLogin = async (orderReference) => {
-    try {
-      const response = await $API.auth.apiCustomerAuthguestLoginPost({
-        orderReference,
-      });
-      userGuestId.value = true;
-      setUser(response, true);
-      return response;
-    } catch (error) {
-      console.error("Erreur lors du suivi d'une commande:", error);
-      throw error;
-    }
+  const guestLogin = async (orderReference: GuestLogin_GuestLoginInput_jsonld) => {
+    const response = await $post<GuestLogin_jsonld_guest_login_read>("/api/v3/customer/auth/guest-login", { body: orderReference });
+    userGuestId.value = true;
+    setUser(response, true);
+
+    return response;
+  };
+
+  const checkEmailExists = async (email: string) => {
+    const res = await $post("/api/v3/customer/auth/check-email", { body: { email } });
+
+    return !!res;
+  };
+
+  const enableAccount = async (data: EnableAccount_EnableAccountInput_jsonld) => {
+    return await $post("/api/v3/customer/auth/enable-account", { body: data });
+  };
+
+  const logout = () => {
+    userStore.setUser(null);
+    accessToken.value = null;
+  };
+
+  const isAuthenticated = () => {
+    return accessToken.value != null;
   };
 
   const guestIsAuthenticated = () => {
     return accessTokenGuest.value != null;
   };
 
-  const checkEmailExists = async (email) => {
-    const res = await $API.auth.apiCustomerAuthcheckEmailPost({ email });
-    return !!res;
-  };
-
-  const enableAccount = async (data) => {
-    return await $API.auth.apiCustomerAuthenableAccountPost(data);
-  };
-
-  const logout = () => {
-    userStore.setUser(null);
-    authToken.value = null;
-  };
-
-  const isAuthenticated = () => {
-    return authToken.value != null;
-  };
-
   const connectSSO = (provider: "facebook" | "google" = "facebook") => {
     ssoPreviousRoute.value = route.name;
-    window.location = `https://api.faume.co/api/v3/customer/auth/connect/${provider}?brand=${clientId}`;
+    navigateTo(`https://api.faume.co/api/v3/customer/auth/connect/${provider}?brand=${clientId}`);
   };
 
-  const getUserFromSSO = async (provider: "facebook" | "google", brandId) => {
-    const response = await axios.get(`https://api.faume.co/api/v3/customer/auth/connect/${provider}/${brandId}/check${window.location.search}`, {
-      headers: {
-        "X-Brand-Id": clientId,
-      },
-    });
+  const getUserFromSSO = async (provider: "facebook" | "google", brandId: string) => {
+    const response = await $get<OAuth2Connect_Customer_jsonld>(`/api/v3/customer/auth/connect/${provider}/${brandId}/check${window.location.search}`);
     const user = response.data;
-    authToken.value = user.token;
+    accessToken.value = user.token;
     userId.value = user.id;
     userStore.setUser(user);
     return user;

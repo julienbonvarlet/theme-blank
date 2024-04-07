@@ -2,18 +2,32 @@ import type { ApiResponse } from "~/types/types";
 
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig();
+  const auth = useAuthStore();
+  const accessToken = auth.getAccessToken();
+
+  type BaseRequest = {
+    baseURL: string;
+    headers: Record<string, string>;
+  };
+
+  const baseRequestOptions: BaseRequest = {
+    baseURL: config.public.apiBaseUrl,
+    headers: {
+      Accept: "application/ld+json",
+      "Content-Type": "application/ld+json",
+      "X-Brand-Id": config.public.clientId,
+    },
+  };
+  if (accessToken) {
+    baseRequestOptions.headers.Authorization = `Bearer ${accessToken}`;
+  }
 
   return {
     provide: {
       async getCollection<ApiCollection>(...args: Parameters<typeof $fetch>) {
         const response = await $fetch<ApiResponse>(args[0], {
           method: "GET",
-          baseURL: config.public.apiBaseUrl,
-          headers: {
-            Accept: "application/ld+json",
-            "Content-Type": "application/ld+json",
-            "X-Brand-Id": config.public.clientId,
-          },
+          ...baseRequestOptions,
           ...args[1],
         });
 
@@ -37,12 +51,7 @@ export default defineNuxtPlugin(() => {
       async get<ApiItem>(...args: Parameters<typeof $fetch>) {
         const response = await $fetch<ApiResponse>(args[0], {
           method: "GET",
-          baseURL: config.public.apiBaseUrl,
-          headers: {
-            Accept: "application/ld+json",
-            "Content-Type": "application/ld+json",
-            "X-Brand-Id": config.public.clientId,
-          },
+          ...baseRequestOptions,
           ...args[1],
         });
 
@@ -52,12 +61,7 @@ export default defineNuxtPlugin(() => {
       async post<ApiItem>(...args: Parameters<typeof $fetch>) {
         const response = await $fetch<ApiResponse>(args[0], {
           method: "POST",
-          baseURL: config.public.apiBaseUrl,
-          headers: {
-            Accept: "application/ld+json",
-            "Content-Type": "application/ld+json",
-            "X-Brand-Id": config.public.clientId,
-          },
+          ...baseRequestOptions,
           ...args[1],
         });
 
@@ -67,12 +71,7 @@ export default defineNuxtPlugin(() => {
       async patch<ApiItem>(...args: Parameters<typeof $fetch>) {
         const response = await $fetch<ApiResponse>(args[0], {
           method: "PATCH",
-          baseURL: config.public.apiBaseUrl,
-          headers: {
-            Accept: "application/merge-patch+json",
-            "Content-Type": "application/merge-patch+json",
-            "X-Brand-Id": config.public.clientId,
-          },
+          ...baseRequestOptions,
           ...args[1],
         });
 
@@ -82,12 +81,7 @@ export default defineNuxtPlugin(() => {
       async delete<ApiItem>(...args: Parameters<typeof $fetch>) {
         const response = await $fetch<ApiResponse>(args[0], {
           method: "DELETE",
-          baseURL: config.public.apiBaseUrl,
-          headers: {
-            Accept: "application/ld+json",
-            "Content-Type": "application/ld+json",
-            "X-Brand-Id": config.public.clientId,
-          },
+          ...baseRequestOptions,
           ...args[1],
         });
 

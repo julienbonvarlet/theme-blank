@@ -1,63 +1,42 @@
+import type { Address_AddressInput_jsonld, Address_jsonld } from "@faume-tech/sdk-recommerce";
+import type { ApiCollection } from "~/types/types";
+
 export const useAddressesStore = defineStore("address", () => {
-  const { $API } = useNuxtApp();
-  const addresses = ref(null);
+  const { $getCollection, $get, $post, $patch, $delete } = useNuxtApp();
+  const addresses = ref<Address_jsonld[]>([]);
 
   const fetchAddresses = async (page = 1, itemsPerPage = 10) => {
-    try {
-      const response = await $API.address.apiCustomerAddressesGetCollection({
-        page,
-        itemsPerPage,
-      });
-      addresses.value = response["hydra:member"];
-      return addresses.value;
-    } catch (error) {
-      console.error("Erreur lors de la récupération des adresses:", error);
-    }
+    const response = await $getCollection<ApiCollection<Address_jsonld>>(`/api/v3/customer/addresses?page=${page}&itemsPerPage=${itemsPerPage}`);
+    addresses.value = response.items;
+    return addresses.value;
   };
 
-  const createAddress = async (addressData) => {
-    try {
-      const response = await $API.address.apiCustomerAddressesPost(addressData);
-      addresses.value.push(response);
-      return response;
-    } catch (error) {
-      console.error("Erreur lors de la création de l'adresse:", error);
-      throw error;
-    }
+  const createAddress = async (addressData: Address_AddressInput_jsonld) => {
+    const response = await $post<Address_jsonld>("/api/v3/customer/addresses", { body: addressData });
+    addresses.value.push(response);
+
+    return response;
   };
 
-  const fetchAddressById = async (id) => {
-    try {
-      const response = await $API.address.apiCustomerAddressesIdGet(id);
-      return response;
-    } catch (error) {
-      console.error("Erreur lors de la récupération de l'adresse:", error);
-      throw error;
-    }
+  const fetchAddressById = async (addressId: string) => {
+    const response = await $get<Address_jsonld>(`/api/v3/customer/addresses/${addressId}`);
+
+    return response;
   };
 
-  const updateAddress = async (id, updatedData) => {
-    try {
-      const response = await $API.address.apiCustomerAddressesIdPatch(id, updatedData);
-      const index = addresses.value.findIndex((address) => address.id === id);
-      if (index !== -1) {
-        addresses.value[index] = response;
-      }
-      return response;
-    } catch (error) {
-      console.error("Erreur lors de la mise à jour de l'adresse:", error);
-      throw error;
+  const updateAddress = async (addressId: string, updatedData: Address_AddressInput_jsonld) => {
+    const response = await $patch<Address_jsonld>(`/api/v3/customer/addresses/${addressId}`, { body: updatedData });
+    const index = addresses.value.findIndex((address) => address.id === addressId);
+    if (index !== -1) {
+      addresses.value[index] = response;
     }
+
+    return response;
   };
 
-  const deleteAddress = async (id) => {
-    try {
-      await $API.address.apiCustomerAddressesIdDelete(id);
-      addresses.value = addresses.value.filter((address) => address.id !== id);
-    } catch (error) {
-      console.error("Erreur lors de la suppression de l'adresse:", error);
-      throw error;
-    }
+  const deleteAddress = async (addressId: string) => {
+    await $delete(`/api/v3/customer/addresses/${addressId}`);
+    addresses.value = addresses.value.filter((address) => address.id !== addressId);
   };
 
   return {

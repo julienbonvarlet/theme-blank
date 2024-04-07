@@ -22,8 +22,8 @@ const { shippingAddress, billingAddress, shippingMethodId } = useCartData();
 
 const loading = ref(true);
 
-const isAuthenticated = computed(() => authStore.authToken);
-const displayAddress = computed(() => isAuthenticated.value);
+const isAuthenticated = computed(() => authStore.getAccessToken() !== undefined);
+const displayAddress = isAuthenticated.value;
 const displayShippingMethod = computed(() => isAuthenticated.value && billingAddress.value && shippingAddress.value);
 const displayPayment = computed(() => isAuthenticated.value && billingAddress.value && shippingAddress.value && shippingMethodId.value);
 

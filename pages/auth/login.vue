@@ -11,9 +11,9 @@
 <script lang="ts" setup>
 const router = useRouter();
 
-const email = ref<null | string>(null);
-const emailChecked = ref(false);
-const emailExists = ref(false);
+const email = ref<string | null>(null);
+const emailChecked = ref<boolean>(false);
+const emailExists = ref<boolean>(false);
 
 const image_email = "https://faume.imgix.net/Faume_cover_website.jpg";
 const image_login = "https://faume.imgix.net/10/home-baner.webp";

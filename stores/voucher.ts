@@ -1,4 +1,4 @@
-export const useVouchersStore = defineStore("vouchers", () => {
+export const useVouchersStore = defineStore("voucher", () => {
   const { $API } = useNuxtApp();
   const userStore = useUserStore();
 
