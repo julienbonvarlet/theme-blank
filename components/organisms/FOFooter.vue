@@ -28,14 +28,14 @@ const menu: MenuColumn[] = [
     label: "sections.footer.subtitle_1",
     items: [
       { label: "sections.footer.faq", to: "/faq" },
-      { label: "sections.footer.contact", to: "/contact" },
+      { label: "sections.footer.contact", to: "legal/contact" },
       { label: "sections.footer.track_order", to: "/order-follow" },
     ],
   },
   {
     label: "sections.footer.subtitle_2",
     items: [
-      { label: "sections.footer.shipping_return", to: "/shipping-return" },
+      { label: "sections.footer.shipping_return", to: "/legal/shipping-return" },
       { label: "sections.footer.concept", to: "/concept" },
       { label: "sections.footer.stores", to: "/sell" },
     ],
@@ -43,31 +43,31 @@ const menu: MenuColumn[] = [
   {
     label: "sections.footer.subtitle_3",
     items: [
-      { label: "sections.footer.term_of_sell", to: "/cgv" },
-      { label: "sections.footer.term_of_use", to: `${config.clientUrlFirstHand}` },
+      { label: "sections.footer.term_of_sell", to: "/legal/cgv" },
+      { label: "sections.footer.term_of_use", to: "/legal/cgu" },
     ],
   },
 ];
 
 const socialNetworks = [
   {
-    url: "sections.footer.social_network.facebook",
+    url: t("sections.footer.social_network.facebook"),
     icon: "facebook",
   },
   {
-    url: "sections.footer.social_network.youtube",
+    url: t("sections.footer.social_network.youtube"),
     icon: "youtube",
   },
   {
-    url: "sections.footer.social_network.instagram",
+    url: t("sections.footer.social_network.instagram"),
     icon: "instagram",
   },
   {
-    url: "sections.footer.social_network.pinterest",
+    url: t("sections.footer.social_network.pinterest"),
     icon: "pinterest",
   },
   {
-    url: "sections.footer.social_network.twitter",
+    url: t("sections.footer.social_network.twitter"),
     icon: "twitter",
   },
 ];

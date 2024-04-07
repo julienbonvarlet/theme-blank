@@ -2,11 +2,11 @@
   <FMSectionContainer v-if="carousels?.length" class="f-carousel-container" :padding-x="true" :margin-y="true" max-width="xl" class-child="f-carousel-container__inner">
     <div class="f-carousel-container__heading">
       <FMTextContainer :title="title" :title-size="titleSize" :subtitle="subtitle" :text="text" align="left" />
-      <FATabs v-if="tabs.length > 1" :options="tabs" :active="activeTab" @change="changeTab(tab)" />
+      <FATabs v-if="tabs.length > 1" :options="tabs" :active="activeTab.title" />
     </div>
 
     <div class="f-carousel-container__content">
-      <FMCarousel :key="activeTab">
+      <FMCarousel :key="activeTab.title">
         <div v-for="collection in carousel.collections" :key="collection.label">
           <!-- <FMProductCard v-if="carouselType === 'product'" :product="item" /> -->
           <FMCollectionCard :collection="collection" />

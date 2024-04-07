@@ -79,13 +79,12 @@ const wording = computed(() => {
   };
 });
 
-const { $API } = useNuxtApp();
-const apiConfig = $API.order?.httpRequest?.config || {};
+const config = useRuntimeConfig();
 
-const { billingAddress, shippingAddress, shippingMethod, promotionalCode } = useAsyncOrderData(apiConfig, props.order);
+const { billingAddress, shippingAddress, shippingMethod, promotionalCode } = useAsyncOrderData(props.order);
 const timeline = useOrderTimeline(props.order, wording.value);
-const { items } = useAsyncOrderItems(apiConfig, props.order);
+const { items } = useAsyncOrderItems(props.order);
 const { informationTable, paymentTable } = useOrderTables(props.order, wording.value);
-const invoice = computed(() => `${apiConfig.BASE}/api/v3/customer/orders/${props.order?.id}/invoice`);
+const invoice = computed(() => `${config.public.apiBaseUrl}/api/v3/customer/orders/${props.order?.id}/invoice`);
 const invoiceIsAvailable = computed(() => ["traited", "refunded", "partially_refunded"].includes(props.order?.state));
 </script>

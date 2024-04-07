@@ -3,9 +3,12 @@
 </template>
 
 <script setup lang="ts">
+import type { Article_jsonld, TradeIn_jsonld_trade_in_read } from '@faume-tech/sdk-recommerce';
+
+const { $get } = useNuxtApp();
+
 const { t } = useI18n();
 const imageStore = useImageStore();
-const { $API } = useNuxtApp();
 
 const props = withDefaults(
   defineProps<{
@@ -17,7 +20,7 @@ const props = withDefaults(
   },
 );
 
-const articleChoice = ref<null | {}>(null);
+const articleChoice = ref<null | TradeIn_jsonld_trade_in_read>(null);
 const articleChoiceId = computed(() => props.article?.articleChoice?.split("/")?.pop());
 
 const cardInlineData = computed(() => {
@@ -40,7 +43,7 @@ watch(
   articleChoiceId,
   async (id) => {
     if (id) {
-      articleChoice.value = await $API.articleChoice.apiCustomerArticleChoicesIdGet(id);
+      articleChoice.value = await $get(`/api/v3/customer/trade-ins/${id}`);
     }
   },
   { deep: true, immediate: true },

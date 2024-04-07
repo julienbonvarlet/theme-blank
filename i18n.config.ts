@@ -1,6 +1,7 @@
 export default defineI18nConfig(() => ({
   legacy: false,
   locale: "fr",
+  warnHtmlMessage: false,
   messages: {
     fr: {
       pages: {

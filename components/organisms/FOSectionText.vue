@@ -16,8 +16,8 @@ withDefaults(
     titleTag?: TitleTags;
     subtitle?: string;
     text?: string;
-    link1?: { label: string; to: string, type: string };
-    link2?: { label: string; to: string, type: string };
+    link1?: { label: string; to: string; type: string };
+    link2?: { label: string; to: string; type: string };
     maxWidth?: WrapperWidths;
     marginX?: boolean;
     marginY?: boolean;

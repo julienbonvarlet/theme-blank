@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { ButtonColors, ButtonSizes, type IconNames } from '~/types/enums';
+import { ButtonColors, ButtonSizes, type IconNames } from "~/types/enums";
 
 const props = withDefaults(
   defineProps<{

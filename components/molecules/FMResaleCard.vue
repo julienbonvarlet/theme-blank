@@ -3,14 +3,16 @@
 </template>
 
 <script setup lang="ts">
+import type { TradeInCart_jsonld_trade_in_cart_read_trade_in_read } from '@faume-tech/sdk-recommerce';
+
 const { t } = useI18n();
 const { formatDate } = useDateFormatter();
 const imageStore = useImageStore();
-const { $API } = useNuxtApp();
+const { $get } = useNuxtApp();
 
 const props = withDefaults(
   defineProps<{
-    resale: object;
+    resale: TradeInCart_jsonld_trade_in_cart_read_trade_in_read;
     displayOldPrice?: boolean;
   }>(),
   {
@@ -59,7 +61,7 @@ const tradeInPhoto = ref<null | string>(null);
 watch(
   props.resale,
   async (resale) => {
-    const article = await $API.tradeInCart.apiCustomerTradeInCartsIdGet(resale.id);
+    const article = await $get(`/api/v3/customer/trade-in-carts/${resale.id}`);
     article?.items.forEach((item) => {
       const photo = item?.photos?.[0] || item?.medatada?.images?.[0] || item?.metadata?.images?.[0];
       if (photo) {

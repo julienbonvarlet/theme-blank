@@ -1,4 +1,6 @@
-export default defineNuxtPlugin((nuxtApp) => {
+import type { ApiResponse } from "~/types/types";
+
+export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig();
 
   return {

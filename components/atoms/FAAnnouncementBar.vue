@@ -1,7 +1,7 @@
 <template>
   <FMSectionContainer class="f-announcement-bar" class-child="f-announcement-bar__inner" :padding-x="true">
     <FAIcon :icon="faumeConfig.header.announcementBar.icon" />
-    <FAText :text="$t(faumeConfig.header.announcementBar.text)" size="s" />
+    <FAText :text="$t('sections.announcement_bar')" size="s" />
   </FMSectionContainer>
 </template>
 

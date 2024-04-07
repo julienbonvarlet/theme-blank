@@ -54,6 +54,8 @@ import { menSizeCollections, menTypeCollections, womenSizeCollections, womenType
 import faumeConfig from "~/faumeConfig";
 import type { Carousel } from "~/types/types";
 
+const { t } = useI18n();
+
 const menuConfig = faumeConfig.menu;
 
 const backgroundImageUrl =
@@ -81,76 +83,76 @@ const typeCarousels: Carousel[] = [
   },
 ];
 
-// const gridColumns = computed(() => [
-//   {
-//     type: "thumbnail",
-//     src: "https://demo.faume.co/cdn/shop/files/model-in-neutral-colors-by-window_1276x948_crop_center.jpg?v=1693927200",
-//     alt: t("pages.index.grid.1.title"),
-//     title: t("pages.index.grid.1.title"),
-//     to: "/products",
-//     titleSize: "xl",
-//   },
-//   {
-//     type: "icons",
-//     title: t("pages.index.grid.2.title"),
-//     link1: {
-//       title: t("pages.index.grid.2.button"),
-//       url: "/sell",
-//       type: "primary",
-//     },
-//     icons: [
-//       {
-//         image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
-//         text: t("pages.index.grid.2.icons.1"),
-//       },
-//       {
-//         image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
-//         text: t("pages.index.grid.2.icons.2"),
-//       },
-//       {
-//         image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
-//         text: t("pages.index.grid.2.icons.3"),
-//       },
-//       {
-//         image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
-//         text: t("pages.index.grid.2.icons.4"),
-//       },
-//     ],
-//   },
-//   {
-//     type: "icons",
-//     title: t("pages.index.grid.3.title"),
-//     link1: {
-//       title: t("pages.index.grid.3.button"),
-//       url: "/collections/selected",
-//       type: "primary",
-//     },
-//     icons: [
-//       {
-//         image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
-//         text: t("pages.index.grid.3.icons.1"),
-//       },
-//       {
-//         image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
-//         text: t("pages.index.grid.3.icons.2"),
-//       },
-//       {
-//         image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
-//         text: t("pages.index.grid.3.icons.3"),
-//       },
-//       {
-//         image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
-//         text: t("pages.index.grid.3.icons.4"),
-//       },
-//     ],
-//   },
-//   {
-//     type: "thumbnail",
-//     src: "https://demo.faume.co/cdn/shop/files/man-in-white-and-light-tan-outfit_1276x948_crop_center.jpg?v=1693927324",
-//     alt: t("pages.index.grid.4.title"),
-//     title: t("pages.index.grid.4.title"),
-//     to: "/sell",
-//     titleSize: "xl",
-//   },
-// ]);
+const gridColumns = computed(() => [
+  {
+    type: "thumbnail",
+    src: "https://demo.faume.co/cdn/shop/files/model-in-neutral-colors-by-window_1276x948_crop_center.jpg?v=1693927200",
+    alt: t("pages.index.grid.1.title"),
+    title: t("pages.index.grid.1.title"),
+    to: "/products",
+    titleSize: "xl",
+  },
+  {
+    type: "icons",
+    title: t("pages.index.grid.2.title"),
+    link1: {
+      title: t("pages.index.grid.2.button"),
+      url: "/sell",
+      type: "primary",
+    },
+    icons: [
+      {
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        text: t("pages.index.grid.2.icons.1"),
+      },
+      {
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        text: t("pages.index.grid.2.icons.2"),
+      },
+      {
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        text: t("pages.index.grid.2.icons.3"),
+      },
+      {
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        text: t("pages.index.grid.2.icons.4"),
+      },
+    ],
+  },
+  {
+    type: "icons",
+    title: t("pages.index.grid.3.title"),
+    link1: {
+      title: t("pages.index.grid.3.button"),
+      url: "/collections/selected",
+      type: "primary",
+    },
+    icons: [
+      {
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        text: t("pages.index.grid.3.icons.1"),
+      },
+      {
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        text: t("pages.index.grid.3.icons.2"),
+      },
+      {
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        text: t("pages.index.grid.3.icons.3"),
+      },
+      {
+        image: "https://demo.faume.co/cdn/shop/files/delivery-truck_100x100_crop_center.png?v=1691012825",
+        text: t("pages.index.grid.3.icons.4"),
+      },
+    ],
+  },
+  {
+    type: "thumbnail",
+    src: "https://demo.faume.co/cdn/shop/files/man-in-white-and-light-tan-outfit_1276x948_crop_center.jpg?v=1693927324",
+    alt: t("pages.index.grid.4.title"),
+    title: t("pages.index.grid.4.title"),
+    to: "/sell",
+    titleSize: "xl",
+  },
+]);
 </script>
