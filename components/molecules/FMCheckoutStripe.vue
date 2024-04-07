@@ -12,7 +12,6 @@
 import { loadStripe, type Stripe, type StripeElements } from "@stripe/stripe-js";
 
 const addressesStore = useAddressesStore();
-const { $trackingPlan } = useNuxtApp();
 const { t } = useI18n();
 const { clientSecret, cartOrder } = useCartData();
 const router = useRouter();
@@ -96,7 +95,7 @@ onMounted(async () => {
 
 // Tracking Plan
 if (process.client) {
-  $trackingPlan?.purchaseCompleted({
+  useNuxtApp().$trackingPlan?.purchaseCompleted({
     cartValue: cartOrder.value,
   });
 }

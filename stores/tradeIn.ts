@@ -10,30 +10,28 @@ import type {
 import type { ApiCollection } from "~/types/types";
 
 export const useTradeInStore = defineStore("tradeIn", () => {
-  const { $getCollection, $get, $post, $delete } = useNuxtApp();
-
   const tradeIns = ref<TradeIn_jsonld_trade_in_read[]>([]);
 
   const fetchTradeIns = async (page = 1, itemsPerPage = 10) => {
-    const { items } = await $getCollection<ApiCollection<TradeIn_jsonld_trade_in_read>>(`/api/v3/customer/trade-ins?page=${page}&itemsPerPage=${itemsPerPage}`);
+    const { items } = await useNuxtApp().$getCollection<ApiCollection<TradeIn_jsonld_trade_in_read>>(`/api/v3/customer/trade-ins?page=${page}&itemsPerPage=${itemsPerPage}`);
     tradeIns.value = items;
 
     return tradeIns.value;
   };
 
   const fetchTradeInById = async (tradeInId: string) => {
-    return await $get<TradeIn_jsonld_trade_in_read_trade_in_read_detail>(`/api/v3/customer/articles/${tradeInId}`);
+    return await useNuxtApp().$get<TradeIn_jsonld_trade_in_read_trade_in_read_detail>(`/api/v3/customer/articles/${tradeInId}`);
   };
 
   const createTradeIn = async (tradeInData: TradeIn_TradeInInput_jsonld) => {
-    const response = await $post<TradeIn_jsonld_trade_in_read>("/api/v3/customer/articles", { body: tradeInData });
+    const response = await useNuxtApp().$post<TradeIn_jsonld_trade_in_read>("/api/v3/customer/articles", { body: tradeInData });
     tradeIns.value.push(response);
 
     return response;
   };
 
   const deleteTradeIn = async (tradeInId: string) => {
-    await $delete(`/api/v3/customer/articles/${tradeInId}`);
+    await useNuxtApp().$delete(`/api/v3/customer/articles/${tradeInId}`);
     tradeIns.value = tradeIns.value.filter((item) => item.id !== tradeInId);
   };
 
@@ -53,17 +51,17 @@ export const useTradeInStore = defineStore("tradeIn", () => {
   };
 
   const fetchAvailableSizesAndColors = async (sku: string) => {
-    return await $get<TradeInAvailableColorsAndSizes_jsonld>(`/api/v3/customer/trade-ins/get-available-sizes-and-colors/${sku}`);
+    return await useNuxtApp().$get<TradeInAvailableColorsAndSizes_jsonld>(`/api/v3/customer/trade-ins/get-available-sizes-and-colors/${sku}`);
   };
 
   const searchBySku = async (sku: string) => {
-    const { results } = await $get<TradeInSearchBySku_jsonld>(`/api/v3/customer/trade-ins/search-by-sku/${sku}`);
+    const { results } = await useNuxtApp().$get<TradeInSearchBySku_jsonld>(`/api/v3/customer/trade-ins/search-by-sku/${sku}`);
 
     return results;
   };
 
   const createTradeInMerchandising = async (merchandisingData: TradeInMerchandising_TradeInMerchandisingInput_jsonld) => {
-    return await $post<TradeInMerchandising_jsonld>("/api/v3/customer/trade-ins/merchandising", { body: merchandisingData });
+    return await useNuxtApp().$post<TradeInMerchandising_jsonld>("/api/v3/customer/trade-ins/merchandising", { body: merchandisingData });
   };
 
   return {

@@ -2,12 +2,10 @@ import type { OrderItem_jsonld, Order_OrderInput_jsonld, Order_jsonld } from "@f
 import type { ApiCollection } from "~/types/types";
 
 export const useOrdersStore = defineStore("order", () => {
-  const { $getCollection, $get, $post, $patch, $delete } = useNuxtApp();
-
   const orders = ref<any[] | null>(null);
 
   const addOrderItem = async (orderIri: string, tradeInIri: string) => {
-    return await $post<OrderItem_jsonld>("/api/v3/customer/order-items", {
+    return await useNuxtApp().$post<OrderItem_jsonld>("/api/v3/customer/order-items", {
       body: {
         order: orderIri,
         tradeIn: tradeInIri,
@@ -16,38 +14,38 @@ export const useOrdersStore = defineStore("order", () => {
   };
 
   const getOrderItemById = async (orderItemId: string) => {
-    return await $get<OrderItem_jsonld>(`/api/v3/customer/order-items/${orderItemId}`);
+    return await useNuxtApp().$get<OrderItem_jsonld>(`/api/v3/customer/order-items/${orderItemId}`);
   };
 
   const deleteOrderItem = async (orderItemId: string) => {
-    await $delete(`/api/v3/customer/order-items/${orderItemId}`);
+    await useNuxtApp().$delete(`/api/v3/customer/order-items/${orderItemId}`);
   };
 
   const fetchOrders = async (page = 1, itemsPerPage = 10) => {
-    const { items } = await $getCollection<ApiCollection<Order_jsonld>>(`/api/v3/customer/orders?page=${page}&itemsPerPage=${itemsPerPage}`);
+    const { items } = await useNuxtApp().$getCollection<ApiCollection<Order_jsonld>>(`/api/v3/customer/orders?page=${page}&itemsPerPage=${itemsPerPage}`);
     orders.value = items;
 
     return orders.value;
   };
 
   const createOrder = async (orderData: Order_OrderInput_jsonld) => {
-    return await $post<Order_jsonld>("/api/v3/customer/orders", { body: orderData });
+    return await useNuxtApp().$post<Order_jsonld>("/api/v3/customer/orders", { body: orderData });
   };
 
   const getOrderById = async (orderId: string) => {
-    return await $get<Order_jsonld>(`/api/v3/customer/orders/${orderId}`);
+    return await useNuxtApp().$get<Order_jsonld>(`/api/v3/customer/orders/${orderId}`);
   };
 
   const deleteOrder = async (orderId: string) => {
-    await $delete(`/api/v3/customer/orders/${orderId}`);
+    await useNuxtApp().$delete(`/api/v3/customer/orders/${orderId}`);
   };
 
   const updateOrder = async (orderId: string, updatedData: Order_OrderInput_jsonld) => {
-    return await $patch<Order_jsonld>(`/api/v3/customer/orders/${orderId}`, { body: updatedData });
+    return await useNuxtApp().$patch<Order_jsonld>(`/api/v3/customer/orders/${orderId}`, { body: updatedData });
   };
 
   const fetchDropoffPoints = async (orderId: string, page = 1, itemsPerPage = 10) => {
-    return await $getCollection(`/api/v3/customer/orders/${orderId}/dropoffpoints?page=${page}&itemsPerPage=${itemsPerPage}`);
+    return await useNuxtApp().$getCollection(`/api/v3/customer/orders/${orderId}/dropoffpoints?page=${page}&itemsPerPage=${itemsPerPage}`);
   };
 
   return {

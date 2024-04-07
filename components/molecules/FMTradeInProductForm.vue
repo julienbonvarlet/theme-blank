@@ -69,7 +69,6 @@ const emit = defineEmits(["next"]);
 const router = useRouter();
 const route = useRoute();
 const { t } = useI18n();
-const { $trackingPlan } = useNuxtApp();
 const tradeInModule = useTradeInModule();
 
 const error = ref(false);
@@ -136,7 +135,7 @@ onMounted(() => {
 
 // Tracking Plan //
 if (process.client) {
-  $trackingPlan?.tradeinViewProductIdentification();
+  useNuxtApp().$trackingPlan?.tradeinViewProductIdentification();
 }
 // Tracking Plan //
 </script>

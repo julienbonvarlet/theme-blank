@@ -53,6 +53,8 @@ import type { Carousel } from "~/types/types";
 
 const { t } = useI18n();
 
+console.log("LOLOL", await useNuxtApp().$get("/api/v3/customer/articles"));
+
 const menuConfig = faumeConfig.menu;
 
 const backgroundImageUrl =

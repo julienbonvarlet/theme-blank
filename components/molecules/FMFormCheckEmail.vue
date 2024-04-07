@@ -60,7 +60,8 @@ const checkEmail = async (email: string) => {
     if (emailExist.value) {
       submit();
     }
-  } catch {
+  } catch (e) {
+    console.log("ERROR", e);
     emailChecked.value = true;
     emailExist.value = false;
     loading.value = false;

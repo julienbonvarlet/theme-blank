@@ -16,7 +16,6 @@ export const useAuthStore = defineStore("auth", () => {
   const userStore = useUserStore();
   const config = useRuntimeConfig();
   const clientId = config.public.clientId;
-  const { $get, $post } = useNuxtApp();
 
   const accessToken = useCookie<string | null>("access_token");
   const accessTokenGuest = useCookie<string | null>("access_token_guest");
@@ -36,7 +35,7 @@ export const useAuthStore = defineStore("auth", () => {
   };
 
   const login = async (loginData: Login_LoginInput_jsonld) => {
-    const response = await $post<Login_Customer_jsonld>("/api/v3/customer/auth/login", {
+    const response = await useNuxtApp().$post<Login_Customer_jsonld>("/api/v3/customer/auth/login", {
       body: {
         email: loginData.email,
         password: loginData.password,
@@ -48,7 +47,7 @@ export const useAuthStore = defineStore("auth", () => {
   };
 
   const register = async (registerData: Register_RegisterInput_jsonld) => {
-    const response = await $post<Register_Customer_jsonld>("/api/v3/customer/auth/register", {
+    const response = await useNuxtApp().$post<Register_Customer_jsonld>("/api/v3/customer/auth/register", {
       body: {
         gender: registerData.gender,
         firstName: registerData.firstName,
@@ -69,7 +68,7 @@ export const useAuthStore = defineStore("auth", () => {
   };
 
   const registerAsGuest = async (data: Register_RegisterGuestInput_jsonld) => {
-    const response = await $post<Register_Customer_jsonld>("/api/v3/customer/auth/register-guest", {
+    const response = await useNuxtApp().$post<Register_Customer_jsonld>("/api/v3/customer/auth/register-guest", {
       body: {
         firstName: data.firstName,
         lastName: data.lastName,
@@ -85,14 +84,14 @@ export const useAuthStore = defineStore("auth", () => {
   };
 
   const guestLogin = async (orderReference: GuestLogin_GuestLoginInput_jsonld) => {
-    const response = await $post<GuestLogin_jsonld_guest_login_read>("/api/v3/customer/auth/guest-login", { body: orderReference });
+    const response = await useNuxtApp().$post<GuestLogin_jsonld_guest_login_read>("/api/v3/customer/auth/guest-login", { body: orderReference });
     setUser(response, true);
 
     return response;
   };
 
   const checkEmailExists = async (email: string) => {
-    const res = await $post("/api/v3/customer/auth/check-email", { body: { email } });
+    const res = await useNuxtApp().$post("/api/v3/customer/auth/check-email", { body: { email } });
 
     console.log("checkEmailExists", res);
 
@@ -100,7 +99,7 @@ export const useAuthStore = defineStore("auth", () => {
   };
 
   const enableAccount = async (data: EnableAccount_EnableAccountInput_jsonld) => {
-    return await $post("/api/v3/customer/auth/enable-account", { body: data });
+    return await useNuxtApp().$post("/api/v3/customer/auth/enable-account", { body: data });
   };
 
   const logout = () => {
@@ -118,11 +117,11 @@ export const useAuthStore = defineStore("auth", () => {
 
   const connectSSO = (provider: "facebook" | "google" = "facebook") => {
     ssoPreviousRoute.value = route.name;
-    navigateTo(`https://api.faume.co/api/v3/customer/auth/connect/${provider}?brand=${clientId}`);
+    navigateTo(`${config.public.apiBaseUrl}/api/v3/customer/auth/connect/${provider}?brand=${clientId}`);
   };
 
   const getUserFromSSO = async (provider: "facebook" | "google", brandId: string) => {
-    const response = await $get<OAuth2Connect_Customer_jsonld>(`/api/v3/customer/auth/connect/${provider}/${brandId}/check${window.location.search}`);
+    const response = await useNuxtApp().$get<OAuth2Connect_Customer_jsonld>(`/api/v3/customer/auth/connect/${provider}/${brandId}/check${window.location.search}`);
     accessToken.value = response.token as string;
     userStore.setUser(response);
 

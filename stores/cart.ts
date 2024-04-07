@@ -1,6 +1,4 @@
 export const useCartStore = defineStore("cart", () => {
-  const { $get } = useNuxtApp();
-
   const orderStore = useOrdersStore();
   const shippingMethodsStore = useShippingMethodsStore();
 
@@ -43,7 +41,7 @@ export const useCartStore = defineStore("cart", () => {
     const items = [];
     for (const id of cartOrder.value?.items || []) {
       let item = await orderStore.getOrderItemById(id["@id"].split("/").slice(-1)[0]);
-      const article = await $get(item.tradeIn);
+      const article = await useNuxtApp().$get(item.tradeIn);
       item = {
         ...item,
         article: article,

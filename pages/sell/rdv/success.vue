@@ -8,7 +8,7 @@
       <div class="fp-appointment__content">
         <div class="fp-appointment__step">
           <div class="fp-appointment__step-icon">
-            <FAIcon icon="time" />
+            <FAIcon :icon="IconNames.Time" />
           </div>
           <FAText class="fp-appointment__step-text" size="xs">
             {{ $t("pages.appointment.confirmation.step1") }}
@@ -17,7 +17,7 @@
         <FAProgressBar class="fp-appointment__progress" :percent="50" />
         <div class="fp-appointment__step">
           <div class="fp-appointment__step-icon">
-            <FAIcon icon="check" />
+            <FAIcon :icon="IconNames.Check" />
           </div>
           <FAText class="fp-appointment__step-text is-last" size="xs">
             {{ $t("pages.appointment.confirmation.step2") }}
@@ -32,6 +32,8 @@
 </template>
 
 <script setup lang="ts">
+import { IconNames } from '~/types/enums';
+
 const percent = ref(0);
 onMounted(() => (percent.value = 60));
 </script>

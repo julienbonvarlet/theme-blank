@@ -11,7 +11,7 @@
           <FATitle class="f-book-resale-appointement__subtitle" size="s">{{ $t("pages.appointment.subtitle_left") }}</FATitle>
           <div class="f-book-resale-appointement__store">
             <div class="f-book-resale-appointement__store-icon">
-              <FAIcon icon="store" />
+              <FAIcon :icon="IconNames.Store" />
             </div>
             <div class="f-book-resale-appointement__store-infos">
               <FAText>{{ store?.name }}</FAText>
@@ -55,6 +55,8 @@
 </template>
 
 <script setup lang="ts">
+import { IconNames } from '~/types/enums';
+
 withDefaults(
   defineProps<{
     store: Store;

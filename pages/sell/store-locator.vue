@@ -5,8 +5,6 @@
 </template>
 
 <script setup lang="ts">
-const { $API } = useNuxtApp();
-
 // Fetch stores data
 const { data: apiResult } = await useAsyncData(
   "products",

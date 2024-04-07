@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-const { $trackingPlan } = useNuxtApp();
 const { t } = useI18n();
 const imageStore = useImageStore();
 const { formatPrice } = usePriceFormatter();
@@ -52,7 +51,7 @@ const image = computed(() => props.item?.medatada?.images?.[0] || imageStore.pla
 const removeFromCart = (item) => {
   tradeInModule.removeFromCart(item.id);
   if (process.client) {
-    $trackingPlan?.tradeinRemoveFromCart(item.priceResale);
+    useNuxtApp().$trackingPlan?.tradeinRemoveFromCart(item.priceResale);
   }
 };
 </script>

@@ -6,7 +6,7 @@
           <slot name="heading" />
           <FATitle v-if="title" size="s">{{ title }}</FATitle>
           <button class="f-popin__close" @click.prevent="close">
-            <FAIcon icon="cross" />
+            <FAIcon :icon="IconNames.Cross" />
           </button>
         </div>
         <div v-if="text || $slots.default" class="f-popin__content">
@@ -20,6 +20,8 @@
 </template>
 
 <script setup lang="ts">
+import { IconNames } from '~/types/enums';
+
 const emit = defineEmits(["onClose"]);
 
 const props = withDefaults(
@@ -51,11 +53,6 @@ const close = () => {
   isVisible.value = false;
   emit("onClose");
   updateBodyOverflow(false);
-};
-
-const open = () => {
-  isVisible.value = true;
-  updateBodyOverflow(true);
 };
 
 watch(

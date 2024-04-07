@@ -1,5 +1,6 @@
+import type { TradeIn_jsonld_trade_in_read_trade_in_read_detail } from "@faume-tech/sdk-recommerce";
+
 export const usePagesProductId = async () => {
-  const { $API } = useNuxtApp();
   const route = useRoute();
   const productId = route.params.id;
   const cartStore = useCartStore();
@@ -11,10 +12,9 @@ export const usePagesProductId = async () => {
     data: product,
     pending,
     error,
-  } = await useAsyncData<ArticleChoice_jsonld_article_choice_read>(
+  } = await useAsyncData<TradeIn_jsonld_trade_in_read_trade_in_read_detail>(
     "product",
-    // TODO: temporary test, will use SDK to fetch product
-    () => $API.article.apiCustomerArticlesIdGet(productId.tostring()),
+    () => useNuxtApp().$get(`/api/v3/customer/trade-ins/${productId}`),
   );
 
   recentlyViewedProductsStore.addProduct(product.value);
@@ -32,7 +32,7 @@ export const usePagesProductId = async () => {
     twitterCard: "summary",
   });
 
-  const addToCart = (product: ArticleChoice_jsonld_article_choice_read) => {
+  const addToCart = (product: TradeIn_jsonld_trade_in_read_trade_in_read_detail) => {
     cartStore.addToCart(product.value);
   };
 

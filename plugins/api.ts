@@ -50,7 +50,6 @@ export default defineNuxtPlugin(() => {
           facets,
         } as ApiCollection;
       },
-
       async get<ApiItem>(...args: Parameters<typeof $fetch>) {
         const response = await $fetch<ApiResponse>(args[0], {
           method: "GET",
@@ -60,7 +59,6 @@ export default defineNuxtPlugin(() => {
 
         return response as ApiItem;
       },
-
       async post<ApiItem>(...args: Parameters<typeof $fetch>) {
         const response = await $fetch<ApiResponse>(args[0], {
           method: "POST",
@@ -70,7 +68,6 @@ export default defineNuxtPlugin(() => {
 
         return response as ApiItem;
       },
-
       async patch<ApiItem>(...args: Parameters<typeof $fetch>) {
         const response = await $fetch<ApiResponse>(args[0], {
           method: "PATCH",
@@ -80,7 +77,6 @@ export default defineNuxtPlugin(() => {
 
         return response as ApiItem;
       },
-
       async delete<ApiItem>(...args: Parameters<typeof $fetch>) {
         const response = await $fetch<ApiResponse>(args[0], {
           method: "DELETE",

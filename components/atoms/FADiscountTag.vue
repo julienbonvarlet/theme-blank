@@ -1,10 +1,12 @@
 <template>
-  <FAText v-if="show" size="xs" class="f-discount-tag" :class="[promotionalClass]">
+  <FAText v-if="show" :size="TextSizes.XS" class="f-discount-tag" :class="[promotionalClass]">
     {{ content }}
   </FAText>
 </template>
 
 <script setup lang="ts">
+import { TextSizes } from '~/types/enums';
+
 const { t } = useI18n();
 
 const props = defineProps<{

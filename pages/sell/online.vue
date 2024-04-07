@@ -10,7 +10,6 @@
 import faumeConfig from "~/faumeConfig";
 
 const { t } = useI18n();
-const { $trackingPlan } = useNuxtApp();
 
 const data = faumeConfig.sellOnline;
 const bannerData = computed(() => {
@@ -34,6 +33,6 @@ const sectionIconsData = computed(() => {
 const gridRowData = computed(() => data.gridRow);
 
 if (process.client) {
-  $trackingPlan?.tradeinViewSellPage();
+  useNuxtApp().$trackingPlan?.tradeinViewSellPage();
 }
 </script>

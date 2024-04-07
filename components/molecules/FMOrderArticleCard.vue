@@ -5,8 +5,6 @@
 <script setup lang="ts">
 import type { OrderItem_jsonld, TradeIn_jsonld_trade_in_read_trade_in_read_detail } from "@faume-tech/sdk-recommerce";
 
-const { $get } = useNuxtApp();
-
 const { t } = useI18n();
 const imageStore = useImageStore();
 
@@ -42,7 +40,7 @@ watch(
   tradeIn,
   async (id) => {
     if (id) {
-      tradeIn.value = await $get<TradeIn_jsonld_trade_in_read_trade_in_read_detail>(`/api/v3/customer/trade-ins/${id}`);
+      tradeIn.value = await useNuxtApp().$get<TradeIn_jsonld_trade_in_read_trade_in_read_detail>(`/api/v3/customer/trade-ins/${id}`);
     }
   },
   { deep: true, immediate: true },

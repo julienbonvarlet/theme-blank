@@ -15,8 +15,6 @@
 </template>
 
 <script setup lang="ts">
-const { $trackingPlan } = useNuxtApp();
-
 const props = defineProps<{
   product: Object;
 }>();
@@ -73,7 +71,7 @@ const submit = async () => {
 
     // Tracking Plan //
     if (process.client) {
-      $trackingPlan?.purchaseAddToCart({
+      useNuxtApp().$trackingPlan?.purchaseAddToCart({
         product: props.product,
         choice: choice.value,
         cartValue: cartStore.cartOrder.itemsTotal,

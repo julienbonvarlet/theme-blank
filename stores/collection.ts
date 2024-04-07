@@ -6,8 +6,6 @@ type Collections = {
 };
 
 export const useCollectionsStore = defineStore("collection", () => {
-  const { $getCollection } = useNuxtApp();
-
   const collections = ref<Collections[]>([]);
 
   const getCollectionBySlug = (slug: string) => collections.value?.find((x) => x.slugName === slug);
@@ -15,7 +13,7 @@ export const useCollectionsStore = defineStore("collection", () => {
 
   onMounted(async () => {
     if (!collections.value?.length) {
-      const { items } = await $getCollection<ApiCollection<Collections>>("/api/v3/customer/collections");
+      const { items } = await useNuxtApp().$getCollection<ApiCollection<Collections>>("/api/v3/customer/collections");
       const data = items.map((collection) => {
         let collectionData = {
           ...collection,

@@ -6,11 +6,11 @@
       <NuxtLink to="/">
         <FAText size="s">Accueil</FAText>
       </NuxtLink>
-      <FAIcon icon="right" />
+      <FAIcon :icon="IconNames.Right" />
 
       <template v-if="currentPageType === 'product'">
         <FAText size="s" @click="goBack">{{ previousPageTitle }}</FAText>
-        <FAIcon icon="right" />
+        <FAIcon :icon="IconNames.Right" />
       </template>
       <FAText size="s" class="f-breadcrumb__current">
         <slot>{{ currentPageTitle }}</slot>
@@ -20,6 +20,8 @@
 </template>
 
 <script setup lang="ts">
+import { IconNames } from "~/types/enums";
+
 const props = defineProps<{
   currentPageType: string;
   currentPageTitle?: string;

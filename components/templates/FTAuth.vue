@@ -2,20 +2,21 @@
   <FOGridRow :columns="columns" max-with="xl" :padding-x="false" :margin-y="false" class="ft-auth">
     <FMSectionContainer :padding-x="true" :padding-y="true" max-wdith="xl" class-child="ft-auth__inner">
       <div class="ft-auth__header">
-        <FATitle size="m">{{ title }}</FATitle>
+        <FATitle :size="TitleSizes.M">{{ title }}</FATitle>
         <FMFormMessage v-if="message" :text="message" />
         <FMFormMessage v-if="error" :text="error" type="error" />
       </div>
-
       <slot />
     </FMSectionContainer>
   </FOGridRow>
 </template>
 
 <script lang="ts" setup>
+import { TitleSizes } from "~/types/enums";
+
 const props = defineProps<{
   title: string;
-  message?: string;
+  message?: string | null;
   error?: string;
   image: string;
   alt?: string;

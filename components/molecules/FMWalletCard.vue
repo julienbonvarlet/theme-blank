@@ -1,17 +1,19 @@
 <template>
   <div class="f-wallet-card">
     <div class="f-wallet-card__title">
-      <FAIcon icon="wallet" />
+      <FAIcon :icon="IconNames.Wallet" />
       <FAText>{{ $t("account.gift_cards.total_credits") }}</FAText>
     </div>
     <FAPrice :price="walletAmount" size="l" :cents="false" />
-    <FAButton v-if="walletAmount > 0" to="/account/vouchers/create" type="secondary" :label="$t('account.gift_cards.button_convert')" size="s" icon="gift-card" />
+    <FAButton v-if="walletAmount !== 0" to="/account/vouchers/create" type="secondary" :label="$t('account.gift_cards.button_convert')" size="s" icon="gift-card" />
   </div>
 </template>
 
 <script lang="ts" setup>
+import { IconNames } from "~/types/enums";
+
 defineProps<{
-  walletAmount?: Number;
+  walletAmount: Number;
 }>();
 </script>
 

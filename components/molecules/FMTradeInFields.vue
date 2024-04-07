@@ -8,7 +8,7 @@
       <div class="f-ti-fields__list">
         <FAFieldBox v-for="field in fields" :key="field" v-bind="field" size="m" class="f-ti-fields__field" :class="`f-ti-fields__field--${type}`" @input="handleFieldChange">
           <template v-if="type === 'seller'" #content>
-            <FAIcon icon="user" />
+            <FAIcon :icon="IconNames.User" />
           </template>
           <template v-else-if="type === 'state'" #content>
             <FAText size="s" :text="t(`global.conditions.${field.value}.subtitle`)" />
@@ -39,6 +39,8 @@
 </template>
 
 <script lang="ts" setup>
+import { IconNames } from '~/types/enums';
+
 const { t } = useI18n();
 
 const emit = defineEmits(["input", "next", "backToSku"]);

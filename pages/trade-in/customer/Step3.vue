@@ -33,7 +33,6 @@
 <script lang="ts" setup>
 const userStore = useUserStore();
 const authStore = useAuthStore();
-const { $trackingPlan } = useNuxtApp();
 
 const email = ref<null | string>(null);
 const emailChecked = ref(false);
@@ -63,7 +62,7 @@ onMounted(() => {
 
 // Tracking Plan //
 if (process.client) {
-  $trackingPlan?.tradeinViewUserIdentification();
+  useNuxtApp().$trackingPlan?.tradeinViewUserIdentification();
 }
 // Tracking Plan //
 </script>

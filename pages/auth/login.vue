@@ -20,6 +20,7 @@ const image_register = "https://faume.imgix.net/18/home-baner.webp";
 const image = computed(() => (!emailChecked.value ? image_email : emailExists.value ? image_login : image_register));
 
 const handleEmailSubmit = (data) => {
+  console.log("TESTAGE", data);
   emailExists.value = data.exist;
   email.value = data.email;
   emailChecked.value = true;

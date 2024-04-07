@@ -1,10 +1,12 @@
 <template>
   <component :is="tag" :to="to" class="f-link-helper">
-    <FAText :text="text" size="s" />
+    <FAText :text="text" :size="TextSizes.S" />
   </component>
 </template>
 
 <script lang="ts" setup>
+import { TextSizes } from "~/types/enums";
+
 const props = defineProps<{
   to?: string;
   text: string;

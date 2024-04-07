@@ -15,7 +15,6 @@
 <script lang="ts" setup>
 const { t } = useI18n();
 const tradeInModule = useTradeInModule();
-const { $trackingPlan } = useNuxtApp();
 
 const cart = computed(() => tradeInModule.cart);
 
@@ -41,7 +40,7 @@ const total = computed(() => {
 });
 
 if (process.client) {
-  $trackingPlan?.tradeinCompleted(total.value);
+  useNuxtApp().$trackingPlan?.tradeinCompleted(total.value);
 }
 </script>
 

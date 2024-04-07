@@ -34,7 +34,6 @@
 </template>
 
 <script setup lang="ts">
-const { $trackingPlan } = useNuxtApp();
 const { t } = useI18n();
 const { formatPrice } = usePriceFormatter();
 const tradeInModule = useTradeInModule();
@@ -84,7 +83,7 @@ watch(count, (value) => {
 
 // Tracking Plan //
 if (process.client) {
-  $trackingPlan?.tradeinViewCart(total.value);
+  useNuxtApp().$trackingPlan?.tradeinViewCart(total.value);
 }
 // Tracking Plan //
 </script>

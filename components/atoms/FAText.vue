@@ -6,6 +6,8 @@
 </template>
 
 <script setup lang="ts">
+import { TextSizes, TextTags, TextWeights } from "~/types/enums";
+
 const props = withDefaults(
   defineProps<{
     text?: string;
@@ -15,9 +17,9 @@ const props = withDefaults(
     isGrey?: boolean;
   }>(),
   {
-    size: "m",
-    weight: "regular",
-    tag: "p",
+    size: TextSizes.M,
+    weight: TextWeights.REGULAR,
+    tag: TextTags.P,
   },
 );
 

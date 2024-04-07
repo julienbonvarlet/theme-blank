@@ -13,7 +13,6 @@ const tradeInModule = useTradeInModule();
 
 const agree = computed(() => tradeInModule.agree);
 const cart = computed(() => tradeInModule.cart);
-const { $trackingPlan } = useNuxtApp();
 
 const next = () => {
   navigateTo("/trade-in/customer/Step2");
@@ -27,7 +26,7 @@ onMounted(() => {
 
 // Tracking Plan //
 if (process.client) {
-  $trackingPlan?.tradeinViewCondition();
+  useNuxtApp().$trackingPlan?.tradeinViewCondition();
 }
 // Tracking Plan //
 </script>

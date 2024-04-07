@@ -15,14 +15,13 @@
 
 <script setup lang="ts">
 const { t } = useI18n();
-const { $trackingPlan } = useNuxtApp();
 
 const { product, pending, error, choice, updateChoice } = await usePagesProductId();
 const previousPageTitle = usePreviousTitle().previousTitle || t("global.collection");
 
 // Tracking Plan //
 if (process.client) {
-  $trackingPlan?.purchaseViewProductPage({
+  useNuxtApp().$trackingPlan?.purchaseViewProductPage({
     product: product.value,
     choice: choice.value,
   });

@@ -28,7 +28,6 @@
 <script setup lang="ts">
 const { t } = useI18n();
 const { selectedFiltersForSuggestions } = useCartSuggestions();
-const { $trackingPlan } = useNuxtApp();
 
 const { cartItems, isCartEmpty, shippingTotal, shippingMethodName, shippingDelay, discountTotal, total, subtotal, totalFormatted, amountForFreeShipping, cartCount } = useCartData();
 
@@ -74,7 +73,7 @@ const cartResume = computed(() => ({
 // Tracking Plan //
 watch(total, (newTotal) => {
   if (process.client) {
-    $trackingPlan?.purchaseViewCart(newTotal);
+    useNuxtApp().$trackingPlan?.purchaseViewCart(newTotal);
   }
 });
 // Tracking Plan //

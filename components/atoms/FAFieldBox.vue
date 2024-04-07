@@ -11,11 +11,13 @@
       <slot name="content" />
     </span>
 
-    <FAText v-if="tooltip" size="xs" class="f-field-box__tooltip">{{ tooltip }}</FAText>
+    <FAText v-if="tooltip" :size="TextSizes.XS" class="f-field-box__tooltip">{{ tooltip }}</FAText>
   </component>
 </template>
 
 <script setup lang="ts">
+import { TextSizes } from '~/types/enums';
+
 const emit = defineEmits(["input"]);
 
 const props = withDefaults(

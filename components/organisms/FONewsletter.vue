@@ -23,7 +23,6 @@
 
 <script setup lang="ts">
 import { WrapperWidths } from "~/types/enums";
-const { $post } = useNuxtApp();
 
 const email = ref<null | string>(null);
 const loading = ref(false);
@@ -35,7 +34,7 @@ const submit = async () => {
   success.value = false;
   error.value = false;
   try {
-    await $post("/api/v3/customer/marketing-subscriptions", {
+    await useNuxtApp().$post("/api/v3/customer/marketing-subscriptions", {
       body: JSON.stringify({
         email: email.value,
         locale: "fr_FR",

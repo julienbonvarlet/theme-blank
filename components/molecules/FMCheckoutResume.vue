@@ -13,9 +13,7 @@
 </template>
 
 <script setup lang="ts">
-const { $trackingPlan } = useNuxtApp();
 const { t } = useI18n();
-const { formatPrice } = usePriceFormatter();
 const cartStore = useCartStore();
 
 const { cartItems, shippingTotal, shippingDelay, discountTotal, total, subtotal, totalFormatted, shippingMethod } = useCartData();
@@ -49,7 +47,7 @@ const attrs = useAttrs();
 // Tracking Plan //
 watch(subtotal, (newSubTotal) => {
   if (process.client) {
-    $trackingPlan?.purchaseCheckoutStarted(newSubTotal);
+    useNuxtApp().$trackingPlan?.purchaseCheckoutStarted(newSubTotal);
   }
 });
 // Tracking Plan //

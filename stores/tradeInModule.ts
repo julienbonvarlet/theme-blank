@@ -3,7 +3,6 @@ import type { TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_
 export const useTradeInModule = defineStore("tradeInModule", () => {
   const lodash = require("lodash-es");
 
-  const { $post, $patch, $delete } = useNuxtApp();
   const tradeInStore = useTradeInStore();
   const { sortSizes } = useSort();
 
@@ -68,7 +67,7 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
   };
 
   const createCart = async () => {
-    const response = await $post<TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail>("/api/v3/customer/trade-in-carts", {
+    const response = await useNuxtApp().$post<TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail>("/api/v3/customer/trade-in-carts", {
       body: {
         channel: channel.value,
       },
@@ -81,7 +80,7 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
     if (!cart.value) {
       await createCart();
     }
-    const newArticle = await $post("/api/v3/customer/trade-ins", {
+    const newArticle = await useNuxtApp().$post("/api/v3/customer/trade-ins", {
       body: {
         ...article.value,
         tradeInCart: cart.value["@id"],
@@ -97,14 +96,14 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
     return newArticle;
   };
 
-  const removeFromCart = (tradeInId: string) => {
+  const removeFromCart = async (tradeInId: string) => {
     if (tradeInId) {
       setCart({
         ...cart.value,
         items: [...cart.value.items.filter((x: TradeIn_jsonld_trade_in_read) => x.id !== tradeInId)],
       });
 
-      $delete(`/api/v3/customer/trade-ins/${tradeInId}`);
+      await useNuxtApp().$delete(`/api/v3/customer/trade-ins/${tradeInId}`);
     }
   };
 
@@ -140,7 +139,7 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
 
   const selectAddress = async (tradeInCartId: string) => {
     selectedAddress.value = tradeInCartId;
-    const response = await $patch<TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail>(`/api/v3/customer/trade-in-carts/${tradeInCartId}`, {
+    const response = await useNuxtApp().$patch<TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail>(`/api/v3/customer/trade-in-carts/${tradeInCartId}`, {
       body: {
         shippingAddress: selectedAddress.value,
       },
@@ -151,7 +150,7 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
   };
 
   const confirmCart = async (tradeInCartId: string) => {
-    const response = await $patch<TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail>(`/api/v3/customer/trade-in-carts/${tradeInCartId}`, { body: {} });
+    const response = await useNuxtApp().$patch<TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail>(`/api/v3/customer/trade-in-carts/${tradeInCartId}`, { body: {} });
     setCart(response);
 
     return response;

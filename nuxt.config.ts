@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   ssr: false,
   devtools: { enabled: true },
-  modules: ["@pinia/nuxt", "@nuxtjs/i18n", "@formkit/nuxt", "nuxt-icons"],
+  modules: ["@pinia/nuxt", "@nuxtjs/i18n", "@formkit/nuxt", "nuxt-icons", "@vueuse/nuxt"],
   runtimeConfig: {
     public: {
       apiBaseUrl: "",

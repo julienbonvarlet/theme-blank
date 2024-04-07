@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-const { $trackingPlan } = useNuxtApp();
 const cartStore = useCartStore();
 
 const props = defineProps<{
@@ -34,7 +33,7 @@ const removeFromCart = async () => {
   cartStore.removeFromCart(props.item.id).then((loading.value = false));
   // Tracking Plan //
   if (process.client) {
-    $trackingPlan?.purchaseRemoveFromCart({
+    useNuxtApp().$trackingPlan?.purchaseRemoveFromCart({
       product: props.item,
       cartValue: cartStore.cartOrder?.itemsTotal,
     });

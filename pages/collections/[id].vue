@@ -37,7 +37,6 @@ const { t } = useI18n();
 const config = useRuntimeConfig();
 const clientId = config.clientId;
 const { getPreviousTitle } = usePreviousTitle();
-const { $API } = useNuxtApp();
 const router = useRouter();
 const listProducts = ref<any[] | null>(null);
 const filters = ref<any[] | null>(null);

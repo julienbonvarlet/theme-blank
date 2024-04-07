@@ -42,7 +42,7 @@ import { IconNames } from "~/types/enums";
 const emit = defineEmits(["go"]);
 const go = (page: Number) => emit("go", page);
 
-const props = defineProps<{
+defineProps<{
   previousPage: Number;
   nextPage: Number;
   activePage: Number;

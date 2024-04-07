@@ -9,7 +9,6 @@
 <script setup lang="ts">
 const emit = defineEmits(["next"]);
 
-const { $trackingPlan } = useNuxtApp();
 const addressStore = useAddressesStore();
 const tradeInModule = useTradeInModule();
 
@@ -42,7 +41,7 @@ const selectAddress = async (id) => {
 
 // Tracking Plan //
 if (process.client) {
-  $trackingPlan?.tradeinViewShippingAddress();
+  useNuxtApp().$trackingPlan?.tradeinViewShippingAddress();
 }
 // Tracking Plan //
 </script>

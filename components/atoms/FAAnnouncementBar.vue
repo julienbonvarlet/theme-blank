@@ -1,11 +1,13 @@
 <template>
   <FMSectionContainer class="f-announcement-bar" class-child="f-announcement-bar__inner" :padding-x="true">
     <FAIcon :icon="faumeConfig.header.announcementBar.icon" />
-    <FAText :text="$t('sections.announcement_bar')" size="s" />
+    <FAText :text="$t('sections.announcement_bar')" :size="TextSizes.S" />
   </FMSectionContainer>
 </template>
 
 <script setup lang="ts">
+import { TextSizes } from '~/types/enums';
+
 import faumeConfig from "~/faumeConfig";
 </script>
 

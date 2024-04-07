@@ -8,7 +8,6 @@ import type { TradeInCart_jsonld_trade_in_cart_read_trade_in_read } from "@faume
 const { t } = useI18n();
 const { formatDate } = useDateFormatter();
 const imageStore = useImageStore();
-const { $get } = useNuxtApp();
 
 const props = withDefaults(
   defineProps<{
@@ -61,7 +60,7 @@ const tradeInPhoto = ref<null | string>(null);
 watch(
   props.resale,
   async (resale) => {
-    const article = await $get(`/api/v3/customer/trade-in-carts/${resale.id}`);
+    const article = await useNuxtApp().$get(`/api/v3/customer/trade-in-carts/${resale.id}`);
     article?.items.forEach((item) => {
       const photo = item?.photos?.[0] || item?.medatada?.images?.[0] || item?.metadata?.images?.[0];
       if (photo) {
