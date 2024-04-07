@@ -94,6 +94,8 @@ export const useAuthStore = defineStore("auth", () => {
   const checkEmailExists = async (email: string) => {
     const res = await $post("/api/v3/customer/auth/check-email", { body: { email } });
 
+    console.log("checkEmailExists", res);
+
     return !!res;
   };
 

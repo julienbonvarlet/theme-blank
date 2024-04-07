@@ -10,28 +10,28 @@
         <Transition name="slide-fade">
           <div v-if="active === 0" class="f-menu__list is-first">
             <ul>
-              <li v-for="(link, i) in menu">
+              <li v-for="(link, i) in menu" :key="i">
                 <p v-if="link.links?.length" class="f-menu__link-primary" @click.prevent="active = i + 1">
                   <span>{{ $t(link.label) }}</span>
-                  <FAIcon icon="right" />
+                  <FAIcon :icon="IconNames.Right" />
                 </p>
-                <FAButton v-else-if="link.to?.name === 'sell'" :to="link.to" :label="t(link)" size="l" />
-                <NuxtLink v-else class="f-menu__link-primary" :to="link.to">{{ $t(link) }}</NuxtLink>
+                <FAButton v-else-if="link.to === '/sell'" :to="link.to" :label="t(link.label)" :size="ButtonSizes.L" />
+                <NuxtLink v-else class="f-menu__link-primary" :to="link.to">{{ $t(link.label) }}</NuxtLink>
               </li>
             </ul>
             <ul class="f-menu__grid">
-              <li v-for="link in menuGrid" :key="link">
+              <li v-for="link in menuGrid" :key="link.title">
                 <FMIconInfo v-bind="link" />
               </li>
             </ul>
           </div>
         </Transition>
-        <template v-for="(link, i) in menu">
+        <template v-for="(link, i) in menu" :key="link.label">
           <Transition name="slide-fade">
             <div v-if="link.links && active === i + 1" class="f-menu__list is-second">
-              <FMCollapse v-for="sub_link in link.links" :title="t(sub_link)" :open="true" text-size="s">
+              <FMCollapse v-for="sub_link in link.links" :key="sub_link.label" :title="t(sub_link)" :open="true" :text-size="TextSizes.S">
                 <ul>
-                  <li v-for="sub_sub_link in sub_link.links">
+                  <li v-for="sub_sub_link in sub_link.links" :key="sub_sub_link.label">
                     <NuxtLink
                       class="f-menu__link-secondary"
                       :to="{
@@ -53,6 +53,8 @@
 </template>
 
 <script lang="ts" setup>
+import { ButtonSizes, IconNames, TextSizes } from "~/types/enums";
+
 import faumeConfig from "~/faumeConfig";
 
 const { t } = useI18n();

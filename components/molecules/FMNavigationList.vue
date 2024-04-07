@@ -10,7 +10,7 @@ import { TitleSizes } from "~/types/enums";
 import type { MenuColumn } from "~/types/types";
 import FALink from "../atoms/FALink.vue";
 
-const props = defineProps<{
+defineProps<{
   column: MenuColumn;
 }>();
 </script>

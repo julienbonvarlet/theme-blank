@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(
+withDefaults(
   defineProps<{
     tag?: TagTypes;
     title?: string;

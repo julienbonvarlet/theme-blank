@@ -6,9 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-const router = useRouter();
-
-const props = defineProps<{
+defineProps<{
   address: Object;
 }>();
 </script>

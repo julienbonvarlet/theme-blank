@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import type { TitleSizes } from "~/types/enums";
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     type: string;
     title?: string;

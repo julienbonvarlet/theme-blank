@@ -11,7 +11,7 @@ import type { MenuVisual } from "~/types/types";
 
 const { t } = useI18n();
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     visual: MenuVisual;
     title?: string;

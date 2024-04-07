@@ -27,7 +27,7 @@ export const useGiftCardStore = defineStore("gift-card", () => {
     }
     const response = await $get<GiftCard_jsonld>(`/api/v3/customer/gift-cards/${giftCardId}`);
     giftCard.value = response;
-    
+
     return response;
   };
 

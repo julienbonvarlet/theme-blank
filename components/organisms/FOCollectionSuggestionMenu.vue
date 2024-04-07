@@ -13,7 +13,7 @@ interface Item {
   url: string;
 }
 
-const props = defineProps<{
+defineProps<{
   suggestionMenuItems: Item;
 }>();
 </script>

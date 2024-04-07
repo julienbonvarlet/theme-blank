@@ -15,7 +15,7 @@
 const userStore = useUserStore();
 const router = useRouter();
 
-const props = defineProps<{
+defineProps<{
   displayBilling?: boolean;
 }>();
 

@@ -6,7 +6,7 @@
 import { TitleSizes } from "~/types/enums";
 import type { MenuVisual } from "~/types/types";
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     collection: MenuVisual;
     title?: string;

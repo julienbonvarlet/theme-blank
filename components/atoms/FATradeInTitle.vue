@@ -3,15 +3,17 @@
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(
+import { TitleSizes, TitleTags } from "~/types/enums";
+
+withDefaults(
   defineProps<{
     title: string;
-    size: "s" | "m";
+    size: TitleSizes.S | TitleSizes.M;
     tag?: TitleTags;
   }>(),
   {
-    size: "m",
-    tag: "h2",
+    size: TitleSizes.M,
+    tag: TitleTags.H2,
   },
 );
 </script>

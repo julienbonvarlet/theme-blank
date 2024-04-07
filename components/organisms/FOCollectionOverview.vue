@@ -23,7 +23,7 @@ interface Block {
   links: Array;
 }
 
-const props = defineProps<{
+defineProps<{
   blocks: Block[];
 }>();
 </script>

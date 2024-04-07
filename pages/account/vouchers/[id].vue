@@ -15,7 +15,6 @@ const route = useRoute();
 const giftCardStore = useGiftCardStore();
 
 const loading = ref(true);
-const error = ref<null | string>(null);
 const voucher = ref<null | object>(null);
 
 onMounted(async () => {

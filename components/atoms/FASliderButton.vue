@@ -5,13 +5,15 @@
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(
+import { IconNames } from "~/types/enums";
+
+withDefaults(
   defineProps<{
-    direction?: "right" | "left";
+    direction?: IconNames.Right | IconNames.Left;
     isDisabled?: boolean;
   }>(),
   {
-    direction: "right",
+    direction: IconNames.Right,
   },
 );
 </script>

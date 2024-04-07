@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{
+defineProps<{
   walletAmount?: Number;
 }>();
 </script>

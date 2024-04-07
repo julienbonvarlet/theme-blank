@@ -1,17 +1,19 @@
 <template>
   <FMSectionContainer class="f-page-header" :padding-y="true" :padding-x="true">
-    <FATitle tag="h2" size="l">{{ title }}</FATitle>
+    <FATitle :tag="TitleTags.H2" :size="TitleSizes.L">{{ title }}</FATitle>
     <FSubtitle v-if="subtitle" :text="subtitle" :tag="'h3'"></FSubtitle>
   </FMSectionContainer>
 </template>
 <script setup lang="ts">
-const props = defineProps({
+import { TitleTags, TitleSizes } from "~/types/enums";
+
+defineProps({
   title: {
-    type: string,
+    type: String,
     required: true,
   },
   subtitle: {
-    type: string,
+    type: String,
     required: true,
   },
 });

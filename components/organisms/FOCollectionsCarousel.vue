@@ -11,10 +11,7 @@ const props = defineProps<{
   fakeData?: array;
 }>();
 
-const collections = ref(null);
-
 const collectionsFormated = computed(() => props.fakeData);
-
 const carousels = computed(() => {
   return collectionsFormated.value?.length ? [{ collections: collectionsFormated.value }] : null;
 });

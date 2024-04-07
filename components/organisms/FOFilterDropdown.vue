@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   checkbox?: boolean;
   filtersOptionsActive?: { type: string; value: string }[];
   filtersOptions?: {

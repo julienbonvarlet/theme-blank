@@ -21,7 +21,6 @@
 import type { MenuColumn } from "~/types/types";
 
 const { t } = useI18n();
-const config = useRuntimeConfig();
 
 const menu: MenuColumn[] = [
   {

@@ -158,9 +158,9 @@ const finalPayload = computed(() => {
 /* Handle popin visibility */
 const showPopin = ref<Boolean>(false);
 let timeoutFn = null;
-watchOnce(
+watch(
   () => userInfo.value.nbProducts,
-  (val, oldVal) => {
+  () => {
     timeoutFn = setTimeout(() => {
       showPopin.value = true;
     }, 1000);

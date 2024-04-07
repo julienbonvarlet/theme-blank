@@ -9,9 +9,7 @@ import {
 export const useUserStore = defineStore("user", () => {
   const { $get, $patch, $post } = useNuxtApp();
 
-  const user = ref<null | Customer_jsonld>(null);
-  const config = useRuntimeConfig();
-  const clientId = config.public.clientId;
+  const user = ref<Customer_jsonld | null>(null);
 
   const userIsGuest = computed(() => user.value && user.value?.["@type"] !== "Customer");
 

@@ -17,7 +17,7 @@ interface Step {
   number: number;
 }
 
-const props = defineProps<{
+defineProps<{
   steps: Step[];
 }>();
 </script>

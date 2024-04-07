@@ -15,7 +15,7 @@ const compo = {
   returnArticles: resolveComponent("FMReturnArticlesCard"),
 };
 
-const props = defineProps<{
+defineProps<{
   items: Array;
   name: "address" | "voucher" | "order" | "resaleArticle" | "orderArticle" | "resale" | "returnArticles";
 }>();

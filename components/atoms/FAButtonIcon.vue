@@ -6,9 +6,11 @@
 </template>
 
 <script setup lang="ts">
+import type { IconNames } from "~/types/enums";
+
 const props = defineProps<{
   submit?: boolean;
-  icon?: IconNames;
+  icon: IconNames;
   to?: string | object;
   isDisabled?: boolean;
   isLoading?: boolean;
