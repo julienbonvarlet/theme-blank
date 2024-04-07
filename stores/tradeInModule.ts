@@ -1,33 +1,50 @@
-const { sortSizes } = useSort();
+import type { TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail, TradeIn_jsonld_trade_in_read } from "@faume-tech/sdk-recommerce";
 
 export const useTradeInModule = defineStore("tradeInModule", () => {
-  const article = useCookie("tradeInModuleArticle");
-  const cart = useCookie("tradeInModuleCart");
-  const cartAgree = useCookie("tradeInModuleCartAgree");
-  const channel = useCookie("tradeInModuleChannel");
-  const agree = useCookie("tradeInModuleAgree");
-  const selectedAddress = useCookie("tradeInModuleSelectedAddress");
+  const lodash = require("lodash-es");
+
+  const { $post, $patch, $delete } = useNuxtApp();
+  const tradeInStore = useTradeInStore();
+  const { sortSizes } = useSort();
+
+  type Article = {
+    sku: string | null;
+    color: string | null;
+    size: string | null;
+    condition: string | null;
+  };
+
+  const article = ref<Article>({
+    sku: null,
+    color: null,
+    size: null,
+    condition: null,
+  });
+  const cart = ref();
+  const cartAgree = ref();
+  const channel = ref();
+  const agree = ref();
+  const selectedAddress = ref();
   const colors = ref<string[] | null>(null);
   const sizes = ref<string[] | null>(null);
   const conditions = ref<string[]>(["new", "excellent", "very_good"]);
   const isInvalidSku = ref(false);
   const isValidSku = ref(false);
-  const skuSuggestions = ref<string[] | null>(null);
+  const skuSuggestions = ref<string[]>([]);
 
-  const setAgree = (value) => {
+  const setAgree = (value: string) => {
     agree.value = value;
   };
 
-  const getSku = debounce(async () => {
-    skuSuggestions.value = null;
+  const getSku = async () => {
+    skuSuggestions.value = [];
     isInvalidSku.value = false;
     isValidSku.value = false;
     const sku = article.value.sku;
-    const { $API } = useNuxtApp();
     if (sku && sku !== "") {
       try {
-        const response = await $API.tradeIn.apiCustomerTradeInssearchBySkuSkuGet(sku);
-        skuSuggestions.value = response?.results?.slice(0, 20);
+        const response = await tradeInStore.searchBySku(sku);
+        skuSuggestions.value = response?.slice(0, 20) as string[];
         if (!skuSuggestions.value?.length) {
           isInvalidSku.value = true;
         } else if (skuSuggestions.value?.includes(sku)) {
@@ -38,37 +55,37 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
         throw error;
       }
     }
-  }, 300);
+  };
 
   const getSizesAndColors = async () => {
-    colors.value = null;
-    sizes.value = null;
-    const { $API } = useNuxtApp();
-    const response = await $API.tradeIn.apiCustomerTradeInsgetAvailableSizesAndColorsSkuGet(article.value.sku);
-    colors.value = sortBy(response.color) || [];
+    const response = await tradeInStore.fetchAvailableSizesAndColors(article.value.sku!);
+    colors.value = lodash.sortBy(response.color) || [];
     sizes.value = sortSizes(response.size) || [];
   };
 
-  const setCart = (data) => {
+  const setCart = (data: TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail) => {
     cart.value = data;
   };
 
   const createCart = async () => {
-    const { $API } = useNuxtApp();
-    const data = await $API.tradeInCart.apiCustomerTradeInCartsPost({
-      channel: channel.value,
+    const response = await $post<TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail>("/api/v3/customer/trade-in-carts", {
+      body: {
+        channel: channel.value,
+      },
     });
-    setCart(data);
+
+    setCart(response);
   };
 
   const addToCart = async () => {
     if (!cart.value) {
       await createCart();
     }
-    const { $API } = useNuxtApp();
-    const newArticle = await $API.tradeIn.apiCustomerTradeInsPost({
-      ...article.value,
-      tradeInCart: cart.value["@id"],
+    const newArticle = await $post("/api/v3/customer/trade-ins", {
+      body: {
+        ...article.value,
+        tradeInCart: cart.value["@id"],
+      },
     });
     setCart({ ...cart.value, items: [...cart.value.items, newArticle] });
     article.value = {
@@ -80,38 +97,40 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
     return newArticle;
   };
 
-  const removeFromCart = (id) => {
-    if (id) {
+  const removeFromCart = (tradeInId: string) => {
+    if (tradeInId) {
       setCart({
         ...cart.value,
-        items: [...cart.value.items.filter((x) => x.id !== id)],
+        items: [...cart.value.items.filter((x: TradeIn_jsonld_trade_in_read) => x.id !== tradeInId)],
       });
-      const { $API } = useNuxtApp();
-      $API.tradeInCartItem.apiCustomerTradeInCartItemsIdDelete(id);
+
+      $delete(`/api/v3/customer/trade-ins/${tradeInId}`);
     }
   };
 
-  const setArticle = (name, value) => {
-    article.value = {
-      ...article.value,
-      [name]: value,
-    };
+  const setSku = (sku: string | null) => {
+    article.value.sku = sku;
   };
 
-  const setSku = (value = null) => {
+  const setColor = (color: string | null) => {
+    article.value.color = color;
+  };
+
+  const setSize = (size: string | null) => {
+    article.value.size = size;
+  };
+
+  const setCondition = (condition: string | null) => {
+    article.value.condition = condition;
+  };
+
+  const reset = () => {
     article.value = {
-      sku: value,
+      sku: null,
       color: null,
       size: null,
       condition: null,
     };
-  };
-
-  const reset = () => {
-    article.value.size = null;
-    article.value.color = null;
-    article.value.condition = null;
-    article.value.sku = null;
     cart.value = null;
     colors.value = null;
     sizes.value = null;
@@ -119,31 +138,35 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
     selectedAddress.value = null;
   };
 
-  const selectAddress = async (id) => {
-    selectedAddress.value = id;
-    const { $API } = useNuxtApp();
-    const response = await $API.tradeInCart.apiCustomerTradeInCartsIdPatch(cart.value.id, {
-      shippingAddress: selectedAddress.value,
+  const selectAddress = async (tradeInCartId: string) => {
+    selectedAddress.value = tradeInCartId;
+    const response = await $patch<TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail>(`/api/v3/customer/trade-in-carts/${tradeInCartId}`, {
+      body: {
+        shippingAddress: selectedAddress.value,
+      },
     });
     setCart(response);
+
+    return response;
   };
 
-  const confirmCart = async () => {
-    const { $API } = useNuxtApp();
-    const response = await $API.tradeInCart.apiCustomerTradeInCartsIdvalidatePatch(cart.value.id, {});
+  const confirmCart = async (tradeInCartId: string) => {
+    const response = await $patch<TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail>(`/api/v3/customer/trade-in-carts/${tradeInCartId}`, { body: {} });
     setCart(response);
+
+    return response;
   };
 
-  const setCartAgree = (value) => {
+  const setCartAgree = (value: string) => {
     cartAgree.value = value;
   };
 
-  const resumeTradeIn = (tradeIn) => {
+  const resumeTradeInCart = (tradeInCart: TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail) => {
     channel.value = "web";
     cartAgree.value = true;
     agree.value = true;
-    cart.value = { ...tradeIn };
-    selectedAddress.value = tradeIn.shippingAddress;
+    cart.value = { ...tradeInCart };
+    selectedAddress.value = tradeInCart.shippingAddress;
   };
 
   return {
@@ -161,7 +184,6 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
     cartAgree,
     getSizesAndColors,
     addToCart,
-    setArticle,
     reset,
     removeFromCart,
     setAgree,
@@ -169,6 +191,9 @@ export const useTradeInModule = defineStore("tradeInModule", () => {
     confirmCart,
     setCartAgree,
     setSku,
-    resumeTradeIn,
+    setColor,
+    setSize,
+    setCondition,
+    resumeTradeInCart,
   };
 });

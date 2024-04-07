@@ -9,7 +9,7 @@ import type {
 } from "@faume-tech/sdk-recommerce";
 import type { ApiCollection } from "~/types/types";
 
-export const useTradeInCartItem = defineStore("tradeIn", () => {
+export const useTradeInStore = defineStore("tradeIn", () => {
   const { $getCollection, $get, $post, $delete } = useNuxtApp();
 
   const tradeIns = ref<TradeIn_jsonld_trade_in_read[]>([]);

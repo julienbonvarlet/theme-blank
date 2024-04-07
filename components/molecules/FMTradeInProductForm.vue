@@ -13,8 +13,8 @@
       type="text"
       name="size"
       :values="sizes"
-      :model="article.size"
-      @input="(value) => setArticle('size', value)"
+      :model="article.size!"
+      @input="(value) => tradeInModule.setSize(value)"
       @next="setStep(2)"
       @back-to-sku="setSku"
     />
@@ -26,8 +26,8 @@
       type="text"
       name="color"
       :values="colors"
-      :model="article.color"
-      @input="(value) => setArticle('color', value)"
+      :model="article.color!"
+      @input="(value) => tradeInModule.setColor(value)"
       @next="setStep(3)"
       @back-to-sku="setSku"
     />
@@ -39,8 +39,8 @@
       type="state"
       name="state"
       :values="conditions"
-      :model="article.condition"
-      @input="(value) => setArticle('condition', value)"
+      :model="article.condition!"
+      @input="(value) => tradeInModule.setCondition(value)"
       @next="confirm"
       @back-to-sku="setSku"
     />
@@ -50,7 +50,7 @@
     <ul class="f-ti-sticky-recap">
       <template v-for="(step, i) in recapSteps" :key="step">
         <li v-if="i !== 0">
-          <FAIcon icon="right" />
+          <FAIcon :icon="IconNames.Right" />
         </li>
         <li :class="{ 'is-valid': step.valid }" @click.prevent="setStep(i)">
           <FAText :text="step.title" :is-grey="true" size="s" weight="light" />
@@ -62,6 +62,8 @@
 </template>
 
 <script lang="ts" setup>
+import { IconNames } from "~/types/enums";
+
 const emit = defineEmits(["next"]);
 
 const router = useRouter();
@@ -88,10 +90,6 @@ const recapSteps = computed(() =>
 const submitRef = () => {
   tradeInModule.getSizesAndColors();
   setStep(1);
-};
-
-const setArticle = (name, value) => {
-  tradeInModule.setArticle(name, value);
 };
 
 const confirm = async () => {
