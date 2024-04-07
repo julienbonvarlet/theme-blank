@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Article_jsonld, TradeIn_jsonld_trade_in_read } from "@faume-tech/sdk-recommerce";
+import type { OrderItem_jsonld, TradeIn_jsonld_trade_in_read_trade_in_read_detail } from "@faume-tech/sdk-recommerce";
 
 const { $get } = useNuxtApp();
 
@@ -12,7 +12,7 @@ const imageStore = useImageStore();
 
 const props = withDefaults(
   defineProps<{
-    article: object;
+    article: OrderItem_jsonld;
     displayOldPrice?: boolean;
   }>(),
   {
@@ -20,19 +20,18 @@ const props = withDefaults(
   },
 );
 
-const articleChoice = ref<null | TradeIn_jsonld_trade_in_read>(null);
-const articleChoiceId = computed(() => props.article?.articleChoice?.split("/")?.pop());
+const tradeIn = ref<TradeIn_jsonld_trade_in_read_trade_in_read_detail | null>(null);
 
 const cardInlineData = computed(() => {
   const article = props.article;
-  const articleProps = article.productName.split(", ");
+  const articleProps = article.productName!.split(", ");
   return {
-    title: articleChoice.value?.metadata?.title || articleProps[0],
+    title: tradeIn.value?.metadata?.title || articleProps[0],
     text: articleProps.slice(1).join(" • "),
     details: t("account.orders.detail.id", { id: article.id }),
-    image: articleChoice.value?.photos?.[0] || article.photo || imageStore.placeholder,
+    image: tradeIn.value!.metadata!.photos?.[0] || imageStore.placeholder,
     price: article.total,
-    originalPrice: articleChoice.value?.originPrice || article.unitPric,
+    originalPrice: tradeIn.value!.priceOrigin || article.unitPrice,
     statusValue: article.statusValue,
     statusText: article.statusText,
     displayOldPrice: props.displayOldPrice,
@@ -40,10 +39,10 @@ const cardInlineData = computed(() => {
 });
 
 watch(
-  articleChoiceId,
+  tradeIn,
   async (id) => {
     if (id) {
-      articleChoice.value = await $get(`/api/v3/customer/trade-ins/${id}`);
+      tradeIn.value = await $get<TradeIn_jsonld_trade_in_read_trade_in_read_detail>(`/api/v3/customer/trade-ins/${id}`);
     }
   },
   { deep: true, immediate: true },

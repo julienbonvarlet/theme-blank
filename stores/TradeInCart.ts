@@ -1,49 +1,62 @@
+import type {
+  TradeInCart_UpdateTradeInCartInput,
+  TradeInCart_jsonld_trade_in_cart_read_trade_in_read,
+  TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail,
+} from "@faume-tech/sdk-recommerce";
+import type { ApiCollection } from "~/types/types";
+
 export const useTradeInCartStore = defineStore("tradeInCart", () => {
-  const { $API } = useNuxtApp();
-  const tradeInCart = ref(null);
-  const tradeInCarts = ref<array | null>(null);
+  const { $getCollection, $get, $post, $patch } = useNuxtApp();
+
+  const tradeInCart = ref<TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail | null>(null);
+  const tradeInCarts = ref<TradeInCart_jsonld_trade_in_cart_read_trade_in_read[] | null>([]);
+
+  const fetchTradeInCarts = async (page = 1, itemsPerPage = 10) => {
+    const { items } = await $getCollection<ApiCollection<TradeInCart_jsonld_trade_in_cart_read_trade_in_read>>(`/api/v3/customer/trade-in-carts?page=${page}&itemsPerPage=${itemsPerPage}`);
+    tradeInCarts.value = items;
+
+    return items;
+  };
+
+  const fetchTradeInCart = async (tradeInCartId: string) => {
+    const response = await $get<TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail>(`/api/v3/customer/trade-in-carts/${tradeInCartId}`);
+    tradeInCart.value = response;
+
+    return response;
+  };
 
   const createTradeInCart = async () => {
-    const requestBody = {
-      channel: "web",
-    };
-    const response = await $API.tradeInCart.apiCustomerTradeInCartsPost(requestBody);
+    const response = await $post<TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail>("/api/v3/customer/trade-in-carts", {
+      body: {
+        channel: "web",
+      },
+    });
     tradeInCart.value = response;
+
     return response;
   };
 
-  const fetchTradeInCart = async (id: string) => {
-    const response = await $API.tradeInCart.apiCustomerTradeInCartsIdGet(id);
+  const updateTradeInCart = async (tradeInCartId: string, updateData: TradeInCart_UpdateTradeInCartInput) => {
+    const response = await $patch<TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail>(`/api/v3/customer/trade-in-carts/${tradeInCartId}`, { body: updateData });
     tradeInCart.value = response;
+
     return response;
   };
 
-  const fetchTradeInCarts = async () => {
-    const apiConfig = getAxiosConfig($API.tradeInCart?.httpRequest?.config || {});
-    const response = await axios.get("/api/v3/customer/trade-in-carts", apiConfig);
-    tradeInCarts.value = response?.data["hydra:member"] || [];
-    return response;
-  };
-
-  const updateTradeInCart = async (id, updateData) => {
-    const response = await $API.tradeInCart.apiCustomerTradeInCartsIdPatch(id, updateData);
+  const validateTradeInCart = async (tradeInCartId: string) => {
+    const response = await $patch<TradeInCart_jsonld_trade_in_cart_read_trade_in_read_trade_in_read_detail>(`/api/v3/customer/trade-in-carts/${tradeInCartId}/validate`, { body: {} });
     tradeInCart.value = response;
-    return response;
-  };
 
-  const validateTradeInCart = async (id) => {
-    const response = await $API.tradeInCart.apiCustomerTradeInCartsIdvalidatePatch(id, {});
-    tradeInCart.value = response;
     return response;
   };
 
   return {
     tradeInCart,
     tradeInCarts,
-    createTradeInCart,
+    fetchTradeInCarts,
     fetchTradeInCart,
+    createTradeInCart,
     updateTradeInCart,
     validateTradeInCart,
-    fetchTradeInCarts,
   };
 });

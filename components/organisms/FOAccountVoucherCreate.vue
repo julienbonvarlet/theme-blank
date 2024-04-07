@@ -31,8 +31,10 @@
 </template>
 
 <script lang="ts" setup>
+import type { GiftCard_GiftCardInput_jsonld } from "@faume-tech/sdk-recommerce";
+
 const userStore = useUserStore();
-const voucherStore = useVouchersStore();
+const giftCardStore = useGiftCardStore();
 
 const user = computed(() => userStore.user);
 const walletAmount = computed(() => user.value?.walletAmount || 0);
@@ -51,14 +53,10 @@ const formData = reactive({
 });
 
 const submit = async () => {
-  try {
-    const data = { ...formData };
-    data.amount = data.amount * 100; // Convert into euro cents
-    const voucher = await voucherStore.createVoucher(data);
-    navigateTo(`/account/vouchers/${voucher.id}`);
-  } catch (err) {
-    error.value = err;
-  }
+  const data = { ...formData } as GiftCard_GiftCardInput_jsonld;
+  data.amount = data.amount! * 100; // Convert into euro cents
+  const voucher = await giftCardStore.createGiftCard(data);
+  navigateTo(`/account/vouchers/${voucher.id}`);
 };
 </script>
 

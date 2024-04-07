@@ -22,9 +22,6 @@ export const useAuthStore = defineStore("auth", () => {
   const accessTokenGuest = useCookie<string | null>("access_token_guest");
   const ssoPreviousRoute = useCookie<RouteRecordName | null | undefined>("sso-previous-route");
 
-  const userId = ref(null);
-  const userGuestId = ref(false);
-
   const setUser = (data: Login_Customer_jsonld, isGuest = false) => {
     if (isGuest) {
       accessTokenGuest.value = data.token as string;
@@ -89,7 +86,6 @@ export const useAuthStore = defineStore("auth", () => {
 
   const guestLogin = async (orderReference: GuestLogin_GuestLoginInput_jsonld) => {
     const response = await $post<GuestLogin_jsonld_guest_login_read>("/api/v3/customer/auth/guest-login", { body: orderReference });
-    userGuestId.value = true;
     setUser(response, true);
 
     return response;
@@ -125,11 +121,10 @@ export const useAuthStore = defineStore("auth", () => {
 
   const getUserFromSSO = async (provider: "facebook" | "google", brandId: string) => {
     const response = await $get<OAuth2Connect_Customer_jsonld>(`/api/v3/customer/auth/connect/${provider}/${brandId}/check${window.location.search}`);
-    const user = response.data;
-    accessToken.value = user.token;
-    userId.value = user.id;
-    userStore.setUser(user);
-    return user;
+    accessToken.value = response.token as string;
+    userStore.setUser(response);
+
+    return response;
   };
 
   return {

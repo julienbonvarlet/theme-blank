@@ -1,18 +1,18 @@
-export const usePaymentMethodsStore = defineStore("paymentMethod", () => {
-  const { $API } = useNuxtApp();
-  const paymentMethods = ref(null);
+import type { PaymentMethod_jsonld } from "@faume-tech/sdk-recommerce";
+import type { ApiCollection } from "~/types/types";
 
-  const fetchPaymentMethodsForOrder = async (orderId, page = 1, itemsPerPage = 10) => {
-    const response = await $API.paymentMethod.apiCustomerOrdersOrderIdpaymentMethodsGetCollection(orderId, page, itemsPerPage);
-    paymentMethods.value = response["hydra:member"];
+export const usePaymentMethodsStore = defineStore("paymentMethod", () => {
+  const { $getCollection, $get } = useNuxtApp();
+  const paymentMethods = ref<PaymentMethod_jsonld[]>([]);
+
+  const fetchPaymentMethodsForOrder = async (orderId: string, page = 1, itemsPerPage = 10) => {
+    const { items } = await $getCollection<ApiCollection<PaymentMethod_jsonld>>(`/api/v3/customer/orders/${orderId}/payment-methods?page=${page}&itemsPerPage=${itemsPerPage}`);
+    paymentMethods.value = items;
     return paymentMethods.value;
   };
 
-  const fetchPaymentMethodById = async (id) => {
-    const response = await $API.paymentMethod.apiCustomerPaymentMethodsIdGet({
-      id,
-    });
-    return response;
+  const fetchPaymentMethodById = async (paymentMetnodId: string) => {
+    return await $get<PaymentMethod_jsonld>(`/api/v3/customer/payment-methods/${paymentMetnodId}`);
   };
 
   return {

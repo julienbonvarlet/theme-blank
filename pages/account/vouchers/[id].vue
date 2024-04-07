@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 const route = useRoute();
-const voucherStore = useVouchersStore();
+const giftCardStore = useGiftCardStore();
 
 const loading = ref(true);
 const error = ref<null | string>(null);
@@ -20,10 +20,9 @@ const voucher = ref<null | object>(null);
 
 onMounted(async () => {
   try {
-    voucher.value = await voucherStore.getVoucher(route.params.id);
+    voucher.value = await giftCardStore.getGiftCard(route.params.id as string);
     loading.value = false;
   } catch (err) {
-    error.value = err;
     loading.value = false;
   }
 });

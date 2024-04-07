@@ -53,12 +53,14 @@
 </template>
 
 <script lang="ts" setup>
+import faumeConfig from "~/faumeConfig";
+
 const { t } = useI18n();
-const { menu } = useMenuStore();
+const menu = faumeConfig.menu;
 
 const route = useRoute();
 const emit = defineEmits(["onClose"]);
-const props = defineProps<{
+defineProps<{
   open: boolean;
 }>();
 

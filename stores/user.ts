@@ -37,12 +37,7 @@ export const useUserStore = defineStore("user", () => {
   };
 
   const sendResetPasswordByEmail = async (email: String) => {
-    return await $post("/api/v3/customer/auth/reset-password", {
-      body: {
-        email: email,
-        client: clientId,
-      },
-    });
+    return await $post("/api/v3/customer/auth/reset-password", { body: { email } });
   };
 
   const setUser = (data: Customer_jsonld | null) => (user.value = data);

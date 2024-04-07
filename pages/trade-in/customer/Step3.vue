@@ -31,7 +31,6 @@
 </template>
 
 <script lang="ts" setup>
-const router = useRouter();
 const userStore = useUserStore();
 const authStore = useAuthStore();
 const { $trackingPlan } = useNuxtApp();

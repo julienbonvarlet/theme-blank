@@ -1,7 +1,7 @@
 <template>
   <div class="f-pagination">
     <button v-if="previousPage" class="f-pagination__button" @click.prevent="go(previousPage)">
-      <FAIcon icon="left" />
+      <FAIcon :icon="IconNames.Left" />
     </button>
     <ul>
       <template v-if="activePage != firstPage && previousPage != firstPage">
@@ -31,14 +31,16 @@
       </template>
     </ul>
     <button v-if="nextPage" class="f-pagination__button" @click.prevent="go(nextPage)">
-      <FAIcon icon="right" />
+      <FAIcon :icon="IconNames.Right" />
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
+import { IconNames } from "~/types/enums";
+
 const emit = defineEmits(["go"]);
-const go = (page: number) => emit("go", page);
+const go = (page: Number) => emit("go", page);
 
 const props = defineProps<{
   previousPage: Number;

@@ -11,7 +11,7 @@ interface Icon {
   icon?: string;
 }
 
-const props = defineProps<{
+defineProps<{
   icons: Icon[];
 }>();
 </script>

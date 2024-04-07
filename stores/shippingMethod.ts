@@ -1,16 +1,19 @@
-export const useShippingMethodsStore = defineStore("shippingMethod", () => {
-  const { $API } = useNuxtApp();
-  const shippingMethods = ref(null);
+import type { ShippingMethod_jsonld } from "@faume-tech/sdk-recommerce";
+import type { ApiCollection } from "~/types/types";
 
-  const fetchShippingMethodsForOrder = async (orderId) => {
-    const response = await $API.shippingMethod.apiCustomerOrdersOrderIdshippingMethodsGetCollection(orderId);
-    shippingMethods.value = response["hydra:member"];
+export const useShippingMethodsStore = defineStore("shippingMethod", () => {
+  const { $getCollection, $get } = useNuxtApp();
+  const shippingMethods = ref<ShippingMethod_jsonld[]>([]);
+
+  const fetchShippingMethodsForOrder = async (orderId: string, page = 1, itemsPerPage = 10) => {
+    const { items } = await $getCollection<ApiCollection<ShippingMethod_jsonld>>(`/api/v3/customer/orders/${orderId}/shipping-methods?page=${page}&itemsPerPage=${itemsPerPage}`);
+    shippingMethods.value = items;
+
     return shippingMethods.value;
   };
 
-  const fetchShippingMethodById = async (id) => {
-    const response = await $API.shippingMethod.apiCustomerShippingMethodsIdGet({ id });
-    return response;
+  const fetchShippingMethodById = async (shippingMethodId: string) => {
+    return await $get<ShippingMethod_jsonld>(`/api/v3/customer/shipping-methods/${shippingMethodId}`);
   };
 
   return {

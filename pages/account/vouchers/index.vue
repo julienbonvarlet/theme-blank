@@ -1,20 +1,20 @@
 <template>
-  <FTAccount name="vouchers">
-    <FOAccountCredits :wallet-amount="walletAmount" :vouchers="vouchers" />
+  <FTAccount name="gift-cards">
+    <FOAccountCredits :wallet-amount="walletAmount" :gift-cards="giftCards" />
   </FTAccount>
 </template>
 
 <script lang="ts" setup>
-const vouchersStore = useVouchersStore();
+const gidtCardStore = useGiftCardStore();
 const userStore = useUserStore();
 
-const user = computed(() => userStore.user);
-const walletAmount = computed(() => user.value?.walletAmount || 0);
-const vouchers = computed(() => vouchersStore.vouchers);
+const user = userStore.user;
+const walletAmount = user!.walletAmount || 0;
+const giftCards = gidtCardStore.giftCards;
 
-useAsyncData("accountVouchers", async () => {
-  if (!vouchers.value?.length) {
-    await vouchersStore.getVouchers();
+useAsyncData("accountGiftCards", async () => {
+  if (!giftCards!.length) {
+    await gidtCardStore.getGiftCards();
   }
 });
 </script>

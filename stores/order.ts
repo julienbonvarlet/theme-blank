@@ -1,59 +1,53 @@
-export const useOrdersStore = defineStore("order", () => {
-  const { $API } = useNuxtApp();
+import type { OrderItem_jsonld, Order_OrderInput_jsonld, Order_jsonld } from "@faume-tech/sdk-recommerce";
+import type { ApiCollection } from "~/types/types";
 
-  const page = ref(1);
-  const itemsPerPage = ref(10);
+export const useOrdersStore = defineStore("order", () => {
+  const { $getCollection, $get, $post, $patch, $delete } = useNuxtApp();
+
   const orders = ref<any[] | null>(null);
 
-  const addOrderItem = async (orderUrl, articleChoiceUrl) => {
-    const response = await $API.orderItem.apiCustomerOrderItemsPost({
-      order: orderUrl,
-      tradeIn: articleChoiceUrl,
+  const addOrderItem = async (orderIri: string, tradeInIri: string) => {
+    return await $post<OrderItem_jsonld>("/api/v3/customer/order-items", {
+      body: {
+        order: orderIri,
+        tradeIn: tradeInIri,
+      },
     });
-    return response;
   };
 
-  const getOrderItemById = async (id) => {
-    const response = await $API.orderItem.apiCustomerOrderItemsIdGet(id);
-    return response;
+  const getOrderItemById = async (orderItemId: string) => {
+    return await $get<OrderItem_jsonld>(`/api/v3/customer/order-items/${orderItemId}`);
   };
 
-  const deleteOrderItem = async (id) => {
-    await $API.orderItem.apiCustomerOrderItemsIdDelete(id);
+  const deleteOrderItem = async (orderItemId: string) => {
+    await $delete(`/api/v3/customer/order-items/${orderItemId}`);
   };
 
-  const fetchOrders = async () => {
-    const response = await $API.order.apiCustomerOrdersGetCollection(page.value, itemsPerPage.value);
-    orders.value = response["hydra:member"] || [];
+  const fetchOrders = async (page = 1, itemsPerPage = 10) => {
+    const { items } = await $getCollection<ApiCollection<Order_jsonld>>(`/api/v3/customer/orders?page=${page}&itemsPerPage=${itemsPerPage}`);
+    orders.value = items;
+
     return orders.value;
   };
 
-  const createOrder = async (orderData) => {
-    const response = await $API.order.apiCustomerOrdersPost(orderData);
-    return response;
+  const createOrder = async (orderData: Order_OrderInput_jsonld) => {
+    return await $post<Order_jsonld>("/api/v3/customer/orders", { body: orderData });
   };
 
-  const getOrderById = async (id) => {
-    const response = await $API.order.apiCustomerOrdersIdGet(id);
-    return response;
+  const getOrderById = async (orderId: string) => {
+    return await $get<Order_jsonld>(`/api/v3/customer/orders/${orderId}`);
   };
 
-  const deleteOrder = async (id) => {
-    await $API.order.apiCustomerOrdersIdDelete({ id });
+  const deleteOrder = async (orderId: string) => {
+    await $delete(`/api/v3/customer/orders/${orderId}`);
   };
 
-  const updateOrder = async (id, updatedData) => {
-    const response = await $API.order.apiCustomerOrdersIdPatch(id, updatedData);
-    return response;
+  const updateOrder = async (orderId: string, updatedData: Order_OrderInput_jsonld) => {
+    return await $patch<Order_jsonld>(`/api/v3/customer/orders/${orderId}`, { body: updatedData });
   };
 
-  const fetchDropoffPoints = async (orderId, page = 1, itemsPerPage = 10) => {
-    const response = await $API.order.apiCustomerOrdersIddropoffpointsGetCollection({
-      id: orderId,
-      page,
-      itemsPerPage,
-    });
-    return response;
+  const fetchDropoffPoints = async (orderId: string, page = 1, itemsPerPage = 10) => {
+    return await $getCollection(`/api/v3/customer/orders/${orderId}/dropoffpoints?page=${page}&itemsPerPage=${itemsPerPage}`);
   };
 
   return {

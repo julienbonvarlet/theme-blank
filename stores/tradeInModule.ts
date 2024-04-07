@@ -1,11 +1,5 @@
 const { sortSizes } = useSort();
 
-const cookieOptions = {
-  secure: process.env.NODE_ENV === "production",
-  sameSite: "lax",
-  maxAge: 7 * 24 * 60 * 60,
-};
-
 export const useTradeInModule = defineStore("tradeInModule", () => {
   const article = useCookie("tradeInModuleArticle");
   const cart = useCookie("tradeInModuleCart");

@@ -1,7 +1,7 @@
 <template>
   <div class="f-account-credits">
     <FMAccountHeading :title="$t('account.gift_cards.title')">
-      <FAButton to="/sell" :label="$t('account.gift_cards.button_new_trade_in')" icon="plus" />
+      <FAButton to="/sell" :label="$t('account.gift_cards.button_new_trade_in')" :icon="IconNames.Plus" />
     </FMAccountHeading>
     <div class="f-account-credits__wallet">
       <FAText>{{ $t("account.gift_cards.text") }}</FAText>
@@ -9,19 +9,22 @@
       <FMWalletCard :wallet-amount="walletAmount" />
     </div>
     <FMAccountHeading :title="$t('account.gift_cards.subtitle')" size="s" />
-    <FALoader v-if="!vouchers" size="m" />
-    <FAText v-else-if="!vouchers?.length" :text="$t('account.gift_cards.empty')" />
-    <FMAccountList v-if="vouchers?.length" :items="vouchers" name="voucher" />
-    <FMPagination v-if="pagination && vouchers?.length" v-bind="pagination" />
+    <FALoader v-if="!giftCards" size="m" />
+    <FAText v-else-if="!giftCards.length" :text="$t('account.gift_cards.empty')" />
+    <FMAccountList v-if="giftCards.length" :items="giftCards" name="voucher" />
+    <FMPagination v-if="pagination && giftCards.length" v-bind="pagination" />
     <FMCreditsExplanation />
   </div>
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{
-  vouchers?: any[];
-  pagination?: Object;
-  walletAmount?: Number;
+import type { GiftCard_jsonld } from "@faume-tech/sdk-recommerce";
+import { IconNames } from "~/types/enums";
+
+defineProps<{
+  giftCards: GiftCard_jsonld[];
+  pagination: Object;
+  walletAmount: Number;
 }>();
 </script>
 
