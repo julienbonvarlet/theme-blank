@@ -15,13 +15,8 @@ onMounted(async () => {
   if (isAuthenticated.value) {
     const orderId = localStorage.getItem("orderIdGuest");
     if (orderId) {
-      try {
-        const specificOrderDetails = await ordersStore.getOrderById(orderId);
-        orderDetails.value = specificOrderDetails;
-        console.log("Détails de la commande spécifique récupérés avec succès:", orderDetails.value);
-      } catch (error) {
-        console.error("Erreur lors de la récupération des détails de la commande:", error);
-      }
+      const specificOrderDetails = await ordersStore.getOrderById(orderId);
+      orderDetails.value = specificOrderDetails;
     }
   }
 });

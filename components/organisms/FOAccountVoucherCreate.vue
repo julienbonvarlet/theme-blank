@@ -33,7 +33,6 @@
 <script lang="ts" setup>
 const userStore = useUserStore();
 const voucherStore = useVouchersStore();
-const router = useRouter();
 
 const user = computed(() => userStore.user);
 const walletAmount = computed(() => user.value?.walletAmount || 0);
@@ -56,7 +55,7 @@ const submit = async () => {
     const data = { ...formData };
     data.amount = data.amount * 100; // Convert into euro cents
     const voucher = await voucherStore.createVoucher(data);
-    router.push(`/account/vouchers/${voucher.id}`);
+    navigateTo(`/account/vouchers/${voucher.id}`);
   } catch (err) {
     error.value = err;
   }

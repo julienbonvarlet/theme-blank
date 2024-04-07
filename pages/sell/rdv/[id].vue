@@ -101,10 +101,8 @@ const fetchAvailableSlots = async (date: any) => {
   }
 };
 
-/* HANDLE FORM SUBMIT */
 const sendAppointment = async (payload: object) => {
   await $API.booking.apiCustomerBookingsPost(payload);
-  const router = useRouter();
-  router.push({ name: "sell-rdv-success" });
+  navigateTo("/sell/rdv/success");
 };
 </script>

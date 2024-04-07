@@ -41,7 +41,6 @@ const { t } = useI18n();
 const { formatPrice } = usePriceFormatter();
 const { formatDate } = useDateFormatter();
 const { resumeTradeIn } = useTradeInModule();
-const router = useRouter();
 
 const props = defineProps<{
   resale: object;
@@ -92,7 +91,7 @@ const informationTable = computed(() => {
 
 const continueTradeIn = () => {
   resumeTradeIn(props.resale);
-  router.push({ name: "trade-in-customer-step-3" });
+  navigateTo("trade-in/customer/Step3");
 };
 </script>
 

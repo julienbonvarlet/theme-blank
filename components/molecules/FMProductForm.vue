@@ -6,7 +6,6 @@
       :fields="sizesFields"
       :selected="selectedAttributes.size"
       :helper="$t('pages.product.size_helper')"
-      @on-helper-click="displaySizeGuide()"
       @input="(value) => selectField('size', value)"
     />
     <FMFieldBoxList name="color" :label="$t('pages.product.labels.color')" :fields="colorsFields" :selected="selectedAttributes.color" @input="(value) => selectField('color', value)" />
@@ -30,8 +29,6 @@ const selectedAttributes = ref({
   size: choices.value?.[0].size,
   state: choices.value?.[0].state,
 });
-
-const photos = computed(() => choice?.value?.photos);
 
 const sizes = ref(props.product.size ? [...props.product.size].sort((a, b) => a - b) : []);
 const states = ref(props.product.state ? [...props.product.state].sort((a, b) => a - b) : []);
@@ -61,10 +58,6 @@ const stateFields = computed(() =>
 );
 
 const choice = computed(() => choices.value?.find((x) => x.state === selectedAttributes.value.state && x.color === selectedAttributes.value.color && x.size === selectedAttributes.value.size));
-
-const displaySizeGuide = () => {
-  console.log("Afficher le guide des tailles");
-};
 
 const selectField = (name, value) => {
   selectedAttributes.value[name] = value;

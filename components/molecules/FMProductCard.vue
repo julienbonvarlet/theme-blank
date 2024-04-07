@@ -27,20 +27,12 @@ const props = defineProps<{
   product: ArticleArticleRead;
 }>();
 
-const cartStore = useCartStore();
-
 const isQuickViewVisible = ref(false);
 
 function handleQuickViewClick(event: MouseEvent) {
   event.stopPropagation();
   isQuickViewVisible.value = true;
 }
-
-const handleAddToCart = (product: ArticleArticleRead) => {
-  cartStore.addToCart(product);
-  cartStore.toggleMiniCart(true);
-  console.log("Product added to cart:", product);
-};
 
 const sizesFields = computed(() =>
   props.product?.size?.length

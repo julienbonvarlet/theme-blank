@@ -43,7 +43,7 @@ const clickBack = () => {
     invitation.value = false;
     emailExists.value = false;
   } else {
-    router.push({ name: "cart" });
+    navigateTo("/cart");
   }
 };
 </script>

@@ -1,8 +1,6 @@
 export const usePreviousTitle = defineStore("previousTitle", () => {
-  // States
-  const previousTitle = ref(null);
+  const previousTitle = ref<string | null>(null);
 
-  // Actions
   const getPreviousTitle = async (pageTitle: string) => {
     previousTitle.value = pageTitle;
   };

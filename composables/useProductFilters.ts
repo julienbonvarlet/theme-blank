@@ -24,7 +24,6 @@ export function useProductFilters() {
 
   const handleSortChange = (sortLabel) => {
     currentSortOption.value = sortMap[sortLabel];
-    console.log("currentSortOption", currentSortOption.value);
     updateProductsList();
   };
 

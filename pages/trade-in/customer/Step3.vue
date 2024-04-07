@@ -21,7 +21,7 @@
 
         <div>
           <FATradeInTitle :class="{ 'is-disabled': !user }" :title="$t('trade_in.address.title')" size="s" />
-          <FMTradeInAddresses v-if="user" @next="router.push({ name: 'trade-in-customer-step-4' })" />
+          <FMTradeInAddresses v-if="user" @next="navigateTo('/trade-in/customer/Step4')" />
         </div>
       </div>
 

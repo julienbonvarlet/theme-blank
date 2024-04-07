@@ -6,21 +6,19 @@
 
 <script setup lang="ts">
 const route = useRoute();
-const router = useRouter();
 const authStore = useAuthStore();
 
-const previousRoute = computed(() => authStore.ssoPreviousRoute);
+const previousRoute = authStore.ssoPreviousRoute;
 
 const redirect = () => {
-  const routeName = previousRoute.value;
-  router.push({
-    name: routeName === "login" ? "account" : routeName,
-  });
+  const routeName = previousRoute || "/";
+  const location = routeName === "login" ? "account" : (routeName as string);
+  navigateTo(location);
 };
 
 onMounted(() => {
-  const provider = route.params.provider;
-  const clientId = route.params.client;
+  const provider = route.params.provider as "google" | "facebook";
+  const clientId = route.params.client as string;
 
   authStore.getUserFromSSO(provider, clientId).finally(() => redirect());
 });

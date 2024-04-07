@@ -20,7 +20,6 @@ export const useOrdersStore = defineStore("order", () => {
 
   const deleteOrderItem = async (id) => {
     await $API.orderItem.apiCustomerOrderItemsIdDelete(id);
-    console.log("Article supprimé de la commande avec succès");
   };
 
   const fetchOrders = async () => {

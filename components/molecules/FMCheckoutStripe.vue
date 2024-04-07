@@ -61,7 +61,7 @@ const submitStripe = async () => {
       submitError.value = errorOnPayment || t("pages.checkout.payment.bank_card.error");
       return;
     }
-    router.push({ name: "order-success" });
+    navigateTo("/order-success");
     submitLoading.value = false;
   } catch (error) {
     submitError.value = error || t("pages.checkout.payment.bank_card.error");

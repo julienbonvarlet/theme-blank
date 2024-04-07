@@ -9,7 +9,6 @@
 </template>
 
 <script lang="ts" setup>
-const router = useRouter();
 const tradeInModule = useTradeInModule();
 
 const agree = computed(() => tradeInModule.agree);
@@ -17,7 +16,7 @@ const cart = computed(() => tradeInModule.cart);
 const { $trackingPlan } = useNuxtApp();
 
 const next = () => {
-  router.push({ name: "trade-in-customer-step-2" });
+  navigateTo("/trade-in/customer/Step2");
 };
 
 onMounted(() => {

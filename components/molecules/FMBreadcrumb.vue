@@ -41,15 +41,12 @@ onUnmounted(() => {
   window.removeEventListener("resize", updateIsMobile);
 });
 
-const router = useRouter();
-
 const goBack = () => {
   if (props.previousPageTitle) {
     const path = `/collections/${encodeURIComponent(props.previousPageTitle)}`;
-    console.log(`Navigating to ${path}`);
-    router.push(path);
+    navigateTo(path);
   } else {
-    router.push("/");
+    navigateTo("/");
   }
 };
 </script>

@@ -95,7 +95,6 @@ const submitPassword = async (formData) => {
     await sendResetPasswordByEmail(formData.email);
     passwordSuccess.value = true;
   } catch {
-    console.log("error", t("account.forget_password.error"));
     passwordError.value = true;
   }
 };

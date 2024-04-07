@@ -13,14 +13,13 @@ const formData = ref({
 });
 
 const auth = useAuthStore();
-const router = useRouter();
 
 const submitOrderFollow = async () => {
   try {
     const response = await auth.guestLogin(formData.value.orderNumber);
     localStorage.setItem("orderIdGuest", response.order.split("/").pop());
     localStorage.setItem("authGuest", JSON.stringify(response));
-    router.push("/order-details-follow");
+    navigateTo("/order-details-follow");
   } catch (error) {
     console.error("Erreur lors du suivi d'une commande:", error);
   }

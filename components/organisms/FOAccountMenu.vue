@@ -40,12 +40,11 @@ const data = computed(() => ({
   logout: t("account.menu.logout"),
 }));
 
-const router = useRouter();
 const authStore = useAuthStore();
 
 const logout = () => {
   authStore.logout();
-  router.push("/");
+  navigateTo("/");
 };
 </script>
 

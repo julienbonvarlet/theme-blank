@@ -214,7 +214,6 @@ const fetchProducts = async (page = currentPage.value || 1, itemsPerPage = 12) =
     // Update available filters
 
     // Put active filters, sort and order in the URL
-    console.log(newActiveFilters);
     const [key, value] = filterArgs.value.split("&")[1].split("=");
 
     router.push({ query: { [key]: value } });

@@ -1,21 +1,18 @@
-import faumeConfig from "~/faumeConfig";
-
 export const useCartStore = defineStore("cart", () => {
   const { $get } = useNuxtApp();
 
   const orderStore = useOrdersStore();
   const shippingMethodsStore = useShippingMethodsStore();
 
-  const cartId = useCookie("faume-cart-id", faumeConfig.cookies);
+  const cartId = useCookie("faume-cart-id");
   const cartOrder = ref<null | object>(null);
   const cartItems = ref<null | any[]>(null);
-  const promotionalCode = useCookie("faume-cart-code-promo", faumeConfig.cookies);
+  const promotionalCode = useCookie("faume-cart-code-promo");
   const isMiniCartOpen = ref(false);
   const amountForFreeShipping = 10000;
 
   const setDefaultShippingMethod = async () => {
     const methods = await shippingMethodsStore.fetchShippingMethodsForOrder(cartId.value);
-    console.log("methods", methods);
     const method = methods?.sort((a, b) => a.shippingCost - b.shippingCost)[0];
     if (method) {
       await updateOrder({ shippingMethod: method["@id"] });
