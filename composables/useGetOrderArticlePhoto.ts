@@ -1,8 +1,10 @@
-export function useGetOrderPhoto() {
-  const { $API } = useNuxtApp();
+import type { OrderItem_jsonld } from "@faume-tech/sdk-recommerce";
 
-  const getItem = async (id) => {
-    return await $API.orderItem.apiCustomerOrderItemsIdGet(id);
+export function useGetOrderPhoto() {
+  const { $get } = useNuxtApp();
+
+  const getItem = async (orderItemId: string) => {
+    return await $get<OrderItem_jsonld>(`/api/v3/customer/order-items/${orderItemId}`);
   };
 
   const getChoice = async (id) => {
