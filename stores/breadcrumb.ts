@@ -3,7 +3,7 @@ export const usePreviousTitle = defineStore("previousTitle", () => {
   const previousTitle = ref(null);
 
   // Actions
-  const getPreviousTitle = async (pageTitle: String) => {
+  const getPreviousTitle = async (pageTitle: string) => {
     previousTitle.value = pageTitle;
   };
 

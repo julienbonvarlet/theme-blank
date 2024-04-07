@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Article_jsonld, TradeIn_jsonld_trade_in_read } from '@faume-tech/sdk-recommerce';
+import type { Article_jsonld, TradeIn_jsonld_trade_in_read } from "@faume-tech/sdk-recommerce";
 
 const { $get } = useNuxtApp();
 

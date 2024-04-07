@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { TitleSizes } from "~/types/enums";
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     title?: string;
     titleSize?: TitleSizes;

@@ -14,7 +14,7 @@ export const usePagesProductId = async () => {
   } = await useAsyncData<ArticleChoice_jsonld_article_choice_read>(
     "product",
     // TODO: temporary test, will use SDK to fetch product
-    () => $API.article.apiCustomerArticlesIdGet(productId.toString()),
+    () => $API.article.apiCustomerArticlesIdGet(productId.tostring()),
   );
 
   recentlyViewedProductsStore.addProduct(product.value);

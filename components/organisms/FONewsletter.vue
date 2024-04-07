@@ -1,7 +1,7 @@
 <template>
   <FOSectionText
     class="f-newsletter"
-    max-width="m"
+    :max-width="WrapperWidths.M"
     :padding-y="true"
     :padding-x="true"
     :margin-y="false"
@@ -14,7 +14,7 @@
       <FMFormMessage v-if="success" type="success" :text="$t('sections.newsletter.success_message')" />
       <FMFormMessage v-if="error" type="error" :text="$t('sections.newsletter.error_message')" />
       <div v-if="!success" class="f-newsletter__field">
-        <FormKit name="email" type="email" :value="email" validation="required|email" :help="$t('sections.newsletter.help')" />
+        <FormKit name="email" type="email" v-model="email" validation="required|email" :help="$t('sections.newsletter.help')" />
         <FAButton :submit="true" :label="$t('sections.newsletter.button')" :is-loading="loading" />
       </div>
     </FormKit>
@@ -22,43 +22,26 @@
 </template>
 
 <script setup lang="ts">
-const { getUser } = useAuthUser();
-const userStore = useUserStore();
-const { $API } = useNuxtApp();
-const config = useRuntimeConfig();
+import { WrapperWidths } from "~/types/enums";
+const { $post } = useNuxtApp();
 
-const userEmail = computed(() => userStore.user?.email);
 const email = ref<null | string>(null);
 const loading = ref(false);
 const error = ref(false);
 const success = ref(false);
 
-const formData = ref({
-  email: null,
-  locale: "fr_FR",
-  country: "string",
-  gender: "string",
-  confirm: true,
-});
-
-watch(
-  userEmail,
-  (value) => {
-    email.value = value;
-  },
-  { immediate: true },
-);
-
-const submit = async (formData) => {
+const submit = async () => {
   loading.value = true;
   success.value = false;
   error.value = false;
   try {
-    await $API.marketingSubscription.apiCustomerMarketingSubscriptionsPost({
-      email: formData.email,
-      locale: "fr_FR",
-      country: "FR",
-      confirm: true,
+    await $post("/api/v3/customer/marketing-subscriptions", {
+      body: JSON.stringify({
+        email: email.value,
+        locale: "fr_FR",
+        country: "FR",
+        confirm: true,
+      }),
     });
     success.value = true;
     loading.value = false;
@@ -67,10 +50,6 @@ const submit = async (formData) => {
     loading.value = false;
   }
 };
-
-onMounted(() => {
-  getUser();
-});
 </script>
 
 <style lang="scss">

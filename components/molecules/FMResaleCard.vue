@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import type { TradeInCart_jsonld_trade_in_cart_read_trade_in_read } from '@faume-tech/sdk-recommerce';
+import type { TradeInCart_jsonld_trade_in_cart_read_trade_in_read } from "@faume-tech/sdk-recommerce";
 
 const { t } = useI18n();
 const { formatDate } = useDateFormatter();

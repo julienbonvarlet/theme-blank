@@ -24,7 +24,7 @@ interface Store {
 /* HANDLE RETRIEVE STORE DATA */
 //Retreive current store id from route params
 const route = useRoute();
-const storeId = route.params.id.toString();
+const storeId = route.params.id.tostring();
 
 // Fetch stores data
 const { data: currentStore } = await useAsyncData<Store[]>(
@@ -51,7 +51,7 @@ const availableDays = computed(() => {
       value: entry.date,
       label:
         entryDateObj
-          .toLocaleDateString("fr-FR", {
+          .toLocaleDatestring("fr-FR", {
             weekday: "long",
             year: "numeric",
             month: "long",
@@ -60,7 +60,7 @@ const availableDays = computed(() => {
           .charAt(0)
           .toUpperCase() +
         entryDateObj
-          .toLocaleDateString("fr-FR", {
+          .toLocaleDatestring("fr-FR", {
             weekday: "long",
             year: "numeric",
             month: "long",
@@ -77,7 +77,7 @@ const availableSlots = ref(null);
 
 const formatHour = (date: string) => {
   const dateObj = new Date(date);
-  return dateObj.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }).replace(":", "h");
+  return dateObj.toLocaleTimestring("fr-FR", { hour: "2-digit", minute: "2-digit" }).replace(":", "h");
 };
 
 const fetchAvailableSlots = async (date: any) => {

@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { AsYouType, getExampleNumber, parsePhoneNumberFromString } from "libphonenumber-js";
+import { AsYouType, getExampleNumber, parsePhoneNumberFromstring } from "libphonenumber-js";
 import examples from "libphonenumber-js/mobile/examples";
 
 const { t } = useI18n();
@@ -189,7 +189,7 @@ const submit = async (formData) => {
   try {
     error.value = null;
 
-    const phoneNumber = parsePhoneNumberFromString(phoneFieldValue.value, selectedCountry.value);
+    const phoneNumber = parsePhoneNumberFromstring(phoneFieldValue.value, selectedCountry.value);
     if (!phoneNumber || !phoneNumber.isValid()) {
       const exampleNumber = getExampleNumber(selectedCountry.value, examples);
       const formattedExample = exampleNumber.formatInternational();

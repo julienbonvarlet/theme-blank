@@ -11,7 +11,7 @@ const props = defineProps<{
   originalPrice?: Number;
   salePrice?: Number;
   promotionalOffer?: Boolean;
-  text?: String;
+  text?: string;
 }>();
 
 const content = computed(() => {

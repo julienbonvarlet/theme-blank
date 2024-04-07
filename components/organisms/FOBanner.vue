@@ -17,7 +17,7 @@ const props = withDefaults(
     titleTag?: TitleTags;
     text?: string;
     subtitle?: string;
-    backgroundImage?: String;
+    backgroundImage?: string;
     link1?: Record<string, any>;
     link2?: Record<string, any>;
     size?: BannerSizes;

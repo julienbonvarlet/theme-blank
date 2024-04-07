@@ -37,15 +37,12 @@
         url: '/collections/tous-les-produits',
         type: 'secondary',
       }"
-    />
+    /> -->
 
-    <FOGridRow :columns="gridColumns" align="center" />
+    <!-- <FOGridRow :columns="gridColumns" align="center" /> -->
 
-    <FOCarouselContainer
-      :title="$t('pages.index.carousel_collections.title')"
-      :carousels="categoriesCarousels"
-    />
-    <FONewsletter /> -->
+    <!-- <FOCarouselContainer :title="$t('pages.index.carousel_collections.title')" :carousels="typeCarousels" /> -->
+    <FONewsletter />
   </div>
 </template>
 
@@ -83,7 +80,7 @@ const typeCarousels: Carousel[] = [
   },
 ];
 
-const gridColumns = computed(() => [
+const gridColumns = [
   {
     type: "thumbnail",
     src: "https://demo.faume.co/cdn/shop/files/model-in-neutral-colors-by-window_1276x948_crop_center.jpg?v=1693927200",
@@ -154,5 +151,5 @@ const gridColumns = computed(() => [
     to: "/sell",
     titleSize: "xl",
   },
-]);
+];
 </script>

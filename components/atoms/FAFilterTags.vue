@@ -24,7 +24,7 @@ const props = defineProps({
     required: true,
   },
   tagType: {
-    type: String,
+    type: string,
     required: true,
   },
   tagImages: {

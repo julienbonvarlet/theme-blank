@@ -15,6 +15,11 @@
   },
   "dependencies": {
     "@faume-tech/sdk-recommerce": "^2.0.1",
+    "@formkit/core": "^1.6.1",
+    "@formkit/i18n": "^1.6.1",
+    "@formkit/icons": "^1.6.1",
+    "@formkit/nuxt": "^1.6.1",
+    "@formkit/vue": "^1.6.1",
     "@pinia/nuxt": "^0.5.1",
     "@stripe/stripe-js": "^3.2.0",
     "dayjs": "^1.11.10",

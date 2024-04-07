@@ -10,6 +10,7 @@ export default defineNuxtPlugin(() => {
           method: "GET",
           baseURL: config.public.apiBaseUrl,
           headers: {
+            Accept: "application/ld+json",
             "Content-Type": "application/ld+json",
             "X-Brand-Id": config.public.clientId,
           },
@@ -38,15 +39,29 @@ export default defineNuxtPlugin(() => {
           method: "GET",
           baseURL: config.public.apiBaseUrl,
           headers: {
+            Accept: "application/ld+json",
             "Content-Type": "application/ld+json",
             "X-Brand-Id": config.public.clientId,
           },
           ...args[1],
         });
 
-        return {
-          pagination: response["@id"],
-        };
+        return response as ApiItem;
+      },
+
+      async post<ApiItem>(...args: Parameters<typeof $fetch>) {
+        const response = await $fetch<ApiResponse>(args[0], {
+          method: "POST",
+          baseURL: config.public.apiBaseUrl,
+          headers: {
+            Accept: "application/ld+json",
+            "Content-Type": "application/ld+json",
+            "X-Brand-Id": config.public.clientId,
+          },
+          ...args[1],
+        });
+
+        return response as ApiItem;
       },
     },
   };

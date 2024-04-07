@@ -1,16 +1,16 @@
 import type { RouteLocationRaw } from "vue-router";
 
 export type ApiResponse = {
-  "@id": String;
-  "@type": String;
-  "@context": String;
+  "@id": string;
+  "@type": string;
+  "@context": string;
   "hydra:member": Array<Object>;
   "hydra:totalItems": Number;
   "hydra:view": {
-    "hydra:first": String;
-    "hydra:last": String;
-    "hydra:previous"?: String;
-    "hydra:next"?: String;
+    "hydra:first": string;
+    "hydra:last": string;
+    "hydra:previous"?: string;
+    "hydra:next"?: string;
   };
   "hydra:search"?: Object;
   "hydra:facets"?: Object;
@@ -18,10 +18,10 @@ export type ApiResponse = {
 
 export type Pagination = {
   totalItems: Number;
-  firstPage: String;
-  lastPage: String;
-  previousPage?: String;
-  nextPage?: String;
+  firstPage: string;
+  lastPage: string;
+  previousPage?: string;
+  nextPage?: string;
 };
 
 export type ApiItem = {};
@@ -54,9 +54,9 @@ export type MenuConfig = {
 };
 
 export type LinkTo = {
-  name: String;
+  name: string;
   params?: {
-    id: String;
+    id: string;
   };
 };
 

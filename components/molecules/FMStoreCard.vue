@@ -54,7 +54,7 @@ defineExpose({
   el,
 });
 
-const currentDay = new Date().toLocaleDateString("en-GB", { weekday: "long" }).toLowerCase();
+const currentDay = new Date().toLocaleDatestring("en-GB", { weekday: "long" }).toLowerCase();
 const isStoreOpen = computed(() => {
   // Test if the current day in the schedule contain a number ex : 9h00 - 12h00
   // to differentiate from "closed" for example

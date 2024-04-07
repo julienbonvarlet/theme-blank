@@ -1,8 +1,8 @@
 export function useTrackingPlanDataFormatter() {
   type Tool = "gtm" | "matomo";
 
-  function normalizeString(inputString: string) {
-    return inputString
+  function normalizestring(inputstring: string) {
+    return inputstring
       .toLowerCase()
       .replaceAll(" ", "_")
       .replaceAll("é", "e")
@@ -24,18 +24,18 @@ export function useTrackingPlanDataFormatter() {
       let product = null;
       if (tool === "gtm") {
         product = {
-          item_name: normalizeString(data.product.title),
-          item_variant: normalizeString(data.choice.color),
-          item_category3: normalizeString(data.choice.state),
+          item_name: normalizestring(data.product.title),
+          item_variant: normalizestring(data.choice.color),
+          item_category3: normalizestring(data.choice.state),
           item_id: data.product.id,
-          item_category4: normalizeString(data.choice.size),
+          item_category4: normalizestring(data.choice.size),
           item_category: "",
           item_category2: "",
           price: formatPrice(data.choice.price),
           index: "",
         };
       } else if (tool === "matomo") {
-        product = [data.product.id, normalizeString(data.product.title), ["", "", normalizeString(data.choice.state), normalizeString(data.choice.size)], formatPrice(data.choice.price)];
+        product = [data.product.id, normalizestring(data.product.title), ["", "", normalizestring(data.choice.state), normalizestring(data.choice.size)], formatPrice(data.choice.price)];
       } else {
         product = {};
       }

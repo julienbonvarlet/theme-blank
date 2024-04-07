@@ -1,8 +1,8 @@
 import faumeConfig from "~/faumeConfig";
 
 type Collections = {
-  name: String;
-  slugName: String;
+  name: string;
+  slugName: string;
 };
 
 export const useCollectionsStore = defineStore("collection", () => {
@@ -10,8 +10,8 @@ export const useCollectionsStore = defineStore("collection", () => {
 
   const collections = ref<Collections[]>([]);
 
-  const getCollectionBySlug = (slug: String) => collections.value?.find((x) => x.slugName === slug);
-  const getCollectionTitle = (slug: String) => collections.value?.find((x) => x.slugName === slug)?.name;
+  const getCollectionBySlug = (slug: string) => collections.value?.find((x) => x.slugName === slug);
+  const getCollectionTitle = (slug: string) => collections.value?.find((x) => x.slugName === slug)?.name;
 
   onMounted(async () => {
     if (!collections.value?.length) {

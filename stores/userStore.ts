@@ -1,16 +1,18 @@
+import type { Customer_jsonld } from "@faume-tech/sdk-recommerce";
+
 export const useUserStore = defineStore("user", () => {
-  const { $API } = useNuxtApp();
+  const { $get } = useNuxtApp();
   const router = useRouter();
 
-  const user = ref(null);
+  const user = ref<null | Customer_jsonld>(null);
   const config = useRuntimeConfig();
-  const clientId = config?.public?.faume?.clientId;
+  const clientId = config.public.clientId;
 
   const userIsGuest = computed(() => user.value && user.value?.["@type"] !== "Customer");
 
   const fetchCurrentUser = async () => {
     try {
-      const response = await $API.customer.apiCustomerMeGet();
+      const response = await $get<Customer_jsonld>("/api/v3customer/me");
       user.value = response;
       return response;
     } catch (error) {
@@ -18,21 +20,15 @@ export const useUserStore = defineStore("user", () => {
     }
   };
 
-  const updateUser = async (userId, updatedData) => {
-    try {
-      const data = await $API.customer.apiCustomerCustomersIdPatch(userId, updatedData);
-      user.value = {
-        ...user.value,
-        ...data,
-      };
-      console.log("Informations utilisateur mises à jour");
-    } catch (error) {
-      console.error("Erreur lors de la mise à jour des informations utilisateur:", error);
-      throw error;
-    }
+  const updateUser = async (updatedData) => {
+    const data = await $API.customer.apiCustomerCustomersIdPatch(userId, updatedData);
+    user.value = {
+      ...user.value,
+      ...data,
+    };
   };
 
-  const changePassword = async (userId, passwordData) => {
+  const changePassword = async (passwordData) => {
     return await $API.customer.apiCustomerCustomersIdchangePasswordPatch(userId, passwordData);
   };
 
@@ -45,14 +41,14 @@ export const useUserStore = defineStore("user", () => {
     return data;
   };
 
-  const sendResetPasswordByEmail = async (email) => {
+  const sendResetPasswordByEmail = async (email: String) => {
     return await $API.auth.apiCustomerAuthresetPasswordPost({
       email: email,
       client: clientId,
     });
   };
 
-  const setUser = (data) => (user.value = data);
+  const setUser = (data: Customer_jsonld) => (user.value = data);
 
   return {
     user,

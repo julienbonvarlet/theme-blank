@@ -13,7 +13,7 @@ const props = defineProps<{
   paddingX?: boolean;
   paddingY?: boolean;
   maxWidth?: WrapperWidths;
-  classChild?: String;
+  classChild?: string;
 }>();
 
 const marginXClass = computed(() => (props.marginX ? "is-margin-x" : null));

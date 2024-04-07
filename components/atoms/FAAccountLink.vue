@@ -10,11 +10,11 @@ import type { IconNames } from "~/types/enums";
 
 defineProps<{
   title: {
-    type: String;
+    type: string;
     required: true;
   };
   url: {
-    type: String;
+    type: string;
     required: false;
   };
   icon: {

@@ -7,11 +7,11 @@
 <script setup lang="ts">
 const props = defineProps({
   title: {
-    type: String,
+    type: string,
     required: true,
   },
   subtitle: {
-    type: String,
+    type: string,
     required: true,
   },
 });
