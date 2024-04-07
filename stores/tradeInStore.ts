@@ -1,58 +1,35 @@
+import type { TradeInAvailableColorsAndSizes_jsonld, TradeInMerchandising_jsonld } from "@faume-tech/sdk-recommerce";
+
 export const useTradeInStore = defineStore("tradeIn", () => {
   const { $API } = useNuxtApp();
   const tradeIns = ref<TradeIn_jsonld[]>([]);
   const tradeInDetails = ref<TradeIn_jsonld | null>(null);
 
   const fetchTradeIns = async (page = 1, itemsPerPage = 10) => {
-    try {
-      const response = await $API.tradeIn.apiCustomerTradeInsGetCollection(page, itemsPerPage);
-      tradeIns.value = response["hydra:member"];
-      return response;
-    } catch (error) {
-      console.error("Erreur lors de la récupération des TradeIns:", error);
-      throw error;
-    }
+    const response = await $API.tradeIn.apiCustomerTradeInsGetCollection(page, itemsPerPage);
+    tradeIns.value = response["hydra:member"];
+    return response;
   };
 
   const fetchTradeInById = async (id: string) => {
-    try {
-      const response = await $API.tradeIn.apiCustomerTradeInsIdGet(id);
-      tradeInDetails.value = response;
-      return response;
-    } catch (error) {
-      console.error("Erreur lors de la récupération du TradeIn:", error);
-      throw error;
-    }
+    const response = await $API.tradeIn.apiCustomerTradeInsIdGet(id);
+    tradeInDetails.value = response;
+    return response;
   };
 
   const fetchAvailableSizesAndColors = async (sku: string) => {
-    try {
-      const response = await $API.tradeIn.apiCustomerTradeInsgetAvailableSizesAndColorsSkuGet(sku);
-      return response as TradeInAvailableColorsAndSizes_jsonld;
-    } catch (error) {
-      console.error("Erreur lors de la récupération des tailles et couleurs disponibles:", error);
-      throw error;
-    }
+    const response = await $API.tradeIn.apiCustomerTradeInsgetAvailableSizesAndColorsSkuGet(sku);
+    return response as TradeInAvailableColorsAndSizes_jsonld;
   };
 
   const createTradeInMerchandising = async (merchandisingData: TradeInMerchandising_TradeInMerchandisingInput_jsonld) => {
-    try {
-      const response = await $API.tradeIn.apiCustomerTradeInsmerchandisingPost(merchandisingData);
-      return response as TradeInMerchandising_jsonld;
-    } catch (error) {
-      console.error("Erreur lors de la création du TradeInMerchandising:", error);
-      throw error;
-    }
+    const response = await $API.tradeIn.apiCustomerTradeInsmerchandisingPost(merchandisingData);
+    return response as TradeInMerchandising_jsonld;
   };
 
   const searchBySku = async (sku: string) => {
-    try {
-      const response = await $API.tradeIn.apiCustomerTradeInssearchBySkuSkuGet(sku);
-      return response.results;
-    } catch (error) {
-      console.error("Erreur lors de la recherche par SKU:", error);
-      throw error;
-    }
+    const response = await $API.tradeIn.apiCustomerTradeInssearchBySkuSkuGet(sku);
+    return response.results;
   };
 
   return {

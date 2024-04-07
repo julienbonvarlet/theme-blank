@@ -7,35 +7,18 @@ const cookieOptions = {
 };
 
 export const useTradeInModule = defineStore("tradeInModule", () => {
-  const article = useCookie("tradeInModuleArticle", {
-    ...cookieOptions,
-    default: () => ({
-      sku: null,
-      color: null,
-      size: null,
-      condition: null,
-    }),
-  });
-  const cart = useCookie("tradeInModuleCart", cookieOptions);
-  const cartAgree = useCookie("tradeInModuleCartAgree", {
-    ...cookieOptions,
-    default: () => false,
-  });
+  const article = useCookie("tradeInModuleArticle");
+  const cart = useCookie("tradeInModuleCart");
+  const cartAgree = useCookie("tradeInModuleCartAgree");
+  const channel = useCookie("tradeInModuleChannel");
+  const agree = useCookie("tradeInModuleAgree");
+  const selectedAddress = useCookie("tradeInModuleSelectedAddress");
   const colors = ref<string[] | null>(null);
   const sizes = ref<string[] | null>(null);
   const conditions = ref<string[]>(["new", "excellent", "very_good"]);
   const isInvalidSku = ref(false);
   const isValidSku = ref(false);
   const skuSuggestions = ref<string[] | null>(null);
-  const channel = useCookie("tradeInModuleChannel", {
-    ...cookieOptions,
-    default: () => "web",
-  });
-  const agree = useCookie("tradeInModuleAgree", {
-    ...cookieOptions,
-    default: () => false,
-  });
-  const selectedAddress = useCookie("tradeInModuleSelectedAddress", cookieOptions);
 
   const setAgree = (value) => {
     agree.value = value;

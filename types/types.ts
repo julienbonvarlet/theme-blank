@@ -26,9 +26,18 @@ export type Pagination = {
 
 export type ApiItem = {};
 
+export type Facet = {
+  field: string;
+  items: {
+    key: string;
+    value: string;
+  }[];
+};
+
 export type ApiCollection<Item> = {
   items: Item[];
   pagination: Pagination;
+  facets: Facet[];
   isError: boolean;
 };
 

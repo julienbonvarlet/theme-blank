@@ -1,10 +1,10 @@
 import {
-  OAuth2Connect_Customer_jsonld,
   type EnableAccount_EnableAccountInput_jsonld,
   type GuestLogin_GuestLoginInput_jsonld,
   type GuestLogin_jsonld_guest_login_read,
   type Login_Customer_jsonld,
   type Login_LoginInput_jsonld,
+  type OAuth2Connect_Customer_jsonld,
   type Register_Customer_jsonld,
   type Register_RegisterGuestInput_jsonld,
   type Register_RegisterInput_jsonld,
@@ -39,23 +39,15 @@ export const useAuthStore = defineStore("auth", () => {
   };
 
   const login = async (loginData: Login_LoginInput_jsonld) => {
-    try {
-      const response = await $post<Login_Customer_jsonld>("/api/v3/customer/auth/login", {
-        body: {
-          email: loginData.email,
-          password: loginData.password,
-        },
-      });
-      setUser(response);
+    const response = await $post<Login_Customer_jsonld>("/api/v3/customer/auth/login", {
+      body: {
+        email: loginData.email,
+        password: loginData.password,
+      },
+    });
+    setUser(response);
 
-      return response;
-    } catch (error) {
-      if (typeof error === "object" && error !== null && "message" in error) {
-        throw new Error(error.message);
-      } else {
-        throw new Error("Une erreur inconnue est survenue");
-      }
-    }
+    return response;
   };
 
   const register = async (registerData: Register_RegisterInput_jsonld) => {

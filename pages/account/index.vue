@@ -1,7 +1,7 @@
 <template>
-  <!-- <FTAccount name="account">
+  <FTAccount name="account">
     <FOAccountOverview />
-  </FTAccount> -->
+  </FTAccount>
 </template>
 
 <script lang="ts" setup>

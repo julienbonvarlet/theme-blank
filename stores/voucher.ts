@@ -14,7 +14,6 @@ export const useVouchersStore = defineStore("voucher", () => {
       const response = await $API.giftCard.apiCustomerGiftCardsGetCollection(page.value, itemsPerPage.value);
       vouchers.value = response["hydra:member"] || [];
     } catch (error) {
-      console.error("Erreur lors de la récupération des vouchers:", error);
       if (!vouchers.value) {
         vouchers.value = [];
       }
@@ -22,38 +21,28 @@ export const useVouchersStore = defineStore("voucher", () => {
   };
 
   const createVoucher = async (formData) => {
-    try {
-      const response = await $API.giftCard.apiCustomerGiftCardsPost({
-        ...formData,
-      });
-      const newVoucher = {
-        ...response,
-        ...formData,
-      };
-      voucher.value = newVoucher;
-      await userStore.fetchCurrentUser();
-      return newVoucher;
-    } catch (error) {
-      console.error("Erreur lors de la création d'une carte cadeau", error);
-      throw error;
-    }
+    const response = await $API.giftCard.apiCustomerGiftCardsPost({
+      ...formData,
+    });
+    const newVoucher = {
+      ...response,
+      ...formData,
+    };
+    voucher.value = newVoucher;
+    await userStore.fetchCurrentUser();
+    return newVoucher;
   };
 
   const getVoucher = async (id) => {
     if (!id) {
       return null;
     }
-    try {
-      if (voucher.value && voucher.value.id === id) {
-        return voucher.value;
-      }
-      const response = await $API.giftCard.apiCustomerGiftCardsIdGet(id);
-      voucher.value = response;
-      return response;
-    } catch (error) {
-      console.error("Erreur lors de la récupération d'un voucher:", error);
-      throw error;
+    if (voucher.value && voucher.value.id === id) {
+      return voucher.value;
     }
+    const response = await $API.giftCard.apiCustomerGiftCardsIdGet(id);
+    voucher.value = response;
+    return response;
   };
 
   return {

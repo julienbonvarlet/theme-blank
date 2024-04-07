@@ -42,9 +42,12 @@ export default defineNuxtPlugin(() => {
                 nextPage: response["hydra:view"]["hydra:next"] ?? null,
               };
 
+        const facets = response["hydra:facets"] === undefined ? [] : response["hydra:facets"];
+
         return {
           items: response["hydra:member"],
           pagination,
+          facets,
         } as ApiCollection;
       },
 

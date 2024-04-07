@@ -8,7 +8,6 @@ import {
 
 export const useUserStore = defineStore("user", () => {
   const { $get, $patch, $post } = useNuxtApp();
-  const router = useRouter();
 
   const user = ref<null | Customer_jsonld>(null);
   const config = useRuntimeConfig();
@@ -17,13 +16,9 @@ export const useUserStore = defineStore("user", () => {
   const userIsGuest = computed(() => user.value && user.value?.["@type"] !== "Customer");
 
   const fetchCurrentUser = async () => {
-    try {
-      const response = await $get<Customer_jsonld>("/api/v3customer/me");
-      user.value = response;
-      return response;
-    } catch (error) {
-      console.error("Erreur lors de la récupération des données utilisateur:", error);
-    }
+    const response = await $get<Customer_jsonld>("/api/v3customer/me");
+    user.value = response;
+    return response;
   };
 
   const updateUser = async (customerId: string, updatedData: Customer_CustomerInput) => {
@@ -36,7 +31,7 @@ export const useUserStore = defineStore("user", () => {
   };
 
   const resetPassword = async (hashedToken: string, passwordData: ResetPassword_ResetPasswordConfirmInput) => {
-    const data = await $patch<ResetPassword_ResetPasswordInput_jsonld>(`/api/v3/customer/auth/reset-password/${hashedToken}`, { body: passwordData });
+    await $patch<ResetPassword_ResetPasswordInput_jsonld>(`/api/v3/customer/auth/reset-password/${hashedToken}`, { body: passwordData });
 
     await navigateTo("/auth/login");
   };

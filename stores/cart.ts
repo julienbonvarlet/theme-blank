@@ -1,7 +1,7 @@
 import faumeConfig from "~/faumeConfig";
 
 export const useCartStore = defineStore("cart", () => {
-  const { $API } = useNuxtApp();
+  const { $get } = useNuxtApp();
 
   const orderStore = useOrdersStore();
   const shippingMethodsStore = useShippingMethodsStore();
@@ -46,7 +46,7 @@ export const useCartStore = defineStore("cart", () => {
     const items = [];
     for (const id of cartOrder.value?.items || []) {
       let item = await orderStore.getOrderItemById(id["@id"].split("/").slice(-1)[0]);
-      const article = await $API.tradeIn.apiCustomerTradeInsIdGet(item.tradeIn.split("/").slice(-1)[0]);
+      const article = await $get(item.tradeIn);
       item = {
         ...item,
         article: article,

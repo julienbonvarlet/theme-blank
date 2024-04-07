@@ -28,7 +28,7 @@ const menu: MenuColumn[] = [
     label: "sections.footer.subtitle_1",
     items: [
       { label: "sections.footer.faq", to: "/faq" },
-      { label: "sections.footer.contact", to: "legal/contact" },
+      { label: "sections.footer.contact", to: "/legal/contact" },
       { label: "sections.footer.track_order", to: "/order-follow" },
     ],
   },
