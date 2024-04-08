@@ -24,4 +24,4 @@ logs
 !.env.example
 
 # Configs to override
-configs
+# configs
