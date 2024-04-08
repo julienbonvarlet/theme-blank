@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { IconNames } from '~/types/enums';
+import { IconNames } from "~/types/enums";
 
 const emit = defineEmits(["onClose"]);
 

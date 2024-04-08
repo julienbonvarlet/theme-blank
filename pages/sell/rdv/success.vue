@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { IconNames } from '~/types/enums';
+import { IconNames } from "~/types/enums";
 
 const percent = ref(0);
 onMounted(() => (percent.value = 60));

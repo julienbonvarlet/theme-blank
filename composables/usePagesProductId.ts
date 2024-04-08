@@ -8,14 +8,7 @@ export const usePagesProductId = async () => {
 
   const choice = ref<null | object>(null);
 
-  const {
-    data: product,
-    pending,
-    error,
-  } = await useAsyncData<TradeIn_jsonld_trade_in_read_trade_in_read_detail>(
-    "product",
-    () => useNuxtApp().$get(`/api/v3/customer/trade-ins/${productId}`),
-  );
+  const { data: product, pending, error } = await useAsyncData<TradeIn_jsonld_trade_in_read_trade_in_read_detail>("product", () => useNuxtApp().$get(`/api/v3/customer/trade-ins/${productId}`));
 
   recentlyViewedProductsStore.addProduct(product.value);
 

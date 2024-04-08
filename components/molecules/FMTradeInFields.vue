@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IconNames } from '~/types/enums';
+import { IconNames } from "~/types/enums";
 
 const { t } = useI18n();
 

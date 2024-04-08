@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { TextSizes } from '~/types/enums';
+import { TextSizes } from "~/types/enums";
 
 const { t } = useI18n();
 
